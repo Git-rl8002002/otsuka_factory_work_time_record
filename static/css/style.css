@@ -4,7 +4,24 @@ a:hover  {color:red;  text-decoration:none;}
 a:active {text-decoration:none;}
 a:link   {text-decoration:none;}
 
-
+.goto_top:hover{
+	color:black;
+	background:#cccccc;	
+}
+.goto_top{
+	display:none;
+    position: fixed;
+    border-radius: 50px;
+    right: 20px;
+    bottom: 30px;
+    padding: 10px 16px;
+    font-size: 25px;
+    background: gray;
+    color: #FAFCFD;
+    cursor: pointer;
+    z-index: 1000;	
+    font-family:微軟正黑體;
+}
 
 .mouse_hover:hover{
     background-color:#cccccc;

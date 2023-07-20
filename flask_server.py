@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 # -*- coding: UTF-8 -*-
 
- # Author   : JasonHung
- # Date     : 20221102
- # Update   : 202230421
- # Function : kedge web cloud platform
+# Author   : JasonHung
+# Date     : 20221102
+# Update   : 20230719
+# Function : otsuka factory work time record
 
 from argparse import Namespace
 from dataclasses import dataclass
@@ -23,8 +23,7 @@ from control.web_cloud_dao import web_cloud_dao
 db = web_cloud_dao()
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'secret' 
-socketio = SocketIO(app)  
+app.config['SECRET_KEY'] = 'secret'
 
 ########
 # log
@@ -36,6 +35,220 @@ logging.basicConfig(format=log_format , level=logging.INFO , datefmt="%Y-%m-%d %
 # variables
 ##############
 title  = parm['title']
+
+
+
+##############################
+# /reload_menu_account_list
+##############################
+@app.route("/reload_menu_account_list", methods=['POST','GET'])
+def reload_menu_account_list():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '權限管理 -  載入帳號清單'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station      = db.factory_work_station()
+            factory_work_account_list = db.factory_work_account_list()
+
+            return render_template('ajax/menu_account_management.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , factory_work_account_list=factory_work_account_list)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+#############################
+# /submit_add_account_form
+#############################
+@app.route("/submit_add_account_form", methods=['POST','GET'])
+def submit_add_account_form():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '權限管理 -  建立帳號'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                a_date     = request.form['a_date']
+                a_work_no  = request.form['a_work_no']
+                a_name     = request.form['a_name']
+                a_user     = request.form['a_user']
+                a_position = request.form['a_position']
+                a_status   = request.form['a_status']
+
+                res = db.add_account(a_date , a_name , a_work_no , a_position , a_status , a_user)
+
+                if res:
+                    return render_template('ajax/add_account_form.html' , user=user , lv=lv , title=title , r_date=r_date , msg='ok')
+                
+                return render_template('ajax/add_account_form.html' , user=user , lv=lv , title=title , r_date=r_date , msg='no')
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+
+#######################
+# /load_account_form
+#######################
+@app.route("/load_account_form", methods=['POST','GET'])
+def load_account_form():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '權限管理 -  新增帳號表'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_position = db.factory_work_position()
+
+            return render_template('ajax/add_account_form.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_position=factory_work_position)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+#############################
+# /menu_account_management
+#############################
+@app.route("/menu_account_management")
+def menu_account_management():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '權限管理 - 帳號管理'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station()
+            factory_work_account_list = db.factory_work_account_list()
+
+            return render_template('menu_account_management.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , factory_work_account_list=factory_work_account_list)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###################################
+# /prouuction_2_work_time_record
+###################################
+@app.route("/production_2_work_time_record")
+def prouuction_2_work_time_record():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 工時時間記錄表'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station()
+            a_work_no = db.search_item('a_work_no' , user)
+            a_name = db.search_item('a_name' , user)
+
+            return render_template('production_2_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
 
 ######
 # /
@@ -110,7 +323,6 @@ def login():
             # main content
             #################
             #res_data           = db.realtime_modbus_sensor()
-            
 
             return render_template('index.html' ,  user=session['user'] , lv=session['lv'] , title=title )
 
@@ -200,49 +412,6 @@ def account_manager():
     
     return redirect(url_for('login'))
 
-########################################################################################################################################
-#
-# socketIO - WebSocket - Flask-SocketIO 
-#
-########################################################################################################################################
-
-@socketio.on('my event')
-def test_message(message):
-    emit('my response', {'data': message['data']})
-
-@socketio.on('my broadcast event')
-def test_message(message):
-    emit('my response', {'data': message['data']}, broadcast=True)
-
-@socketio.on('connect')
-def test_connect():
-    emit('my response', {'data': 'Connected'})
-
-@socketio.on('disconnect')
-def test_disconnect():
-    logging.info('Client disconnected')
-
-'''
-@socketio.on('connect', namespace='/')
-def test_connect():
-    while True:
-        socketio.sleep(5)
-        t = random_int_list(1, 100, 10)
-        emit('server_response',{'data': t},namespace='/')
- 
-def random_int_list(start, stop, length):
-    start, stop = (int(start), int(stop)) if start <= stop else (int(stop), int(start))
-    length = int(abs(length)) if length else 0
-    random_list = []
-    for i in range(length):
-        random_list.append(random.randint(start, stop))
-    return random_list
-  
-@socketio.on('disconnect', namespace='/')  
-def test_disconnect():  
-    logging.info('Client disconnected')  
-'''
-
 
 ########################################################################################################################################
 #
@@ -254,9 +423,6 @@ if __name__ == "__main__":
     ##########
     # Flask
     ##########
-    #app.run(host="0.0.0.0" , port=8080 , debug=True)
+    app.run(host="0.0.0.0" , port=9095 , debug=True)
     
-    ###################
-    # Flask-SocketIO
-    ###################
-    socketio.run(app , host="0.0.0.0" , port=9095 , debug=True)
+    

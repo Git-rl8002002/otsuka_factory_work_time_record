@@ -1,3 +1,255 @@
+function submit_work_time(){
+        var a_work_no = $('#a_work_no').val();
+        var a_name    = $('#a_name').val();
+        var a_date    = $('#a_date').val();
+        
+        var a_work_station_1           = $('#a_work_station_1').val();
+        var a_production_1             = $('#a_production_1').val();
+        var a_product_no_1             = $('#a_product_no_1').val();
+        var a_work_normal_time_1       = $('#a_work_normal_time_1').val();
+        var a_work_over_time_1         = $('#a_work_over_time_1').val();
+        var a_work_availability_time_1 = $('#a_work_availability_time_1').val();
+        var a_work_remark_1            = $('#a_work_remark_1').val();
+
+        var a_work_station_2           = $('#a_work_station_2').val();
+        var a_production_2             = $('#a_production_2').val();
+        var a_product_no_2             = $('#a_product_no_2').val();
+        var a_work_normal_time_2       = $('#a_work_normal_time_2').val();
+        var a_work_over_time_2         = $('#a_work_over_time_2').val();
+        var a_work_availability_time_2 = $('#a_work_availability_time_2').val();
+        var a_work_remark_2            = $('#a_work_remark_2').val();
+
+        var a_work_station_3           = $('#a_work_station_3').val();
+        var a_production_3             = $('#a_production_3').val();
+        var a_product_no_3             = $('#a_product_no_3').val();
+        var a_work_normal_time_3       = $('#a_work_normal_time_3').val();
+        var a_work_over_time_3         = $('#a_work_over_time_3').val();
+        var a_work_availability_time_3 = $('#a_work_availability_time_3').val();
+        var a_work_remark_3            = $('#a_work_remark_3').val();
+
+        var a_work_station_4           = $('#a_work_station_4').val();
+        var a_production_4             = $('#a_production_4').val();
+        var a_product_no_4             = $('#a_product_no_4').val();
+        var a_work_normal_time_4       = $('#a_work_normal_time_4').val();
+        var a_work_over_time_4         = $('#a_work_over_time_4').val();
+        var a_work_availability_time_4 = $('#a_work_availability_time_4').val();
+        var a_work_remark_4            = $('#a_work_remark_4').val();
+
+        var a_work_station_5           = $('#a_work_station_5').val();
+        var a_production_5             = $('#a_production_5').val();
+        var a_product_no_5             = $('#a_product_no_5').val();
+        var a_work_normal_time_5       = $('#a_work_normal_time_5').val();
+        var a_work_over_time_5         = $('#a_work_over_time_5').val();
+        var a_work_availability_time_5 = $('#a_work_availability_time_5').val();
+        var a_work_remark_5            = $('#a_work_remark_5').val();
+        
+        var a_work_station_6           = $('#a_work_station_6').val();
+        var a_production_6             = $('#a_production_6').val();
+        var a_product_no_6             = $('#a_product_no_6').val();
+        var a_work_normal_time_6       = $('#a_work_normal_time_6').val();
+        var a_work_over_time_6         = $('#a_work_over_time_6').val();
+        var a_work_availability_time_6 = $('#a_work_availability_time_6').val();
+        var a_work_remark_6            = $('#a_work_remark_6').val();
+
+        
+        if(a_work_no.length == 0){
+                alert('工號不能空白 !');
+                exit();        
+        }
+        else if(a_name == 0){
+                alert('姓名不能空白 !');
+                exit()
+        }
+        else{
+                alert(a_work_no + ' / ' + a_name + ' / ' + a_date );
+                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_1 + ' / ' + a_production_1 + ' / ' + a_product_no_1 + ' / ' + a_work_normal_time_1 + ' / ' + a_work_over_time_1 + ' / ' + a_work_availability_time_1 + ' / ' + a_work_remark_1);
+                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_2 + ' / ' + a_production_2 + ' / ' + a_product_no_2 + ' / ' + a_work_normal_time_2 + ' / ' + a_work_over_time_2 + ' / ' + a_work_availability_time_2 + ' / ' + a_work_remark_2);
+                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_3 + ' / ' + a_production_3 + ' / ' + a_product_no_3 + ' / ' + a_work_normal_time_3 + ' / ' + a_work_over_time_3 + ' / ' + a_work_availability_time_3 + ' / ' + a_work_remark_3);
+                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_4 + ' / ' + a_production_4 + ' / ' + a_product_no_4 + ' / ' + a_work_normal_time_4 + ' / ' + a_work_over_time_4 + ' / ' + a_work_availability_time_4 + ' / ' + a_work_remark_4);
+                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_5 + ' / ' + a_production_5 + ' / ' + a_product_no_5 + ' / ' + a_work_normal_time_5 + ' / ' + a_work_over_time_5 + ' / ' + a_work_availability_time_5 + ' / ' + a_work_remark_5);
+                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_6 + ' / ' + a_production_6 + ' / ' + a_product_no_6 + ' / ' + a_work_normal_time_6 + ' / ' + a_work_over_time_6 + ' / ' + a_work_availability_time_6 + ' / ' + a_work_remark_6);
+                exit();
+        }
+
+
+        
+
+
+        
+        $.ajax({
+                type:"POST",
+                url:"/load_menu_money_record_by_kind",
+                data:{
+                        'kind':kind
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#menu_money_record_list").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("loading " + kind + " 種類記帳本清單 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function submit_add_account_form(){
+        
+        var a_work_no  = $('#a_work_no').val();
+        var a_date     = $('#a_date').val();
+        var a_name     = $('#a_name').val();
+        var a_user     = $('#a_user').val();
+        var a_position = $('#a_position').val();
+        var a_status   = $('#a_status').val();
+        
+        var data    = a_date.split('-')
+        var r_year  = data[0];
+        var r_month = data[1];
+        var r_day   = data[2];
+
+        // check 帳號
+	if(a_user.length == 0){
+	        /// show msg
+                alert('帳號不能空白 !!!')
+	        exit;
+	}
+        // check 工號
+	if(a_work_no.length == 0){
+	        /// show msg
+                alert('工號不能空白 !!!')
+	        exit;
+	}
+        // check 姓名 
+	if(a_name.length == 0){
+	        /// show msg
+                alert('姓名不能空白 !!!')
+	        exit;
+	}
+        // check 部門 
+	if(a_position.length == 0){
+	        /// show msg
+                alert('部門不能空白 !!!')
+	        exit;
+	}
+        // check 帳號狀態
+	if(a_status.length == 0){
+	        /// show msg
+                alert('狀態不能空白 !!!')
+	        exit;
+	}
+
+        //alert(a_work_no + ' / ' +  a_date + ' / ' + a_name + ' / ' + a_position + ' / ' + a_status)
+        //exit();
+
+        $.ajax({
+                type:"POST",
+                url:"/submit_add_account_form",
+                data:{
+                        'a_user':a_user,
+                        'a_name':a_name,
+                        'a_date':a_date,
+                        'a_work_no':a_work_no,
+                        'a_position':a_position,
+                        'a_status':a_status
+                },
+                datatype:"html",
+                error:function(xhr , ajaxError , throwError){
+         	      alert(xhr.status);
+               	      alert(xhr.responseText);
+	              alert(throwError);
+                      alert(ajaxError)
+                },
+                success:function(res){
+                        
+                        // clean value
+                        $('#a_work_no').val('');
+                        $('#a_date').val('');
+                        $('#a_name').val('');
+                        $('#a_user').val('');
+                        $('#a_position').val('');
+                        $('#a_status').val('');
+                        
+                        // reload account list
+                        reload_menu_account_list();
+                },
+                beforeSend:function(){
+                        //$('#show_msg').html('載入操作紀錄管理中...').css({'color':'blue'}).show();
+                        //$('#add_content').show(1000);
+                },
+                complete:function(){
+                        //$('#show_msg').hide();
+                }
+        });     
+}
+
+function add_account_form(){
+        
+        // scroll to top 
+        jQuery("html,body").animate({scrollTop:0},1000);
+
+        $.ajax({
+                type:"POST",
+                url:"/load_account_form",
+                data:{},
+                datatype:"html",
+                error:function(xhr , ajaxError , throwError){
+         	      alert(xhr.status);
+               	      alert(xhr.responseText);
+	              alert(throwError);
+                      alert(ajaxError);
+                },
+                success:function(res){
+        	       	$("#add_account_form").show(1000).html(res);
+                },
+                beforeSend:function(){
+                        $('#status').html("loading 新增帳號表 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function reload_menu_account_list(){
+        $.ajax({
+                type:"GET",
+                url:"/reload_menu_account_list",
+                data:{},
+                datatype:"html",
+                error:function(xhr , ajaxError , throwError){
+         	      alert(xhr.status);
+               	      alert(xhr.responseText);
+	              alert(throwError);
+                },
+                success:function(res){
+                        
+                        //location.reload(true);
+                        $("#otsuka_account_list").show(1000).html(res);  
+                },
+                beforeSend:function(){
+                        $('#status').html("loading 帳號清單 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });                
+}
+
+
 function load_menu_money_record_by_kind(val){
         var kind = val;
         
@@ -12,7 +264,7 @@ function load_menu_money_record_by_kind(val){
          	                alert(xhr.status);
                	                alert(xhr.responseText);
 	                        alert(throwError);
-                                alert(ajaxError)
+                                alert(ajaxError);
                         },
                         success:function(res){
                                 
@@ -551,73 +803,7 @@ function detail_work_record(val){
         });
 }
 
-function submit_add_calendar_record_form(){
-        
-        var user = $('#user').val();
-        var date = $('#date').val();
-        var title = $('#title').val();
-        var content = CKEDITOR.instances.content.getData();
-        var data = date.split('-')
-        var r_year = data[0];
-        var r_month = data[1];
 
-        //alert(user + ' / ' + date + ' / ' + content + ' / ' + title + ' / ' + r_year + ' / ' + r_month)
-
-        // check title
-	if(title.length == 0){
-	        /// show msg
-                $("#title").css({'border-bottom-color':'red'});
-		$("#show_msg").css({'color':'red'}).html("<i class='bi bi-x-circle-fill'></i> 工作日誌標體不能空白 !!!");
-	        exit;
-	}
-        // check content 
-	if(content.length == 0){
-	        /// show msg
-                $("#content").css({'border-bottom-color':'red'});
-		$("#show_msg").css({'color':'red'}).html("<i class='bi bi-x-circle-fill'></i> 工作日誌內容不能空白 !!!");
-	        exit;
-	}
-
-        $.ajax({
-                type:"POST",
-                url:"/submit_add_calendar_record_form",
-                data:{
-                        'user':user,
-                        'date':date,
-                        'title':title,
-                        'content':content,
-                        'r_year':r_year,
-                        'r_month':r_month
-                },
-                datatype:"html",
-                error:function(xhr , ajaxError , throwError){
-         	      alert(xhr.status);
-               	      alert(xhr.responseText);
-	              alert(throwError);
-                      alert(ajaxError)
-                },
-                success:function(res){
-                        //console.log(res.validate);
-			//$("#content").css({'border':'#cccccc 1px solid'});
-        	       	//$("#add_content").show(1000).html(res);
-                        
-                        // clean value
-                        $("#show_msg").val('');
-                        $('#title').val('');
-                        $('#content').val('');
-                        
-                        // reload menu calendar record
-                        reload_menu_calendar_record();
-                },
-                beforeSend:function(){
-                        //$('#show_msg').html('載入操作紀錄管理中...').css({'color':'blue'}).show();
-                        $('#add_content').show(1000);
-                },
-                complete:function(){
-                        //$('#show_msg').hide();
-                }
-        });     
-}
 
 function submit_add_work_record_form(){
         
@@ -932,6 +1118,8 @@ function reload_menu_money_record(){
                 }
         });                
 }
+
+
 
 function reload_menu_calendar_record(){
         $.ajax({

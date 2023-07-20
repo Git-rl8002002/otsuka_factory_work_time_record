@@ -1,52 +1,89 @@
 /*
 * Author   : JasonHung
-* Date     : 20220211
-* Update   : 20230419
-* Function : JNC CB and sensor value
+* Date     : 20221102
+* Update   : 20230719
+* Function : otsuka factory work time record
 */
 
 /*
  * database  tinfar_kedge
  */ 
-create database tinfar_kedge DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-use tinfar_kedge;
-
-
-/* 
- * sensor_setup
- */
-create table sensor_setup(
-no int not null primary key AUTO_INCREMENT,
-r_time datetime null,
-r_year varchar(10) null,
-r_month varchar(10) null,
-r_day varchar(10) null,
-account varchar(50) null,
-s_position varchar(50) null,
-s_tag_name varchar(50) null,
-s_tag_high_val varchar(50) null,
-s_tag_low_val varchar(50) null
-)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+use otsuka_factory;
 
 /* 
- * sensor_alarm
+ * work_position
  */
-create table sensor_alarm(
+create table work_position(
 no int not null primary key AUTO_INCREMENT,
-r_time datetime null,
-r_year varchar(10) null,
-r_month varchar(10) null,
-r_day varchar(10) null,
-account varchar(50) null,
-a_position varchar(50) null,
-a_tag_name varchar(50) null,
-a_tag_val varchar(50) null,
-a_comment text null,
-a_time datetime null,
-sign_status varchar(50) null,
-sign_time datetime null
+e_name varchar(10) null,
+c_content varchar(50) null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+insert into work_position (e_name , c_content) VALUES('p1','生一部');
+insert into work_position (e_name , c_content) VALUES('p2','生二部');
+insert into work_position (e_name , c_content) VALUES('p3','生三部');
+
+/* 
+ * work_station
+ */
+create table work_station(
+no int not null primary key AUTO_INCREMENT,
+e_name varchar(10) null,
+c_content varchar(50) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+insert into work_station (e_name , c_content) VALUES('W1','W1-領料');
+insert into work_station (e_name , c_content) VALUES('W2','W2-稱料');
+insert into work_station (e_name , c_content) VALUES('W3','W3-退料');
+
+insert into work_station (e_name , c_content) VALUES('A','A-造粒');
+insert into work_station (e_name , c_content) VALUES('A1','A1-結合劑調製');
+insert into work_station (e_name , c_content) VALUES('A2','A2-濕式造粒');
+insert into work_station (e_name , c_content) VALUES('A3','A3-乾式整粒');
+
+insert into work_station (e_name , c_content) VALUES('E','E-打錠');
+
+insert into work_station (e_name , c_content) VALUES('Y1','Y1-裝機');
+insert into work_station (e_name , c_content) VALUES('Y2','Y2-調機');
+insert into work_station (e_name , c_content) VALUES('Y3','Y3-試機');
+
+insert into work_station (e_name , c_content) VALUES('V1','V1-機器拆卸');
+insert into work_station (e_name , c_content) VALUES('V2','V2-清機');
+
+insert into work_station (e_name , c_content) VALUES('K1','K1-機械故障');
+insert into work_station (e_name , c_content) VALUES('K2','K2-維修');
+
+insert into work_station (e_name , c_content) VALUES('M1','M1-蓋印');
+insert into work_station (e_name , c_content) VALUES('M2','M2-打印');
+
+insert into work_station (e_name , c_content) VALUES('O','O-泡殼分裝');
+
+insert into work_station (e_name , c_content) VALUES('P','P-包裝作業');
+
+insert into work_station (e_name , c_content) VALUES('Q','Q-檢視作業');
+
+insert into work_station (e_name , c_content) VALUES('S','S-停工待料');
+
+insert into work_station (e_name , c_content) VALUES('C','C-環境清潔');
+
+insert into work_station (e_name , c_content) VALUES('J','J-確效驗證');
+
+insert into work_station (e_name , c_content) VALUES('R','R-支援工作');
+
+insert into work_station (e_name , c_content) VALUES('T','T-教育訓練');
+insert into work_station (e_name , c_content) VALUES('T1','T1-部內教育訓練');
+insert into work_station (e_name , c_content) VALUES('T2','T2-部外教育訓練');
+
+insert into work_station (e_name , c_content) VALUES('U','U-休息');
+
+insert into work_station (e_name , c_content) VALUES('D','D-請假');
+
+insert into work_station (e_name , c_content) VALUES('L','L-其他');
+insert into work_station (e_name , c_content) VALUES('L1','L1-其它 - 5S活動');
+insert into work_station (e_name , c_content) VALUES('L2','L2-其它 - 參觀活動');
+insert into work_station (e_name , c_content) VALUES('L3','L3-其它 - 部內會議');
+insert into work_station (e_name , c_content) VALUES('L4','L4-其它 - 部外會議');
 
 /* 
  * operation_record
@@ -81,13 +118,16 @@ r_year varchar(100) null,
 r_month varchar(100) null,
 r_day varchar(100) null,
 r_time time null,
-a_user varchar(200) null,
-a_pwd varchar(200) null,
+a_work_no int null,
+a_user varchar(100) null,
+a_name varchar(100) null,
+a_pwd varchar(100) null,
 a_lv varchar(10) null,
 a_position varchar(10) null,
 a_status varchar(50) null,
 a_comment text null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-insert into account (a_user , a_pwd , a_lv , a_status , a_position) VALUES('admin','1qaz#123','1','run' , 'all');
-insert into account (a_user , a_pwd , a_lv , a_status , a_position) VALUES('kedge','kedge#123','2','run' , 'all');
+insert into account (a_work_no , a_user , a_pwd , a_lv , a_status , a_position) VALUES('1','admin','1qaz#123','1','run' , 'all');
+insert into account (a_work_no , a_user , a_pwd , a_lv , a_status , a_position) VALUES('2','otsuka','otsuka','2','run' , 'all');
+insert into account (a_work_no , a_user , a_pwd , a_lv , a_status , a_position) VALUES('3','normal','normal','3','run' , 'all');

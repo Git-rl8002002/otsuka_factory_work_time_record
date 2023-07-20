@@ -2,30 +2,23 @@
 # -*- coding: UTF-8 -*-
 
 # Author   : JasonHung
- # Date     : 20221102
- # Update   : 202230421
- # Function : kedge web cloud platform
+# Date     : 20221102
+# Update   : 20230719
+# Function : otsuka factory work time record
 
 #############
 #
 # variable
 #
 #############
-parm = {'title':'根基營造 感測器監控系統'}
+parm = {'title':'大塚製藥 - 工廠'}
 
-###############
+###################
 #
-# JNC Server
+# otsuka_factory
 #
-###############
-jnc_server = {'host':'59.125.238.217' , 'port':587 , 'cb-1':1 , 'cb-1_1':'0x0000' , 'cb-1_2':'0x0001' , 'cb-1_3':'0x0002'}
-
-#################
-#
-# Tinfar_kedge
-#
-#################
-kedge_db = {'host':'61.220.205.143' , 'port':5306 , 'user':'backup' , 'pwd':'SLbackup#123' , 'db':'tinfar_kedge' , 'charset':'utf8'}
+###################
+otsuka_factory = {'host':'192.168.1.93' , 'port':3306 , 'user':'otsuka' , 'pwd':'OtsukatW168!' , 'db':'otsuka_factory' , 'charset':'utf8'}
 
 #############
 #
