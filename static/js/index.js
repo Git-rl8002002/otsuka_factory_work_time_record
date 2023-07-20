@@ -61,20 +61,15 @@ function submit_work_time(){
                 exit()
         }
         else{
-                alert(a_work_no + ' / ' + a_name + ' / ' + a_date );
-                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_1 + ' / ' + a_production_1 + ' / ' + a_product_no_1 + ' / ' + a_work_normal_time_1 + ' / ' + a_work_over_time_1 + ' / ' + a_work_availability_time_1 + ' / ' + a_work_remark_1);
-                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_2 + ' / ' + a_production_2 + ' / ' + a_product_no_2 + ' / ' + a_work_normal_time_2 + ' / ' + a_work_over_time_2 + ' / ' + a_work_availability_time_2 + ' / ' + a_work_remark_2);
-                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_3 + ' / ' + a_production_3 + ' / ' + a_product_no_3 + ' / ' + a_work_normal_time_3 + ' / ' + a_work_over_time_3 + ' / ' + a_work_availability_time_3 + ' / ' + a_work_remark_3);
-                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_4 + ' / ' + a_production_4 + ' / ' + a_product_no_4 + ' / ' + a_work_normal_time_4 + ' / ' + a_work_over_time_4 + ' / ' + a_work_availability_time_4 + ' / ' + a_work_remark_4);
-                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_5 + ' / ' + a_production_5 + ' / ' + a_product_no_5 + ' / ' + a_work_normal_time_5 + ' / ' + a_work_over_time_5 + ' / ' + a_work_availability_time_5 + ' / ' + a_work_remark_5);
-                alert(a_work_no + ' / ' + a_name + ' / ' + a_date + ' / ' + a_work_station_6 + ' / ' + a_production_6 + ' / ' + a_product_no_6 + ' / ' + a_work_normal_time_6 + ' / ' + a_work_over_time_6 + ' / ' + a_work_availability_time_6 + ' / ' + a_work_remark_6);
+                alert(  '工號 : ' + a_work_no + ' , 姓名 : ' + a_name + ' , 日期 : ' + a_date + '\n' +
+                        a_work_station_1 + ' , ' + a_production_1 + ' , ' + a_product_no_1 + ' , ' + a_work_normal_time_1 + ' , ' + a_work_over_time_1 + ' , ' + a_work_availability_time_1 + ' , ' + a_work_remark_1 + '\n' +
+                        a_work_station_2 + ' , ' + a_production_2 + ' , ' + a_product_no_2 + ' , ' + a_work_normal_time_2 + ' , ' + a_work_over_time_2 + ' , ' + a_work_availability_time_2 + ' , ' + a_work_remark_2 + '\n' +
+                        a_work_station_3 + ' , ' + a_production_3 + ' , ' + a_product_no_3 + ' , ' + a_work_normal_time_3 + ' , ' + a_work_over_time_3 + ' , ' + a_work_availability_time_3 + ' , ' + a_work_remark_3 + '\n' +
+                        a_work_station_4 + ' , ' + a_production_4 + ' , ' + a_product_no_4 + ' , ' + a_work_normal_time_4 + ' , ' + a_work_over_time_4 + ' , ' + a_work_availability_time_4 + ' , ' + a_work_remark_4 + '\n' +
+                        a_work_station_5 + ' , ' + a_production_5 + ' , ' + a_product_no_5 + ' , ' + a_work_normal_time_5 + ' , ' + a_work_over_time_5 + ' , ' + a_work_availability_time_5 + ' , ' + a_work_remark_5 + '\n' +
+                        a_work_station_6 + ' , ' + a_production_6 + ' , ' + a_product_no_6 + ' , ' + a_work_normal_time_6 + ' , ' + a_work_over_time_6 + ' , ' + a_work_availability_time_6 + ' , ' + a_work_remark_6 + '\n');
                 exit();
         }
-
-
-        
-
-
         
         $.ajax({
                 type:"POST",
@@ -105,6 +100,7 @@ function submit_work_time(){
                         $('#status').css({'color':'white'});
                 }
         });
+        
 }
 
 function submit_add_account_form(){
