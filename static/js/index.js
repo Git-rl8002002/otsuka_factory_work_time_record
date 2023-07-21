@@ -52,10 +52,12 @@ function submit_work_time(){
         var a_work_remark_6            = $('#a_work_remark_6').val();
 
         
+        // check 工號
         if(a_work_no.length == 0){
                 alert('工號不能空白 !');
                 exit();        
         }
+        // check 姓名
         else if(a_name == 0){
                 alert('姓名不能空白 !');
                 exit()
@@ -100,7 +102,7 @@ function submit_work_time(){
                         $('#status').css({'color':'white'});
                 }
         });
-        
+
 }
 
 function submit_add_account_form(){

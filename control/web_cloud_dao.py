@@ -3,7 +3,7 @@
 
 # Author   : JasonHung
 # Date     : 20221102
-# Update   : 20230719
+# Update   : 20230720
 # Function : otsuka factory work time record
 
 import pymysql , logging , time , re , requests , json
