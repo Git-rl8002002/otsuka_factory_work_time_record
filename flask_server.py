@@ -3,7 +3,7 @@
 
 # Author   : JasonHung
 # Date     : 20221102
-# Update   : 20230719
+# Update   : 20230720
 # Function : otsuka factory work time record
 
 from argparse import Namespace
@@ -35,7 +35,6 @@ logging.basicConfig(format=log_format , level=logging.INFO , datefmt="%Y-%m-%d %
 # variables
 ##############
 title  = parm['title']
-
 
 
 ##############################
@@ -128,7 +127,6 @@ def submit_add_account_form():
             return redirect(url_for('logout'))
 
     return redirect(url_for('login')) 
-
 
 #######################
 # /load_account_form
@@ -368,7 +366,6 @@ def logout():
 
     return redirect(url_for('index'))
 
-
 #####################
 # /account_manager
 #####################
@@ -411,7 +408,6 @@ def account_manager():
             return redirect(url_for('logout'))
     
     return redirect(url_for('login'))
-
 
 ########################################################################################################################################
 #
