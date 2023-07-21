@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     
     <!-- logo icon -->
-    <link rel="Shortcut Icon" type="image/x-icon" href="{{ url_for('static',filename='img/icon/database.png') }}" />
+    <link rel="Shortcut Icon" type="image/x-icon" href="{{ url_for('static',filename='img/icon/logo_no_chart.png') }}" />
     
     <!-- Responsive meta tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -68,6 +68,7 @@
 <body>
     <!-- title -->
     <div class="jumbotron jumbotron-fluid text-center">
+        <img src="{{ url_for('static',filename='img/icon/logo_no_chart.png') }}" class="my-3">
         <h1 class="text-success">{{ title }}</h1>
     </div>
 
