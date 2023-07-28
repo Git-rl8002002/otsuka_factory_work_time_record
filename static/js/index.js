@@ -1,14 +1,22 @@
    function submit_work_time(){
         
-        var a_work_no = $('#a_work_no').val();                                          // 工號
-        var a_name    = $('#a_name').val();                                             // 姓名
-        var a_date    = $('#a_date').val();                                             // 日期
-        var availability_time = $('#auto_plus_availability_work_time').text();          // 稼動工時
-        var over_time         = $('#auto_plus_over_work_time').text();                  // 加班工時
-        var normal_tima       = $('#auto_plus_normal_work_time').text();                // 一般工時
-        var total_time        = $('#auto_plus_total_work_time').val();                  // 總工時
+        // 工號
+        var a_work_no = $('#a_work_no').val();                                          
+        // 姓名
+        var a_name    = $('#a_name').val();                                             
+        // 日期
+        var a_date    = $('#a_date').val();                                             
+        // 稼動工時
+        var availability_time = $('#auto_plus_availability_work_time').text();          
+        // 加班工時
+        var over_time         = $('#auto_plus_over_work_time').text();                  
+        // 一般工時
+        var normal_tima       = $('#auto_plus_normal_work_time').text();                
+        // 總工時
+        var total_time        = $('#auto_plus_total_work_time').val();                  
         
-        var a_work_station_1           = $('#a_work_station_1').val();                  // 第一筆
+        // 第1筆
+        var a_work_station_1           = $('#a_work_station_1').val();                  
         var a_production_1             = $('#a_production_1').val();
         var a_product_no_1             = $('#a_product_no_1').val();
         var a_work_normal_time_1       = $('#a_work_normal_time_1').val();
@@ -16,7 +24,8 @@
         var a_work_availability_time_1 = $('#a_work_availability_time_1').val();
         var a_work_remark_1            = $('#a_work_remark_1').val();
 
-        var a_work_station_2           = $('#a_work_station_2').val();                  // 第二筆
+        // 第2筆
+        var a_work_station_2           = $('#a_work_station_2').val();                  
         var a_production_2             = $('#a_production_2').val();
         var a_product_no_2             = $('#a_product_no_2').val();
         var a_work_normal_time_2       = $('#a_work_normal_time_2').val();
@@ -24,7 +33,8 @@
         var a_work_availability_time_2 = $('#a_work_availability_time_2').val();
         var a_work_remark_2            = $('#a_work_remark_2').val();
 
-        var a_work_station_3           = $('#a_work_station_3').val();                  // 第三筆
+        // 第3筆
+        var a_work_station_3           = $('#a_work_station_3').val();                  
         var a_production_3             = $('#a_production_3').val();
         var a_product_no_3             = $('#a_product_no_3').val();
         var a_work_normal_time_3       = $('#a_work_normal_time_3').val();
@@ -32,7 +42,8 @@
         var a_work_availability_time_3 = $('#a_work_availability_time_3').val();
         var a_work_remark_3            = $('#a_work_remark_3').val();
 
-        var a_work_station_4           = $('#a_work_station_4').val();                  // 第四筆
+        // 第4筆
+        var a_work_station_4           = $('#a_work_station_4').val();                  
         var a_production_4             = $('#a_production_4').val();
         var a_product_no_4             = $('#a_product_no_4').val();
         var a_work_normal_time_4       = $('#a_work_normal_time_4').val();
@@ -40,7 +51,8 @@
         var a_work_availability_time_4 = $('#a_work_availability_time_4').val();
         var a_work_remark_4            = $('#a_work_remark_4').val();
 
-        var a_work_station_5           = $('#a_work_station_5').val();                  // 第五筆
+        // 第5筆
+        var a_work_station_5           = $('#a_work_station_5').val();                  
         var a_production_5             = $('#a_production_5').val();
         var a_product_no_5             = $('#a_product_no_5').val();
         var a_work_normal_time_5       = $('#a_work_normal_time_5').val();
@@ -48,7 +60,8 @@
         var a_work_availability_time_5 = $('#a_work_availability_time_5').val();
         var a_work_remark_5            = $('#a_work_remark_5').val();
         
-        var a_work_station_6           = $('#a_work_station_6').val();                  // 第六筆
+        // 第6筆
+        var a_work_station_6           = $('#a_work_station_6').val();                  
         var a_production_6             = $('#a_production_6').val();
         var a_product_no_6             = $('#a_product_no_6').val();
         var a_work_normal_time_6       = $('#a_work_normal_time_6').val();
@@ -56,7 +69,8 @@
         var a_work_availability_time_6 = $('#a_work_availability_time_6').val();
         var a_work_remark_6            = $('#a_work_remark_6').val();
 
-        var a_work_station_7           = $('#a_work_station_7').val();                   // 第七筆
+        // 第7筆
+        var a_work_station_7           = $('#a_work_station_7').val();                   
         var a_production_7             = $('#a_production_7').val();
         var a_product_no_7             = $('#a_product_no_7').val();
         var a_work_normal_time_7       = $('#a_work_normal_time_7').val();
@@ -64,7 +78,8 @@
         var a_work_availability_time_7 = $('#a_work_availability_time_7').val();
         var a_work_remark_7            = $('#a_work_remark_7').val();
 
-        var a_work_station_8           = $('#a_work_station_8').val();                   // 第八筆
+        // 第8筆
+        var a_work_station_8           = $('#a_work_station_8').val();                   
         var a_production_8             = $('#a_production_8').val();
         var a_product_no_8             = $('#a_product_no_8').val();
         var a_work_normal_time_8       = $('#a_work_normal_time_8').val();
@@ -72,7 +87,8 @@
         var a_work_availability_time_8 = $('#a_work_availability_time_8').val();
         var a_work_remark_8            = $('#a_work_remark_8').val();
         
-        var a_work_station_9           = $('#a_work_station_9').val();                   // 第九筆
+        // 第9筆
+        var a_work_station_9           = $('#a_work_station_9').val();                   
         var a_production_9             = $('#a_production_9').val();
         var a_product_no_9             = $('#a_product_no_9').val();
         var a_work_normal_time_9       = $('#a_work_normal_time_9').val();
@@ -80,7 +96,8 @@
         var a_work_availability_time_9 = $('#a_work_availability_time_9').val();
         var a_work_remark_9            = $('#a_work_remark_9').val();
 
-        var a_work_station_10           = $('#a_work_station_10').val();                 // 第十筆
+        // 第10筆
+        var a_work_station_10           = $('#a_work_station_10').val();                 
         var a_production_10             = $('#a_production_10').val();
         var a_product_no_10             = $('#a_product_no_10').val();
         var a_work_normal_time_10       = $('#a_work_normal_time_10').val();
@@ -88,7 +105,8 @@
         var a_work_availability_time_10 = $('#a_work_availability_time_10').val();
         var a_work_remark_10            = $('#a_work_remark_10').val();
 
-        var a_work_station_11           = $('#a_work_station_11').val();                 // 第十一筆
+        // 第11筆
+        var a_work_station_11           = $('#a_work_station_11').val();                 
         var a_production_11             = $('#a_production_11').val();
         var a_product_no_11             = $('#a_product_no_11').val();
         var a_work_normal_time_11       = $('#a_work_normal_time_11').val();
@@ -96,7 +114,8 @@
         var a_work_availability_time_11 = $('#a_work_availability_time_11').val();
         var a_work_remark_11            = $('#a_work_remark_11').val();
 
-        var a_work_station_12           = $('#a_work_station_12').val();                 // 第十二筆
+        // 第12筆
+        var a_work_station_12           = $('#a_work_station_12').val();                 
         var a_production_12             = $('#a_production_12').val();
         var a_product_no_12             = $('#a_product_no_12').val();
         var a_work_normal_time_12       = $('#a_work_normal_time_12').val();
