@@ -34,8 +34,8 @@
     
     <!-- websocket -->
     <script type="text/javascript">
+        
         $(document).ready(function(){
-            
         
         var socket = io.connect('http://61.220.205.142:8080/');
         
@@ -43,26 +43,23 @@
             var t = res.data;
             $("#status").heml(t);
         });
-        
-        
             
-               $("#goto_top").click(function(){
-                      jQuery("html,body").animate({
-                          scrollTop:0
-                      },1000);
-                  });
-                  
-                  $(window).scroll(function() {
-                      if ( $(this).scrollTop() > 300){
-                          $('#goto_top').fadeIn("fast");
-                      } else {
-                          $('#goto_top').stop().fadeOut("fast");
-                      }
-                  });
+        $("#goto_top").click(function(){
+                jQuery("html,body").animate({
+                    scrollTop:0
+                },1000);
+            });
             
+            $(window).scroll(function() {
+                if ( $(this).scrollTop() > 300){
+                    $('#goto_top').fadeIn("fast");
+                } else {
+                    $('#goto_top').stop().fadeOut("fast");
+                }
+            });
         });
-    </script>	
 
+    </script>	
 
 </head>
 <body>
@@ -108,7 +105,6 @@
                 {% else %}
                     <div class="text-center text-danger">{{ login_msg }}</div>
                 {% endif %}  
-                    
                 
             </div>
         

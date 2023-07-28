@@ -299,8 +299,16 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text">日期</span>
                             </div>
-                            <input type="text" class="form-control" id="a_date" value="{{r_date}}" placeholder="日期">
+                            <input type="text" class="form-control" id="a_date" value="{{r_date}}" placeholder="日期"> 
+                        
+                        <!-- 總工時 -->
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">總工時</span>
+                            </div>
+                            <input type="text" class="form-control" id="auto_plus_total_work_time" readonly>
                         </div>
+
+                        
             
                         <table class="table table-bordered table-hover bg-light">
                             <thead class="thead-dark">
@@ -308,9 +316,9 @@
                                 <th>工作站</th>
                                 <th>產品</th>
                                 <th>批號</th>
-                                <th>一般工時</th>
-                                <th>加班工時</th>
-                                <th>稼動工時</th>
+                                <th>一般工時 <span id="auto_plus_normal_work_time"></span></th>
+                                <th>加班工時 <span id="auto_plus_over_work_time"></span></th>
+                                <th>稼動工時 <span id="auto_plus_availability_work_time"></span></th>
                                 <th>備註</th>
                             </tr>
                             </thead>                                        
@@ -326,9 +334,9 @@
                                 </td>
                                 <td><input type="input" class="form-control" id="a_production_1"></td>
                                 <td><input type="input" class="form-control" id="a_product_no_1"></td>
-                                <td><input type="input" class="form-control" id="a_work_normal_time_1"></td>
-                                <td><input type="input" class="form-control" id="a_work_over_time_1"></td>
-                                <td><input type="input" class="form-control" id="a_work_availability_time_1"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_1" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_1" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_1" onkeyup="auto_plus_availability_work_time()"></td>
                                 <td><input type="input" class="form-control" id="a_work_remark_1"></td>
                             </tr>
                             <tr>
@@ -342,9 +350,9 @@
                                 </td>
                                 <td><input type="input" class="form-control" id="a_production_2"></td>
                                 <td><input type="input" class="form-control" id="a_product_no_2"></td>
-                                <td><input type="input" class="form-control" id="a_work_normal_time_2"></td>
-                                <td><input type="input" class="form-control" id="a_work_over_time_2"></td>
-                                <td><input type="input" class="form-control" id="a_work_availability_time_2"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_2" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_2" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_2" onkeyup="auto_plus_availability_work_time()"></td>
                                 <td><input type="input" class="form-control" id="a_work_remark_2"></td>
                             </tr>
                             <tr>
@@ -358,9 +366,9 @@
                                 </td>
                                 <td><input type="input" class="form-control" id="a_production_3"></td>
                                 <td><input type="input" class="form-control" id="a_product_no_3"></td>
-                                <td><input type="input" class="form-control" id="a_work_normal_time_3"></td>
-                                <td><input type="input" class="form-control" id="a_work_over_time_3"></td>
-                                <td><input type="input" class="form-control" id="a_work_availability_time_3"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_3" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_3" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_3" onkeyup="auto_plus_availability_work_time()"></td>
                                 <td><input type="input" class="form-control" id="a_work_remark_3"></td>
                             </tr>
                             <tr>
@@ -374,9 +382,9 @@
                                 </td>
                                 <td><input type="input" class="form-control" id="a_production_4"></td>
                                 <td><input type="input" class="form-control" id="a_product_no_4"></td>
-                                <td><input type="input" class="form-control" id="a_work_normal_time_4"></td>
-                                <td><input type="input" class="form-control" id="a_work_over_time_4"></td>
-                                <td><input type="input" class="form-control" id="a_work_availability_time_4"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_4" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_4" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_4" onkeyup="auto_plus_availability_work_time()"></td>
                                 <td><input type="input" class="form-control" id="a_work_remark_4"></td>
                             </tr>
                             <tr>
@@ -390,9 +398,9 @@
                                 </td>
                                 <td><input type="input" class="form-control" id="a_production_5"></td>
                                 <td><input type="input" class="form-control" id="a_product_no_5"></td>
-                                <td><input type="input" class="form-control" id="a_work_normal_time_5"></td>
-                                <td><input type="input" class="form-control" id="a_work_over_time_5"></td>
-                                <td><input type="input" class="form-control" id="a_work_availability_time_5"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_5" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_5" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_5" onkeyup="auto_plus_availability_work_time()"></td>
                                 <td><input type="input" class="form-control" id="a_work_remark_5"></td>
                             </tr>
                             <tr>
@@ -406,11 +414,114 @@
                                 </td>
                                 <td><input type="input" class="form-control" id="a_production_6"></td>
                                 <td><input type="input" class="form-control" id="a_product_no_6"></td>
-                                <td><input type="input" class="form-control" id="a_work_normal_time_6"></td>
-                                <td><input type="input" class="form-control" id="a_work_over_time_6"></td>
-                                <td><input type="input" class="form-control" id="a_work_availability_time_6"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_6" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_6" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_6" onkeyup="auto_plus_availability_work_time()"></td>
                                 <td><input type="input" class="form-control" id="a_work_remark_6"></td>
                             </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_7" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_7"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_7"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_7" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_7" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_7" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_7"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_8" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_8"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_8"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_8" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_8" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_8" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_8"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_9" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_9"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_9"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_9" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_9" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_9" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_9"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_10" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_10"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_10"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_10" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_10" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_10" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_10"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_11" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_11"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_11"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_11" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_11" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_11" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_11"></td>
+                            </tr>
+
+                            <tr>
+                                <td>
+                                    <select id="a_work_station_12" class="form-control">
+                                        <option></option>
+                                        {% for item in factory_work_station %}
+                                        <option>{{ item[0] }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </td>
+                                <td><input type="input" class="form-control" id="a_production_12"></td>
+                                <td><input type="input" class="form-control" id="a_product_no_12"></td>
+                                <td><input type="input" class="form-control" id="a_work_normal_time_12" onkeyup="auto_plus_normal_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_over_time_12" onkeyup="auto_plus_over_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_availability_time_12" onkeyup="auto_plus_availability_work_time()"></td>
+                                <td><input type="input" class="form-control" id="a_work_remark_12"></td>
+                            </tr>
+
                             </tbody>
                         </table>
 

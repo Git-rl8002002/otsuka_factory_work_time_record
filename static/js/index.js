@@ -1,4 +1,4 @@
-function submit_work_time(){
+   function submit_work_time(){
         var a_work_no = $('#a_work_no').val();
         var a_name    = $('#a_name').val();
         var a_date    = $('#a_date').val();
@@ -51,6 +51,54 @@ function submit_work_time(){
         var a_work_availability_time_6 = $('#a_work_availability_time_6').val();
         var a_work_remark_6            = $('#a_work_remark_6').val();
 
+        var a_work_station_7           = $('#a_work_station_7').val();
+        var a_production_7             = $('#a_production_7').val();
+        var a_product_no_7             = $('#a_product_no_7').val();
+        var a_work_normal_time_7       = $('#a_work_normal_time_7').val();
+        var a_work_over_time_7         = $('#a_work_over_time_7').val();
+        var a_work_availability_time_7 = $('#a_work_availability_time_7').val();
+        var a_work_remark_7            = $('#a_work_remark_7').val();
+
+        var a_work_station_8           = $('#a_work_station_8').val();
+        var a_production_8             = $('#a_production_8').val();
+        var a_product_no_8             = $('#a_product_no_8').val();
+        var a_work_normal_time_8       = $('#a_work_normal_time_8').val();
+        var a_work_over_time_8         = $('#a_work_over_time_8').val();
+        var a_work_availability_time_8 = $('#a_work_availability_time_8').val();
+        var a_work_remark_8            = $('#a_work_remark_8').val();
+        
+        var a_work_station_9           = $('#a_work_station_9').val();
+        var a_production_9             = $('#a_production_9').val();
+        var a_product_no_9             = $('#a_product_no_9').val();
+        var a_work_normal_time_9       = $('#a_work_normal_time_9').val();
+        var a_work_over_time_9         = $('#a_work_over_time_9').val();
+        var a_work_availability_time_9 = $('#a_work_availability_time_9').val();
+        var a_work_remark_9            = $('#a_work_remark_9').val();
+
+        var a_work_station_10           = $('#a_work_station_10').val();
+        var a_production_10             = $('#a_production_10').val();
+        var a_product_no_10             = $('#a_product_no_10').val();
+        var a_work_normal_time_10       = $('#a_work_normal_time_10').val();
+        var a_work_over_time_10         = $('#a_work_over_time_10').val();
+        var a_work_availability_time_10 = $('#a_work_availability_time_10').val();
+        var a_work_remark_10            = $('#a_work_remark_10').val();
+
+        var a_work_station_11           = $('#a_work_station_11').val();
+        var a_production_11             = $('#a_production_11').val();
+        var a_product_no_11             = $('#a_product_no_11').val();
+        var a_work_normal_time_11       = $('#a_work_normal_time_11').val();
+        var a_work_over_time_11         = $('#a_work_over_time_11').val();
+        var a_work_availability_time_11 = $('#a_work_availability_time_11').val();
+        var a_work_remark_11            = $('#a_work_remark_11').val();
+
+        var a_work_station_12           = $('#a_work_station_12').val();
+        var a_production_12             = $('#a_production_12').val();
+        var a_product_no_12             = $('#a_product_no_12').val();
+        var a_work_normal_time_12       = $('#a_work_normal_time_12').val();
+        var a_work_over_time_12         = $('#a_work_over_time_12').val();
+        var a_work_availability_time_12 = $('#a_work_availability_time_12').val();
+        var a_work_remark_12            = $('#a_work_remark_12').val();
+
         
         // check 工號
         if(a_work_no.length == 0){
@@ -69,7 +117,14 @@ function submit_work_time(){
                         a_work_station_3 + ' , ' + a_production_3 + ' , ' + a_product_no_3 + ' , ' + a_work_normal_time_3 + ' , ' + a_work_over_time_3 + ' , ' + a_work_availability_time_3 + ' , ' + a_work_remark_3 + '\n' +
                         a_work_station_4 + ' , ' + a_production_4 + ' , ' + a_product_no_4 + ' , ' + a_work_normal_time_4 + ' , ' + a_work_over_time_4 + ' , ' + a_work_availability_time_4 + ' , ' + a_work_remark_4 + '\n' +
                         a_work_station_5 + ' , ' + a_production_5 + ' , ' + a_product_no_5 + ' , ' + a_work_normal_time_5 + ' , ' + a_work_over_time_5 + ' , ' + a_work_availability_time_5 + ' , ' + a_work_remark_5 + '\n' +
-                        a_work_station_6 + ' , ' + a_production_6 + ' , ' + a_product_no_6 + ' , ' + a_work_normal_time_6 + ' , ' + a_work_over_time_6 + ' , ' + a_work_availability_time_6 + ' , ' + a_work_remark_6 + '\n');
+                        a_work_station_6 + ' , ' + a_production_6 + ' , ' + a_product_no_6 + ' , ' + a_work_normal_time_6 + ' , ' + a_work_over_time_6 + ' , ' + a_work_availability_time_6 + ' , ' + a_work_remark_6 + '\n' +
+                        a_work_station_7 + ' , ' + a_production_7 + ' , ' + a_product_no_7 + ' , ' + a_work_normal_time_7 + ' , ' + a_work_over_time_7 + ' , ' + a_work_availability_time_7 + ' , ' + a_work_remark_7 + '\n' +
+                        a_work_station_8 + ' , ' + a_production_8 + ' , ' + a_product_no_8 + ' , ' + a_work_normal_time_8 + ' , ' + a_work_over_time_8 + ' , ' + a_work_availability_time_8 + ' , ' + a_work_remark_8 + '\n' +
+                        a_work_station_9 + ' , ' + a_production_9 + ' , ' + a_product_no_9 + ' , ' + a_work_normal_time_9 + ' , ' + a_work_over_time_9 + ' , ' + a_work_availability_time_9 + ' , ' + a_work_remark_9 + '\n' +
+                        a_work_station_10 + ' , ' + a_production_10 + ' , ' + a_product_no_10 + ' , ' + a_work_normal_time_10 + ' , ' + a_work_over_time_10 + ' , ' + a_work_availability_time_10 + ' , ' + a_work_remark_10 + '\n' +
+                        a_work_station_11 + ' , ' + a_production_11 + ' , ' + a_product_no_11 + ' , ' + a_work_normal_time_11 + ' , ' + a_work_over_time_11 + ' , ' + a_work_availability_time_11 + ' , ' + a_work_remark_11 + '\n' +
+                        a_work_station_12 + ' , ' + a_production_12 + ' , ' + a_product_no_12 + ' , ' + a_work_normal_time_12 + ' , ' + a_work_over_time_12 + ' , ' + a_work_availability_time_12+ ' , ' + a_work_remark_12 + '\n' 
+                );
                 exit();
         }
         
@@ -104,6 +159,85 @@ function submit_work_time(){
         });
 
 }
+
+function auto_plus_availability_work_time(){
+        var a_work_availability_time_1       = $('#a_work_availability_time_1').val();
+        var a_work_availability_time_2       = $('#a_work_availability_time_2').val();
+        var a_work_availability_time_3       = $('#a_work_availability_time_3').val();
+        var a_work_availability_time_4       = $('#a_work_availability_time_4').val();
+        var a_work_availability_time_5       = $('#a_work_availability_time_5').val();
+        var a_work_availability_time_6       = $('#a_work_availability_time_6').val();
+        var a_work_availability_time_7       = $('#a_work_availability_time_7').val();
+        var a_work_availability_time_8       = $('#a_work_availability_time_8').val();
+        var a_work_availability_time_9       = $('#a_work_availability_time_9').val();
+        var a_work_availability_time_10       = $('#a_work_availability_time_10').val();
+        var a_work_availability_time_11       = $('#a_work_availability_time_11').val();
+        var a_work_availability_time_12       = $('#a_work_availability_time_12').val();
+
+        // auto plus availability work time
+        var auto_plus_availability_work_time_val = (Number(a_work_availability_time_1) + Number(a_work_availability_time_2) + Number(a_work_availability_time_3)  + Number(a_work_availability_time_4)  + Number(a_work_availability_time_5)  + Number(a_work_availability_time_6) + 
+                                             Number(a_work_availability_time_7) + Number(a_work_availability_time_8) + Number(a_work_availability_time_9)  + Number(a_work_availability_time_10)  + Number(a_work_availability_time_11)  + Number(a_work_availability_time_12)).toFixed(1);
+        $('#auto_plus_availability_work_time').show().html(auto_plus_availability_work_time_val);
+        
+        // auto plus total work time
+        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+
+        $('#auto_plus_total_work_time').val(auto_plus_total_work_time_val);
+}
+
+function auto_plus_over_work_time(){
+        var a_work_over_time_1       = $('#a_work_over_time_1').val();
+        var a_work_over_time_2       = $('#a_work_over_time_2').val();
+        var a_work_over_time_3       = $('#a_work_over_time_3').val();
+        var a_work_over_time_4       = $('#a_work_over_time_4').val();
+        var a_work_over_time_5       = $('#a_work_over_time_5').val();
+        var a_work_over_time_6       = $('#a_work_over_time_6').val();
+        var a_work_over_time_7       = $('#a_work_over_time_7').val();
+        var a_work_over_time_8       = $('#a_work_over_time_8').val();
+        var a_work_over_time_9       = $('#a_work_over_time_9').val();
+        var a_work_over_time_10       = $('#a_work_over_time_10').val();
+        var a_work_over_time_11       = $('#a_work_over_time_11').val();
+        var a_work_over_time_12       = $('#a_work_over_time_12').val();
+
+        // auto plus over work time
+        var auto_plus_over_work_time_val = (Number(a_work_over_time_1) + Number(a_work_over_time_2) + Number(a_work_over_time_3)  + Number(a_work_over_time_4)  + Number(a_work_over_time_5)  + Number(a_work_over_time_6) + 
+                                             Number(a_work_over_time_7) + Number(a_work_over_time_8) + Number(a_work_over_time_9)  + Number(a_work_over_time_10)  + Number(a_work_over_time_11)  + Number(a_work_over_time_12)).toFixed(1);
+        
+        $('#auto_plus_over_work_time').show().html(auto_plus_over_work_time_val);
+
+
+        // auto plus total work time
+        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+
+        $('#auto_plus_total_work_time').val(auto_plus_total_work_time_val);
+}  
+
+function auto_plus_normal_work_time(){
+        var a_work_normal_time_1       = $('#a_work_normal_time_1').val();
+        var a_work_normal_time_2       = $('#a_work_normal_time_2').val();
+        var a_work_normal_time_3       = $('#a_work_normal_time_3').val();
+        var a_work_normal_time_4       = $('#a_work_normal_time_4').val();
+        var a_work_normal_time_5       = $('#a_work_normal_time_5').val();
+        var a_work_normal_time_6       = $('#a_work_normal_time_6').val();
+        var a_work_normal_time_7       = $('#a_work_normal_time_7').val();
+        var a_work_normal_time_8       = $('#a_work_normal_time_8').val();
+        var a_work_normal_time_9       = $('#a_work_normal_time_9').val();
+        var a_work_normal_time_10      = $('#a_work_normal_time_10').val();
+        var a_work_normal_time_11      = $('#a_work_normal_time_11').val();
+        var a_work_normal_time_12      = $('#a_work_normal_time_12').val();
+
+        // auto plus normal work time
+        var auto_plus_normal_work_time_val = (Number(a_work_normal_time_1) + Number(a_work_normal_time_2) + Number(a_work_normal_time_3)  + Number(a_work_normal_time_4)  + Number(a_work_normal_time_5)  + Number(a_work_normal_time_6) + 
+                                             Number(a_work_normal_time_7) + Number(a_work_normal_time_8) + Number(a_work_normal_time_9)  + Number(a_work_normal_time_10)  + Number(a_work_normal_time_11)  + Number(a_work_normal_time_12)).toFixed(1);
+
+        $('#auto_plus_normal_work_time').show().html(auto_plus_normal_work_time_val);
+
+        // auto plus total work time
+        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+
+        $('#auto_plus_total_work_time').val(auto_plus_total_work_time_val);
+
+}    
 
 function submit_add_account_form(){
         
