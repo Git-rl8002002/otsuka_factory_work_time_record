@@ -185,6 +185,8 @@
 
 }
 
+
+
 function auto_plus_availability_work_time(){
         var a_work_availability_time_1       = $('#a_work_availability_time_1').val();
         var a_work_availability_time_2       = $('#a_work_availability_time_2').val();
@@ -351,6 +353,36 @@ function submit_add_account_form(){
                         //$('#show_msg').hide();
                 }
         });     
+}
+
+function logout2(){
+        
+        // scroll to top 
+        jQuery("html,body").animate({scrollTop:0},1000);
+
+        $.ajax({
+                type:"GET",
+                url:"/logout2",
+                data:{},
+                datatype:"html",
+                error:function(xhr , ajaxError , throwError){
+         	      alert(xhr.status);
+               	      alert(xhr.responseText);
+	              alert(throwError);
+                      alert(ajaxError);
+                },
+                success:function(res){
+                        alert("超過10分鐘沒任何度動作 , 系統已將您已自動登出 !");
+                        window.location.href="/login"
+                        //$("#add_account_form").show(1000).html(res);
+                },
+                beforeSend:function(){
+                        $('#status').html("now logout...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
 }
 
 function add_account_form(){

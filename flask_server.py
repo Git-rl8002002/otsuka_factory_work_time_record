@@ -331,6 +331,43 @@ def login():
     else:
         return render_template('login.html' , title=title)
 
+#############
+# /logout2 
+#############
+@app.route("/logout2",methods=['POST','GET'])
+def logout2():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '登出成功'
+
+        ### session 
+        user = session['user']
+
+        ### r_time
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        if request.method == 'GET':
+            ### logout record
+            try:
+                db.logout_record(session['user'] , session['login_code'] , r_time)
+            except Exception as e:
+                logging.info("< Error > logout record : " + str(e))
+            finally:
+                pass
+            
+            ### operation record
+            db.operation_record(r_time , user , session['login_code'] , operation_record_title)    
+
+            ### clean up session param
+            session.pop('user',None)
+            session.pop('login_code',None)
+            session.pop('ip',None)
+            session.pop('lv',None)
+
+    return redirect(url_for('index'))
+
+
 ###########
 # /logout 
 ###########

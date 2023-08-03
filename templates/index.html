@@ -38,6 +38,41 @@
     <script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/ckeditor.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/plugins/image/dialogs/image.js') }}"></script>
     
+    <!-- 偵測沒動作時間 -->
+    <script type="text/javascript">
+        var timeout;
+
+        function startTimer() {
+            var counter = 600;
+            timeout = setInterval(function() {
+                counter--;
+                if (counter <= 0) {
+                    clearInterval(timeout);
+                    logout();
+                }
+                $("#timer").text("剩餘時間 " + counter + " 秒");
+            }, 1000);
+        }
+
+        function resetTimer() {
+            clearInterval(timeout);
+            startTimer();
+        }
+
+        function logout() {
+            // 在此處觸發登出動作，例如跳轉到登出頁面或發送登出請求
+            logout2();
+        }
+
+        // 開始計時器
+        startTimer();
+
+        // 監聽網頁動作，若有任何操作則重置計時器
+        $(document).on("mousemove keydown scroll", function() {
+            resetTimer();
+        });
+    </script>
+
     <!-- websocket -->
     <script type="text/javascript">
         $(document).ready(function(){
@@ -154,6 +189,9 @@
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
+                <!-- 偵測沒動作時間 -->
+                <li class="nav-item mr-2"><button class="btn btn-primary" id="timer">剩餘時間 300 秒</button></li>
+
                 <!-- online user -->
                 <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
 
@@ -167,6 +205,7 @@
                         <a class="dropdown-item" href="/production_2_work_time_record"><i class="bi bi-bookmarks"></i> 工時時間記錄表</a>
                     </div>
                 </li>
+                
             </ul>
             </div>
             {% endif %}
