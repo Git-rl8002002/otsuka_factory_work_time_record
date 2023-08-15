@@ -208,6 +208,88 @@ def menu_account_management():
     return redirect(url_for('login')) 
 
 ###################################
+# /prouuction_3_work_time_record
+###################################
+@app.route("/production_3_work_time_record")
+def prouuction_3_work_time_record():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產三部 - 液劑工時時間記錄表'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('a_work_no' , user)
+            a_name = db.search_item('a_name' , user)
+
+            return render_template('production_3_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###################################
+# /prouuction_1_work_time_record
+###################################
+@app.route("/production_1_work_time_record")
+def prouuction_1_work_time_record():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產一部 - 液劑工時時間記錄表'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_1()
+            a_work_no = db.search_item('a_work_no' , user)
+            a_name = db.search_item('a_name' , user)
+
+            return render_template('production_1_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###################################
 # /prouuction_2_work_time_record
 ###################################
 @app.route("/production_2_work_time_record")
@@ -215,7 +297,7 @@ def prouuction_2_work_time_record():
     if 'user' in session:
         
         ### operation record title
-        operation_record_title = '生產二部 - 工時時間記錄表'    
+        operation_record_title = '生產二部 - 液劑工時時間記錄表'    
 
         ### session 
         user = session['user']

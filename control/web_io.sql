@@ -12,6 +12,145 @@ create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 use otsuka_factory;
 
 /* 
+ * work_station_3
+ */
+create table work_station_3(
+no int not null primary key AUTO_INCREMENT,
+e_name varchar(10) null,
+c_content varchar(50) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+insert into work_station_3 (e_name , c_content) VALUES('W','W-倉庫相關');
+insert into work_station_3 (e_name , c_content) VALUES('W1','W1-領料');
+insert into work_station_3 (e_name , c_content) VALUES('W2','W2-稱料');
+insert into work_station_3 (e_name , c_content) VALUES('W3','W3-退料');
+
+insert into work_station_3 (e_name , c_content) VALUES('Y','Y-設備相關');
+insert into work_station_3 (e_name , c_content) VALUES('Y1','Y1-裝機');
+insert into work_station_3 (e_name , c_content) VALUES('Y2','Y2-調機');
+insert into work_station_3 (e_name , c_content) VALUES('Y3','Y3-試機');
+
+insert into work_station_3 (e_name , c_content) VALUES('K','故障相關');
+insert into work_station_3 (e_name , c_content) VALUES('K1','K1-設備故障');
+insert into work_station_3 (e_name , c_content) VALUES('K2','K2-支援系統異常');
+
+insert into work_station_3 (e_name , c_content) VALUES('V','V1-機器拆卸 / 清機');
+
+insert into work_station_3 (e_name , c_content) VALUES('F','F-充填作業');
+
+insert into work_station_3 (e_name , c_content) VALUES('ST','ST-滅菌作業');
+
+insert into work_station_3 (e_name , c_content) VALUES('Q','Q-檢視作業');
+
+insert into work_station_3 (e_name , c_content) VALUES('T','T-教育訓練');
+insert into work_station_3 (e_name , c_content) VALUES('T1','T1-部內教育訓練');
+insert into work_station_3 (e_name , c_content) VALUES('T2','T2-部外教育訓練');
+
+insert into work_station_3 (e_name , c_content) VALUES('L','L-其他');
+insert into work_station_3 (e_name , c_content) VALUES('L1','L1-其它 - 5S活動');
+insert into work_station_3 (e_name , c_content) VALUES('L2','L2-其它 - 參觀活動');
+insert into work_station_3 (e_name , c_content) VALUES('L3','L3-其它 - 部內會議');
+insert into work_station_3 (e_name , c_content) VALUES('L4','L4-其它 - 部外會議');
+
+insert into work_station_3 (e_name , c_content) VALUES('U','U-休息');
+
+insert into work_station_3 (e_name , c_content) VALUES('A','A-調製相關');
+insert into work_station_3 (e_name , c_content) VALUES('A1','A1-預備工作');
+insert into work_station_3 (e_name , c_content) VALUES('A2','A2-調製過程');
+
+insert into work_station_3 (e_name , c_content) VALUES('PW','PW-制水 , 鹽滅');
+
+insert into work_station_3 (e_name , c_content) VALUES('M','M-蓋印 / 打印 / 貼標');
+
+insert into work_station_3 (e_name , c_content) VALUES('P','P-包裝作業');
+
+insert into work_station_3 (e_name , c_content) VALUES('RE','RE-再檢作業');
+
+insert into work_station_3 (e_name , c_content) VALUES('S','S-停工待料');
+
+insert into work_station_3 (e_name , c_content) VALUES('R','R-支援工作');
+
+insert into work_station_3 (e_name , c_content) VALUES('D','D-請假');
+
+insert into work_station_3 (e_name , c_content) VALUES('J','J-確效驗證 , 校正');
+
+insert into work_station_3 (e_name , c_content) VALUES('C','C-環境清潔');
+
+/* 
+ * work_station_1
+ */
+create table work_station_1(
+no int not null primary key AUTO_INCREMENT,
+e_name varchar(10) null,
+c_content varchar(50) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+insert into work_station_3 (e_name , c_content) VALUES('W','W-倉庫相關');
+insert into work_station_1 (e_name , c_content) VALUES('W1','W1-領料');
+insert into work_station_1 (e_name , c_content) VALUES('W2','W2-稱料');
+insert into work_station_1 (e_name , c_content) VALUES('W3','W3-退料');
+
+insert into work_station_1 (e_name , c_content) VALUES('Y','Y-設備相關');
+insert into work_station_1 (e_name , c_content) VALUES('Y1','Y1-裝機');
+insert into work_station_1 (e_name , c_content) VALUES('Y2','Y2-調機');
+insert into work_station_1 (e_name , c_content) VALUES('Y3','Y3-試機');
+
+insert into work_station_1 (e_name , c_content) VALUES('K','故障相關');
+insert into work_station_1 (e_name , c_content) VALUES('K1','K1-設備故障');
+insert into work_station_1 (e_name , c_content) VALUES('K2','K2-支援系統異常');
+
+insert into work_station_1 (e_name , c_content) VALUES('V','V1-機器拆卸 / 清機');
+
+insert into work_station_1 (e_name , c_content) VALUES('F','F-充填作業');
+
+insert into work_station_1 (e_name , c_content) VALUES('ST','ST-滅菌作業');
+
+insert into work_station_1 (e_name , c_content) VALUES('Q','Q-檢視作業');
+
+insert into work_station_1 (e_name , c_content) VALUES('T','T-教育訓練');
+insert into work_station_1 (e_name , c_content) VALUES('T1','T1-部內教育訓練');
+insert into work_station_1 (e_name , c_content) VALUES('T2','T2-部外教育訓練');
+
+insert into work_station_1 (e_name , c_content) VALUES('L','L-其他');
+insert into work_station_1 (e_name , c_content) VALUES('L1','L1-其它 - 5S活動');
+insert into work_station_1 (e_name , c_content) VALUES('L2','L2-其它 - 參觀活動');
+insert into work_station_1 (e_name , c_content) VALUES('L3','L3-其它 - 部內會議');
+insert into work_station_1 (e_name , c_content) VALUES('L4','L4-其它 - 部外會議');
+
+insert into work_station_1 (e_name , c_content) VALUES('P','P-包裝作業');
+
+insert into work_station_1 (e_name , c_content) VALUES('RE','RE-再檢作業');
+
+insert into work_station_1 (e_name , c_content) VALUES('C','C-環境清潔');
+
+insert into work_station_1 (e_name , c_content) VALUES('U','U-休息');
+
+insert into work_station_1 (e_name , c_content) VALUES('B','B-中栓');
+insert into work_station_1 (e_name , c_content) VALUES('B1','B1-栓');
+insert into work_station_1 (e_name , c_content) VALUES('B2','B2-外蓋');
+
+insert into work_station_1 (e_name , c_content) VALUES('I','I-成型');
+insert into work_station_1 (e_name , c_content) VALUES('I1','I1-吊具');
+insert into work_station_1 (e_name , c_content) VALUES('I2','I2-無吊具');
+
+insert into work_station_1 (e_name , c_content) VALUES('A','A-調製相關');
+insert into work_station_1 (e_name , c_content) VALUES('A1','A1-預備工作');
+insert into work_station_1 (e_name , c_content) VALUES('A2','A2-調製過程');
+
+insert into work_station_1 (e_name , c_content) VALUES('PW','PW-制水 , 鹽滅');
+
+insert into work_station_1 (e_name , c_content) VALUES('M','M-蓋印 / 打印 / 貼標');
+
+insert into work_station_1 (e_name , c_content) VALUES('S','S-停工待料');
+
+insert into work_station_1 (e_name , c_content) VALUES('R','R-支援工作');
+
+insert into work_station_1 (e_name , c_content) VALUES('D','D-請假');
+
+insert into work_station_1 (e_name , c_content) VALUES('J','J-確效驗證 , 校正');
+
+
+/* 
  * work_position
  */
 create table work_position(
@@ -33,6 +172,7 @@ e_name varchar(10) null,
 c_content varchar(50) null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
+insert into work_station_3 (e_name , c_content) VALUES('W','W-倉庫相關');
 insert into work_station (e_name , c_content) VALUES('W1','W1-領料');
 insert into work_station (e_name , c_content) VALUES('W2','W2-稱料');
 insert into work_station (e_name , c_content) VALUES('W3','W3-退料');

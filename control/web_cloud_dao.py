@@ -123,6 +123,45 @@ class web_cloud_dao:
         finally:
             self.__disconnect__()
 
+
+    ###########################
+    # factory_work_station_3
+    ###########################
+    def factory_work_station_3(self):
+        try:
+            self.__connect__()
+            
+            sql = "select distinct c_content from work_station_3 order by e_name desc"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchall()
+            
+            return self.res
+        
+        except Exception as e:
+            logging.info('< Error > factory_work_station_3 : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ###########################
+    # factory_work_station_1
+    ###########################
+    def factory_work_station_1(self):
+        try:
+            self.__connect__()
+            
+            sql = "select distinct c_content from work_station_1 order by e_name desc"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchall()
+            
+            return self.res
+        
+        except Exception as e:
+            logging.info('< Error > factory_work_statio_1 : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
     #########################
     # factory_work_station
     #########################
