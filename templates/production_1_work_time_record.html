@@ -108,95 +108,32 @@
             <a class="navbar-brand mr-2" href="/"><button class="btn btn-primary">{{ title }}</button></a>
             <!---------------------------------------------------------------------------------------------------- 
              -
-             - lv 1 - admin
-             -   
-             ----------------------------------------------------------------------------------------------------->
-            {% if lv == "1" %}
-            <!-- Toggler/collapsibe Button -->
-            <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <i class="bi bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <!-- online user -->
-                <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
-
-                <!-- logout -->
-                <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i>  登出</button></a></li>
-                
-                <!-- 權限管理 -->    
-                <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 權限管理</button></a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-person-bounding-box"></i> 帳號管理</a>
-                    </div>
-                </li>
-                <!-- 監控數值管理 -->    
-                <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 感測器管理</button></a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-bookmarks"></i> 感測器數值</a>
-                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-pencil-square"></i> 感測器設定</a>
-                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-alarm"></i> 感測器警報</a>
-                        <a class="dropdown-item" href="/menu_website_record"><i class="bi bi-pen"></i> 感測器記錄</a>
-                    </div>
-                </li>
-            </ul>
-            </div> 
-            <!---------------------------------------------------------------------------------------------------- 
-             -
-             - lv 2 - otsuka
-             -   
-             ----------------------------------------------------------------------------------------------------->
-            {% elif lv == "2" %}
-            <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <i class="bi bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <!-- online user -->
-                <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
-
-                <!-- logout -->
-                <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> 登出</button></a></li>
-
-                <!-- 權限管理 -->    
-                <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 權限管理</button></a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/menu_account_management"><i class="bi bi-person-bounding-box"></i> 帳號管理</a>
-                    </div>
-                </li>
-                <!-- 工時時間紀錄管理 -->    
-                <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 工時時間紀錄管理</button></a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/production_2_work_time_record"><i class="bi bi-bookmarks"></i> 工時時間紀錄表</a>
-                        <a class="dropdown-item" href="/production_2_work_time_record_report"><i class="bi bi-pencil-square"></i> 工時時間紀錄日報表</a>
-                    </div>
-                </li>
-            </ul>
-            </div>
-            <!---------------------------------------------------------------------------------------------------- 
-             -
              - lv 3 - normal user
              -   
              ----------------------------------------------------------------------------------------------------->
-            {% elif lv == "3" %}
             <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <i class="bi bi-list"></i>
             </button>
             <div class="collapse navbar-collapse" id="collapsibleNavbar">
             <ul class="navbar-nav">
                 <!-- 偵測沒動作時間 -->
-                <li class="nav-item mr-2"><button class="btn btn-primary" id="timer">剩餘時間 300 秒</button></li>
+                <li class="nav-item mr-2"><button class="btn btn-primary" id="timer">剩餘時間 600 秒</button></li>
 
                 <!-- online user -->
                 <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
 
                 <!-- logout -->
                 <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> 登出</button></a></li>
+
+                <!-- 資料查詢 -->    
+                <li class="nav-item dropdown">
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 資料查詢</button></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
+                    </div>
+                </li>
                 
+                {% if dep_id == "1A" %}
                 <!-- 生產一部 -->    
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產一部</button></a>
@@ -204,7 +141,7 @@
                         <a class="dropdown-item" href="/production_1_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
                     </div>
                 </li>
-
+                {% elif dep_id == "1B" %}
                 <!-- 生產二部 -->    
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產二部</button></a>
@@ -212,7 +149,7 @@
                         <a class="dropdown-item" href="/production_2_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
                     </div>
                 </li>
-
+                {% elif dep_id == "1K" %}
                 <!-- 生產三部 -->    
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產三部</button></a>
@@ -220,10 +157,10 @@
                         <a class="dropdown-item" href="/production_3_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
                     </div>
                 </li>
+                {% endif %}
 
             </ul>
             </div>
-            {% endif %}
     </nav>
 
     <div class="container-fluid text-primary m-auto">
@@ -242,93 +179,9 @@
         <div class="row my-5">
             <!---------------------------------------------------------------------------------------------------- 
              -
-             - lv 1 - admin
-             -
-             ----------------------------------------------------------------------------------------------------->
-            {% if lv == "1" %}
-            <!-- 權限管理 -->
-            <div id="main_content" class="col-md-6 my-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-primary"><i class="bi bi-pencil-square"></i> 權限管理</h4>
-                    </div>
-                    <div class="card-body">
-                        {% for val in msg5 %}
-                        <div class="mouse_hover">
-                            <div><textarea id="content">{{ val[1] }}</textarea></div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-
-            <!-- 工時時間紀錄管理 -->
-            <div id="main_content" class="col-md-6 my-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 工時時間紀錄管理</h4></div>
-                    <div class="card-body">
-                        {% for val in msg3 %}
-                        <div class="mouse_hover" style="margin:1%; padding:1%;">
-                            {% if val[3] == "realtime" %}
-                            <div>{{ val[0] }}  <span class="text-success">(ET news {{ val[3] }})</span></div>
-                            <div class="text-primary"><a href="https://www.ettoday.net/news{{ val[2] }}" target="_blank">{{ val[1] }}</a></div>
-                            {% elif val[3] == "tech" %}
-                            <div>{{ val[0] }}  <span class="text-danger">({{ val[3] }}News)</span></div>
-                            <div class="text-primary"><a href="{{ val[2] }}" target="_blank">{{ val[1] }}</a></div>
-                            {% endif %}
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <!---------------------------------------------------------------------------------------------------- 
-             -
-             - lv 2 - otsuka
-             -
-             ----------------------------------------------------------------------------------------------------->
-            {% elif lv == "2" %}
-            <!-- 權限管理 -->
-            <div id="main_content" class="col-md-6 my-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-primary"><i class="bi bi-pencil-square"></i> 權限管理</h4>
-                    </div>
-                    <div class="card-body">
-                        {% for val in msg5 %}
-                        <div class="mouse_hover">
-                            <div><textarea id="content">{{ val[1] }}</textarea></div>
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <!-- 工時時間紀錄管理 -->
-            <div id="main_content" class="col-md-6 my-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 工時時間紀錄管理</h4></div>
-                    <div class="card-body">
-                        {% for val in msg3 %}
-                        <div class="mouse_hover" style="margin:1%; padding:1%;">
-                            {% if val[3] == "realtime" %}
-                            <div>{{ val[0] }}  <span class="text-success">(ET news {{ val[3] }})</span></div>
-                            <div class="text-primary"><a href="https://www.ettoday.net/news{{ val[2] }}" target="_blank">{{ val[1] }}</a></div>
-                            {% elif val[3] == "tech" %}
-                            <div>{{ val[0] }}  <span class="text-danger">({{ val[3] }}News)</span></div>
-                            <div class="text-primary"><a href="{{ val[2] }}" target="_blank">{{ val[1] }}</a></div>
-                            {% endif %}
-                        </div>
-                        {% endfor %}
-                    </div>
-                </div>
-            </div>
-            <!---------------------------------------------------------------------------------------------------- 
-             -
              - lv 3 - normal user
              -   
              ----------------------------------------------------------------------------------------------------->
-            {% elif lv == "3" %}
             <!-- 工時時間記錄表 -->
             <div id="main_content" class="col-md-12 my-1">
                 <div class="card">
@@ -591,7 +444,6 @@
                     </div>
                 </div>
             </div>
-            {% endif%}
             
         </div>
 

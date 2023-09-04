@@ -1,3 +1,464 @@
+function department_name_search(){
+        var search_name = $('#department_name').val();
+
+        $.ajax({
+                type:"POST",
+                url:"/department_no_search_val",
+                data:{
+                        'search_name':search_name
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#search_val").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("search 員工姓名資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+        
+}
+
+function submit_work_check_member(){
+        var employee_id      = $('#employee_id').val()
+        var employee_name    = $('#employee_name').val()
+        var department_id    = $('#department_id').val()
+        var department_name  = $('#department_name').val()
+        var b_date           = $('#b_date').val()
+        var end_date         = $('#end_date').val()
+        var check_year       = $('#check_year').val()
+        var check_month      = $('#check_month').val()
+
+        // 1
+        var self_num1_1 = $('#self_num1_1').val()
+        var self_num1_2 = $('#self_num1_2').val()
+        var self_num1_3 = $('#self_num1_3').val()
+        var self_num1_4 = $('#self_num1_4').val()
+        
+        var other_num1_1 = $('#other_num1_1').val()
+        var other_num1_2 = $('#other_num1_2').val()
+        var other_num1_3 = $('#other_num1_3').val()
+        var other_num1_4 = $('#other_num1_4').val()
+        
+        var sir_num1_1 = $('#sir_num1_1').val()
+        var sir_num1_2 = $('#sir_num1_2').val()
+        var sir_num1_3 = $('#sir_num1_3').val()
+        var sir_num1_4 = $('#sir_num1_4').val()
+
+        // 2
+        var self_num2_1 = $('#self_num2_1').val()
+        var self_num2_2 = $('#self_num2_2').val()
+        var self_num2_3 = $('#self_num2_3').val()
+        
+        var other_num2_1 = $('#other_num2_1').val()
+        var other_num2_2 = $('#other_num2_2').val()
+        var other_num2_3 = $('#other_num2_3').val()
+        
+        var sir_num2_1 = $('#sir_num2_1').val()
+        var sir_num2_2 = $('#sir_num2_2').val()
+        var sir_num2_3 = $('#sir_num2_3').val()
+
+        // 3
+        var self_num3_1 = $('#self_num3_1').val()
+        var self_num3_2 = $('#self_num3_2').val()
+        var self_num3_3 = $('#self_num3_3').val()
+        
+        var other_num3_1 = $('#other_num3_1').val()
+        var other_num3_2 = $('#other_num3_2').val()
+        var other_num3_3 = $('#other_num3_3').val()
+        
+        var sir_num3_1 = $('#sir_num3_1').val()
+        var sir_num3_2 = $('#sir_num3_2').val()
+        var sir_num3_3 = $('#sir_num3_3').val()
+
+        // 4
+        var self_num4_1 = $('#self_num4_1').val()
+        var self_num4_2 = $('#self_num4_2').val()
+        var self_num4_3 = $('#self_num4_3').val()
+        var self_num4_4 = $('#self_num4_4').val()
+        
+        var other_num4_1 = $('#other_num4_1').val()
+        var other_num4_2 = $('#other_num4_2').val()
+        var other_num4_3 = $('#other_num4_3').val()
+        var other_num4_4 = $('#other_num4_3').val()
+        
+        var sir_num4_1 = $('#sir_num4_1').val()
+        var sir_num4_2 = $('#sir_num4_2').val()
+        var sir_num4_3 = $('#sir_num4_3').val()
+        var sir_num4_4 = $('#sir_num4_3').val()
+
+        // 5
+        var self_num5_1 = $('#self_num5_1').val()
+        var self_num5_2 = $('#self_num5_2').val()
+        var self_num5_3 = $('#self_num5_3').val()
+        
+        var other_num5_1 = $('#other_num5_1').val()
+        var other_num5_2 = $('#other_num5_2').val()
+        var other_num5_3 = $('#other_num5_3').val()
+        
+        var sir_num5_1 = $('#sir_num5_1').val()
+        var sir_num5_2 = $('#sir_num5_2').val()
+        var sir_num5_3 = $('#sir_num5_3').val()
+
+        // 6
+        var self_num6_1 = $('#self_num6_1').val()
+        var self_num6_2 = $('#self_num6_2').val()
+        var self_num6_3 = $('#self_num6_3').val()
+        
+        var other_num6_1 = $('#other_num6_1').val()
+        var other_num6_2 = $('#other_num6_2').val()
+        var other_num6_3 = $('#other_num6_3').val()
+        
+        var sir_num6_1 = $('#sir_num6_1').val()
+        var sir_num6_2 = $('#sir_num6_2').val()
+        var sir_num6_3 = $('#sir_num6_3').val()
+
+        // 7
+        var sir_num7_1 = $('#sir_num7_1').val()
+        var sir_num7_2 = $('#sir_num7_2').val()
+        var sir_num7_3 = $('#sir_num7_3').val()
+        var sir_num7_3 = $('#sir_num7_3').val()
+        // 8
+        var sir_num8_1 = $('#sir_num8_1').val()
+        var sir_num8_2 = $('#sir_num8_2').val()
+        var sir_num8_3 = $('#sir_num8_3').val()
+        var sir_num8_3 = $('#sir_num8_3').val()
+
+        var comment = $('#comment').val()
+
+        var  self_total         = $('#self_total').val()
+        var  other_total        = $('#other_total').val()
+        var  sir_total          = $('#sir_total').val()
+        var  other_plus_total   = $('#other_plus_total').val()
+        var  final_total        = $('#final_total').val()
+        var  final_comment      = $('#final_comment').val()
+
+        $.ajax({
+                type:"POST",
+                url:"/submit_add_check_member_data",
+                data:{
+                        'employee_id':employee_id,
+                        'employee_name':employee_name,
+                        'department_id':department_id,
+                        'department_name':department_name,
+                        'b_date':b_date,
+                        'end_date':end_date,
+                        'check_year':check_year,
+                        'check_month':check_month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#load_check_form").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("loading 新增考核人員表單資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+
+}
+
+function submit_add_check_account(){
+        
+        var employee_id     = $('#employee_id').val()
+        var employee_name   = $('#employee_name').val()
+        var login_id        = $('#login_id').val()
+        var mobile          = $('#mobile').val()
+        var department_name = $('#department_name').val()
+        var department_code = $('#department_code').val()
+        var compyany_id     = $('#company_id').val()
+        var end_date        = $('#end_date').val()
+        
+        // check employee_id
+        if(employee_id.length == 0){
+                alert('工號不能空白 !');
+                exit();        
+        }
+        // check employee_name
+        else if(employee_name.length == 0){
+                alert('姓名不能空白 !');
+                exit();        
+        }
+        // check login_id
+        else if(login_id.length == 0){
+                alert('帳號不能空白 !');
+                exit();        
+        }
+        // check mobile
+        else if(mobile.length == 0){
+                alert('密碼不能空白 !');
+                exit();        
+        }
+        // check end_date
+        else if(end_date.length == 0){
+                alert('到職不能空白 !');
+                exit();        
+        }
+        else{
+                $.ajax({
+                        type:"POST",
+                        url:"/submit_add_check_account",
+                        data:{
+                                'employee_id':employee_id,
+                                'employee_name':employee_name,
+                                'login_id':login_id,
+                                'mobile':mobile,
+                                'department_name':department_name,
+                                'department_code':department_code,
+                                'company_id':compyany_id,
+                                'end_date':end_date
+                        },
+                        datatype:"html",
+                                error:function(xhr , ajaxError , throwError){
+                                alert(xhr.status);
+                                alert(xhr.responseText);
+                                alert(throwError);
+                                alert(ajaxError);
+                        },
+                        success:function(res){
+                                
+                                $("#load_check_form").show(1000).html(res);
+                                
+                                // scroll page bottom to page top
+                                goto_top();
+                                
+                                //location.reload(true);
+                        },
+                        beforeSend:function(){
+                                $('#status').html("loading 新增考核人員帳號表單資料 ...").css({'color':'blue'});
+                        },
+                        complete:function(){
+                                $('#status').css({'color':'white'});
+                        }
+                });
+        }
+        
+}
+
+
+function add_check_member_account(){
+        $.ajax({
+                type:"POST",
+                url:"/add_check_member_account",
+                data:{
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#load_check_form").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("loading 新增考核人員帳號表單 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function load_account_data(user){
+        
+        $.ajax({
+                type:"POST",
+                url:"/load_account_data",
+                data:{
+                        'user':user
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#load_check_form").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("loading " + user + " 考核資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function auto_plus_other_plus_num(){
+        var sir_num1       = $('#sir_num1').val();
+        var sir_num2       = $('#sir_num2').val();
+        var sir_num3       = $('#sir_num3').val();
+        var sir_num4       = $('#sir_num4').val();
+        var sir_num5       = $('#sir_num5').val();
+        var sir_num6       = $('#sir_num6').val();
+        var sir_num7       = $('#sir_num7').val();
+        var sir_num8       = $('#sir_num8').val();
+        var sir_num9       = $('#sir_num9').val();
+        var sir_num10       = $('#sir_num10').val();
+        var sir_num11       = $('#sir_num11').val();
+        var sir_num12       = $('#sir_num12').val();
+        var sir_num13       = $('#sir_num13').val();
+        var sir_num14       = $('#sir_num14').val();
+        var sir_num15       = $('#sir_num15').val();
+        var sir_num16       = $('#sir_num16').val();
+        var sir_num17       = $('#sir_num17').val();
+        var sir_num18       = $('#sir_num18').val();
+        var sir_num19       = $('#sir_num19').val();
+        var sir_num20       = $('#sir_num20').val();
+       
+        // auto plus normal work time
+        var auto_plus_sir_number = (Number(sir_num1) + Number(sir_num2) + Number(sir_num3)  + Number(sir_num4)  + Number(sir_num5)  + Number(sir_num6) + Number(sir_num7) + Number(sir_num8) + Number(sir_num9)  + Number(sir_num10) + Number(sir_num11) + Number(sir_num12) + Number(sir_num13) + Number(sir_num14) + Number(sir_num15) + Number(sir_num16) + Number(sir_num17) + Number(sir_num18) + Number(sir_num19) + Number(sir_num20)).toFixed(0);
+        
+        var other_plus_num1       = $('#other_plus_num1').val();
+        var other_plus_num2       = $('#other_plus_num2').val();
+        var other_plus_num3       = $('#other_plus_num3').val();
+        var other_plus_num4       = $('#other_plus_num4').val();
+        var other_plus_num5       = $('#other_plus_num5').val();
+        var other_plus_num6       = $('#other_plus_num6').val();
+        var other_plus_num7       = $('#other_plus_num7').val();
+        var other_plus_num8       = $('#other_plus_num8').val();
+        
+       
+        // auto plus normal work time
+        //var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5)  + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
+        var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5) + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
+        
+        $('#other_plus_num_total').val(auto_plus_other_plus_number);
+        $('#sir_num_total').val(auto_plus_sir_number);
+        
+        // final plus num total
+        var final_plus_num_total_val = Number(auto_plus_sir_number) + Number(auto_plus_other_plus_number)
+        $('#final_plus_num_total').val(final_plus_num_total_val);
+} 
+
+function auto_plus_sir_num(){
+        var sir_num1       = $('#sir_num1').val();
+        var sir_num2       = $('#sir_num2').val();
+        var sir_num3       = $('#sir_num3').val();
+        var sir_num4       = $('#sir_num4').val();
+        var sir_num5       = $('#sir_num5').val();
+        var sir_num6       = $('#sir_num6').val();
+        var sir_num7       = $('#sir_num7').val();
+        var sir_num8       = $('#sir_num8').val();
+        var sir_num9       = $('#sir_num9').val();
+        var sir_num10       = $('#sir_num10').val();
+        var sir_num11       = $('#sir_num11').val();
+        var sir_num12       = $('#sir_num12').val();
+        var sir_num13       = $('#sir_num13').val();
+        var sir_num14       = $('#sir_num14').val();
+        var sir_num15       = $('#sir_num15').val();
+        var sir_num16       = $('#sir_num16').val();
+        var sir_num17       = $('#sir_num17').val();
+        var sir_num18       = $('#sir_num18').val();
+        var sir_num19       = $('#sir_num19').val();
+        var sir_num20       = $('#sir_num20').val();
+        
+       
+        // auto plus normal work time
+        var auto_plus_sir_number = (Number(sir_num1) + Number(sir_num2) + Number(sir_num3)  + Number(sir_num4)  + Number(sir_num5)  + Number(sir_num6) + Number(sir_num7) + Number(sir_num8) + Number(sir_num9)  + Number(sir_num10) + Number(sir_num11) + Number(sir_num12) + Number(sir_num13) + Number(sir_num14) + Number(sir_num15) + Number(sir_num16) + Number(sir_num17) + Number(sir_num18) + Number(sir_num19) + Number(sir_num20)).toFixed(0);
+        
+        var other_plus_num1       = $('#other_plus_num1').val();
+        var other_plus_num2       = $('#other_plus_num2').val();
+        var other_plus_num3       = $('#other_plus_num3').val();
+        var other_plus_num4       = $('#other_plus_num4').val();
+        var other_plus_num5       = $('#other_plus_num5').val();
+        var other_plus_num6       = $('#other_plus_num6').val();
+        var other_plus_num7       = $('#other_plus_num7').val();
+        var other_plus_num8       = $('#other_plus_num8').val();
+        
+       
+        // auto plus normal work time
+        //var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5)  + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
+        var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5) + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
+
+
+        $('#other_plus_num_total').val(auto_plus_other_plus_number);
+        $('#sir_num_total').val(auto_plus_sir_number);
+        
+        // final plus num total
+        var final_plus_num_total_val = Number(auto_plus_sir_number) + Number(auto_plus_other_plus_number)
+        $('#final_plus_num_total').val(final_plus_num_total_val);
+} 
+
+
+function auto_plus_self_num(){
+        var self_num1       = $('#self_num1').val();
+        var self_num2       = $('#self_num2').val();
+        var self_num3       = $('#self_num3').val();
+        var self_num4       = $('#self_num4').val();
+        var self_num5       = $('#self_num5').val();
+        var self_num6       = $('#self_num6').val();
+        var self_num7       = $('#self_num7').val();
+        var self_num8       = $('#self_num8').val();
+        var self_num9       = $('#self_num9').val();
+        var self_num10       = $('#self_num10').val();
+        var self_num11       = $('#self_num11').val();
+        var self_num12       = $('#self_num12').val();
+        var self_num13       = $('#self_num13').val();
+        var self_num14       = $('#self_num14').val();
+        var self_num15       = $('#self_num15').val();
+        var self_num16       = $('#self_num16').val();
+        var self_num17       = $('#self_num17').val();
+        var self_num18       = $('#self_num18').val();
+        var self_num19       = $('#self_num19').val();
+        var self_num20       = $('#self_num20').val();
+        
+       
+        // auto plus normal work time
+        var auto_plus_self_number = (Number(self_num1) + Number(self_num2) + Number(self_num3)  + Number(self_num4)  + Number(self_num5)  + Number(self_num6) + Number(self_num7) + Number(self_num8) + Number(self_num9)  + Number(self_num10) + Number(self_num11) + Number(self_num12) + Number(self_num13) + Number(self_num14) + Number(self_num15) + Number(self_num16) + Number(self_num17) + Number(self_num18) + Number(self_num19) + Number(self_num20)).toFixed(0);
+        
+        $('#self_num_total').val(auto_plus_self_number);
+        
+        // auto plus total work time
+        //var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+
+        //$('#auto_plus_total_work_time').val(auto_plus_total_work_time_val);
+} 
+
 function submit_work_time_3(){
 
         // 工號

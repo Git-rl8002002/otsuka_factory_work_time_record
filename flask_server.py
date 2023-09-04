@@ -38,6 +38,31 @@ title  = parm['title']
 
 
 ##############################
+# /test
+##############################
+@app.route("/test")
+def test():
+    #################
+    # main content 
+    #################
+    res      = db.erp_hr_account_list()
+
+    return render_template('test.html' , hr_account=res)    
+
+##############################
+# /update_hr_account
+##############################
+@app.route("/update_hr_account")
+def update_hr_account():
+    #################
+    # main content 
+    #################
+    res = db.erp_hr_account_list()
+
+    return render_template('update_hr_account.html' , title=title , hr_account=res)    
+
+
+##############################
 # /reload_menu_account_list
 ##############################
 @app.route("/reload_menu_account_list", methods=['POST','GET'])
@@ -218,9 +243,10 @@ def prouuction_3_work_time_record():
         operation_record_title = '生產三部 - 液劑工時時間記錄表'    
 
         ### session 
-        user = session['user']
-        lv   = session['lv']
+        user       = session['user']
+        lv         = session['lv']
         login_code = session['login_code']
+        dep_id     = session['department_id']
 
         ### r_time
         r_date = time.strftime("%Y-%m-%d" , time.localtime())
@@ -238,10 +264,10 @@ def prouuction_3_work_time_record():
             # main content 
             #################
             factory_work_station = db.factory_work_station_3()
-            a_work_no = db.search_item('a_work_no' , user)
-            a_name = db.search_item('a_name' , user)
+            a_work_no = db.search_item('EmployeeID' , user)
+            a_name    = db.search_item('EmployeeName' , user)
 
-            return render_template('production_3_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name)
+            return render_template('production_3_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id)
 
         else:
             return redirect(url_for('logout'))
@@ -259,9 +285,10 @@ def prouuction_1_work_time_record():
         operation_record_title = '生產一部 - 液劑工時時間記錄表'    
 
         ### session 
-        user = session['user']
-        lv   = session['lv']
+        user       = session['user']
+        lv         = session['lv']
         login_code = session['login_code']
+        dep_id     = session['department_id']
 
         ### r_time
         r_date = time.strftime("%Y-%m-%d" , time.localtime())
@@ -279,10 +306,350 @@ def prouuction_1_work_time_record():
             # main content 
             #################
             factory_work_station = db.factory_work_station_1()
-            a_work_no = db.search_item('a_work_no' , user)
-            a_name = db.search_item('a_name' , user)
+            a_work_no = db.search_item('EmployeeID' , user)
+            a_name    = db.search_item('EmployeeName' , user)
 
-            return render_template('production_1_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name)
+            return render_template('production_1_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+
+##############################
+# /department_no_search_val
+##############################
+@app.route("/department_no_search_val" , methods=['GET','POST'])
+def department_no_search_val():
+    
+    ### session 
+    user = session['user']
+    lv   = session['lv']
+    login_code = session['login_code']
+    dep_id     = session['department_id']
+
+    ### r_time
+    r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+    r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+    r_year  = time.strftime("%Y" , time.localtime())
+    r_month = time.strftime("%m" , time.localtime())
+
+    ### check repeat login
+    check_repeat_login = db.check_login_code(user,login_code)
+    
+    operation_record_title = '部門代號查詢結果'    
+    ### operation record
+    db.operation_record(r_time,user,login_code,operation_record_title)    
+
+    #################
+    # main content 
+    #################
+
+    if request.method == 'POST':
+
+        employee_name   = request.form['search_name']
+        res = db.department_no_search_val(employee_name)
+        
+        return render_template('ajax/department_no_search.html' , user=user , lv=lv , title=title , operation_record_title=operation_record_title , r_date=r_date , res=res)
+    
+
+##########################
+# /department_no_search
+##########################
+@app.route("/department_no_search")
+def department_no_search():
+    
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '部門代號查詢'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            
+            return render_template('search_department_id.html' , user=user , lv=lv , title=title , operation_record_title=operation_record_title , r_date=r_date)
+        
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+
+##################################
+# /submit_add_check_member_data
+##################################
+@app.route("/submit_add_check_member_data" , methods=['GET','POST'])
+def submit_add_check_member_data():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 新增人員考核表資料'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                employee_id     = request.form['employee_id']
+                employee_name   = request.form['employee_name']
+                login_id        = request.form['login_id']
+                mobile          = request.form['mobile']
+                department_name = request.form['department_name']
+                department_code = request.form['department_code']
+                company_id      = request.form['company_id']
+                end_date        = request.form['end_date']
+
+                res = db.submit_add_check_account(employee_id , employee_name , login_id , mobile , department_name , department_code , company_id , end_date)
+                
+                if res == 'ok':
+                    success_msg = '新增帳密完成.'
+                    return render_template('ajax/add_check_member_account.html' , user=user , lv=lv , title=title , r_date=r_date , success_msg=success_msg)
+                
+                elif res == 'no':
+                    error_msg = '姓名已被使用 , 重新輸入 !!!'
+                    return render_template('ajax/add_check_member_account.html' , user=user , lv=lv , title=title , r_date=r_date , error_msg=error_msg , employee_id=employee_id , employee_name=employee_name , login_id=login_id , mobile=mobile , end_date=end_date)
+                
+                elif res == 'no_login_id':
+                    error_msg = '帳號已被使用 , 重新輸入 !!!'
+                    return render_template('ajax/add_check_member_account.html' , user=user , lv=lv , title=title , r_date=r_date , error_msg=error_msg , employee_id=employee_id , employee_name=employee_name , login_id=login_id , mobile=mobile , end_date=end_date)
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+##############################
+# /submit_add_check_account
+##############################
+@app.route("/submit_add_check_account" , methods=['GET','POST'])
+def submit_add_check_account():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 新增人員考核帳號表資料'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                employee_id     = request.form['employee_id']
+                employee_name   = request.form['employee_name']
+                login_id        = request.form['login_id']
+                mobile          = request.form['mobile']
+                department_name = request.form['department_name']
+                department_code = request.form['department_code']
+                company_id      = request.form['company_id']
+                end_date        = request.form['end_date']
+
+                res = db.submit_add_check_account(employee_id , employee_name , login_id , mobile , department_name , department_code , company_id , end_date)
+                
+                if res == 'ok':
+                    success_msg = '新增帳密完成.'
+                    return render_template('ajax/add_check_member_account.html' , user=user , lv=lv , title=title , r_date=r_date , success_msg=success_msg)
+                
+                elif res == 'no':
+                    error_msg = '姓名已被使用 , 重新輸入 !!!'
+                    return render_template('ajax/add_check_member_account.html' , user=user , lv=lv , title=title , r_date=r_date , error_msg=error_msg , employee_id=employee_id , employee_name=employee_name , login_id=login_id , mobile=mobile , end_date=end_date)
+                
+                elif res == 'no_login_id':
+                    error_msg = '帳號已被使用 , 重新輸入 !!!'
+                    return render_template('ajax/add_check_member_account.html' , user=user , lv=lv , title=title , r_date=r_date , error_msg=error_msg , employee_id=employee_id , employee_name=employee_name , login_id=login_id , mobile=mobile , end_date=end_date)
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+
+##############################
+# /add_check_member_account
+##############################
+@app.route("/add_check_member_account" , methods=['GET','POST'])
+def add_check_member_account():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 載入新增人員考核帳號表'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+
+            return render_template('ajax/add_check_member_account.html' , user=user , lv=lv , title=title , r_date=r_date)
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+#######################
+# /load_account_data
+#######################
+@app.route("/load_account_data" , methods=['GET','POST'])
+def load_account_data():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 載入人員考核資料'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                load_user = request.form['user']
+                
+                a_job_title = db.factory_check_form_item(user)
+                a_member_check_list = db.factory_check_form_list()
+                res = db.load_account_data_item(load_user)
+
+                return render_template('ajax/load_account_data.html' , user=user , lv=lv , title=title , r_date=r_date , res=res , a_job_title=a_job_title , a_member_check_list=a_member_check_list)
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+####################################
+# /prouuction_2_work_check_record
+####################################
+@app.route("/production_2_work_check_record")
+def prouuction_2_work_check_record():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 人員考核表'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station()
+            a_work_no   = db.search_item('employee_id' , user)
+            a_name      = db.search_item('employee_name' , user)
+            a_end_date  = db.search_item('end_date' , user)
+            a_job_title = db.factory_check_form_item(user)
+            a_member_check_list = db.factory_check_form_list()
+
+            return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list)
 
         else:
             return redirect(url_for('logout'))
@@ -303,6 +670,7 @@ def prouuction_2_work_time_record():
         user = session['user']
         lv   = session['lv']
         login_code = session['login_code']
+        dep_id     = session['department_id']
 
         ### r_time
         r_date = time.strftime("%Y-%m-%d" , time.localtime())
@@ -320,10 +688,10 @@ def prouuction_2_work_time_record():
             # main content 
             #################
             factory_work_station = db.factory_work_station()
-            a_work_no = db.search_item('a_work_no' , user)
-            a_name = db.search_item('a_name' , user)
+            a_work_no = db.search_item('EmployeeID' , user)
+            a_name    = db.search_item('EmployeeName' , user)
 
-            return render_template('production_2_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name)
+            return render_template('production_2_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id)
 
         else:
             return redirect(url_for('logout'))
@@ -341,9 +709,10 @@ def index():
         operation_record_title = '主頁'    
 
         ### session 
-        user = session['user']
-        lv   = session['lv']
+        user       = session['user']
+        lv         = session['lv']
         login_code = session['login_code']
+        dep_id     = session['department_id']
 
         ### r_time
         r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
@@ -359,7 +728,8 @@ def index():
             #################
             # main content 
             #################
-            return render_template('index.html' , user=user , lv=lv , title=title)
+
+            return render_template('index.html' , user=user , lv=lv , title=title , dep_id=dep_id)
 
         else:
             return redirect(url_for('logout'))
@@ -373,8 +743,9 @@ def index():
 def login():
     if request.method == 'POST':
         check_account = db.login(request.form['user'] , request.form['pwd'])
+        dep_id = db.dep_id(request.form['user'] , request.form['pwd'])
 
-        if type(check_account) == tuple:
+        if check_account is not None:
             
             ### r_time
             r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
@@ -383,7 +754,8 @@ def login():
             operation_record_title = '登入成功'    
             
             ### session  
-            session['user'] = request.form['user']
+            #session['user'] = request.form['user']
+            session['user'] = check_account[0]
             
             ### for python3 md5 use method
             m = hashlib.md5()
@@ -391,7 +763,8 @@ def login():
             h = m.hexdigest()
             session['login_code'] = h
             session['ip'] = request.remote_addr
-            session['lv'] = check_account[0]
+            session['lv'] = 3
+            session['department_id'] = dep_id
             
             ### login record
             db.login_record(session['user'],session['login_code'],r_time,session['ip'])
@@ -404,7 +777,7 @@ def login():
             #################
             #res_data           = db.realtime_modbus_sensor()
 
-            return render_template('index.html' ,  user=session['user'] , lv=session['lv'] , title=title )
+            return render_template('index.html' ,  user=session['user'] , lv=session['lv'] , title=title , dep_id=session['department_id'] )
 
         else:
             res_data = "登入失敗，帳密有錯，重新輸入 !!!"
@@ -446,6 +819,7 @@ def logout2():
             session.pop('login_code',None)
             session.pop('ip',None)
             session.pop('lv',None)
+            session.pop('department_id',None)
 
     return redirect(url_for('index'))
 

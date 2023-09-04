@@ -12,6 +12,156 @@ create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 use otsuka_factory;
 
 /* 
+ * check_member
+ */
+create table check_member(
+no int not null primary key AUTO_INCREMENT,
+employee_id int null,
+employee_name varchar(50) null,
+department_id varchar(50) null,
+department_name varchar(50) null,
+b_date varchar(10) null , 
+b_year varchar(10) null , 
+b_month varchar(10) null , 
+end_date varchar(10) null,
+check_year varchar(10) null,
+check_month varchar(10) null,
+self_item_1_1 int null,
+self_item_1_2 int null,
+self_item_1_3 int null,
+self_item_1_4 int null,
+other_item_1_1 int null,
+other_item_1_2 int null,
+other_item_1_3 int null,
+other_item_1_4 int null,
+sir_item_1_1 int null,
+sir_item_1_2 int null,
+sir_item_1_3 int null,
+sir_item_1_4 int null,
+
+self_item_2_1 int null,
+self_item_2_2 int null,
+self_item_2_3 int null,
+self_item_2_4 int null,
+other_item_2_1 int null,
+other_item_2_2 int null,
+other_item_2_3 int null,
+other_item_2_4 int null,
+sir_item_2_1 int null,
+sir_item_2_2 int null,
+sir_item_2_3 int null,
+sir_item_2_4 int null,
+
+self_item_3_1 int null,
+self_item_3_2 int null,
+self_item_3_3 int null,
+self_item_3_4 int null,
+other_item_3_1 int null,
+other_item_3_2 int null,
+other_item_3_3 int null,
+other_item_3_4 int null,
+sir_item_3_1 int null,
+sir_item_3_2 int null,
+sir_item_3_3 int null,
+sir_item_3_4 int null,
+
+self_item_4_1 int null,
+self_item_4_2 int null,
+self_item_4_3 int null,
+self_item_4_4 int null,
+other_item_4_1 int null,
+other_item_4_2 int null,
+other_item_4_3 int null,
+other_item_4_4 int null,
+sir_item_4_1 int null,
+sir_item_4_2 int null,
+sir_item_4_3 int null,
+sir_item_4_4 int null,
+
+self_item_5_1 int null,
+self_item_5_2 int null,
+self_item_5_3 int null,
+self_item_5_4 int null,
+other_item_5_1 int null,
+other_item_5_2 int null,
+other_item_5_3 int null,
+other_item_5_4 int null,
+sir_item_5_1 int null,
+sir_item_5_2 int null,
+sir_item_5_3 int null,
+sir_item_5_4 int null,
+
+self_item_6_1 int null,
+self_item_6_2 int null,
+self_item_6_3 int null,
+self_item_6_4 int null,
+other_item_6_1 int null,
+other_item_6_2 int null,
+other_item_6_3 int null,
+other_item_6_4 int null,
+sir_item_6_1 int null,
+sir_item_6_2 int null,
+sir_item_6_3 int null,
+sir_item_6_4 int null,
+
+sir_item_7_1 int null,
+sir_item_7_2 int null,
+sir_item_7_3 int null,
+sir_item_7_4 int null,
+
+sir_item_8_1 int null,
+sir_item_8_2 int null,
+sir_item_8_3 int null,
+sir_item_8_4 int null,
+
+comment text null,
+
+self_total int null,
+other_total int null,
+sir_total int null,
+other_plus_total int null,
+finally_total int null,
+finally_comment text null,
+
+self_check varchar(5) null,
+other_check varchar(5) null,
+sir_check varchar(5) null
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/* 
+ * hr_a
+ */
+create table hr_a(
+no int not null primary key AUTO_INCREMENT,
+employee_id int null,
+employee_name varchar(50) null,
+employee_eng_name varchar(50) null,
+login_id varchar(50) null,
+company_id varchar(50) null,
+department_id varchar(50) null,
+department_code varchar(10) null,
+department_name varchar(30) null,
+identity_id varchar(50) null,
+sex varchar(5) null,
+email varchar(300) null,
+mobile varchar(50) null,
+birthday varchar(50) null,
+job_title_code varchar(50) null,
+job_title_name varchar(50) null,
+job_grade varchar(50) null,
+job_rank varchar(50) null,
+job_code varchar(50) null,
+job_type varchar(50) null,
+end_date varchar(50) null,
+work_place varchar(50) null,
+area_code varchar(50) null,
+home_phone varchar(50) null,
+office_phone varchar(50) null,
+addresses varchar(300) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/* 
  * work_station_3
  */
 create table work_station_3(
