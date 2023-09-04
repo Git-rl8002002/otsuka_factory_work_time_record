@@ -185,7 +185,7 @@
              - lv 3 - normal user
              -   
              ----------------------------------------------------------------------------------------------------->
-             {% if dep_id == "1A" %}
+            {% if dep_id == "1A" %}
             <!-- 生產一部 -->
             <div id="main_content" class="col-md-4 my-1">
                 <div class="card">
@@ -194,7 +194,10 @@
                     <div class="card-body">
                         <ul class="list-group">
                             <li class="list-group-item list-group-item-action">
-                                <a class="dropdown-item" href="/production_1_work_time_record">液劑工時時間記錄表</a>
+                                <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
+                            </li>    
+                            <li class="list-group-item list-group-item-action">
+                                <a href="/production_1_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
                             </li>
                         </ul>
                     </div>
@@ -209,10 +212,13 @@
                     <div class="card-body">
                         <ul class="list-group">
                             <li class="list-group-item list-group-item-action">
-                                <a href="/production_2_work_check_record">人員考核表</a>
+                                <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
                             </li>    
                             <li class="list-group-item list-group-item-action">
-                                <a href="/production_2_work_time_record">液劑工時時間記錄表</a>
+                                <a href="/production_2_work_check_record"><i class="bi bi-bookmarks"></i> 人員考核表</a>
+                            </li>    
+                            <li class="list-group-item list-group-item-action">
+                                <a href="/production_2_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
                             </li>
                         </ul>
                     </div>
@@ -227,7 +233,25 @@
                     <div class="card-body">
                         <ul class="list-group">
                             <li class="list-group-item list-group-item-action">
-                                <a class="dropdown-item" href="/production_3_work_time_record">液劑工時時間記錄表</a>
+                                <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
+                            </li>    
+                            <li class="list-group-item list-group-item-action">
+                                <a href="/production_3_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <!-- 功能清單 -->
+            <div id="main_content" class="col-md-4 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i>功能清單</h4></div>
+                    <div class="card-body">
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-action">
+                                <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
                             </li>
                         </ul>
                     </div>

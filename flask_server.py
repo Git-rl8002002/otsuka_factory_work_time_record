@@ -389,7 +389,7 @@ def department_no_search():
             # main content 
             #################
             
-            return render_template('search_department_id.html' , user=user , lv=lv , title=title , operation_record_title=operation_record_title , r_date=r_date)
+            return render_template('search_department_id.html' , user=user , lv=lv , title=title , operation_record_title=operation_record_title , r_date=r_date , dep_id=dep_id)
         
         else:
             return redirect(url_for('logout'))
