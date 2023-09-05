@@ -363,19 +363,19 @@ function auto_plus_other_plus_num(){
         var sir_num17       = $('#sir_num5_3').val();
         var sir_num18       = $('#sir_num6_1').val();
         var sir_num19       = $('#sir_num6_2').val();
-        var sir_num20       = $('#sir_num6_').val();
+        var sir_num20       = $('#sir_num6_3').val();
        
         // auto plus normal work time
         var auto_plus_sir_number = (Number(sir_num1) + Number(sir_num2) + Number(sir_num3)  + Number(sir_num4)  + Number(sir_num5)  + Number(sir_num6) + Number(sir_num7) + Number(sir_num8) + Number(sir_num9)  + Number(sir_num10) + Number(sir_num11) + Number(sir_num12) + Number(sir_num13) + Number(sir_num14) + Number(sir_num15) + Number(sir_num16) + Number(sir_num17) + Number(sir_num18) + Number(sir_num19) + Number(sir_num20)).toFixed(0);
         
-        var other_plus_num1       = $('#sir_item7_1').val();
-        var other_plus_num2       = $('#sir_item7_2').val();
-        var other_plus_num3       = $('#sir_item7_3').val();
-        var other_plus_num4       = $('#sir_item7_4').val();
-        var other_plus_num5       = $('#sir_item8_1').val();
-        var other_plus_num6       = $('#sir_item8_2').val();
-        var other_plus_num7       = $('#sir_item8_3').val();
-        var other_plus_num8       = $('#sir_item8_4').val();
+        var other_plus_num1       = $('#sir_num7_1').val();
+        var other_plus_num2       = $('#sir_num7_2').val();
+        var other_plus_num3       = $('#sir_num7_3').val();
+        var other_plus_num4       = $('#sir_num7_4').val();
+        var other_plus_num5       = $('#sir_num8_1').val();
+        var other_plus_num6       = $('#sir_num8_2').val();
+        var other_plus_num7       = $('#sir_num8_3').val();
+        var other_plus_num8       = $('#sir_num8_4').val();
         
        
         // auto plus normal work time
@@ -410,20 +410,20 @@ function auto_plus_sir_num(){
         var sir_num17       = $('#sir_num5_3').val();
         var sir_num18       = $('#sir_num6_1').val();
         var sir_num19       = $('#sir_num6_2').val();
-        var sir_num20       = $('#sir_num6_').val();
+        var sir_num20       = $('#sir_num6_3').val();
         
        
         // auto plus normal work time
         var auto_plus_sir_number = (Number(sir_num1) + Number(sir_num2) + Number(sir_num3)  + Number(sir_num4)  + Number(sir_num5)  + Number(sir_num6) + Number(sir_num7) + Number(sir_num8) + Number(sir_num9)  + Number(sir_num10) + Number(sir_num11) + Number(sir_num12) + Number(sir_num13) + Number(sir_num14) + Number(sir_num15) + Number(sir_num16) + Number(sir_num17) + Number(sir_num18) + Number(sir_num19) + Number(sir_num20)).toFixed(0);
         
-        var other_plus_num1       = $('#sir_item7_1').val();
-        var other_plus_num2       = $('#sir_item7_2').val();
-        var other_plus_num3       = $('#sir_item7_3').val();
-        var other_plus_num4       = $('#sir_item7_4').val();
-        var other_plus_num5       = $('#sir_item8_1').val();
-        var other_plus_num6       = $('#sir_item8_2').val();
-        var other_plus_num7       = $('#sir_item8_3').val();
-        var other_plus_num8       = $('#sir_item8_4').val();
+        var other_plus_num1       = $('#sir_num7_1').val();
+        var other_plus_num2       = $('#sir_num7_2').val();
+        var other_plus_num3       = $('#sir_num7_3').val();
+        var other_plus_num4       = $('#sir_num7_4').val();
+        var other_plus_num5       = $('#sir_num8_1').val();
+        var other_plus_num6       = $('#sir_num8_2').val();
+        var other_plus_num7       = $('#sir_num8_3').val();
+        var other_plus_num8       = $('#sir_num8_4').val();
         
        
         // auto plus normal work time
