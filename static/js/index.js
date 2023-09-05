@@ -382,12 +382,12 @@ function auto_plus_other_plus_num(){
         //var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5)  + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
         var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5) + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
         
-        $('#other_plus_num_total').val(auto_plus_other_plus_number);
-        $('#sir_num_total').val(auto_plus_sir_number);
+        $('#other_plus_total').val(auto_plus_other_plus_number);
+        $('#sir_total').val(auto_plus_sir_number);
         
         // final plus num total
         var final_plus_num_total_val = Number(auto_plus_sir_number) + Number(auto_plus_other_plus_number)
-        $('#final_plus_num_total').val(final_plus_num_total_val);
+        $('#final_total').val(final_plus_num_total_val);
 } 
 
 function auto_plus_sir_num(){
@@ -431,12 +431,12 @@ function auto_plus_sir_num(){
         var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5) + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
 
 
-        $('#other_plus_num_total').val(auto_plus_other_plus_number);
-        $('#sir_num_total').val(auto_plus_sir_number);
+        $('#other_plus_total').val(auto_plus_other_plus_number);
+        $('#sir_total').val(auto_plus_sir_number);
         
         // final plus num total
         var final_plus_num_total_val = Number(auto_plus_sir_number) + Number(auto_plus_other_plus_number)
-        $('#final_plus_num_total').val(final_plus_num_total_val);
+        $('#final_total').val(final_plus_num_total_val);
 } 
 
 
@@ -466,7 +466,7 @@ function auto_plus_self_num(){
         // auto plus normal work time
         var auto_plus_self_number = (Number(self_num1) + Number(self_num2) + Number(self_num3)  + Number(self_num4)  + Number(self_num5)  + Number(self_num6) + Number(self_num7) + Number(self_num8) + Number(self_num9)  + Number(self_num10) + Number(self_num11) + Number(self_num12) + Number(self_num13) + Number(self_num14) + Number(self_num15) + Number(self_num16) + Number(self_num17) + Number(self_num18) + Number(self_num19) + Number(self_num20)).toFixed(0);
         
-        $('#self_num_total').val(auto_plus_self_number);
+        $('#self_total').val(auto_plus_self_number);
         
         // auto plus total work time
         //var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
