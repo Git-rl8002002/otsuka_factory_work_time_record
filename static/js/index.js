@@ -34,118 +34,133 @@ function department_name_search(){
 }
 
 function submit_work_check_member(){
-        var employee_id      = $('#employee_id').val()
-        var employee_name    = $('#employee_name').val()
-        var department_id    = $('#department_id').val()
-        var department_name  = $('#department_name').val()
-        var b_date           = $('#b_date').val()
-        var end_date         = $('#end_date').val()
-        var check_year       = $('#check_year').val()
-        var check_month      = $('#check_month').val()
+        var employee_id      = $('#employee_id').val();
+        var employee_name    = $('#employee_name').val();
+        var department_id    = $('#department_id').val();
+        var department_name  = $('#department_name').val();
+        var b_date           = $('#b_date').val();
+        var end_date         = $('#end_date').val();
+        var check_year       = $('#check_year').val();
+        var check_month      = $('#check_month').val();
 
         // 1
-        var self_num1_1 = $('#self_num1_1').val()
-        var self_num1_2 = $('#self_num1_2').val()
-        var self_num1_3 = $('#self_num1_3').val()
-        var self_num1_4 = $('#self_num1_4').val()
+        var self_num1_1 = $('#self_num1_1').val();
+        var self_num1_2 = $('#self_num1_2').val();
+        var self_num1_3 = $('#self_num1_3').val();
+        var self_num1_4 = $('#self_num1_4').val();
         
-        var other_num1_1 = $('#other_num1_1').val()
-        var other_num1_2 = $('#other_num1_2').val()
-        var other_num1_3 = $('#other_num1_3').val()
-        var other_num1_4 = $('#other_num1_4').val()
+        var other_num1_1 = $('#other_num1_1').val();
+        var other_num1_2 = $('#other_num1_2').val();
+        var other_num1_3 = $('#other_num1_3').val();
+        var other_num1_4 = $('#other_num1_4').val();
         
-        var sir_num1_1 = $('#sir_num1_1').val()
-        var sir_num1_2 = $('#sir_num1_2').val()
-        var sir_num1_3 = $('#sir_num1_3').val()
-        var sir_num1_4 = $('#sir_num1_4').val()
+        var sir_num1_1 = $('#sir_num1_1').val();
+        var sir_num1_2 = $('#sir_num1_2').val();
+        var sir_num1_3 = $('#sir_num1_3').val();
+        var sir_num1_4 = $('#sir_num1_4').val();
 
         // 2
-        var self_num2_1 = $('#self_num2_1').val()
-        var self_num2_2 = $('#self_num2_2').val()
-        var self_num2_3 = $('#self_num2_3').val()
+        var self_num2_1 = $('#self_num2_1').val();
+        var self_num2_2 = $('#self_num2_2').val();
+        var self_num2_3 = $('#self_num2_3').val();
         
-        var other_num2_1 = $('#other_num2_1').val()
-        var other_num2_2 = $('#other_num2_2').val()
-        var other_num2_3 = $('#other_num2_3').val()
+        var other_num2_1 = $('#other_num2_1').val();
+        var other_num2_2 = $('#other_num2_2').val();
+        var other_num2_3 = $('#other_num2_3').val();
         
-        var sir_num2_1 = $('#sir_num2_1').val()
-        var sir_num2_2 = $('#sir_num2_2').val()
-        var sir_num2_3 = $('#sir_num2_3').val()
+        var sir_num2_1 = $('#sir_num2_1').val();
+        var sir_num2_2 = $('#sir_num2_2').val();
+        var sir_num2_3 = $('#sir_num2_3').val();
 
         // 3
-        var self_num3_1 = $('#self_num3_1').val()
-        var self_num3_2 = $('#self_num3_2').val()
-        var self_num3_3 = $('#self_num3_3').val()
+        var self_num3_1 = $('#self_num3_1').val();
+        var self_num3_2 = $('#self_num3_2').val();
+        var self_num3_3 = $('#self_num3_3').val();
         
-        var other_num3_1 = $('#other_num3_1').val()
-        var other_num3_2 = $('#other_num3_2').val()
-        var other_num3_3 = $('#other_num3_3').val()
+        var other_num3_1 = $('#other_num3_1').val();
+        var other_num3_2 = $('#other_num3_2').val();
+        var other_num3_3 = $('#other_num3_3').val();
         
-        var sir_num3_1 = $('#sir_num3_1').val()
-        var sir_num3_2 = $('#sir_num3_2').val()
-        var sir_num3_3 = $('#sir_num3_3').val()
+        var sir_num3_1 = $('#sir_num3_1').val();
+        var sir_num3_2 = $('#sir_num3_2').val();
+        var sir_num3_3 = $('#sir_num3_3').val();
 
         // 4
-        var self_num4_1 = $('#self_num4_1').val()
-        var self_num4_2 = $('#self_num4_2').val()
-        var self_num4_3 = $('#self_num4_3').val()
-        var self_num4_4 = $('#self_num4_4').val()
+        var self_num4_1 = $('#self_num4_1').val();
+        var self_num4_2 = $('#self_num4_2').val();
+        var self_num4_3 = $('#self_num4_3').val();
+        var self_num4_4 = $('#self_num4_4').val();
         
-        var other_num4_1 = $('#other_num4_1').val()
-        var other_num4_2 = $('#other_num4_2').val()
-        var other_num4_3 = $('#other_num4_3').val()
-        var other_num4_4 = $('#other_num4_3').val()
+        var other_num4_1 = $('#other_num4_1').val();
+        var other_num4_2 = $('#other_num4_2').val();
+        var other_num4_3 = $('#other_num4_3').val();
+        var other_num4_4 = $('#other_num4_3').val();
         
-        var sir_num4_1 = $('#sir_num4_1').val()
-        var sir_num4_2 = $('#sir_num4_2').val()
-        var sir_num4_3 = $('#sir_num4_3').val()
-        var sir_num4_4 = $('#sir_num4_3').val()
+        var sir_num4_1 = $('#sir_num4_1').val();
+        var sir_num4_2 = $('#sir_num4_2').val();
+        var sir_num4_3 = $('#sir_num4_3').val();
+        var sir_num4_4 = $('#sir_num4_3').val();
 
         // 5
-        var self_num5_1 = $('#self_num5_1').val()
-        var self_num5_2 = $('#self_num5_2').val()
-        var self_num5_3 = $('#self_num5_3').val()
+        var self_num5_1 = $('#self_num5_1').val();
+        var self_num5_2 = $('#self_num5_2').val();
+        var self_num5_3 = $('#self_num5_3').val();
         
-        var other_num5_1 = $('#other_num5_1').val()
-        var other_num5_2 = $('#other_num5_2').val()
-        var other_num5_3 = $('#other_num5_3').val()
+        var other_num5_1 = $('#other_num5_1').val();
+        var other_num5_2 = $('#other_num5_2').val();
+        var other_num5_3 = $('#other_num5_3').val();
         
-        var sir_num5_1 = $('#sir_num5_1').val()
-        var sir_num5_2 = $('#sir_num5_2').val()
-        var sir_num5_3 = $('#sir_num5_3').val()
+        var sir_num5_1 = $('#sir_num5_1').val();
+        var sir_num5_2 = $('#sir_num5_2').val();
+        var sir_num5_3 = $('#sir_num5_3').val();
 
         // 6
-        var self_num6_1 = $('#self_num6_1').val()
-        var self_num6_2 = $('#self_num6_2').val()
-        var self_num6_3 = $('#self_num6_3').val()
+        var self_num6_1 = $('#self_num6_1').val();
+        var self_num6_2 = $('#self_num6_2').val();
+        var self_num6_3 = $('#self_num6_3').val();
         
-        var other_num6_1 = $('#other_num6_1').val()
-        var other_num6_2 = $('#other_num6_2').val()
-        var other_num6_3 = $('#other_num6_3').val()
+        var other_num6_1 = $('#other_num6_1').val();
+        var other_num6_2 = $('#other_num6_2').val();
+        var other_num6_3 = $('#other_num6_3').val();
         
-        var sir_num6_1 = $('#sir_num6_1').val()
-        var sir_num6_2 = $('#sir_num6_2').val()
-        var sir_num6_3 = $('#sir_num6_3').val()
+        var sir_num6_1 = $('#sir_num6_1').val();
+        var sir_num6_2 = $('#sir_num6_2').val();
+        var sir_num6_3 = $('#sir_num6_3').val();
 
         // 7
-        var sir_num7_1 = $('#sir_num7_1').val()
-        var sir_num7_2 = $('#sir_num7_2').val()
-        var sir_num7_3 = $('#sir_num7_3').val()
-        var sir_num7_3 = $('#sir_num7_3').val()
+        var sir_num7_1 = $('#sir_num7_1').val();
+        var sir_num7_2 = $('#sir_num7_2').val();
+        var sir_num7_3 = $('#sir_num7_3').val();
+        var sir_num7_3 = $('#sir_num7_3').val();
         // 8
-        var sir_num8_1 = $('#sir_num8_1').val()
-        var sir_num8_2 = $('#sir_num8_2').val()
-        var sir_num8_3 = $('#sir_num8_3').val()
-        var sir_num8_3 = $('#sir_num8_3').val()
+        var sir_num8_1 = $('#sir_num8_1').val();
+        var sir_num8_2 = $('#sir_num8_2').val();
+        var sir_num8_3 = $('#sir_num8_3').val();
+        var sir_num8_3 = $('#sir_num8_3').val();
 
-        var comment = $('#comment').val()
+        var comment = $('#comment').val();
 
-        var  self_total         = $('#self_total').val()
-        var  other_total        = $('#other_total').val()
-        var  sir_total          = $('#sir_total').val()
-        var  other_plus_total   = $('#other_plus_total').val()
-        var  final_total        = $('#final_total').val()
-        var  final_comment      = $('#final_comment').val()
+        var  self_total         = $('#self_total').val();
+        var  other_total        = $('#other_total').val();
+        var  sir_total          = $('#sir_total').val();
+        var  other_plus_total   = $('#other_plus_total').val();
+        var  final_total        = $('#final_total').val();
+        var  final_comment      = $('#final_comment').val();
+
+        alert(employee_id  + ' / ' + employee_name + ' / ' + department_id + ' / ' + department_name + ' / ' + b_date + ' / ' + end_date + ' / ' + check_year + ' / ' + check_month);
+        alert(self_num1_1  + ' / ' + self_num1_2   + ' / ' + self_num1_3   + ' / ' + self_num1_4);
+        alert(other_num1_1 + ' / ' + other_num1_2  + ' / ' + other_num1_3  + ' / ' + other_num1_4);
+        alert(sir_num1_1   + ' / ' + sir_num1_2    + ' / ' + sir_num1_3    + ' / ' + sir_num1_4);
+
+        alert(self_num2_1  + ' / ' + self_num2_2   + ' / ' + self_num2_3);
+        alert(self_num3_1  + ' / ' + self_num3_2   + ' / ' + self_num3_3);
+        alert(self_num4_1  + ' / ' + self_num4_2   + ' / ' + self_num4_3 + ' / ' + self_num4_4);
+        alert(self_num5_1  + ' / ' + self_num5_2   + ' / ' + self_num5_3);
+        alert(self_num6_1  + ' / ' + self_num6_2   + ' / ' + self_num6_3);
+
+        alert(comment + ' / ' + self_total + ' / ' + other_total + ' / ' + sir_total + ' / ' + other_plus_total + ' / ' + final_total + ' / ' + final_comment);
+
+        exit();
 
         $.ajax({
                 type:"POST",
@@ -329,38 +344,38 @@ function load_account_data(user){
 }
 
 function auto_plus_other_plus_num(){
-        var sir_num1       = $('#sir_num1').val();
-        var sir_num2       = $('#sir_num2').val();
-        var sir_num3       = $('#sir_num3').val();
-        var sir_num4       = $('#sir_num4').val();
-        var sir_num5       = $('#sir_num5').val();
-        var sir_num6       = $('#sir_num6').val();
-        var sir_num7       = $('#sir_num7').val();
-        var sir_num8       = $('#sir_num8').val();
-        var sir_num9       = $('#sir_num9').val();
-        var sir_num10       = $('#sir_num10').val();
-        var sir_num11       = $('#sir_num11').val();
-        var sir_num12       = $('#sir_num12').val();
-        var sir_num13       = $('#sir_num13').val();
-        var sir_num14       = $('#sir_num14').val();
-        var sir_num15       = $('#sir_num15').val();
-        var sir_num16       = $('#sir_num16').val();
-        var sir_num17       = $('#sir_num17').val();
-        var sir_num18       = $('#sir_num18').val();
-        var sir_num19       = $('#sir_num19').val();
-        var sir_num20       = $('#sir_num20').val();
+        var sir_num1       = $('#sir_num1_1').val();
+        var sir_num2       = $('#sir_num1_2').val();
+        var sir_num3       = $('#sir_num1_3').val();
+        var sir_num4       = $('#sir_num1_4').val();
+        var sir_num5       = $('#sir_num2_1').val();
+        var sir_num6       = $('#sir_num2_2').val();
+        var sir_num7       = $('#sir_num2_3').val();
+        var sir_num8       = $('#sir_num3_1').val();
+        var sir_num9       = $('#sir_num3_2').val();
+        var sir_num10       = $('#sir_num3_2').val();
+        var sir_num11       = $('#sir_num4_1').val();
+        var sir_num12       = $('#sir_num4_2').val();
+        var sir_num13       = $('#sir_num4_3').val();
+        var sir_num14       = $('#sir_num4_4').val();
+        var sir_num15       = $('#sir_num5_1').val();
+        var sir_num16       = $('#sir_num5_2').val();
+        var sir_num17       = $('#sir_num5_3').val();
+        var sir_num18       = $('#sir_num6_1').val();
+        var sir_num19       = $('#sir_num6_2').val();
+        var sir_num20       = $('#sir_num6_').val();
        
         // auto plus normal work time
         var auto_plus_sir_number = (Number(sir_num1) + Number(sir_num2) + Number(sir_num3)  + Number(sir_num4)  + Number(sir_num5)  + Number(sir_num6) + Number(sir_num7) + Number(sir_num8) + Number(sir_num9)  + Number(sir_num10) + Number(sir_num11) + Number(sir_num12) + Number(sir_num13) + Number(sir_num14) + Number(sir_num15) + Number(sir_num16) + Number(sir_num17) + Number(sir_num18) + Number(sir_num19) + Number(sir_num20)).toFixed(0);
         
-        var other_plus_num1       = $('#other_plus_num1').val();
-        var other_plus_num2       = $('#other_plus_num2').val();
-        var other_plus_num3       = $('#other_plus_num3').val();
-        var other_plus_num4       = $('#other_plus_num4').val();
-        var other_plus_num5       = $('#other_plus_num5').val();
-        var other_plus_num6       = $('#other_plus_num6').val();
-        var other_plus_num7       = $('#other_plus_num7').val();
-        var other_plus_num8       = $('#other_plus_num8').val();
+        var other_plus_num1       = $('#sir_item7_1').val();
+        var other_plus_num2       = $('#sir_item7_2').val();
+        var other_plus_num3       = $('#sir_item7_3').val();
+        var other_plus_num4       = $('#sir_item7_4').val();
+        var other_plus_num5       = $('#sir_item8_1').val();
+        var other_plus_num6       = $('#sir_item8_2').val();
+        var other_plus_num7       = $('#sir_item8_3').val();
+        var other_plus_num8       = $('#sir_item8_4').val();
         
        
         // auto plus normal work time
@@ -376,39 +391,39 @@ function auto_plus_other_plus_num(){
 } 
 
 function auto_plus_sir_num(){
-        var sir_num1       = $('#sir_num1').val();
-        var sir_num2       = $('#sir_num2').val();
-        var sir_num3       = $('#sir_num3').val();
-        var sir_num4       = $('#sir_num4').val();
-        var sir_num5       = $('#sir_num5').val();
-        var sir_num6       = $('#sir_num6').val();
-        var sir_num7       = $('#sir_num7').val();
-        var sir_num8       = $('#sir_num8').val();
-        var sir_num9       = $('#sir_num9').val();
-        var sir_num10       = $('#sir_num10').val();
-        var sir_num11       = $('#sir_num11').val();
-        var sir_num12       = $('#sir_num12').val();
-        var sir_num13       = $('#sir_num13').val();
-        var sir_num14       = $('#sir_num14').val();
-        var sir_num15       = $('#sir_num15').val();
-        var sir_num16       = $('#sir_num16').val();
-        var sir_num17       = $('#sir_num17').val();
-        var sir_num18       = $('#sir_num18').val();
-        var sir_num19       = $('#sir_num19').val();
-        var sir_num20       = $('#sir_num20').val();
+        var sir_num1       = $('#sir_num1_1').val();
+        var sir_num2       = $('#sir_num1_2').val();
+        var sir_num3       = $('#sir_num1_3').val();
+        var sir_num4       = $('#sir_num1_4').val();
+        var sir_num5       = $('#sir_num2_1').val();
+        var sir_num6       = $('#sir_num2_2').val();
+        var sir_num7       = $('#sir_num2_3').val();
+        var sir_num8       = $('#sir_num3_1').val();
+        var sir_num9       = $('#sir_num3_2').val();
+        var sir_num10       = $('#sir_num3_2').val();
+        var sir_num11       = $('#sir_num4_1').val();
+        var sir_num12       = $('#sir_num4_2').val();
+        var sir_num13       = $('#sir_num4_3').val();
+        var sir_num14       = $('#sir_num4_4').val();
+        var sir_num15       = $('#sir_num5_1').val();
+        var sir_num16       = $('#sir_num5_2').val();
+        var sir_num17       = $('#sir_num5_3').val();
+        var sir_num18       = $('#sir_num6_1').val();
+        var sir_num19       = $('#sir_num6_2').val();
+        var sir_num20       = $('#sir_num6_').val();
         
        
         // auto plus normal work time
         var auto_plus_sir_number = (Number(sir_num1) + Number(sir_num2) + Number(sir_num3)  + Number(sir_num4)  + Number(sir_num5)  + Number(sir_num6) + Number(sir_num7) + Number(sir_num8) + Number(sir_num9)  + Number(sir_num10) + Number(sir_num11) + Number(sir_num12) + Number(sir_num13) + Number(sir_num14) + Number(sir_num15) + Number(sir_num16) + Number(sir_num17) + Number(sir_num18) + Number(sir_num19) + Number(sir_num20)).toFixed(0);
         
-        var other_plus_num1       = $('#other_plus_num1').val();
-        var other_plus_num2       = $('#other_plus_num2').val();
-        var other_plus_num3       = $('#other_plus_num3').val();
-        var other_plus_num4       = $('#other_plus_num4').val();
-        var other_plus_num5       = $('#other_plus_num5').val();
-        var other_plus_num6       = $('#other_plus_num6').val();
-        var other_plus_num7       = $('#other_plus_num7').val();
-        var other_plus_num8       = $('#other_plus_num8').val();
+        var other_plus_num1       = $('#sir_item7_1').val();
+        var other_plus_num2       = $('#sir_item7_2').val();
+        var other_plus_num3       = $('#sir_item7_3').val();
+        var other_plus_num4       = $('#sir_item7_4').val();
+        var other_plus_num5       = $('#sir_item8_1').val();
+        var other_plus_num6       = $('#sir_item8_2').val();
+        var other_plus_num7       = $('#sir_item8_3').val();
+        var other_plus_num8       = $('#sir_item8_4').val();
         
        
         // auto plus normal work time
@@ -426,26 +441,26 @@ function auto_plus_sir_num(){
 
 
 function auto_plus_self_num(){
-        var self_num1       = $('#self_num1').val();
-        var self_num2       = $('#self_num2').val();
-        var self_num3       = $('#self_num3').val();
-        var self_num4       = $('#self_num4').val();
-        var self_num5       = $('#self_num5').val();
-        var self_num6       = $('#self_num6').val();
-        var self_num7       = $('#self_num7').val();
-        var self_num8       = $('#self_num8').val();
-        var self_num9       = $('#self_num9').val();
-        var self_num10       = $('#self_num10').val();
-        var self_num11       = $('#self_num11').val();
-        var self_num12       = $('#self_num12').val();
-        var self_num13       = $('#self_num13').val();
-        var self_num14       = $('#self_num14').val();
-        var self_num15       = $('#self_num15').val();
-        var self_num16       = $('#self_num16').val();
-        var self_num17       = $('#self_num17').val();
-        var self_num18       = $('#self_num18').val();
-        var self_num19       = $('#self_num19').val();
-        var self_num20       = $('#self_num20').val();
+        var self_num1       = $('#self_num1_1').val();
+        var self_num2       = $('#self_num1_2').val();
+        var self_num3       = $('#self_num1_3').val();
+        var self_num4       = $('#self_num1_4').val();
+        var self_num5       = $('#self_num2_1').val();
+        var self_num6       = $('#self_num2_2').val();
+        var self_num7       = $('#self_num2_3').val();
+        var self_num8       = $('#self_num3_1').val();
+        var self_num9       = $('#self_num3_2').val();
+        var self_num10       = $('#self_num3_3').val();
+        var self_num11       = $('#self_num4_1').val();
+        var self_num12       = $('#self_num4_2').val();
+        var self_num13       = $('#self_num4_3').val();
+        var self_num14       = $('#self_num4_4').val();
+        var self_num15       = $('#self_num5_1').val();
+        var self_num16       = $('#self_num5_2').val();
+        var self_num17       = $('#self_num5_3').val();
+        var self_num18       = $('#self_num6_1').val();
+        var self_num19       = $('#self_num6_2').val();
+        var self_num20       = $('#self_num6_3').val();
         
        
         // auto plus normal work time
