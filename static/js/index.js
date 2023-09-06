@@ -334,7 +334,6 @@ function submit_work_check_member(){
                                 'self_num6_3':self_num6_3,
                                 'self_total':self_total
                         },
-
                         datatype:"html",
                                 error:function(xhr , ajaxError , throwError){
                                 alert(xhr.status);
@@ -344,7 +343,7 @@ function submit_work_check_member(){
                         },
                         success:function(res){
                                 
-                                $("#load_check_form").show(1000).html(res);
+                                $("#load_check_form2").show(1000).html(res);
                                 
                                 // scroll page bottom to page top
                                 goto_top();
