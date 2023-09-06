@@ -123,6 +123,41 @@ class web_cloud_dao:
             #self.curr_mssql.close()
             #self.conn_mssql.close()
 
+    #######################
+    # search_member_item
+    #######################
+    def search_member_item(self , item , a_user):
+        try:
+            
+            '''
+            conn_str        = f"DRIVER={{SQL Server}};SERVER={otsuka_factory2['host']};DATABASE={otsuka_factory2['db']};UID={otsuka_factory2['user']};PWD={otsuka_factory2['pwd']}"  
+            self.conn_mssql = pyodbc.connect(conn_str)
+            self.curr_mssql = self.conn_mssql.cursor()
+            self.sql        = f"select {item} from T_HR_Employee where EmployeeName='{a_user}'"
+            self.curr_mssql.execute(self.sql)
+            self.res        = self.curr_mssql.fetchone()
+
+            return self.res[0]
+            '''
+        
+            
+            self.__connect__()
+            
+            sql = f"select {item} from check_member where employee_name='{a_user}'"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchone()
+
+            if self.res is not None:
+                return self.res[0]
+        
+        except Exception as e:
+            logging.info('< Error > search_member_item : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+            #self.curr_mssql.close()
+            #self.conn_mssql.close()
+
     ################
     # search_item
     ################
@@ -157,6 +192,84 @@ class web_cloud_dao:
             #self.curr_mssql.close()
             #self.conn_mssql.close()
 
+    ################################
+    # check_add_check_member_list
+    ################################
+    def check_add_check_member_list(self , employee_name):
+        try:
+            self.__connect__()
+            
+            sql = f"select check_year , check_month from check_member where employee_name='{employee_name}' order by b_date"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchall()
+
+            if self.res is not None:
+                return self.res
+        
+        except Exception as e:
+            logging.info('< Error > check_add_check_member_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
+    #################################
+    # check_add_check_member_data
+    #################################
+    def check_add_check_member_data(self , employee_name , check_year , check_month):
+        try:
+            self.__connect__()
+            
+            sql = f"select employee_name from check_member where employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchone()
+
+            if self.res is None:
+
+                res_a = 'ok'
+                return res_a
+                
+            else: 
+
+                res_a = 'no'
+                return res_a
+        
+        except Exception as e:
+            logging.info('< Error > submit_add_check_member_data : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #################################
+    # submit_add_check_member_data
+    #################################
+    def submit_add_check_member_data(self , employee_id , employee_name , department_id , department_name , job_title , b_date , end_date , check_year , check_month , self_num1_1 , self_num1_2 , self_num1_3 , self_num1_4 , self_num2_1 , self_num2_2 , self_num2_3 , self_num3_1 , self_num3_2 , self_num3_3 , self_num4_1 , self_num4_2 , self_num4_3 , self_num4_4 , self_num5_1 , self_num5_2 , self_num5_3 , self_num6_1 , self_num6_2 , self_num6_3  , self_total):
+        try:
+            self.__connect__()
+            
+            sql = f"select employee_name from check_member where employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchone()
+
+            if self.res is None:
+                
+                sql2 = f"insert into check_member(employee_id , employee_name , department_id , department_name , b_date , end_date , check_year , check_month , self_item_1_1 , self_item_1_2 , self_item_1_3 , self_item_1_4 , self_item_2_1 , self_item_2_2 , self_item_2_3 , self_item_3_1 , self_item_3_2 , self_item_3_3 , self_item_4_1 ,  self_item_4_2 ,  self_item_4_3 ,  self_item_4_4 ,  self_item_5_1 , self_item_5_2 , self_item_5_3 , self_item_6_1 , self_item_6_2 , self_item_6_3 , self_total , self_check) value('{employee_id}' , '{employee_name}' , '{department_id}' , '{department_name}' , '{b_date}' , '{end_date}' , '{check_year}' , '{check_month}' , '{self_num1_1}' , '{self_num1_2}' , '{self_num1_3}' , '{self_num1_4}' , '{self_num2_1}' , '{self_num2_2}' , '{self_num2_3}' , '{self_num3_1}' , '{self_num3_2}' , '{self_num3_3}' , '{self_num4_1}' , '{self_num4_2}' , '{self_num4_3}' , '{self_num4_4}' , '{self_num5_1}' , '{self_num5_2}' , '{self_num5_3}' , '{self_num6_1}' , '{self_num6_2}' , '{self_num6_3}'  , '{self_total}' , 'done')" 
+                self.curr.execute(sql2)
+                self.conn.commit()
+
+                res_a = 'ok'
+                return res_a
+                
+            else: 
+
+                res_a = 'no'
+                return res_a
+        
+        except Exception as e:
+            logging.info('< Error > submit_add_check_member_data : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
     #############################
     # submit_add_check_account
     #############################
@@ -198,6 +311,44 @@ class web_cloud_dao:
         finally:
             self.__disconnect__()
 
+    #####################################
+    # load_account_data_form_self_item
+    #####################################
+    def load_account_data_form_self_item(self , employee_id , employee_name , check_year , check_month):
+        try:
+            self.__connect__()
+            
+            sql = f"select self_item_1_1 , self_item_1_2 , self_item_1_3 , self_item_1_4 , self_item_2_1 , self_item_2_1 , self_item_2_3 , self_item_3_1 , self_item_3_2 , self_item_3_3 , self_item_4_1 , self_item_4_2 , self_item_4_3 , self_item_4_4 , self_item_5_1 , self_item_5_2 , self_item_5_3 , self_item_6_1 , self_item_6_2 , self_item_6_3 , self_total from check_member where employee_id='{employee_id}' and employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchall()
+            
+            return self.res
+        
+        except Exception as e:
+            logging.info('< Error > load_account_data_form_self_item : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
+    ################################
+    # load_account_data_form_item
+    ################################
+    def load_account_data_form_item(self , item , employee_id):
+        try:
+            self.__connect__()
+            
+            sql = f"select {item}  from check_member where employee_id='{employee_id}' order by check_year desc"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchall()
+            
+            return self.res
+        
+        except Exception as e:
+            logging.info('< Error > load_account_data_form_item : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
     ###########################
     # load_account_data_item
     ###########################
@@ -205,7 +356,7 @@ class web_cloud_dao:
         try:
             self.__connect__()
             
-            sql = f"select employee_id , employee_name , end_date from hr_a where employee_name='{user}'"
+            sql = f"select employee_id , employee_name , end_date from hr_a where employee_id='{user}' and department_code like '1B%' and job_title_name != '經理' "
             self.curr.execute(sql)
             self.res = self.curr.fetchall()
             

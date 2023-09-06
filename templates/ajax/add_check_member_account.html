@@ -1,16 +1,17 @@
 <div>
+    <form>
     <div class="input-group mb-3">
         <!-- 工號 -->
         <div class="input-group-prepend">
             <span class="input-group-text">工號</span>
         </div>
-        <input class="form-control" id="employee_id" value="{{ employee_id }}">
+        <input class="form-control" id="employee_id" value="{{ employee_id }}" required="required">
     
         <!-- 姓名 -->
         <div class="input-group-prepend">
             <span class="input-group-text">姓名</span>
         </div>
-        <input class="form-control" id="employee_name" value="{{ employee_name }}">
+        <input class="form-control" id="employee_name" value="{{ employee_name }}" required="required">
     </div>
 
     <div class="input-group mb-3">
@@ -18,13 +19,13 @@
         <div class="input-group-prepend">
             <span class="input-group-text">帳號</span>
         </div>
-        <input class="form-control" id="login_id" value="{{ login_id }}">
+        <input class="form-control" id="login_id" value="{{ login_id }}" required="required">
 
         <!-- 密碼 -->
         <div class="input-group-prepend">
             <span class="input-group-text">密碼</span>
         </div>
-        <input class="form-control" id="mobile"  value="{{ mobile }}">
+        <input class="form-control" id="mobile"  value="{{ mobile }}" required="required">
     </div>
 
     <div class="input-group mb-3">
@@ -52,7 +53,7 @@
         <div class="input-group-prepend">
             <span class="input-group-text">到職</span>
         </div>
-        <input class="form-control" id="end_date" value="{{ end_date }}">
+        <input class="form-control" id="end_date" value="{{ end_date }}" required="required">
     </div>
 
     <!------------------------------------------------------------------------------------------------------ 
@@ -63,6 +64,7 @@
     <div class="text-center">
         <button class="btn btn-primary" id="submit_work_time_form" onclick="submit_add_check_account()">新增</button>
     </div>
+    </form>
 </div>
 
 <div class="my-3 text-center"><span class=" text-danger">{{ error_msg }}</span><span class=" text-success">{{ success_msg }}</span></div>

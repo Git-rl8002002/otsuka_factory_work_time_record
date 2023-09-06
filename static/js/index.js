@@ -1,3 +1,44 @@
+function load_check_member_list(){
+        var employee_id         = $('#a_work_no').val();
+        var employee_name       = $('#a_name').val();
+        var check_year          = $('#check_year').val();
+        var check_month         = $('#check_month').val();
+
+        $.ajax({
+                type:"POST",
+                url:"/load_check_member_self_list",
+                data:{
+                        'employee_id':employee_id,
+                        'employee_name':employee_name,
+                        'check_year':check_year,
+                        'check_month':check_month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#load_check_member_list").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("search 員工姓名資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+        
+}
+
 function department_name_search(){
         var search_name = $('#department_name').val();
 
@@ -38,6 +79,7 @@ function submit_work_check_member(){
         var employee_name    = $('#employee_name').val();
         var department_id    = $('#department_id').val();
         var department_name  = $('#department_name').val();
+        var job_title        = $('#job_title').val();
         var b_date           = $('#b_date').val();
         var end_date         = $('#end_date').val();
         var check_year       = $('#check_year').val();
@@ -147,57 +189,177 @@ function submit_work_check_member(){
         var  final_total        = $('#final_total').val();
         var  final_comment      = $('#final_comment').val();
 
-        alert(employee_id  + ' / ' + employee_name + ' / ' + department_id + ' / ' + department_name + ' / ' + b_date + ' / ' + end_date + ' / ' + check_year + ' / ' + check_month);
-        alert(self_num1_1  + ' / ' + self_num1_2   + ' / ' + self_num1_3   + ' / ' + self_num1_4);
-        alert(other_num1_1 + ' / ' + other_num1_2  + ' / ' + other_num1_3  + ' / ' + other_num1_4);
-        alert(sir_num1_1   + ' / ' + sir_num1_2    + ' / ' + sir_num1_3    + ' / ' + sir_num1_4);
+        
+        // check self_num1_1
+        if(self_num1_1.length == 0){
+                //alert('一.責任及態度 - 是否主動積極 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num1_2
+        else if(self_num1_2.length == 0){
+                //alert('一.責任及態度 - 主管交代是否配合 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num1_3
+        else if(self_num1_3.length == 0){
+                //alert('一.責任及態度 - 專注力 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num1_4
+        else if(self_num1_4.length == 0){
+                //alert('一.責任及態度 - 不浮誇 , 不欺騙 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num2_1
+        else if(self_num2_1.length == 0){
+                //alert('二.工作能力 - 對自身工作是否嚴謹 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num2_2
+        else if(self_num2_2.length == 0){
+                //alert('二.工作能力 - 對專業技能是否專精 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num2_3
+        else if(self_num2_3.length == 0){
+                //alert('二.工作能力 - 對產品與技術是否全盤了解 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num3_1
+        else if(self_num3_1.length == 0){
+                //alert('三.學習狀況 - 是否願接受新事務及挑戰 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num3_2
+        else if(self_num3_2.length == 0){
+                //alert('三.學習狀況 - 進入新事務的快慢 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num3_3
+        else if(self_num3_3.length == 0){
+                //alert('三.學習狀況 - 對學習專業是否認真 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num4_1
+        else if(self_num4_1.length == 0){
+                //alert('四.自主行為 - 服裝儀容及衛生管理 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num4_2
+        else if(self_num4_2.length == 0){
+                //alert('四.自主行為 - 對品質觀念是否落實 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num4_3
+        else if(self_num4_3.length == 0){
+                //alert('四.自主行為 - 對清潔設備是否落實 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num4_4
+        else if(self_num4_4.length == 0){
+                //alert('四.自主行為 - 對器材機具是否愛護 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num5_1
+        else if(self_num5_1.length == 0){
+                //alert('五.工作狀態 - 成本意識(不浪費) , 自評不能空白 !');
+                exit();
+        }
+        // check self_num5_2
+        else if(self_num5_2.length == 0){
+                //alert('五.工作狀態 - 動作是否俐落 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num5_3
+        else if(self_num5_3.length == 0){
+                //alert('五.工作狀態 - 對SOP是否遵從 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num6_1
+        else if(self_num6_1.length == 0){
+                //alert('六.團隊默契 - 對同儕及上級相處 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num6_2
+        else if(self_num6_2.length == 0){
+                //alert('六.團隊默契 - 主動協助 , 自評不能空白 !');
+                exit();
+        }
+        // check self_num6_3
+        else if(self_num6_3.length == 0){
+                //alert('六.團隊默契 - 溝通協調 , 自評不能空白 !');
+                exit();
+        }
+        else if(job_title == '經理') {
+                //alert(self_total);
+                exit();
+        }
+        else if(job_title == '課長') {
+                //alert(self_total);
+                exit();
+        }
+        else{
+                $.ajax({
+                        type:"POST",
+                        url:"/submit_add_check_member_data",
+                        data:{
+                                'employee_id':employee_id,
+                                'employee_name':employee_name,
+                                'department_id':department_id,
+                                'department_name':department_name,
+                                'job_title':job_title,
+                                'b_date':b_date,
+                                'end_date':end_date,
+                                'check_year':check_year,
+                                'check_month':check_month,
+                                'self_num1_1':self_num1_1,
+                                'self_num1_2':self_num1_2,
+                                'self_num1_3':self_num1_3,
+                                'self_num1_4':self_num1_4,
+                                'self_num2_1':self_num2_1,
+                                'self_num2_2':self_num2_2,
+                                'self_num2_3':self_num2_3,
+                                'self_num3_1':self_num3_1,
+                                'self_num3_2':self_num3_2,
+                                'self_num3_3':self_num3_3,
+                                'self_num4_1':self_num4_1,
+                                'self_num4_2':self_num4_2,
+                                'self_num4_3':self_num4_3,
+                                'self_num4_4':self_num4_4,
+                                'self_num5_1':self_num5_1,
+                                'self_num5_2':self_num5_2,
+                                'self_num5_3':self_num5_3,
+                                'self_num6_1':self_num6_1,
+                                'self_num6_2':self_num6_2,
+                                'self_num6_3':self_num6_3,
+                                'self_total':self_total
+                        },
 
-        alert(self_num2_1  + ' / ' + self_num2_2   + ' / ' + self_num2_3);
-        alert(self_num3_1  + ' / ' + self_num3_2   + ' / ' + self_num3_3);
-        alert(self_num4_1  + ' / ' + self_num4_2   + ' / ' + self_num4_3 + ' / ' + self_num4_4);
-        alert(self_num5_1  + ' / ' + self_num5_2   + ' / ' + self_num5_3);
-        alert(self_num6_1  + ' / ' + self_num6_2   + ' / ' + self_num6_3);
-
-        alert(comment + ' / ' + self_total + ' / ' + other_total + ' / ' + sir_total + ' / ' + other_plus_total + ' / ' + final_total + ' / ' + final_comment);
-
-        exit();
-
-        $.ajax({
-                type:"POST",
-                url:"/submit_add_check_member_data",
-                data:{
-                        'employee_id':employee_id,
-                        'employee_name':employee_name,
-                        'department_id':department_id,
-                        'department_name':department_name,
-                        'b_date':b_date,
-                        'end_date':end_date,
-                        'check_year':check_year,
-                        'check_month':check_month
-                },
-                datatype:"html",
-                        error:function(xhr , ajaxError , throwError){
-                        alert(xhr.status);
-                        alert(xhr.responseText);
-                        alert(throwError);
-                        alert(ajaxError);
-                },
-                success:function(res){
-                        
-                        $("#load_check_form").show(1000).html(res);
-                        
-                        // scroll page bottom to page top
-                        goto_top();
-                        
-                        //location.reload(true);
-                },
-                beforeSend:function(){
-                        $('#status').html("loading 新增考核人員表單資料 ...").css({'color':'blue'});
-                },
-                complete:function(){
-                        $('#status').css({'color':'white'});
-                }
-        });
+                        datatype:"html",
+                                error:function(xhr , ajaxError , throwError){
+                                alert(xhr.status);
+                                alert(xhr.responseText);
+                                alert(throwError);
+                                alert(ajaxError);
+                        },
+                        success:function(res){
+                                
+                                $("#load_check_form").show(1000).html(res);
+                                
+                                // scroll page bottom to page top
+                                goto_top();
+                                
+                                //location.reload(true);
+                        },
+                        beforeSend:function(){
+                                $('#status').html("loading 新增考核人員表單資料 ...").css({'color':'blue'});
+                        },
+                        complete:function(){
+                                $('#status').css({'color':'white'});
+                        }
+                });
+        }
+        
 
 }
 
@@ -212,29 +374,30 @@ function submit_add_check_account(){
         var compyany_id     = $('#company_id').val()
         var end_date        = $('#end_date').val()
         
+        
         // check employee_id
         if(employee_id.length == 0){
-                alert('工號不能空白 !');
+        //        alert('工號不能空白 !');
                 exit();        
         }
         // check employee_name
         else if(employee_name.length == 0){
-                alert('姓名不能空白 !');
+                //alert('姓名不能空白 !');
                 exit();        
         }
         // check login_id
         else if(login_id.length == 0){
-                alert('帳號不能空白 !');
+                //alert('帳號不能空白 !');
                 exit();        
         }
         // check mobile
         else if(mobile.length == 0){
-                alert('密碼不能空白 !');
+                //alert('密碼不能空白 !');
                 exit();        
         }
         // check end_date
         else if(end_date.length == 0){
-                alert('到職不能空白 !');
+                //alert('到職不能空白 !');
                 exit();        
         }
         else{
@@ -330,7 +493,7 @@ function load_account_data(user){
                         $("#load_check_form").show(1000).html(res);
                         
                         // scroll page bottom to page top
-                        goto_top();
+                        //goto_top();
                         
                         //location.reload(true);
                 },
@@ -376,10 +539,8 @@ function auto_plus_other_plus_num(){
         var other_plus_num6       = $('#sir_num8_2').val();
         var other_plus_num7       = $('#sir_num8_3').val();
         var other_plus_num8       = $('#sir_num8_4').val();
-        
        
         // auto plus normal work time
-        //var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5)  + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
         var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5) + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
         
         $('#other_plus_total').val(auto_plus_other_plus_number);
@@ -424,12 +585,9 @@ function auto_plus_sir_num(){
         var other_plus_num6       = $('#sir_num8_2').val();
         var other_plus_num7       = $('#sir_num8_3').val();
         var other_plus_num8       = $('#sir_num8_4').val();
-        
        
         // auto plus normal work time
-        //var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5)  + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
         var auto_plus_other_plus_number = Number(other_plus_num1) + Number(other_plus_num2) + Number(other_plus_num3) + Number(other_plus_num4) + Number(other_plus_num5) + Number(other_plus_num6) + Number(other_plus_num7) + Number(other_plus_num8);
-
 
         $('#other_plus_total').val(auto_plus_other_plus_number);
         $('#sir_total').val(auto_plus_sir_number);
@@ -461,17 +619,11 @@ function auto_plus_self_num(){
         var self_num18       = $('#self_num6_1').val();
         var self_num19       = $('#self_num6_2').val();
         var self_num20       = $('#self_num6_3').val();
-        
        
         // auto plus normal work time
         var auto_plus_self_number = (Number(self_num1) + Number(self_num2) + Number(self_num3)  + Number(self_num4)  + Number(self_num5)  + Number(self_num6) + Number(self_num7) + Number(self_num8) + Number(self_num9)  + Number(self_num10) + Number(self_num11) + Number(self_num12) + Number(self_num13) + Number(self_num14) + Number(self_num15) + Number(self_num16) + Number(self_num17) + Number(self_num18) + Number(self_num19) + Number(self_num20)).toFixed(0);
         
         $('#self_total').val(auto_plus_self_number);
-        
-        // auto plus total work time
-        //var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
-
-        //$('#auto_plus_total_work_time').val(auto_plus_total_work_time_val);
 } 
 
 function submit_work_time_3(){
@@ -1057,7 +1209,8 @@ function auto_plus_availability_work_time(){
         $('#auto_plus_availability_work_time').show().html(auto_plus_availability_work_time_val);
         
         // auto plus total work time
-        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+        //var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text())).toFixed(1)
 
         $('#auto_plus_total_work_time').val(auto_plus_total_work_time_val);
 }
@@ -1084,7 +1237,8 @@ function auto_plus_over_work_time(){
 
 
         // auto plus total work time
-        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+        //var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text())).toFixed(1)
 
         $('#auto_plus_total_work_time').val(auto_plus_total_work_time_val);
 }  
@@ -1110,7 +1264,8 @@ function auto_plus_normal_work_time(){
         $('#auto_plus_normal_work_time').show().html(auto_plus_normal_work_time_val);
 
         // auto plus total work time
-        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+        //var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text()) + Number($('#auto_plus_availability_work_time').text())).toFixed(1)
+        var auto_plus_total_work_time_val = (Number($('#auto_plus_over_work_time').text()) + Number($('#auto_plus_normal_work_time').text())).toFixed(1)
 
         $('#auto_plus_total_work_time').val(auto_plus_total_work_time_val);
 
