@@ -463,7 +463,7 @@ def submit_add_check_member_data():
                 self_num6_3     = request.form['self_num6_3']
                 self_total      = request.form['self_total']
 
-                session['employee_id'] = request.form['employee_id']
+                session['employee_id']   = request.form['employee_id']
                 session['end_date']      = request.form['end_date']
 
                 db.submit_add_check_member_data(employee_id , employee_name , department_id , department_name , job_title , b_date , end_date , check_year , check_month , self_num1_1 , self_num1_2 , self_num1_3 , self_num1_4 , self_num2_1 , self_num2_2 , self_num2_3 , self_num3_1 , self_num3_2 , self_num3_3 , self_num4_1 , self_num4_2 , self_num4_3 , self_num4_4 , self_num5_1 , self_num5_2 , self_num5_3 , self_num6_1 , self_num6_2 , self_num6_3  , self_total)
@@ -474,7 +474,7 @@ def submit_add_check_member_data():
                 factory_work_station = db.factory_work_station()
                 a_work_no            = session['employee_id']
                 a_name               = session['user']
-                a_end_date           = session['end_date']
+                a_end_date           = db.search_item('end_date' , session['user']) 
                 a_check_year         = db.search_member_item('check_year' , user)
                 a_check_month        = db.search_member_item('check_month' , user)
                 a_job_title          = db.factory_check_form_item(user)
