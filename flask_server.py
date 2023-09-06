@@ -469,7 +469,7 @@ def submit_add_check_member_data():
                 # main content 
                 #################
                 factory_work_station = db.factory_work_station()
-                a_work_no            = db.search_item('employee_id' , user)
+                a_work_no            = employee_id
                 a_name               = session['user']
                 a_end_date           = db.search_item('end_date' , user)
                 a_check_year         = db.search_member_item('check_year' , user)
