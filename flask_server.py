@@ -469,9 +469,9 @@ def submit_add_check_member_data():
                 # main content 
                 #################
                 factory_work_station = db.factory_work_station()
-                a_work_no            = db.search_item('employee_id' , user)
-                a_name               = db.search_item('employee_name' , user)
-                a_end_date           = db.search_item('end_date' , user)
+                a_work_no            = db.search_member_item('employee_id' , user)
+                a_name               = db.search_member_item('employee_name' , user)
+                a_end_date           = db.search_member_item('end_date' , user)
                 a_check_year         = db.search_member_item('check_year' , user)
                 a_check_month        = db.search_member_item('check_month' , user)
                 a_job_title          = db.factory_check_form_item(user)
