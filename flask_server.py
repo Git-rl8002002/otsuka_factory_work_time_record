@@ -402,97 +402,89 @@ def department_no_search():
 ##################################
 @app.route("/submit_add_check_member_data" , methods=['GET','POST'])
 def submit_add_check_member_data():
-    if 'user' in session:
+    #if 'user' in session:
         
-        ### operation record title
-        operation_record_title = '生產二部 - 新增人員考核表資料'    
+    ### operation record title
+    operation_record_title = '生產二部 - 新增人員考核表資料'    
 
-        ### session 
-        user = session['user']
-        lv   = session['lv']
-        login_code = session['login_code']
-        dep_id     = session['department_id']
+    ### session 
+    user = session['user']
+    lv   = session['lv']
+    login_code = session['login_code']
+    dep_id     = session['department_id']
 
-        ### r_time
-        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
-        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
-        r_year  = time.strftime("%Y" , time.localtime())
-        r_month = time.strftime("%m" , time.localtime())
+    ### r_time
+    r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+    r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+    r_year  = time.strftime("%Y" , time.localtime())
+    r_month = time.strftime("%m" , time.localtime())
 
-        ### check repeat login
-        check_repeat_login = db.check_login_code(user,login_code)
+    ### check repeat login
+    check_repeat_login = db.check_login_code(user,login_code)
 
-        if check_repeat_login == 'ok':
-            
-            ### operation record
-            db.operation_record(r_time,user,login_code,operation_record_title)    
-            
-            #################
-            # main content 
-            #################
-            if request.method == 'POST':
-                
-                employee_id     = request.form['employee_id']
-                employee_name   = request.form['employee_name']
-                department_id   = request.form['department_id']
-                department_name = request.form['department_name']
-                job_title       = request.form['job_title']
-                b_date          = request.form['b_date']
-                end_date        = request.form['end_date']
-                check_year      = request.form['check_year']
-                check_month     = request.form['check_month']
-                self_num1_1     = request.form['self_num1_1']
-                self_num1_2     = request.form['self_num1_2']
-                self_num1_3     = request.form['self_num1_3']
-                self_num1_4     = request.form['self_num1_4']
-                self_num2_1     = request.form['self_num2_1']
-                self_num2_2     = request.form['self_num2_2']
-                self_num2_3     = request.form['self_num2_3']
-                self_num3_1     = request.form['self_num3_1']
-                self_num3_2     = request.form['self_num3_2']
-                self_num3_3     = request.form['self_num3_3']
-                self_num4_1     = request.form['self_num4_1']
-                self_num4_2     = request.form['self_num4_2']
-                self_num4_3     = request.form['self_num4_3']
-                self_num4_4     = request.form['self_num4_4']
-                self_num5_1     = request.form['self_num5_1']
-                self_num5_2     = request.form['self_num5_2']
-                self_num5_3     = request.form['self_num5_3']
-                self_num6_1     = request.form['self_num6_1']
-                self_num6_2     = request.form['self_num6_2']
-                self_num6_3     = request.form['self_num6_3']
-                self_total      = request.form['self_total']
+    #if check_repeat_login == 'ok':
+        
+    ### operation record
+    db.operation_record(r_time,user,login_code,operation_record_title)    
+    
+    #################
+    # main content 
+    #################
+    if request.method == 'POST':
+        
+        employee_id     = request.form['employee_id']
+        employee_name   = request.form['employee_name']
+        department_id   = request.form['department_id']
+        department_name = request.form['department_name']
+        job_title       = request.form['job_title']
+        b_date          = request.form['b_date']
+        end_date        = request.form['end_date']
+        check_year      = request.form['check_year']
+        check_month     = request.form['check_month']
+        self_num1_1     = request.form['self_num1_1']
+        self_num1_2     = request.form['self_num1_2']
+        self_num1_3     = request.form['self_num1_3']
+        self_num1_4     = request.form['self_num1_4']
+        self_num2_1     = request.form['self_num2_1']
+        self_num2_2     = request.form['self_num2_2']
+        self_num2_3     = request.form['self_num2_3']
+        self_num3_1     = request.form['self_num3_1']
+        self_num3_2     = request.form['self_num3_2']
+        self_num3_3     = request.form['self_num3_3']
+        self_num4_1     = request.form['self_num4_1']
+        self_num4_2     = request.form['self_num4_2']
+        self_num4_3     = request.form['self_num4_3']
+        self_num4_4     = request.form['self_num4_4']
+        self_num5_1     = request.form['self_num5_1']
+        self_num5_2     = request.form['self_num5_2']
+        self_num5_3     = request.form['self_num5_3']
+        self_num6_1     = request.form['self_num6_1']
+        self_num6_2     = request.form['self_num6_2']
+        self_num6_3     = request.form['self_num6_3']
+        self_total      = request.form['self_total']
 
-                res = db.submit_add_check_member_data(employee_id , employee_name , department_id , department_name , job_title , b_date , end_date , check_year , check_month , self_num1_1 , self_num1_2 , self_num1_3 , self_num1_4 , self_num2_1 , self_num2_2 , self_num2_3 , self_num3_1 , self_num3_2 , self_num3_3 , self_num4_1 , self_num4_2 , self_num4_3 , self_num4_4 , self_num5_1 , self_num5_2 , self_num5_3 , self_num6_1 , self_num6_2 , self_num6_3  , self_total)
-                
-                factory_work_station = db.factory_work_station()
-                a_work_no            = db.search_item('employee_id' , user)
-                a_name               = db.search_item('employee_name' , user)
-                a_end_date           = db.search_item('end_date' , user)
-                a_check_year         = db.search_member_item('check_year' , user)
-                a_check_month        = db.search_member_item('check_month' , user)
-                a_job_title          = db.factory_check_form_item(user)
-                a_member_check_list  = db.factory_check_form_list()
-                res_check_list       = db.check_add_check_member_list(user)
+        res = db.submit_add_check_member_data(employee_id , employee_name , department_id , department_name , job_title , b_date , end_date , check_year , check_month , self_num1_1 , self_num1_2 , self_num1_3 , self_num1_4 , self_num2_1 , self_num2_2 , self_num2_3 , self_num3_1 , self_num3_2 , self_num3_3 , self_num4_1 , self_num4_2 , self_num4_3 , self_num4_4 , self_num5_1 , self_num5_2 , self_num5_3 , self_num6_1 , self_num6_2 , self_num6_3  , self_total)
+        
+        factory_work_station = db.factory_work_station()
+        a_work_no            = db.search_item('employee_id' , user)
+        a_name               = db.search_item('employee_name' , user)
+        a_end_date           = db.search_item('end_date' , user)
+        a_check_year         = db.search_member_item('check_year' , user)
+        a_check_month        = db.search_member_item('check_month' , user)
+        a_job_title          = db.factory_check_form_item(user)
+        a_member_check_list  = db.factory_check_form_list()
+        res_check_list       = db.check_add_check_member_list(user)
 
-                logging.info(a_work_no + ' / ' + a_name + ' / ' + a_end_date)
-
-                if res == 'ok':
-
-                    res = db.check_add_check_member_data(a_name , a_check_year , a_check_month)
-                    return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list)
-                        
-                elif res == 'no':
-
-                    success_msg = check_year + ' / '+ check_month + ' , 考核表已填.'
-                    status = 'done'
-                    
-                    return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list)
+        if res == 'ok':
+            return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list)
                 
         else:
-            return redirect(url_for('logout'))
+            return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list)
+                
+        #else:
+        #    return redirect(url_for('logout'))
 
-    return redirect(url_for('login')) 
+    #return redirect(url_for('login')) 
 
 ##############################
 # /submit_add_check_account
@@ -702,7 +694,7 @@ def load_account_data():
 # /prouuction_2_work_check_record
 ####################################
 @app.route("/production_2_work_check_record")
-def prouuction_2_work_check_record():
+def production_2_work_check_record():
     if 'user' in session:
         
         ### operation record title

@@ -205,6 +205,7 @@ class web_cloud_dao:
 
             if self.res is not None:
                 return self.res
+            
         
         except Exception as e:
             logging.info('< Error > check_add_check_member_list : ' + str(e))
@@ -243,8 +244,11 @@ class web_cloud_dao:
     # submit_add_check_member_data
     #################################
     def submit_add_check_member_data(self , employee_id , employee_name , department_id , department_name , job_title , b_date , end_date , check_year , check_month , self_num1_1 , self_num1_2 , self_num1_3 , self_num1_4 , self_num2_1 , self_num2_2 , self_num2_3 , self_num3_1 , self_num3_2 , self_num3_3 , self_num4_1 , self_num4_2 , self_num4_3 , self_num4_4 , self_num5_1 , self_num5_2 , self_num5_3 , self_num6_1 , self_num6_2 , self_num6_3  , self_total):
+        
+        self.__connect__()
+        
         try:
-            self.__connect__()
+            
             
             sql = f"select employee_name from check_member where employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
             self.curr.execute(sql)
@@ -269,6 +273,7 @@ class web_cloud_dao:
 
         finally:
             self.__disconnect__()
+            
     
     #############################
     # submit_add_check_account
