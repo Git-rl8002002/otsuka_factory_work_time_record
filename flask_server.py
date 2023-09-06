@@ -422,63 +422,64 @@ def submit_add_check_member_data():
         ### check repeat login
         check_repeat_login = db.check_login_code(user,login_code)
 
-        #if check_repeat_login == 'ok':
+        if check_repeat_login == 'ok':
             
-        ### operation record
-        db.operation_record(r_time,user,login_code,operation_record_title)    
-        
-        #################
-        # main content 
-        #################
-        if request.method == 'POST':
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
             
-            employee_id     = request.form['employee_id']
-            employee_name   = request.form['employee_name']
-            department_id   = request.form['department_id']
-            department_name = request.form['department_name']
-            job_title       = request.form['job_title']
-            b_date          = request.form['b_date']
-            end_date        = request.form['end_date']
-            check_year      = request.form['check_year']
-            check_month     = request.form['check_month']
-            self_num1_1     = request.form['self_num1_1']
-            self_num1_2     = request.form['self_num1_2']
-            self_num1_3     = request.form['self_num1_3']
-            self_num1_4     = request.form['self_num1_4']
-            self_num2_1     = request.form['self_num2_1']
-            self_num2_2     = request.form['self_num2_2']
-            self_num2_3     = request.form['self_num2_3']
-            self_num3_1     = request.form['self_num3_1']
-            self_num3_2     = request.form['self_num3_2']
-            self_num3_3     = request.form['self_num3_3']
-            self_num4_1     = request.form['self_num4_1']
-            self_num4_2     = request.form['self_num4_2']
-            self_num4_3     = request.form['self_num4_3']
-            self_num4_4     = request.form['self_num4_4']
-            self_num5_1     = request.form['self_num5_1']
-            self_num5_2     = request.form['self_num5_2']
-            self_num5_3     = request.form['self_num5_3']
-            self_num6_1     = request.form['self_num6_1']
-            self_num6_2     = request.form['self_num6_2']
-            self_num6_3     = request.form['self_num6_3']
-            self_total      = request.form['self_total']
-
-            db.submit_add_check_member_data(employee_id , employee_name , department_id , department_name , job_title , b_date , end_date , check_year , check_month , self_num1_1 , self_num1_2 , self_num1_3 , self_num1_4 , self_num2_1 , self_num2_2 , self_num2_3 , self_num3_1 , self_num3_2 , self_num3_3 , self_num4_1 , self_num4_2 , self_num4_3 , self_num4_4 , self_num5_1 , self_num5_2 , self_num5_3 , self_num6_1 , self_num6_2 , self_num6_3  , self_total)
-        
             #################
             # main content 
             #################
-            factory_work_station = db.factory_work_station()
-            a_work_no            = db.search_member_item('employee_id' , user)
-            a_name               = db.search_member_item('employee_name' , user)
-            a_end_date           = db.search_member_item('end_date' , user)
-            a_check_year         = db.search_member_item('check_year' , user)
-            a_check_month        = db.search_member_item('check_month' , user)
-            a_job_title          = db.factory_check_form_item(user)
-            a_member_check_list  = db.factory_check_form_list()
-            res_check_list       = db.check_add_check_member_list(user)
+            if request.method == 'POST':
+                
+                employee_id     = request.form['employee_id']
+                employee_name   = request.form['employee_name']
+                department_id   = request.form['department_id']
+                department_name = request.form['department_name']
+                job_title       = request.form['job_title']
+                b_date          = request.form['b_date']
+                end_date        = request.form['end_date']
+                check_year      = request.form['check_year']
+                check_month     = request.form['check_month']
+                self_num1_1     = request.form['self_num1_1']
+                self_num1_2     = request.form['self_num1_2']
+                self_num1_3     = request.form['self_num1_3']
+                self_num1_4     = request.form['self_num1_4']
+                self_num2_1     = request.form['self_num2_1']
+                self_num2_2     = request.form['self_num2_2']
+                self_num2_3     = request.form['self_num2_3']
+                self_num3_1     = request.form['self_num3_1']
+                self_num3_2     = request.form['self_num3_2']
+                self_num3_3     = request.form['self_num3_3']
+                self_num4_1     = request.form['self_num4_1']
+                self_num4_2     = request.form['self_num4_2']
+                self_num4_3     = request.form['self_num4_3']
+                self_num4_4     = request.form['self_num4_4']
+                self_num5_1     = request.form['self_num5_1']
+                self_num5_2     = request.form['self_num5_2']
+                self_num5_3     = request.form['self_num5_3']
+                self_num6_1     = request.form['self_num6_1']
+                self_num6_2     = request.form['self_num6_2']
+                self_num6_3     = request.form['self_num6_3']
+                self_total      = request.form['self_total']
 
-            return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list)
+                db.submit_add_check_member_data(employee_id , employee_name , department_id , department_name , job_title , b_date , end_date , check_year , check_month , self_num1_1 , self_num1_2 , self_num1_3 , self_num1_4 , self_num2_1 , self_num2_2 , self_num2_3 , self_num3_1 , self_num3_2 , self_num3_3 , self_num4_1 , self_num4_2 , self_num4_3 , self_num4_4 , self_num5_1 , self_num5_2 , self_num5_3 , self_num6_1 , self_num6_2 , self_num6_3  , self_total)
+            
+                #################
+                # main content 
+                #################
+                factory_work_station = db.factory_work_station()
+                a_work_no            = db.search_member_item('employee_id' , user)
+                #a_name              = db.search_member_item('employee_name' , user)
+                a_name               = user
+                a_end_date           = db.search_member_item('end_date' , user)
+                a_check_year         = db.search_member_item('check_year' , user)
+                a_check_month        = db.search_member_item('check_month' , user)
+                a_job_title          = db.factory_check_form_item(user)
+                a_member_check_list  = db.factory_check_form_list()
+                res_check_list       = db.check_add_check_member_list(user)
+
+                return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list)
                 
         else:
             return redirect(url_for('logout'))
