@@ -1,3 +1,117 @@
+function submit_check_member_2(){
+       
+       var sir_num1_1 = $('#sir_num1_1').val();
+       var sir_num1_2 = $('#sir_num1_2').val();
+       var sir_num1_3 = $('#sir_num1_3').val();
+       var sir_num1_4 = $('#sir_num1_4').val();
+
+       var sir_num2_1 = $('#sir_num2_1').val();
+       var sir_num2_2 = $('#sir_num2_2').val();
+       var sir_num2_3 = $('#sir_num2_3').val();
+       
+       var sir_num3_1 = $('#sir_num3_1').val();
+       var sir_num3_2 = $('#sir_num3_2').val();
+       var sir_num3_3 = $('#sir_num3_3').val();
+
+       var sir_num4_1 = $('#sir_num4_1').val();
+       var sir_num4_2 = $('#sir_num4_2').val();
+       var sir_num4_3 = $('#sir_num4_3').val();
+       var sir_num4_4 = $('#sir_num4_4').val();
+
+       var sir_num5_1 = $('#sir_num5_1').val();
+       var sir_num5_2 = $('#sir_num5_2').val();
+       var sir_num5_3 = $('#sir_num5_3').val();
+
+       var sir_num6_1 = $('#sir_num6_1').val();
+       var sir_num6_2 = $('#sir_num6_2').val();
+       var sir_num6_3 = $('#sir_num6_3').val();
+
+       var sir_num7_1 = $('#sir_num7_1').val();
+       var sir_num7_2 = $('#sir_num7_2').val();
+       var sir_num7_3 = $('#sir_num7_3').val();
+       var sir_num7_4 = $('#sir_num7_4').val();
+
+       var sir_num8_1 = $('#sir_num8_1').val();
+       var sir_num8_2 = $('#sir_num8_2').val();
+       var sir_num8_3 = $('#sir_num8_3').val();
+       var sir_num8_4 = $('#sir_num8_4').val();
+       var sir_num8_5 = $('#sir_num8_5').val();
+
+       var comment          = $('#comment').val();
+       var sir_total        = $('#sir_total').val();
+       var other_plus_total = $('#other_plus_total').val();
+       var final_total      = $('#final_total').val();
+       var final_comment    = $('#final_comment').val();
+
+       $.ajax({
+                type:"POST",
+                url:"/update_submit_check_member_2",
+                data:{
+                        'employee_id':employee_id,
+                        'employee_name':employee_name,
+                        'department_id':department_id,
+                        'department_name':department_name,
+                        'sir_num1_1':sir_num1_1,
+                        'sir_num1_2':sir_num1_2,
+                        'sir_num1_3':sir_num1_3,
+                        'sir_num1_4':sir_num1_4,
+                        'sir_num2_1':sir_num2_1,
+                        'sir_num2_2':sir_num2_2,
+                        'sir_num2_3':sir_num2_3,
+                        'sir_num3_1':sir_num3_1,
+                        'sir_num3_2':sir_num3_2,
+                        'sir_num3_3':sir_num3_3,
+                        'sir_num4_1':sir_num4_1,
+                        'sir_num4_2':sir_num4_2,
+                        'sir_num4_3':sir_num4_3,
+                        'sir_num4_4':sir_num4_4,
+                        'sir_num5_1':sir_num5_1,
+                        'sir_num5_2':sir_num5_2,
+                        'sir_num5_3':sir_num5_3,
+                        'sir_num6_1':sir_num6_1,
+                        'sir_num6_2':sir_num6_2,
+                        'sir_num6_3':sir_num6_3,
+                        'sir_num7_1':sir_num7_1,
+                        'sir_num7_2':sir_num7_2,
+                        'sir_num7_3':sir_num7_3,
+                        'sir_num7_4':sir_num7_4,
+                        'sir_num8_1':sir_num8_1,
+                        'sir_num8_2':sir_num8_2,
+                        'sir_num8_3':sir_num8_3,
+                        'sir_num8_4':sir_num8_4,
+                        'sir_num8_5':sir_num8_5,
+                        'comment':comment,
+                        'sir_total':sir_total,
+                        'other_plus_total':other_plus_total,
+                        'final_total':final_total,
+                        'final_comment':final_comment
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#load_check_form").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("save 主官評分 考核表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+        
+}
+
 function load_check_member_list(){
         var employee_id         = $('#a_work_no').val();
         var employee_name       = $('#a_name').val();
@@ -36,7 +150,6 @@ function load_check_member_list(){
                         $('#status').css({'color':'white'});
                 }
         });
-        
 }
 
 function department_name_search(){
@@ -811,6 +924,8 @@ function submit_work_time_3(){
         });
 
 }
+
+
 
 function submit_work_time_1(){
         

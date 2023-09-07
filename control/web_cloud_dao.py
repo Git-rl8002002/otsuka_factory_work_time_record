@@ -123,10 +123,54 @@ class web_cloud_dao:
             #self.curr_mssql.close()
             #self.conn_mssql.close()
 
+    #################################
+    # update_submit_check_member_2
+    #################################
+    def update_submit_check_member_2(self , employee_id , employee_name , department_id , sir_num1_1 , sir_num1_2):
+        
+        self.__connect__()
+
+        try:
+            #sql = f"update check_member set sir_item_1_1='{sir_num1_1}' , sir_item_1_2='{sir_num1_2}' , sir_item_1_3='{sir_num1_3}' , sir_item_1_4='{sir_num1_4}'   where employee_id='{employee_id}' and employee_name='{employee_name}' and department_id='{department_id}'"
+            sql = f"update check_member set sir_item_1_1='{sir_num1_1}' , sir_item_1_2='{sir_num1_2}' where employee_id='{employee_id}' and employee_name='{employee_name}' and department_id='{department_id}'"
+            self.curr.execute(sql)
+            self.conn.commit()
+
+        except Exception as e:
+            logging.info('< Error > update_submit_check_member_2 : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
+    #####################################
+    # check_add_check_member_self_list
+    #####################################
+    def check_add_check_member_self_list(self):
+        
+        self.__connect__()
+
+        try:
+            
+            sql = f"select check_year , check_month , employee_name from check_member where department_id='1BA' order by no"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchall()
+
+            if self.res is not None:
+                return self.res
+        
+        except Exception as e:
+            logging.info('< Error > check_add_check_member_self_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
     #######################
     # search_member_item
     #######################
     def search_member_item(self , item , a_user):
+        
+        self.__connect__()
+
         try:
             
             '''
@@ -139,9 +183,6 @@ class web_cloud_dao:
 
             return self.res[0]
             '''
-        
-            
-            self.__connect__()
             
             sql = f"select {item} from check_member where employee_name='{a_user}'"
             self.curr.execute(sql)
@@ -162,6 +203,9 @@ class web_cloud_dao:
     # search_item
     ################
     def search_item(self , item , a_user):
+        
+        self.__connect__()
+        
         try:
             
             '''
@@ -175,14 +219,12 @@ class web_cloud_dao:
             return self.res[0]
             '''
         
-            
-            self.__connect__()
-            
             sql = f"select {item} from hr_a where employee_name='{a_user}'"
             self.curr.execute(sql)
             self.res = self.curr.fetchone()
             
-            return self.res[0]
+            if self.res is not None:
+                return self.res[0]
         
         except Exception as e:
             logging.info('< Error > search_item : ' + str(e))
@@ -196,14 +238,20 @@ class web_cloud_dao:
     # check_add_check_member_list
     ################################
     def check_add_check_member_list(self , employee_name):
+        
+        self.__connect__()
+        
         try:
-            self.__connect__()
             
             sql = f"select check_year , check_month from check_member where employee_name='{employee_name}' order by b_date"
             self.curr.execute(sql)
             self.res = self.curr.fetchall()
 
             if self.res is not None:
+                return self.res
+            
+            else:
+                self.res = '沒考核紀錄。'
                 return self.res
             
         
@@ -235,7 +283,7 @@ class web_cloud_dao:
                 return res_a
         
         except Exception as e:
-            logging.info('< Error > submit_add_check_member_data : ' + str(e))
+            logging.info('< Error > check_add_check_member_data : ' + str(e))
 
         finally:
             self.__disconnect__()
@@ -249,7 +297,6 @@ class web_cloud_dao:
         
         try:
             
-            
             sql = f"select employee_name from check_member where employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
             self.curr.execute(sql)
             self.res = self.curr.fetchone()
@@ -260,20 +307,11 @@ class web_cloud_dao:
                 self.curr.execute(sql2)
                 self.conn.commit()
 
-                res_a = 'ok'
-                return res_a
-                
-            else: 
-
-                res_a = 'no'
-                return res_a
-        
         except Exception as e:
             logging.info('< Error > submit_add_check_member_data : ' + str(e))
 
         finally:
-            self.__disconnect__()
-            
+            self.__disconnect__() 
     
     #############################
     # submit_add_check_account
@@ -377,14 +415,17 @@ class web_cloud_dao:
     # factory_check_form_item
     ############################
     def factory_check_form_item(self , user):
+        
+        self.__connect__()
+        
         try:
-            self.__connect__()
             
             sql = f"select job_title_name from hr_a where employee_name='{user}'"
             self.curr.execute(sql)
             self.res = self.curr.fetchone()
             
-            return self.res[0]
+            if self.res is not None:
+                return self.res[0]
         
         except Exception as e:
             logging.info('< Error > factory_check_form_item : ' + str(e))
@@ -396,14 +437,17 @@ class web_cloud_dao:
     # factory_check_form_list
     ############################
     def factory_check_form_list(self):
+        
+        self.__connect__()
+        
         try:
-            self.__connect__()
             
             sql = "select employee_name from hr_a where department_code like '1B%' and job_title_name != '經理' order by no desc"
             self.curr.execute(sql)
             self.res = self.curr.fetchall()
             
-            return self.res
+            if self.res is not None:
+                return self.res
         
         except Exception as e:
             logging.info('< Error > factory_check_form_list : ' + str(e))
@@ -496,14 +540,17 @@ class web_cloud_dao:
     # factory_work_station_3
     ###########################
     def factory_work_station_3(self):
+        
+        self.__connect__()
+        
         try:
-            self.__connect__()
             
             sql = "select distinct c_content from work_station_3 order by e_name desc"
             self.curr.execute(sql)
             self.res = self.curr.fetchall()
             
-            return self.res
+            if self.res is not None:
+                return self.res
         
         except Exception as e:
             logging.info('< Error > factory_work_station_3 : ' + str(e))
@@ -685,13 +732,14 @@ class web_cloud_dao:
     #####################
     def operation_record(self,r_time,user,login_code,item):
         
+        self.__connect__()
+        
         try:
             self.r_time     = r_time
             self.user       = user
             self.item       = item
             self.login_code = login_code
-
-            self.__connect__()
+            
             self.sql = "insert into operation_record(r_time,a_user,item,login_code) value('{0}','{1}','{2}','{3}')".format(self.r_time , self.user , self.item , self.login_code)
             self.curr.execute(self.sql)
 
@@ -762,8 +810,10 @@ class web_cloud_dao:
         try:
             self.conn = pymysql.connect(host=otsuka_factory['host'],port=otsuka_factory['port'],user=otsuka_factory['user'],password=otsuka_factory['pwd'],database=otsuka_factory['db'],charset=otsuka_factory['charset'])
             self.curr = self.conn.cursor()
+
         except Exception as e:
             logging.info("< ERROR > __connect__ " + str(e))
+
         finally:
             pass
 
@@ -775,8 +825,10 @@ class web_cloud_dao:
         try:
             self.conn.commit()
             self.conn.close()
+
         except Exception as e:
             logging.info("< ERROR > __disconnect__ : " + str(e))
+
         finally:
             pass
 

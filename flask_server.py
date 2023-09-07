@@ -686,11 +686,96 @@ def load_account_data():
             check_month         = db.load_account_data_form_item('check_month' , load_user)
 
             return render_template('ajax/load_account_data.html' , user=user , lv=lv , title=title , r_date=r_date , res=res , a_job_title=a_job_title , a_member_check_list=a_member_check_list , check_year=check_year , check_month=check_month)
+            #return render_template('ajax/load_account_data_none.html')
         
         #else:
         #    return redirect(url_for('logout'))
 
     return redirect(url_for('login')) 
+
+##################################
+# /update_submit_check_member_2
+##################################
+@app.route("/update_submit_check_member_2" , methods=['GET','POST'])
+def update_submit_check_member_2():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 主管評 人員考核表'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                employee_id     = request.form['employee_id']
+                employee_name   = request.form['employee_name']
+                department_id   = request.form['department_id']
+                department_name = request.form['department_name']
+                sir_num1_1      = request.form['sir_num1_1']
+                sir_num1_2      = request.form['sir_num1_2']
+                sir_num1_3      = request.form['sir_num1_3']
+                sir_num1_4      = request.form['sir_num1_4']
+                sir_num2_1      = request.form['sir_num2_1']
+                sir_num2_2      = request.form['sir_num2_2']
+                sir_num2_3      = request.form['sir_num2_3']
+                sir_num3_1      = request.form['sir_num3_1']
+                sir_num3_2      = request.form['sir_num3_2']
+                sir_num3_3      = request.form['sir_num3_3']
+                sir_num4_1      = request.form['sir_num4_1']
+                sir_num4_2      = request.form['sir_num4_2']
+                sir_num4_3      = request.form['sir_num4_3']
+                sir_num4_4      = request.form['sir_num4_4']
+                sir_num5_1      = request.form['sir_num5_1']
+                sir_num5_2      = request.form['sir_num5_2']
+                sir_num5_3      = request.form['sir_num5_3']
+                sir_num6_1      = request.form['sir_num6_1']
+                sir_num6_2      = request.form['sir_num6_2']
+                sir_num6_3      = request.form['sir_num6_3']
+                sir_num7_1      = request.form['sir_num7_1']
+                sir_num7_2      = request.form['sir_num7_2']
+                sir_num7_3      = request.form['sir_num7_3']
+                sir_num7_4      = request.form['sir_num7_4']
+                sir_num8_1      = request.form['sir_num8_1']
+                sir_num8_2      = request.form['sir_num8_2']
+                sir_num8_3      = request.form['sir_num8_3']
+                sir_num8_4      = request.form['sir_num8_4']
+                sir_num8_5      = request.form['sir_num8_5']
+                comment         = request.form['comment']
+                other_total     = request.form['other_total']
+                sir_total       = request.form['sir_total']
+                other_plus_total = request.form['other_plus_total']
+                final_total      = request.form['final_total']
+                final_comment    = request.form['final_comment']
+
+                #db.update_submit_check_member_2(employee_id , employee_name , department_id , sir_num1_1 , sir_num1_2 , sir_num1_3 , sir_num1_4 , sir_num2_1 , sir_num2_2 , sir_num2_3 , sir_num3_1 , sir_num3_2 , sir_num3_3 , sir_num4_1 , sir_num4_2 , sir_num4_3 , sir_num4_4 , sir_num5_1 , sir_num5_2 , sir_num5_3 , sir_num6_1 , sir_num6_2 , sir_num6_3 , sir_num7_1 , sir_num7_2 , sir_num7_3 , sir_num7_4 , sir_num8_1 , sir_num8_2 , sir_num8_3 , sir_num8_4 , sir_num8_5 , comment , other_total , sir_total , other_plus_total , final_total , final_comment)
+                db.update_submit_check_member_2(employee_id , employee_name , department_id , sir_num1_1 , sir_num1_2)
+                
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
 
 ####################################
 # /prouuction_2_work_check_record
@@ -737,8 +822,9 @@ def production_2_work_check_record():
             a_job_title          = db.factory_check_form_item(user)
             a_member_check_list  = db.factory_check_form_list()
             res_check_list       = db.check_add_check_member_list(user)
+            res_check_self_list  = db.check_add_check_member_self_list()
 
-            return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list)
+            return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list , res_check_self_list=res_check_self_list)
             
         else:
             return redirect(url_for('logout'))

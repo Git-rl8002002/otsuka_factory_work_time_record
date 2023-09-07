@@ -99,6 +99,7 @@ sir_item_8_1 int null,
 sir_item_8_2 int null,
 sir_item_8_3 int null,
 sir_item_8_4 int null,
+sir_item_8_5 int null,
 
 comment text null,
 
