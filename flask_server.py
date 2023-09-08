@@ -1031,6 +1031,7 @@ def logout():
         session.pop('login_code',None)
         session.pop('ip',None)
         session.pop('lv',None)
+        session.pop('department_id',None)
 
     return redirect(url_for('index'))
 
