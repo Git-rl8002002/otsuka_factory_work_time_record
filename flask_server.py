@@ -264,8 +264,8 @@ def prouuction_3_work_time_record():
             # main content 
             #################
             factory_work_station = db.factory_work_station_3()
-            a_work_no = db.search_item('EmployeeID' , user)
-            a_name    = db.search_item('EmployeeName' , user)
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
 
             return render_template('production_3_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id)
 
@@ -306,8 +306,8 @@ def prouuction_1_work_time_record():
             # main content 
             #################
             factory_work_station = db.factory_work_station_1()
-            a_work_no = db.search_item('EmployeeID' , user)
-            a_name    = db.search_item('EmployeeName' , user)
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
 
             return render_template('production_1_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id)
 
@@ -641,6 +641,68 @@ def load_check_member_self_list():
 
     return redirect(url_for('login')) 
 
+######################
+# /submit_work_time
+######################
+@app.route("/submit_work_time" , methods=['GET','POST'])
+def submit_work_time():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '新增液劑工時紀錄'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                a_work_no           = request.form['a_work_no']
+                a_name              = request.form['a_name']
+                dep_id              = request.form['dep_id']
+                b_date              = request.form['a_date']
+                total_time          = request.form['total_time']
+                normal_time         = request.form['normal_time']
+                over_time           = request.form['over_time']
+                availability_time   = request.form['availability_time']
+                
+                a_work_station_1            = request.form['a_work_station_1'] 
+                a_production_1              = request.form['a_production_1']
+                a_product_no_1              = request.form['a_product_no_1']
+                a_work_normal_time_1        = request.form['a_work_normal_time_1']
+                a_work_over_time_1          = request.form['a_work_over_time_1']
+                a_work_availability_time_1  = request.form['a_work_availability_time_1'] 
+                a_work_remark_1             = request.form['a_work_remark_1']
+
+                logging.info(f"{a_work_no} , {a_name} , {dep_id} , {b_date} , {total_time} , {normal_time} , {over_time} , {availability_time} , {a_work_station_1} , {a_production_1} , {a_product_no_1} , {a_work_normal_time_1} , {a_work_over_time_1} , {a_work_availability_time_1} , {a_work_remark_1}")
+                
+
+                #return render_template('/production_2_work_time_record.html')
+            
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
 
 ############################
 # /load_check_member_data
@@ -684,7 +746,7 @@ def load_check_member_data():
                 res = db.load_check_member_data_list(check_year , check_month , employee_name)
 
                 return render_template('ajax/load_check_member_data_list.html' , res=res)
-        
+            
         else:
             return redirect(url_for('logout'))
 
@@ -906,10 +968,10 @@ def production_2_work_check_record():
     return redirect(url_for('login')) 
 
 ###################################
-# /prouuction_2_work_time_record
+# /production_2_work_time_record
 ###################################
 @app.route("/production_2_work_time_record")
-def prouuction_2_work_time_record():
+def production_2_work_time_record():
     if 'user' in session:
         
         ### operation record title
@@ -937,8 +999,8 @@ def prouuction_2_work_time_record():
             # main content 
             #################
             factory_work_station = db.factory_work_station()
-            a_work_no = db.search_item('EmployeeID' , user)
-            a_name    = db.search_item('EmployeeName' , user)
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
 
             return render_template('production_2_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id)
 

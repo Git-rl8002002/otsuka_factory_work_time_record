@@ -1,19 +1,136 @@
-/*
+/*****************************************************************
+*
 * Author   : JasonHung
 * Date     : 20221102
-* Update   : 20230719
-* Function : otsuka factory work time record
-*/
+* Update   : 20230908
+* Function : otsuka for factory work time system
+*
+******************************************************************/
 
-/*
- * database  tinfar_kedge
- */ 
+/****************************** 
+ *
+ * database : otsuka_factory
+ *
+ ******************************/
 create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 use otsuka_factory;
 
-/* 
+/***************** 
+ *
+ * work_time
+ *
+ *****************/
+create table work_time(
+no int not null primary key AUTO_INCREMENT,
+employee_id int null,
+employee_name varchar(50) null,
+b_date varchar(30) null , 
+total_worktime varchar(50) null,
+department_id varchar(10) null,
+
+w_s_1 varchar(100) null,
+w_s_1_product varchar(100) null,
+w_s_1_num varchar(100) null,
+w_s_1_normal_time varchar(100) null,
+w_s_1_over_time varchar(100) null,
+w_s_1_avail_time varchar(100) null,
+w_s_1_remark varchar(100) null,
+
+w_s_2 varchar(100) null,
+w_s_2_product varchar(100) null,
+w_s_2_num varchar(100) null,
+w_s_2_normal_time varchar(100) null,
+w_s_2_over_time varchar(100) null,
+w_s_2_avail_time varchar(100) null,
+w_s_2_remark varchar(100) null,
+
+w_s_3 varchar(100) null,
+w_s_3_product varchar(100) null,
+w_s_3_num varchar(100) null,
+w_s_3_normal_time varchar(100) null,
+w_s_3_over_time varchar(100) null,
+w_s_3_avail_time varchar(100) null,
+w_s_3_remark varchar(100) null,
+
+w_s_4 varchar(100) null,
+w_s_4_product varchar(100) null,
+w_s_4_num varchar(100) null,
+w_s_4_normal_time varchar(100) null,
+w_s_4_over_time varchar(100) null,
+w_s_4_avail_time varchar(100) null,
+w_s_4_remark varchar(100) null,
+
+w_s_5 varchar(100) null,
+w_s_5_product varchar(100) null,
+w_s_5_num varchar(100) null,
+w_s_5_normal_time varchar(100) null,
+w_s_5_over_time varchar(100) null,
+w_s_5_avail_time varchar(100) null,
+w_s_5_remark varchar(100) null,
+
+w_s_6 varchar(100) null,
+w_s_6_product varchar(100) null,
+w_s_6_num varchar(100) null,
+w_s_6_normal_time varchar(100) null,
+w_s_6_over_time varchar(100) null,
+w_s_6_avail_time varchar(100) null,
+w_s_6_remark varchar(100) null,
+
+w_s_7 varchar(100) null,
+w_s_7_product varchar(100) null,
+w_s_7_num varchar(100) null,
+w_s_7_normal_time varchar(100) null,
+w_s_7_over_time varchar(100) null,
+w_s_7_avail_time varchar(100) null,
+w_s_7_remark varchar(100) null,
+
+w_s_8 varchar(100) null,
+w_s_8_product varchar(100) null,
+w_s_8_num varchar(100) null,
+w_s_8_normal_time varchar(100) null,
+w_s_8_over_time varchar(100) null,
+w_s_8_avail_time varchar(100) null,
+w_s_8_remark varchar(100) null,
+
+w_s_9 varchar(100) null,
+w_s_9_product varchar(100) null,
+w_s_9_num varchar(100) null,
+w_s_9_normal_time varchar(100) null,
+w_s_9_over_time varchar(100) null,
+w_s_9_avail_time varchar(100) null,
+w_s_9_remark varchar(100) null,
+
+w_s_10 varchar(100) null,
+w_s_10_product varchar(100) null,
+w_s_10_num varchar(100) null,
+w_s_10_normal_time varchar(100) null,
+w_s_10_over_time varchar(100) null,
+w_s_10_avail_time varchar(100) null,
+w_s_10_remark varchar(100) null,
+
+w_s_11 varchar(100) null,
+w_s_11_product varchar(100) null,
+w_s_11_num varchar(100) null,
+w_s_11_normal_time varchar(100) null,
+w_s_11_over_time varchar(100) null,
+w_s_11_avail_time varchar(100) null,
+w_s_11_remark varchar(100) null,
+
+w_s_12 varchar(100) null,
+w_s_12_product varchar(100) null,
+w_s_12_num varchar(100) null,
+w_s_12_normal_time varchar(100) null,
+w_s_12_over_time varchar(100) null,
+w_s_12_avail_time varchar(100) null,
+w_s_12_remark varchar(100) null
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/***************** 
+ *
  * check_member
- */
+ *
+ *****************/
 create table check_member(
 no int not null primary key AUTO_INCREMENT,
 employee_id int null,
@@ -116,9 +233,11 @@ sir_check varchar(5) null
 
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/* 
+/***************** 
+ *
  * hr_a
- */
+ *
+ *****************/
 create table hr_a(
 no int not null primary key AUTO_INCREMENT,
 employee_id int null,
@@ -148,9 +267,11 @@ office_phone varchar(50) null,
 addresses varchar(300) null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/* 
+/***************** 
+ *
  * work_station_3
- */
+ *
+ *****************/
 create table work_station_3(
 no int not null primary key AUTO_INCREMENT,
 e_name varchar(10) null,
@@ -213,9 +334,11 @@ insert into work_station_3 (e_name , c_content) VALUES('J','J-確效驗證 , 校
 
 insert into work_station_3 (e_name , c_content) VALUES('C','C-環境清潔');
 
-/* 
+/***************** 
+ *
  * work_station_1
- */
+ *
+ *****************/
 create table work_station_1(
 no int not null primary key AUTO_INCREMENT,
 e_name varchar(10) null,
@@ -286,10 +409,11 @@ insert into work_station_1 (e_name , c_content) VALUES('D','D-請假');
 
 insert into work_station_1 (e_name , c_content) VALUES('J','J-確效驗證 , 校正');
 
-
-/* 
+/***************** 
+ *
  * work_position
- */
+ *
+ *****************/
 create table work_position(
 no int not null primary key AUTO_INCREMENT,
 e_name varchar(10) null,
@@ -300,9 +424,11 @@ insert into work_position (e_name , c_content) VALUES('p1','生一部');
 insert into work_position (e_name , c_content) VALUES('p2','生二部');
 insert into work_position (e_name , c_content) VALUES('p3','生三部');
 
-/* 
+/***************** 
+ *
  * work_station
- */
+ *
+ *****************/
 create table work_station(
 no int not null primary key AUTO_INCREMENT,
 e_name varchar(10) null,
@@ -362,9 +488,11 @@ insert into work_station (e_name , c_content) VALUES('L2','L2-其它 - 參觀活
 insert into work_station (e_name , c_content) VALUES('L3','L3-其它 - 部內會議');
 insert into work_station (e_name , c_content) VALUES('L4','L4-其它 - 部外會議');
 
-/* 
+/***************** 
+ *
  * operation_record
- */
+ *
+ *****************/
 create table operation_record(
 no int not null primary key AUTO_INCREMENT,
 a_user varchar(200) null,
@@ -373,9 +501,11 @@ r_time datetime null,
 item varchar(50) null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-/* 
+/********************* 
+ *
  * login_out_record
- */
+ *
+ *********************/
 create table login_out_record(
 no int not null primary key AUTO_INCREMENT,
 a_user varchar(200) null,
@@ -385,10 +515,11 @@ login_time datetime null,
 logout_time datetime null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
-
-/* 
+/********************* 
+ *
  * account
- */
+ *
+ *********************/
 create table account(
 no int not null primary key AUTO_INCREMENT,
 r_year varchar(100) null,

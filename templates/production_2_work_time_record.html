@@ -179,13 +179,29 @@
         -
         ----------------------------------------------------------------------------------------------------->
         <div class="row my-5">
-            <!---------------------------------------------------------------------------------------------------- 
-             -
-             - lv 3 - normal user
-             -   
-             ----------------------------------------------------------------------------------------------------->
-            <!-- 工時時間記錄表 -->
-            <div id="main_content" class="col-md-12 my-1">
+            
+            <!--------------------
+            -
+            - 工時時間記錄表清單 
+            -
+            ---------------------->
+            <div class="col-md-3 my-1">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 生產二部 - 液劑工時清單</h4>
+                    </div>
+                    <div class="card-body">
+
+                    </div>
+                </div>
+            </div>
+            
+            <!----------------- 
+            -
+            - 工時時間記錄表 
+            -
+            -------------------->
+            <div id="main_content" class="col-md-9 my-1">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 生產二部 - 液劑工時時間記錄表</h4>
@@ -204,6 +220,9 @@
                                 <span class="input-group-text">姓名</span>
                             </div>
                             <input type="text" class="form-control" id="a_name" value="{{ a_name }}" readonly>
+                        
+                        <!-- 部門代號 -->
+                            <input type="hidden" class="form-control" id="department_id" value="{{ dep_id }}">
 
                         <!-- 日期 -->
                             <div class="input-group-prepend">
@@ -435,13 +454,9 @@
                             </tbody>
                         </table>
 
-                        
-
                         <div class="text-center">
                             <button class="btn btn-primary" id="submit_work_time_form" onclick="submit_work_time()">建立</button>
-                        </div>
-
-                                   
+                        </div>   
                         
                     </div>
                 </div>

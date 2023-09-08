@@ -48,83 +48,240 @@ function submit_check_member_2(){
        var final_total      = $('#final_total').val();
        var final_comment    = $('#final_comment').val();
        
-       
+       // check sir_num1_1
+       if(sir_num1_1.length == 0){
+                alert('一.責任及態度 - 是否主動積極 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num1_2
+        else if(sir_num1_2.length == 0){
+                alert('一.責任及態度 - 主管交代是否配合 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num1_3
+        else if(sir_num1_3.length == 0){
+                alert('一.責任及態度 - 專注力 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num1_4
+        else if(sir_num1_4.length == 0){
+                alert('一.責任及態度 - 不浮誇 , 不欺騙 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num2_1
+        else if(sir_num2_1.length == 0){
+                alert('二.工作能力 - 對主身工作是否嚴謹 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num2_2
+        else if(sir_num2_2.length == 0){
+                alert('二.工作能力 - 對專業技能是否專精 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num2_3
+        else if(sir_num2_3.length == 0){
+                alert('二.工作能力 - 對產品與技術是否全盤了解 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num3_1
+        else if(sir_num3_1.length == 0){
+                alert('三.學習狀況 - 是否願接受新事務及挑戰 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num3_2
+        else if(sir_num3_2.length == 0){
+                alert('三.學習狀況 - 進入新事務的快慢 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num3_3
+        else if(sir_num3_3.length == 0){
+                alert('三.學習狀況 - 對學習專業是否認真 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num4_1
+        else if(sir_num4_1.length == 0){
+                alert('四.自主行為 - 服裝儀容及衛生管理 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num4_2
+        else if(sir_num4_2.length == 0){
+                alert('四.自主行為 - 對品質觀念是否落實 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num4_3
+        else if(sir_num4_3.length == 0){
+                alert('四.自主行為 - 對清潔設備是否落實 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num4_4
+        else if(sir_num4_4.length == 0){
+                alert('四.自主行為 - 對器材機具是否愛護 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num5_1
+        else if(sir_num5_1.length == 0){
+                alert('五.工作狀態 - 成本意識(不浪費) , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num5_2
+        else if(sir_num5_2.length == 0){
+                alert('五.工作狀態 - 動作是否俐落 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num5_3
+        else if(sir_num5_3.length == 0){
+                alert('五.工作狀態 - 對SOP是否遵從 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num6_1
+        else if(sir_num6_1.length == 0){
+                alert('六.團隊默契 - 對同儕及上級相處 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num6_2
+        else if(sir_num6_2.length == 0){
+                alert('六.團隊默契 - 主動協助 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num6_3
+        else if(sir_num6_3.length == 0){
+                alert('六.團隊默契 - 溝通協調 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num7_1
+        else if(sir_num7_1.length == 0){
+                alert('六.團隊默契 - 對同儕及上級相處 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num7_2
+        else if(sir_num7_2.length == 0){
+                alert('六.團隊默契 - 主動協助 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num7_3
+        else if(sir_num7_3.length == 0){
+                alert('六.團隊默契 - 溝通協調 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num7_4
+        else if(sir_num7_4.length == 0){
+                alert('六.團隊默契 - 溝通協調 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num8_1
+        else if(sir_num8_1.length == 0){
+                alert('六.團隊默契 - 對同儕及上級相處 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num8_2
+        else if(sir_num8_2.length == 0){
+                alert('六.團隊默契 - 主動協助 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num8_3
+        else if(sir_num8_3.length == 0){
+                alert('六.團隊默契 - 溝通協調 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num8_4
+        else if(sir_num8_4.length == 0){
+                alert('六.團隊默契 - 溝通協調 , 主評不能空白 !');
+                exit();
+        }
+        // check sir_num8_5
+        else if(sir_num8_5.length == 0){
+                alert('六.團隊默契 - 溝通協調 , 主評不能空白 !');
+                exit();
+        }
+        // check comment
+        else if(comment.length == 0){
+                alert('六.團隊默契 - 溝通協調 , 主評不能空白 !');
+                exit();
+        }
+        // check final_comment
+        else if(final_comment.length == 0){
+                alert('六.團隊默契 - 溝通協調 , 主評不能空白 !');
+                exit();
+        }
+        
+        else{
 
-       $.ajax({
-                type:"POST",
-                url:"/update_submit_check_member_2",
-                data:{
-                        'employee_id':employee_id,
-                        'employee_name':employee_name,
-                        'check_year':check_year,
-                        'check_month':check_month,
-                        'sir_num1_1':sir_num1_1,
-                        'sir_num1_2':sir_num1_2,
-                        'sir_num1_3':sir_num1_3,
-                        'sir_num1_4':sir_num1_4,
-                        'sir_num2_1':sir_num2_1,
-                        'sir_num2_2':sir_num2_2,
-                        'sir_num2_3':sir_num2_3,
-                        
-                        'sir_num3_1':sir_num3_1,
-                        'sir_num3_2':sir_num3_2,
-                        'sir_num3_3':sir_num3_3,
+                 $.ajax({
+                        type:"POST",
+                        url:"/update_submit_check_member_2",
+                        data:{
+                                'employee_id':employee_id,
+                                'employee_name':employee_name,
+                                'check_year':check_year,
+                                'check_month':check_month,
+                                'sir_num1_1':sir_num1_1,
+                                'sir_num1_2':sir_num1_2,
+                                'sir_num1_3':sir_num1_3,
+                                'sir_num1_4':sir_num1_4,
+                                'sir_num2_1':sir_num2_1,
+                                'sir_num2_2':sir_num2_2,
+                                'sir_num2_3':sir_num2_3,
+                                
+                                'sir_num3_1':sir_num3_1,
+                                'sir_num3_2':sir_num3_2,
+                                'sir_num3_3':sir_num3_3,
 
-                        'sir_num4_1':sir_num4_1,
-                        'sir_num4_2':sir_num4_2,
-                        'sir_num4_3':sir_num4_3,
-                        'sir_num4_4':sir_num4_4,
+                                'sir_num4_1':sir_num4_1,
+                                'sir_num4_2':sir_num4_2,
+                                'sir_num4_3':sir_num4_3,
+                                'sir_num4_4':sir_num4_4,
 
-                        'sir_num5_1':sir_num5_1,
-                        'sir_num5_2':sir_num5_2,
-                        'sir_num5_3':sir_num5_3,
+                                'sir_num5_1':sir_num5_1,
+                                'sir_num5_2':sir_num5_2,
+                                'sir_num5_3':sir_num5_3,
 
-                        'sir_num6_1':sir_num6_1,
-                        'sir_num6_2':sir_num6_2,
-                        'sir_num6_3':sir_num6_3,
+                                'sir_num6_1':sir_num6_1,
+                                'sir_num6_2':sir_num6_2,
+                                'sir_num6_3':sir_num6_3,
 
-                        'sir_num7_1':sir_num7_1,
-                        'sir_num7_2':sir_num7_2,
-                        'sir_num7_3':sir_num7_3,
-                        'sir_num7_4':sir_num7_4,
+                                'sir_num7_1':sir_num7_1,
+                                'sir_num7_2':sir_num7_2,
+                                'sir_num7_3':sir_num7_3,
+                                'sir_num7_4':sir_num7_4,
 
-                        'sir_num8_1':sir_num8_1,
-                        'sir_num8_2':sir_num8_2,
-                        'sir_num8_3':sir_num8_3,
-                        'sir_num8_4':sir_num8_4,
-                        'sir_num8_5':sir_num8_5,
-                        
-                        'comment':comment,
-                        'sir_total':sir_total,
-                        'other_total':other_total,
-                        'other_plus_total':other_plus_total,
-                        'final_total':final_total,
-                        'final_comment':final_comment
-                        
-                },
-                datatype:"html",
-                        error:function(xhr , ajaxError , throwError){
-                        alert(xhr.status);
-                        alert(xhr.responseText);
-                        alert(throwError);
-                        alert(ajaxError);
-                },
-                success:function(res){
-                        
-                        $("#load_check_form2").show(1000).html(res);
-                        
-                        // scroll page bottom to page top
-                        goto_top();
-                        
-                        //location.reload(true);
-                },
-                beforeSend:function(){
-                        $('#status').html("save 主官評分 考核表資料 ...").css({'color':'blue'});
-                },
-                complete:function(){
-                        $('#status').css({'color':'white'});
-                }
-        });
+                                'sir_num8_1':sir_num8_1,
+                                'sir_num8_2':sir_num8_2,
+                                'sir_num8_3':sir_num8_3,
+                                'sir_num8_4':sir_num8_4,
+                                'sir_num8_5':sir_num8_5,
+                                
+                                'comment':comment,
+                                'sir_total':sir_total,
+                                'other_total':other_total,
+                                'other_plus_total':other_plus_total,
+                                'final_total':final_total,
+                                'final_comment':final_comment
+                                
+                        },
+                        datatype:"html",
+                                error:function(xhr , ajaxError , throwError){
+                                alert(xhr.status);
+                                alert(xhr.responseText);
+                                alert(throwError);
+                                alert(ajaxError);
+                        },
+                        success:function(res){
+                                
+                                $("#load_check_form2").show(1000).html(res);
+                                
+                                // scroll page bottom to page top
+                                goto_top();
+                                
+                                //location.reload(true);
+                        },
+                        beforeSend:function(){
+                                $('#status').html("save 主官評分 考核表資料 ...").css({'color':'blue'});
+                        },
+                        complete:function(){
+                                $('#status').css({'color':'white'});
+                        }
+                });
+        }
 }
 
 function load_check_member_list(){
@@ -1137,12 +1294,14 @@ function submit_work_time_1(){
         var a_name    = $('#a_name').val();                                             
         // 日期
         var a_date    = $('#a_date').val();                                             
+        // 部門代號
+        var dep_id    = $('#department_id').val();                                             
         // 稼動工時
         var availability_time = $('#auto_plus_availability_work_time').text();          
         // 加班工時
         var over_time         = $('#auto_plus_over_work_time').text();                  
         // 一般工時
-        var normal_tima       = $('#auto_plus_normal_work_time').text();                
+        var normal_time       = $('#auto_plus_normal_work_time').text();                
         // 總工時
         var total_time        = $('#auto_plus_total_work_time').val();                  
         
@@ -1256,18 +1415,13 @@ function submit_work_time_1(){
 
         
         // check 工號
-        if(a_work_no.length == 0){
+        if(a_work_station_1.length == 0){
                 alert('工號不能空白 !');
                 exit();        
         }
-        // check 姓名
-        else if(a_name == 0){
-                alert('姓名不能空白 !');
-                exit()
-        }
         else{
-                alert(  '工號 : ' + a_work_no + ' , 姓名 : ' + a_name + ' , 日期 : ' + a_date + ' , 總工時 : ' + total_time + '\n' +
-                        '總一般工時  : ' + normal_tima + ' , 總加班工時 : ' + over_time + ' , 總價動工時 : ' + availability_time + '\n' +
+                alert(  '工號 : ' + a_work_no + ' , 姓名 : ' + a_name + ' , 部門代號 : ' + dep_id + ' , 日期 : ' + a_date + ' , 總工時 : ' + total_time + '\n' +
+                        '總一般工時  : ' + normal_time + ' , 總加班工時 : ' + over_time + ' , 總價動工時 : ' + availability_time + '\n' +
                         a_work_station_1 + ' , ' + a_production_1 + ' , ' + a_product_no_1 + ' , ' + a_work_normal_time_1 + ' , ' + a_work_over_time_1 + ' , ' + a_work_availability_time_1 + ' , ' + a_work_remark_1 + '\n' +
                         a_work_station_2 + ' , ' + a_production_2 + ' , ' + a_product_no_2 + ' , ' + a_work_normal_time_2 + ' , ' + a_work_over_time_2 + ' , ' + a_work_availability_time_2 + ' , ' + a_work_remark_2 + '\n' +
                         a_work_station_3 + ' , ' + a_production_3 + ' , ' + a_product_no_3 + ' , ' + a_work_normal_time_3 + ' , ' + a_work_over_time_3 + ' , ' + a_work_availability_time_3 + ' , ' + a_work_remark_3 + '\n' +
@@ -1286,9 +1440,25 @@ function submit_work_time_1(){
         
         $.ajax({
                 type:"POST",
-                url:"/load_menu_money_record_by_kind",
+                url:"/submit_work_time",
                 data:{
-                        'kind':kind
+                        'a_work_no':a_work_no,
+                        'a_name':a_name,
+                        'dep_id':dep_id,
+                        'b_date':a_date,
+                        'total_time':total_time,
+                        'normal_time':normal_time,
+                        'over_time':over_time,
+                        'availability_time':availability_time,
+                        
+                        'a_work_station_1':a_work_station_1, 
+                        'a_production_1':a_production_1,
+                        'a_product_no_1':a_product_no_1,
+                        'a_work_normal_time_1':a_work_normal_time_1,
+                        'a_work_over_time_1':a_work_over_time_1,
+                        'a_work_availability_time_1':a_work_availability_time_1, 
+                        'a_work_remark_1':a_work_remark_1
+
                 },
                 datatype:"html",
                         error:function(xhr , ajaxError , throwError){
