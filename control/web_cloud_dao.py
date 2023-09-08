@@ -126,15 +126,18 @@ class web_cloud_dao:
     #################################
     # update_submit_check_member_2
     #################################
-    def update_submit_check_member_2(self , employee_id , employee_name , check_year , check_month , sir_num1_1 , sir_num1_2):
+    def update_submit_check_member_2(self , employee_id , employee_name , check_year , check_month , sir_num1_1 , sir_num1_2 , sir_num1_3 , sir_num1_4 , sir_num2_1 , sir_num2_2 , sir_num2_3 , sir_num3_1 , sir_num3_2 , sir_num3_3 , sir_num4_1 , sir_num4_2 , sir_num4_3 , sir_num4_4 , sir_num5_1 , sir_num5_2 , sir_num5_3 , sir_num6_1 , sir_num6_2 , sir_num6_3 , sir_num7_1 , sir_num7_2 , sir_num7_3 , sir_num7_4 , sir_num8_1 , sir_num8_2 , sir_num8_3 , sir_num8_4 , sir_num8_5 , comment , other_total , sir_total , other_plus_total , final_total , final_comment):
         
         self.__connect__()
 
         try:
-            #sql = f"update check_member set sir_item_1_1='{sir_num1_1}' , sir_item_1_2='{sir_num1_2}' , sir_item_1_3='{sir_num1_3}' , sir_item_1_4='{sir_num1_4}'   where employee_id='{employee_id}' and employee_name='{employee_name}' and department_id='{department_id}'"
-            sql = f"update check_member set sir_item_1_1='{sir_num1_1}' , sir_check='done' where employee_id='{employee_id}' and employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
-            self.curr.execute(sql)
+            sql = f"update check_member set sir_item_1_1='{sir_num1_1}' , sir_item_1_2='{sir_num1_2}' , sir_item_1_3='{sir_num1_3}' , sir_item_1_4='{sir_num1_4}' , sir_item_2_1='{sir_num2_1}' , sir_item_2_2='{sir_num2_2}' , sir_item_2_3='{sir_num2_3}' , sir_item_3_1='{sir_num3_1}' , sir_item_3_2='{sir_num3_2}' , sir_item_3_3='{sir_num3_3}' , sir_item_4_1='{sir_num4_1}' , sir_item_4_2='{sir_num4_2}' , sir_item_4_3='{sir_num4_3}' , sir_item_4_4='{sir_num4_4}' , sir_item_5_1='{sir_num5_1}' , sir_item_5_2='{sir_num5_2}' , sir_item_5_3='{sir_num5_3}' , sir_item_6_1='{sir_num6_1}' , sir_item_6_2='{sir_num6_2}' , sir_item_6_3='{sir_num6_3}' , sir_item_7_1='{sir_num7_1}' , sir_item_7_2='{sir_num7_2}' , sir_item_7_3='{sir_num7_3}' , sir_item_7_4='{sir_num7_4}' , sir_item_8_1='{sir_num8_1}' , sir_item_8_2='{sir_num8_2}' , sir_item_8_3='{sir_num8_3}' , sir_item_8_4='{sir_num8_4}' , sir_item_8_5='{sir_num8_5}' , comment='{comment}' , sir_total='{sir_total}' , other_total='{other_total}' , other_plus_total='{other_plus_total}' , final_total='{final_total}' , final_comment='{final_comment}' , sir_check='done' where employee_id='{employee_id}' and employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
+            self.res = self.curr.execute(sql)
             self.conn.commit()
+
+            if self.res:
+                b_res = 'ok'
+                return b_res
 
         except Exception as e:
             logging.info('< Error > update_submit_check_member_2 : ' + str(e))
@@ -358,8 +361,10 @@ class web_cloud_dao:
     # load_account_data_form_self_item
     #####################################
     def load_account_data_form_self_item(self , employee_id , employee_name , check_year , check_month):
+        
+        self.__connect__()
+
         try:
-            self.__connect__()
             
             sql = f"select self_item_1_1 , self_item_1_2 , self_item_1_3 , self_item_1_4 , self_item_2_1 , self_item_2_1 , self_item_2_3 , self_item_3_1 , self_item_3_2 , self_item_3_3 , self_item_4_1 , self_item_4_2 , self_item_4_3 , self_item_4_4 , self_item_5_1 , self_item_5_2 , self_item_5_3 , self_item_6_1 , self_item_6_2 , self_item_6_3 , self_total from check_member where employee_id='{employee_id}' and employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
             self.curr.execute(sql)

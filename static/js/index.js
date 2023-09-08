@@ -43,11 +43,14 @@ function submit_check_member_2(){
        var sir_num8_5 = $('#sir_num8_5').val();
 
        var comment          = $('#comment').val();
+       var other_total      = $('#other_total').val();
        var sir_total        = $('#sir_total').val();
        var other_plus_total = $('#other_plus_total').val();
        var final_total      = $('#final_total').val();
        var final_comment    = $('#final_comment').val();
        
+       
+
        $.ajax({
                 type:"POST",
                 url:"/update_submit_check_member_2",
@@ -63,34 +66,42 @@ function submit_check_member_2(){
                         'sir_num2_1':sir_num2_1,
                         'sir_num2_2':sir_num2_2,
                         'sir_num2_3':sir_num2_3,
+                        
                         'sir_num3_1':sir_num3_1,
                         'sir_num3_2':sir_num3_2,
                         'sir_num3_3':sir_num3_3,
+
                         'sir_num4_1':sir_num4_1,
                         'sir_num4_2':sir_num4_2,
                         'sir_num4_3':sir_num4_3,
                         'sir_num4_4':sir_num4_4,
+
                         'sir_num5_1':sir_num5_1,
                         'sir_num5_2':sir_num5_2,
                         'sir_num5_3':sir_num5_3,
+
                         'sir_num6_1':sir_num6_1,
                         'sir_num6_2':sir_num6_2,
                         'sir_num6_3':sir_num6_3,
+
                         'sir_num7_1':sir_num7_1,
                         'sir_num7_2':sir_num7_2,
                         'sir_num7_3':sir_num7_3,
                         'sir_num7_4':sir_num7_4,
+                        
                         'sir_num8_1':sir_num8_1,
                         'sir_num8_2':sir_num8_2,
                         'sir_num8_3':sir_num8_3,
                         'sir_num8_4':sir_num8_4,
                         'sir_num8_5':sir_num8_5,
+                        
                         'comment':comment,
                         'sir_total':sir_total,
                         'other_total':other_total,
                         'other_plus_total':other_plus_total,
                         'final_total':final_total,
                         'final_comment':final_comment
+                        
                 },
                 datatype:"html",
                         error:function(xhr , ajaxError , throwError){
