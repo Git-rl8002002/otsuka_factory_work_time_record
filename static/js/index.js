@@ -1,5 +1,4 @@
 function submit_check_member_2(){
-       
        var employee_id   = $('#employee_id').val();
        var employee_name = $('#employee_name').val();
        var check_year    = $('#check_year').val();
@@ -88,7 +87,7 @@ function submit_check_member_2(){
                         'sir_num7_2':sir_num7_2,
                         'sir_num7_3':sir_num7_3,
                         'sir_num7_4':sir_num7_4,
-                        
+
                         'sir_num8_1':sir_num8_1,
                         'sir_num8_2':sir_num8_2,
                         'sir_num8_3':sir_num8_3,
@@ -126,8 +125,6 @@ function submit_check_member_2(){
                         $('#status').css({'color':'white'});
                 }
         });
-        
-        
 }
 
 function load_check_member_list(){

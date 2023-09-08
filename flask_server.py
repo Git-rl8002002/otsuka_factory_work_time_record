@@ -642,6 +642,54 @@ def load_check_member_self_list():
     return redirect(url_for('login')) 
 
 
+############################
+# /load_check_member_data
+############################
+@app.route("/load_check_member_data" , methods=['GET','POST'])
+def load_check_member_data():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 重新載入人員考核資料'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date  = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time  = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+        r_year  = time.strftime("%Y" , time.localtime())
+        r_month = time.strftime("%m" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                check_year    = request.form['check_year']
+                check_month   = request.form['check_month']
+                employee_name = request.form['employee_name']
+
+                res = db.load_check_member_data_list(check_year , check_month , employee_name)
+
+                return render_template('ajax/load_check_member_data_list.html' , res=res)
+        
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
 #######################
 # /load_account_data
 #######################

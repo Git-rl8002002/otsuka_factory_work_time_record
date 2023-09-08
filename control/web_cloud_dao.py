@@ -123,6 +123,26 @@ class web_cloud_dao:
             #self.curr_mssql.close()
             #self.conn_mssql.close()
 
+    ################################
+    # load_check_member_data_list
+    ################################
+    def load_check_member_data_list(self , check_year , check_month , employee_name):
+        
+        self.__connect__()
+
+        try:
+            sql = f"select self_item_1_1 , self_item_1_2 , self_item_1_3 , self_item_1_4 from check_member where check_year='{check_year}' and check_month='{check_month}' and employee_name='{employee_name}'"
+            self.curr.execute(sql)
+            self.res = self.curr.fetchall()
+            
+            return self.res
+
+        except Exception as e:
+            logging.info('< Error > load_check_member_data_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
     #################################
     # update_submit_check_member_2
     #################################
@@ -246,7 +266,7 @@ class web_cloud_dao:
         
         try:
             
-            sql = f"select check_year , check_month from check_member where employee_name='{employee_name}' order by b_date"
+            sql = f"select check_year , check_month , employee_name from check_member where employee_name='{employee_name}' order by b_date"
             self.curr.execute(sql)
             self.res = self.curr.fetchall()
 
