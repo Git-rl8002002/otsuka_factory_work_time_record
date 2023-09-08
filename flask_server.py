@@ -730,8 +730,8 @@ def update_submit_check_member_2():
                 
                 employee_id     = request.form['employee_id']
                 employee_name   = request.form['employee_name']
-                department_id   = request.form['department_id']
-                department_name = request.form['department_name']
+                check_year      = request.form['check_year']
+                check_month     = request.form['check_month']
                 sir_num1_1      = request.form['sir_num1_1']
                 sir_num1_2      = request.form['sir_num1_2']
                 sir_num1_3      = request.form['sir_num1_3']
@@ -769,7 +769,21 @@ def update_submit_check_member_2():
                 final_comment    = request.form['final_comment']
 
                 #db.update_submit_check_member_2(employee_id , employee_name , department_id , sir_num1_1 , sir_num1_2 , sir_num1_3 , sir_num1_4 , sir_num2_1 , sir_num2_2 , sir_num2_3 , sir_num3_1 , sir_num3_2 , sir_num3_3 , sir_num4_1 , sir_num4_2 , sir_num4_3 , sir_num4_4 , sir_num5_1 , sir_num5_2 , sir_num5_3 , sir_num6_1 , sir_num6_2 , sir_num6_3 , sir_num7_1 , sir_num7_2 , sir_num7_3 , sir_num7_4 , sir_num8_1 , sir_num8_2 , sir_num8_3 , sir_num8_4 , sir_num8_5 , comment , other_total , sir_total , other_plus_total , final_total , final_comment)
-                db.update_submit_check_member_2(employee_id , employee_name , department_id , sir_num1_1 , sir_num1_2)
+                db.update_submit_check_member_2(employee_id , employee_name , check_year , check_month , sir_num1_1 , sir_num1_2)
+
+                factory_work_station = db.factory_work_station()
+                a_work_no            = session['employee_id']
+                a_name               = session['user']
+                a_end_date           = session['end_date']
+                a_check_year         = db.search_member_item('check_year' , user)
+                a_check_month        = db.search_member_item('check_month' , user)
+                a_job_title          = db.factory_check_form_item(user)
+                a_member_check_list  = db.factory_check_form_list()
+                res_check_list       = db.check_add_check_member_list(user)
+                res_check_self_list  = db.check_add_check_member_self_list()
+
+                return render_template('production_2_work_check_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , a_end_date=a_end_date , dep_id=dep_id , check_year=r_year , check_month=r_month , a_job_title=a_job_title , a_member_check_list=a_member_check_list , res_check_list=res_check_list , res_check_self_list=res_check_self_list)    
+                
                 
         else:
             return redirect(url_for('logout'))

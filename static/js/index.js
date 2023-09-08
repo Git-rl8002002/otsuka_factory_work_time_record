@@ -1,5 +1,10 @@
 function submit_check_member_2(){
        
+       var employee_id   = $('#employee_id').val();
+       var employee_name = $('#employee_name').val();
+       var check_year    = $('#check_year').val();
+       var check_month   = $('#check_month').val();
+
        var sir_num1_1 = $('#sir_num1_1').val();
        var sir_num1_2 = $('#sir_num1_2').val();
        var sir_num1_3 = $('#sir_num1_3').val();
@@ -42,15 +47,15 @@ function submit_check_member_2(){
        var other_plus_total = $('#other_plus_total').val();
        var final_total      = $('#final_total').val();
        var final_comment    = $('#final_comment').val();
-
+       
        $.ajax({
                 type:"POST",
                 url:"/update_submit_check_member_2",
                 data:{
                         'employee_id':employee_id,
                         'employee_name':employee_name,
-                        'department_id':department_id,
-                        'department_name':department_name,
+                        'check_year':check_year,
+                        'check_month':check_month,
                         'sir_num1_1':sir_num1_1,
                         'sir_num1_2':sir_num1_2,
                         'sir_num1_3':sir_num1_3,
@@ -82,6 +87,7 @@ function submit_check_member_2(){
                         'sir_num8_5':sir_num8_5,
                         'comment':comment,
                         'sir_total':sir_total,
+                        'other_total':other_total,
                         'other_plus_total':other_plus_total,
                         'final_total':final_total,
                         'final_comment':final_comment
@@ -95,7 +101,7 @@ function submit_check_member_2(){
                 },
                 success:function(res){
                         
-                        $("#load_check_form").show(1000).html(res);
+                        $("#load_check_form2").show(1000).html(res);
                         
                         // scroll page bottom to page top
                         goto_top();
@@ -110,11 +116,12 @@ function submit_check_member_2(){
                 }
         });
         
+        
 }
 
 function load_check_member_list(){
-        var employee_id         = $('#a_work_no').val();
-        var employee_name       = $('#a_name').val();
+        var employee_id         = $('#employee_id').val();
+        var employee_name       = $('#employee_name').val();
         var check_year          = $('#check_year').val();
         var check_month         = $('#check_month').val();
 

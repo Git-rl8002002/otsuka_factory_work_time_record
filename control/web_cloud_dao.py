@@ -126,13 +126,13 @@ class web_cloud_dao:
     #################################
     # update_submit_check_member_2
     #################################
-    def update_submit_check_member_2(self , employee_id , employee_name , department_id , sir_num1_1 , sir_num1_2):
+    def update_submit_check_member_2(self , employee_id , employee_name , check_year , check_month , sir_num1_1 , sir_num1_2):
         
         self.__connect__()
 
         try:
             #sql = f"update check_member set sir_item_1_1='{sir_num1_1}' , sir_item_1_2='{sir_num1_2}' , sir_item_1_3='{sir_num1_3}' , sir_item_1_4='{sir_num1_4}'   where employee_id='{employee_id}' and employee_name='{employee_name}' and department_id='{department_id}'"
-            sql = f"update check_member set sir_item_1_1='{sir_num1_1}' , sir_item_1_2='{sir_num1_2}' where employee_id='{employee_id}' and employee_name='{employee_name}' and department_id='{department_id}'"
+            sql = f"update check_member set sir_item_1_1='{sir_num1_1}' , sir_check='done' where employee_id='{employee_id}' and employee_name='{employee_name}' and check_year='{check_year}' and check_month='{check_month}'"
             self.curr.execute(sql)
             self.conn.commit()
 
@@ -365,7 +365,8 @@ class web_cloud_dao:
             self.curr.execute(sql)
             self.res = self.curr.fetchall()
             
-            return self.res
+            if self.res is not None:
+                return self.res
         
         except Exception as e:
             logging.info('< Error > load_account_data_form_self_item : ' + str(e))
