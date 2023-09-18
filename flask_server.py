@@ -1200,13 +1200,25 @@ def card_reader_member_search():
 
                 load_work_time_data = db.load_work_time_data_list(e_id , e_name , b_date)
             '''
+
+            factory_work_station = db.factory_work_station()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            res_work_time_list      = db.show_work_time_list(a_name , a_work_no)
+            normal_total_time       = db.show_work_time_total_val(a_name , a_work_no , 'normal_time')
+            over_total_time         = db.show_work_time_total_val(a_name , a_work_no , 'over_time')
+            availability_total_time = db.show_work_time_total_val(a_name , a_work_no , 'availability_time')
+            total_time              = db.show_work_time_total_val(a_name , a_work_no , 'total_time')
+
+            #load_work_time_data = db.load_work_time_data_list(e_id , e_name , b_date)
             card_reader_res  = db.load_check_member_data_list2(user)
             card_reader_res2 = db.load_check_member_data_list3(user)
             card_reader_res3 = db.load_group_member_list(user)
 
 
-            #return render_template('search_card_reader_member.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , res_work_time_list=res_work_time_list , normal_total_time=normal_total_time , over_total_time=over_total_time , availability_total_time=availability_total_time , total_time=total_time , load_work_time_data=load_work_time_data)
-            return render_template('search_card_reader_member.html' , user=user , lv=lv , title=title , r_date=r_date , card_reader_res=card_reader_res , card_reader_res2=card_reader_res2 , card_reader_res3=card_reader_res3)
+            return render_template('search_card_reader_member.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , res_work_time_list=res_work_time_list , normal_total_time=normal_total_time , over_total_time=over_total_time , availability_total_time=availability_total_time , total_time=total_time , card_reader_res=card_reader_res)
+            #return render_template('search_card_reader_member.html' , user=user , lv=lv , title=title , r_date=r_date , card_reader_res=card_reader_res , card_reader_res2=card_reader_res2 , card_reader_res3=card_reader_res3)
 
         else:
             return redirect(url_for('logout'))
