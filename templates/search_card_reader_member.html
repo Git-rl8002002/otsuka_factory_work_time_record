@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>{{ title }}</title>
+    <title>{{ title }} </title>
     <meta charset="UTF-8">
 
     <!-- logo icon -->
@@ -38,7 +38,7 @@
     <script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/ckeditor.js') }}"></script>
     <script type="text/javascript" src="{{ url_for('static' , filename='js/ckeditor_4.5.7_full/plugins/image/dialogs/image.js') }}"></script>
     
-    <!-- 偵測沒動作時間 -->
+    <!-- 偵測網頁沒動作時間 -->
     <script type="text/javascript">
         var timeout;
 
@@ -76,13 +76,13 @@
     <!-- websocket -->
     <script type="text/javascript">
         $(document).ready(function(){
-        
+           
             $("#go_top").click(function(){
                 jQuery("html,body").animate({
                     scrollTop:0
                 },1000);
             });
-            
+
             $(window).scroll(function() {
                 if ( $(this).scrollTop() > 300){
                     $('#go_top').fadeIn("fast");
@@ -106,12 +106,12 @@
     <nav class="navbar navbar-expand-sm bg-primary fixed-top">
             <!-- Brand -->
             <a class="navbar-brand mr-2" href="/"><button class="btn btn-primary">{{ title }}</button></a>
+            
             <!---------------------------------------------------------------------------------------------------- 
              -
-             - lv 3 - normal
+             - lv 3 - normal user
              -   
              ----------------------------------------------------------------------------------------------------->
-            
             <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                 <i class="bi bi-list"></i>
             </button>
@@ -125,7 +125,7 @@
 
                 <!-- logout -->
                 <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> 登出</button></a></li>
-                
+
                 <!-- 資料查詢 -->    
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 資料查詢</button></a>
@@ -133,7 +133,7 @@
                         <a class="dropdown-item" href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
                     </div>
                 </li>
-                
+
                 {% if dep_id == "1A" %}
                 <!-- 生產一部 -->    
                 <li class="nav-item dropdown">
@@ -154,16 +154,15 @@
                 {% elif dep_id == "1K" %}
                 <!-- 生產三部 -->    
                 <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產部</button></a>
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產三部</button></a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="/production_3_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
                     </div>
                 </li>
                 {% endif %}
-                
+
             </ul>
             </div>
-            
     </nav>
 
     <div class="container-fluid text-primary m-auto">
@@ -180,95 +179,62 @@
         -
         ----------------------------------------------------------------------------------------------------->
         <div class="row my-5">
-            <!---------------------------------------------------------------------------------------------------- 
-             -
-             - lv 3 - normal user
-             -   
-             ----------------------------------------------------------------------------------------------------->
-            {% if dep_id == "1A" %}
-            <!-- 生產一部 -->
-            <div id="main_content" class="col-md-4 my-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 生產一部</h4></div>
-                    <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
-                            </li>    
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/production_1_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {% elif dep_id == "1B" %}
-            <!-- 生產二部 -->
-            <div id="main_content" class="col-md-4 my-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 生產二部</h4></div>
-                    <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
-                            </li>
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a>
-                            </li>    
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/production_2_work_check_record"><i class="bi bi-bookmarks"></i> 人員考核表</a>
-                            </li>    
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/production_2_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {% elif dep_id == "1K" %}
-            <!-- 生產三部 -->
-            <div id="main_content" class="col-md-4 my-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 生產三部</h4></div>
-                    <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
-                            </li>    
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/production_3_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {% else %}
-            <!-- 功能清單 -->
-            <div id="main_content" class="col-md-4 my-1">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="text-primary"><i class="bi bi-chat-left-text"></i>功能清單</h4></div>
-                    <div class="card-body">
-                        <ul class="list-group">
-                            <li class="list-group-item list-group-item-action">
-                                <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            {% endif %}
             
+            <!----------------- 
+            -
+            - 人員位置查詢
+            -
+            -------------------->
+            <div id="main_content" class="col-md-3 my-1">
+                <div id="load_work_time_data">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 各部門人員刷卡次數</h4>
+                        </div>
+                        <div class="card-body">
+                            <table class="table table-hover table-bordered table-striped">
+                            {% for val in card_reader_res %}
+                                <tr>
+                                    <td id="{{ val[0] }}" onclick="load_card_reader_list(id)">{{ val[0] }} </td><td>{{ val[1] }}</td>
+                                </tr>    
+                            {% endfor %}
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--------------
+            -
+            - 部門人員位置
+            -
+            ---------------->
+            <div id="main_content" class="col-md-3 my-1">
+                <div id="load_work_time_data">
+                    <div class="card">
+                        <div class="card-header">
+                            <h4 class="text-primary"><i class="bi bi-chat-left-text"></i> 部門人員位置</h4>
+                        </div>
+                        <div class="card-body">
+                            <div id="card_reader_dep_list"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             
+
         </div>
-        
-        <!-- go top -->
-        <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
-        
-        
+
+         <!-- go top -->
+         <div id="go_top" class="goto_top"><i class="bi bi-arrow-up"></i></div>
+
     </div>
 </body>
+  <!-- 
+    date picker & rich editor-->
+  <script>
+    $("#a_date").flatpickr();  
+    //CKEDITOR.replace('content');
+</script>
 </html>

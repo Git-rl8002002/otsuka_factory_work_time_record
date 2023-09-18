@@ -35,7 +35,6 @@ class web_cloud_dao:
         finally:
             pass
 
-
     ########################
     # erp_hr_account_list
     ########################
@@ -123,6 +122,141 @@ class web_cloud_dao:
             #self.curr_mssql.close()
             #self.conn_mssql.close()
 
+    #############################
+    # load_work_time_data_list
+    #############################
+    def load_work_time_data_list(self , e_id , e_name , b_date):
+        
+        self.__connect__()
+
+        try:
+            sql  = f"select normal_time , over_time , availability_time , total_time , b_date , " 
+            sql += f"w_s_1 , w_s_1_product , w_s_1_num , w_s_1_normal_time , w_s_1_over_time , w_s_1_avail_time , w_s_1_remark ," 
+            sql += f"w_s_2 , w_s_2_product , w_s_2_num , w_s_2_normal_time , w_s_2_over_time , w_s_2_avail_time , w_s_2_remark ," 
+            sql += f"w_s_3 , w_s_3_product , w_s_3_num , w_s_3_normal_time , w_s_3_over_time , w_s_3_avail_time , w_s_3_remark ," 
+            sql += f"w_s_4 , w_s_4_product , w_s_4_num , w_s_4_normal_time , w_s_4_over_time , w_s_4_avail_time , w_s_4_remark ," 
+            sql += f"w_s_5 , w_s_5_product , w_s_5_num , w_s_5_normal_time , w_s_5_over_time , w_s_5_avail_time , w_s_5_remark ," 
+            sql += f"w_s_6 , w_s_6_product , w_s_6_num , w_s_6_normal_time , w_s_6_over_time , w_s_6_avail_time , w_s_6_remark ," 
+            sql += f"w_s_7 , w_s_7_product , w_s_7_num , w_s_7_normal_time , w_s_7_over_time , w_s_7_avail_time , w_s_7_remark ," 
+            sql += f"w_s_8 , w_s_8_product , w_s_8_num , w_s_8_normal_time , w_s_8_over_time , w_s_8_avail_time , w_s_8_remark ," 
+            sql += f"w_s_9 , w_s_9_product , w_s_9_num , w_s_9_normal_time , w_s_9_over_time , w_s_9_avail_time , w_s_9_remark ," 
+            sql += f"w_s_10 , w_s_10_product , w_s_10_num , w_s_10_normal_time , w_s_10_over_time , w_s_10_avail_time , w_s_10_remark ," 
+            sql += f"w_s_11 , w_s_11_product , w_s_11_num , w_s_11_normal_time , w_s_11_over_time , w_s_11_avail_time , w_s_11_remark ," 
+            sql += f"w_s_12 , w_s_12_product , w_s_12_num , w_s_12_normal_time , w_s_12_over_time , w_s_12_avail_time , w_s_12_remark " 
+            sql += f"from work_time where e_id='{e_id}' and e_name='{e_name}' and b_date='{b_date}'"
+
+            self.curr.execute(sql)
+            self.res = self.curr.fetchall()
+            
+            if self.res is not None:
+                return self.res
+
+        except Exception as e:
+            logging.info('< Error > load_work_time_data_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
+    ################################
+    # load_check_member_data_list3
+    ################################
+    def load_check_member_data_list3(self , e_name):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+                
+            s_sql2 = f"select p_name , r_time , e_name from card_reader_{now_day} where e_name='{e_name}'"
+            self.curr.execute(s_sql2)
+            self.res2 = self.curr.fetchall()
+
+            if self.res2 is not None:
+                
+                return self.res2
+                
+        except Exception as e:
+            logging.info('< Error > load_check_member_data_list2 : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #################################
+    # load_card_reader_member_list
+    #################################
+    def load_card_reader_member_list(self , dep):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+
+            s_sql = f"select distinct e_name from card_reader_{now_day} where d_name='{dep}'"
+            self.curr.execute(s_sql)
+            self.res = self.curr.fetchall()
+
+            return self.res
+                
+        except Exception as e:
+            logging.info('< Error > load_card_reader_member_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ###########################
+    # load_group_member_list
+    ###########################
+    def load_group_member_list(self , e_name):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+                
+            s_sql = f"SELECT TRIM(d_name) FROM `card_reader_{now_day}` where e_name='{e_name}' order by d_name desc limit 0,1"
+            self.curr.execute(s_sql)
+            self.res = self.curr.fetchone()
+
+            s_sql2 = f"select distinct e_name from card_reader_{now_day} where d_name='{self.res[0]}'"
+            self.curr.execute(s_sql2)
+            self.res2 = self.curr.fetchall()
+
+            return self.res2
+                
+        except Exception as e:
+            logging.info('< Error > load_group_member_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ################################
+    # load_check_member_data_list2
+    ################################
+    def load_check_member_data_list2(self , e_name):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+                
+            s_sql2 = f"SELECT d_name , count(*) FROM `card_reader_20230915` group by d_name  order by d_name asc"
+            self.curr.execute(s_sql2)
+            self.res2 = self.curr.fetchall()
+
+            if self.res2 is not None:
+                
+                return self.res2
+                
+        except Exception as e:
+            logging.info('< Error > load_check_member_data_list2 : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
     ################################
     # load_check_member_data_list
     ################################
@@ -131,7 +265,7 @@ class web_cloud_dao:
         self.__connect__()
 
         try:
-            sql = f"select self_item_1_1 , self_item_1_2 , self_item_1_3 , self_item_1_4 from check_member where check_year='{check_year}' and check_month='{check_month}' and employee_name='{employee_name}'"
+            sql = f"select self_item_1_1 , self_item_1_s , self_item_1_3 , self_item_1_4 from check_member where check_year='{check_year}' and check_month='{check_month}' and employee_name='{employee_name}'"
             self.curr.execute(sql)
             self.res = self.curr.fetchall()
             
@@ -222,6 +356,111 @@ class web_cloud_dao:
             #self.curr_mssql.close()
             #self.conn_mssql.close()
 
+    #############################
+    # show_work_time_total_val
+    #############################
+    def show_work_time_total_val(self , e_name , e_id , item):
+        
+        self.__connect__()
+
+        try:
+            
+            s_sql = f"select sum({item}) from work_time where e_name='{e_name}' and e_id='{e_id}'"
+            self.curr.execute(s_sql)
+            self.res = self.curr.fetchone()
+
+            if self.res is not None:
+                return self.res[0]
+        
+        except Exception as e:
+            logging.info('< Error > show_work_time_total_val : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ######################## 
+    # show_work_time_list
+    ########################
+    def show_work_time_list(self , e_name , e_id):
+        
+        self.__connect__()
+
+        try:
+            
+            s_sql = f"select b_date from work_time where e_name='{e_name}' and e_id='{e_id}' order by b_date desc"
+            self.curr.execute(s_sql)
+            self.res = self.curr.fetchall()
+
+            if self.res is not None:
+                return self.res
+        
+        except Exception as e:
+            logging.info('< Error > show_work_time_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ##########################
+    # submit_work_time_form
+    ##########################
+    def submit_work_time_form(self , a_work_no , a_name , dep_id , b_date , total_time , normal_time , over_time , availability_time , a_work_station_1 , a_production_1 , a_product_no_1 , a_work_normal_time_1 , a_work_over_time_1 , a_work_availability_time_1 , a_work_remark_1 , a_work_station_2 , a_production_2 , a_product_no_2 , a_work_normal_time_2 , a_work_over_time_2 , a_work_availability_time_2 , a_work_remark_2 , a_work_station_3 , a_production_3 , a_product_no_3 , a_work_normal_time_3 , a_work_over_time_3 , a_work_availability_time_3 , a_work_remark_3 , a_work_station_4 , a_production_4 , a_product_no_4 , a_work_normal_time_4 , a_work_over_time_4 , a_work_availability_time_4 , a_work_remark_4 , a_work_station_5 , a_production_5 , a_product_no_5 , a_work_normal_time_5 , a_work_over_time_5 , a_work_availability_time_5 , a_work_remark_5 , a_work_station_6 , a_production_6 , a_product_no_6 , a_work_normal_time_6 , a_work_over_time_6 , a_work_availability_time_6 , a_work_remark_6 , a_work_station_7 , a_production_7 , a_product_no_7 , a_work_normal_time_7 , a_work_over_time_7 , a_work_availability_time_7 , a_work_remark_7 , a_work_station_8 , a_production_8 , a_product_no_8 , a_work_normal_time_8 , a_work_over_time_8 , a_work_availability_time_8 , a_work_remark_8 , a_work_station_9 , a_production_9 , a_product_no_9 , a_work_normal_time_9 , a_work_over_time_9 , a_work_availability_time_9 , a_work_remark_9 , a_work_station_10 , a_production_10 , a_product_no_10 , a_work_normal_time_10 , a_work_over_time_10 , a_work_availability_time_10 , a_work_remark_10 , a_work_station_11 , a_production_11 , a_product_no_11 , a_work_normal_time_11 , a_work_over_time_11 , a_work_availability_time_11 , a_work_remark_11 , a_work_station_12 , a_production_12 , a_product_no_12 , a_work_normal_time_12 , a_work_over_time_12 , a_work_availability_time_12 , a_work_remark_12):
+        
+        self.__connect__()
+        
+        try:
+        
+            s_sql = f"select * from work_time where e_id='{a_work_no}' and e_name='{a_name}' and b_date='{b_date}' and dep_id='{dep_id}'"
+            self.curr.execute(s_sql)
+            self.res = self.curr.fetchone()
+
+            data  = b_date.split('-')
+            r_year  = data[0]
+            r_month = data[1]
+            r_day   = data[2]
+            
+            if self.res is None:
+                a_sql  = f"insert into work_time("
+                a_sql += f"e_id , e_name , dep_id , b_date , total_time , normal_time , over_time , availability_time , r_year , r_month , r_day ," 
+                a_sql += f"w_s_1 , w_s_1_product , w_s_1_num , w_s_1_normal_time , w_s_1_over_time , w_s_1_avail_time , w_s_1_remark , " 
+                a_sql += f"w_s_2 , w_s_2_product , w_s_2_num , w_s_2_normal_time , w_s_2_over_time , w_s_2_avail_time , w_s_2_remark , " 
+                a_sql += f"w_s_3 , w_s_3_product , w_s_3_num , w_s_3_normal_time , w_s_3_over_time , w_s_3_avail_time , w_s_3_remark , " 
+                a_sql += f"w_s_4 , w_s_4_product , w_s_4_num , w_s_4_normal_time , w_s_4_over_time , w_s_4_avail_time , w_s_4_remark , " 
+                a_sql += f"w_s_5 , w_s_5_product , w_s_5_num , w_s_5_normal_time , w_s_5_over_time , w_s_5_avail_time , w_s_5_remark , " 
+                a_sql += f"w_s_6 , w_s_6_product , w_s_6_num , w_s_6_normal_time , w_s_6_over_time , w_s_6_avail_time , w_s_6_remark , " 
+                a_sql += f"w_s_7 , w_s_7_product , w_s_7_num , w_s_7_normal_time , w_s_7_over_time , w_s_7_avail_time , w_s_7_remark , " 
+                a_sql += f"w_s_8 , w_s_8_product , w_s_8_num , w_s_8_normal_time , w_s_8_over_time , w_s_8_avail_time , w_s_8_remark , " 
+                a_sql += f"w_s_9 , w_s_9_product , w_s_9_num , w_s_9_normal_time , w_s_9_over_time , w_s_9_avail_time , w_s_9_remark , " 
+                a_sql += f"w_s_10 , w_s_10_product , w_s_10_num , w_s_10_normal_time , w_s_10_over_time , w_s_10_avail_time , w_s_10_remark , " 
+                a_sql += f"w_s_11 , w_s_11_product , w_s_11_num , w_s_11_normal_time , w_s_11_over_time , w_s_11_avail_time , w_s_11_remark , " 
+                a_sql += f"w_s_12 , w_s_12_product , w_s_12_num , w_s_12_normal_time , w_s_12_over_time , w_s_12_avail_time , w_s_12_remark" 
+                a_sql += f") value("
+                a_sql += f"'{a_work_no}' , '{a_name}' , '{dep_id}' ,'{b_date}', '{total_time}' , '{normal_time}' , '{over_time}' , '{availability_time}' , '{r_year}' , '{r_month}' , '{r_day}' ,"
+                a_sql += f"'{a_work_station_1}' , '{a_production_1}' , '{a_product_no_1}' , '{a_work_normal_time_1}' , '{a_work_over_time_1}' , '{a_work_availability_time_1}' , '{a_work_remark_1}' , "
+                a_sql += f"'{a_work_station_2}' , '{a_production_2}' , '{a_product_no_2}' , '{a_work_normal_time_2}' , '{a_work_over_time_2}' , '{a_work_availability_time_2}' , '{a_work_remark_2}' , "
+                a_sql += f"'{a_work_station_3}' , '{a_production_3}' , '{a_product_no_3}' , '{a_work_normal_time_3}' , '{a_work_over_time_3}' , '{a_work_availability_time_3}' , '{a_work_remark_3}' , "
+                a_sql += f"'{a_work_station_4}' , '{a_production_4}' , '{a_product_no_4}' , '{a_work_normal_time_4}' , '{a_work_over_time_4}' , '{a_work_availability_time_4}' , '{a_work_remark_4}' , "
+                a_sql += f"'{a_work_station_5}' , '{a_production_5}' , '{a_product_no_5}' , '{a_work_normal_time_5}' , '{a_work_over_time_5}' , '{a_work_availability_time_5}' , '{a_work_remark_5}' , "
+                a_sql += f"'{a_work_station_6}' , '{a_production_6}' , '{a_product_no_6}' , '{a_work_normal_time_6}' , '{a_work_over_time_6}' , '{a_work_availability_time_6}' , '{a_work_remark_6}' , "
+                a_sql += f"'{a_work_station_7}' , '{a_production_7}' , '{a_product_no_7}' , '{a_work_normal_time_7}' , '{a_work_over_time_7}' , '{a_work_availability_time_7}' , '{a_work_remark_7}' , "
+                a_sql += f"'{a_work_station_8}' , '{a_production_8}' , '{a_product_no_8}' , '{a_work_normal_time_8}' , '{a_work_over_time_8}' , '{a_work_availability_time_8}' , '{a_work_remark_8}' , "
+                a_sql += f"'{a_work_station_9}' , '{a_production_9}' , '{a_product_no_9}' , '{a_work_normal_time_9}' , '{a_work_over_time_9}' , '{a_work_availability_time_9}' , '{a_work_remark_9}' , "
+                a_sql += f"'{a_work_station_10}' , '{a_production_10}' , '{a_product_no_10}' , '{a_work_normal_time_10}' , '{a_work_over_time_10}' , '{a_work_availability_time_10}' , '{a_work_remark_10}' , "
+                a_sql += f"'{a_work_station_11}' , '{a_production_11}' , '{a_product_no_11}' , '{a_work_normal_time_11}' , '{a_work_over_time_11}' , '{a_work_availability_time_11}' , '{a_work_remark_11}' , "
+                a_sql += f"'{a_work_station_12}' , '{a_production_12}' , '{a_product_no_12}' , '{a_work_normal_time_12}' , '{a_work_over_time_12}' , '{a_work_availability_time_12}' , '{a_work_remark_12}'"
+                a_sql += f")" 
+
+                res = self.curr.execute(a_sql)
+
+            else:
+                r_val = 'no'
+                return r_val
+        
+        except Exception as e:
+            logging.info('< Error > submit_work_time_form : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
     ################
     # search_item
     ################
@@ -560,7 +799,6 @@ class web_cloud_dao:
 
         finally:
             self.__disconnect__()
-
 
     ###########################
     # factory_work_station_3

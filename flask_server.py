@@ -61,7 +61,6 @@ def update_hr_account():
 
     return render_template('update_hr_account.html' , title=title , hr_account=res)    
 
-
 ##############################
 # /reload_menu_account_list
 ##############################
@@ -316,7 +315,6 @@ def prouuction_1_work_time_record():
 
     return redirect(url_for('login')) 
 
-
 ##############################
 # /department_no_search_val
 ##############################
@@ -353,7 +351,6 @@ def department_no_search_val():
         
         return render_template('ajax/department_no_search.html' , user=user , lv=lv , title=title , operation_record_title=operation_record_title , r_date=r_date , res=res)
     
-
 ##########################
 # /department_no_search
 ##########################
@@ -395,7 +392,6 @@ def department_no_search():
             return redirect(url_for('logout'))
 
     return redirect(url_for('login')) 
-
 
 ##################################
 # /submit_add_check_member_data
@@ -550,7 +546,6 @@ def submit_add_check_account():
 
     return redirect(url_for('login')) 
 
-
 ##############################
 # /add_check_member_account
 ##############################
@@ -590,7 +585,6 @@ def add_check_member_account():
             return redirect(url_for('logout'))
 
     return redirect(url_for('login')) 
-
 
 #################################
 # /load_check_member_self_list
@@ -649,7 +643,7 @@ def submit_work_time():
     if 'user' in session:
         
         ### operation record title
-        operation_record_title = '新增液劑工時紀錄'    
+        operation_record_title = '新增液劑工時紀錄單資料'    
 
         ### session 
         user = session['user']
@@ -679,7 +673,7 @@ def submit_work_time():
                 a_work_no           = request.form['a_work_no']
                 a_name              = request.form['a_name']
                 dep_id              = request.form['dep_id']
-                b_date              = request.form['a_date']
+                b_date              = request.form['b_date']
                 total_time          = request.form['total_time']
                 normal_time         = request.form['normal_time']
                 over_time           = request.form['over_time']
@@ -693,16 +687,106 @@ def submit_work_time():
                 a_work_availability_time_1  = request.form['a_work_availability_time_1'] 
                 a_work_remark_1             = request.form['a_work_remark_1']
 
-                logging.info(f"{a_work_no} , {a_name} , {dep_id} , {b_date} , {total_time} , {normal_time} , {over_time} , {availability_time} , {a_work_station_1} , {a_production_1} , {a_product_no_1} , {a_work_normal_time_1} , {a_work_over_time_1} , {a_work_availability_time_1} , {a_work_remark_1}")
-                
+                a_work_station_2            = request.form['a_work_station_2'] 
+                a_production_2              = request.form['a_production_2']
+                a_product_no_2              = request.form['a_product_no_2']
+                a_work_normal_time_2        = request.form['a_work_normal_time_2']
+                a_work_over_time_2          = request.form['a_work_over_time_2']
+                a_work_availability_time_2  = request.form['a_work_availability_time_2'] 
+                a_work_remark_2             = request.form['a_work_remark_2']
 
-                #return render_template('/production_2_work_time_record.html')
+                a_work_station_3            = request.form['a_work_station_3'] 
+                a_production_3              = request.form['a_production_3']
+                a_product_no_3              = request.form['a_product_no_3']
+                a_work_normal_time_3        = request.form['a_work_normal_time_3']
+                a_work_over_time_3          = request.form['a_work_over_time_3']
+                a_work_availability_time_3  = request.form['a_work_availability_time_3'] 
+                a_work_remark_3             = request.form['a_work_remark_3']
+
+                a_work_station_4            = request.form['a_work_station_4'] 
+                a_production_4              = request.form['a_production_4']
+                a_product_no_4              = request.form['a_product_no_4']
+                a_work_normal_time_4        = request.form['a_work_normal_time_4']
+                a_work_over_time_4          = request.form['a_work_over_time_4']
+                a_work_availability_time_4  = request.form['a_work_availability_time_4'] 
+                a_work_remark_4             = request.form['a_work_remark_4']
+
+                a_work_station_5            = request.form['a_work_station_5'] 
+                a_production_5              = request.form['a_production_5']
+                a_product_no_5              = request.form['a_product_no_5']
+                a_work_normal_time_5        = request.form['a_work_normal_time_5']
+                a_work_over_time_5          = request.form['a_work_over_time_5']
+                a_work_availability_time_5  = request.form['a_work_availability_time_5'] 
+                a_work_remark_5             = request.form['a_work_remark_5']
+
+                a_work_station_6            = request.form['a_work_station_6'] 
+                a_production_6              = request.form['a_production_6']
+                a_product_no_6              = request.form['a_product_no_6']
+                a_work_normal_time_6        = request.form['a_work_normal_time_6']
+                a_work_over_time_6          = request.form['a_work_over_time_6']
+                a_work_availability_time_6  = request.form['a_work_availability_time_6'] 
+                a_work_remark_6             = request.form['a_work_remark_6']
+
+                a_work_station_7            = request.form['a_work_station_7'] 
+                a_production_7              = request.form['a_production_7']
+                a_product_no_7              = request.form['a_product_no_7']
+                a_work_normal_time_7        = request.form['a_work_normal_time_7']
+                a_work_over_time_7          = request.form['a_work_over_time_7']
+                a_work_availability_time_7  = request.form['a_work_availability_time_7'] 
+                a_work_remark_7             = request.form['a_work_remark_7']
+
+                a_work_station_8            = request.form['a_work_station_8'] 
+                a_production_8              = request.form['a_production_8']
+                a_product_no_8              = request.form['a_product_no_8']
+                a_work_normal_time_8        = request.form['a_work_normal_time_8']
+                a_work_over_time_8          = request.form['a_work_over_time_8']
+                a_work_availability_time_8  = request.form['a_work_availability_time_8'] 
+                a_work_remark_8             = request.form['a_work_remark_8']
+
+                a_work_station_9            = request.form['a_work_station_9'] 
+                a_production_9              = request.form['a_production_9']
+                a_product_no_9              = request.form['a_product_no_9']
+                a_work_normal_time_9        = request.form['a_work_normal_time_9']
+                a_work_over_time_9          = request.form['a_work_over_time_9']
+                a_work_availability_time_9  = request.form['a_work_availability_time_9'] 
+                a_work_remark_9             = request.form['a_work_remark_9']
+
+                a_work_station_10            = request.form['a_work_station_10'] 
+                a_production_10              = request.form['a_production_10']
+                a_product_no_10              = request.form['a_product_no_10']
+                a_work_normal_time_10        = request.form['a_work_normal_time_10']
+                a_work_over_time_10          = request.form['a_work_over_time_10']
+                a_work_availability_time_10  = request.form['a_work_availability_time_10'] 
+                a_work_remark_10             = request.form['a_work_remark_10']
+
+                a_work_station_11            = request.form['a_work_station_11'] 
+                a_production_11              = request.form['a_production_11']
+                a_product_no_11              = request.form['a_product_no_11']
+                a_work_normal_time_11        = request.form['a_work_normal_time_11']
+                a_work_over_time_11          = request.form['a_work_over_time_11']
+                a_work_availability_time_11  = request.form['a_work_availability_time_11'] 
+                a_work_remark_11             = request.form['a_work_remark_11']
+
+                a_work_station_12            = request.form['a_work_station_12'] 
+                a_production_12              = request.form['a_production_12']
+                a_product_no_12              = request.form['a_product_no_12']
+                a_work_normal_time_12        = request.form['a_work_normal_time_12']
+                a_work_over_time_12          = request.form['a_work_over_time_12']
+                a_work_availability_time_12  = request.form['a_work_availability_time_12'] 
+                a_work_remark_12             = request.form['a_work_remark_12']
+                
+                res = db.submit_work_time_form(a_work_no , a_name , dep_id , b_date , total_time , normal_time , over_time , availability_time , a_work_station_1 , a_production_1 , a_product_no_1 , a_work_normal_time_1 , a_work_over_time_1 , a_work_availability_time_1 , a_work_remark_1 , a_work_station_2 , a_production_2 , a_product_no_2 , a_work_normal_time_2 , a_work_over_time_2 , a_work_availability_time_2 , a_work_remark_2 , a_work_station_3 , a_production_3 , a_product_no_3 , a_work_normal_time_3 , a_work_over_time_3 , a_work_availability_time_3 , a_work_remark_3 , a_work_station_4 , a_production_4 , a_product_no_4 , a_work_normal_time_4 , a_work_over_time_4 , a_work_availability_time_4 , a_work_remark_4 , a_work_station_5 , a_production_5 , a_product_no_5 , a_work_normal_time_5 , a_work_over_time_5 , a_work_availability_time_5 , a_work_remark_5 , a_work_station_6 , a_production_6 , a_product_no_6 , a_work_normal_time_6 , a_work_over_time_6 , a_work_availability_time_6 , a_work_remark_6 , a_work_station_7 , a_production_7 , a_product_no_7 , a_work_normal_time_7 , a_work_over_time_7 , a_work_availability_time_7 , a_work_remark_7 , a_work_station_8 , a_production_8 , a_product_no_8 , a_work_normal_time_8 , a_work_over_time_8 , a_work_availability_time_8 , a_work_remark_8 , a_work_station_9 , a_production_9 , a_product_no_9 , a_work_normal_time_9 , a_work_over_time_9 , a_work_availability_time_9 , a_work_remark_9 , a_work_station_10 , a_production_10 , a_product_no_10 , a_work_normal_time_10 , a_work_over_time_10 , a_work_availability_time_10 , a_work_remark_10 , a_work_station_11 , a_production_11 , a_product_no_11 , a_work_normal_time_11 , a_work_over_time_11 , a_work_availability_time_11 , a_work_remark_11 , a_work_station_12 , a_production_12 , a_product_no_12 , a_work_normal_time_12 , a_work_over_time_12 , a_work_availability_time_12 , a_work_remark_12)
+
+                if res == 'ok':
+                    return render_template('/production_2_work_time_record.html')
+                
+                elif res == 'no':
+                    logging.info(f"< Error > {b_date} - {a_name} , 液劑工時紀錄表 已被建立  !!! ")
             
         else:
             return redirect(url_for('logout'))
 
     return redirect(url_for('login')) 
-
 
 ############################
 # /load_check_member_data
@@ -912,7 +996,6 @@ def update_submit_check_member_2():
 
     return redirect(url_for('login')) 
 
-
 ####################################
 # /prouuction_2_work_check_record
 ####################################
@@ -967,6 +1050,170 @@ def production_2_work_check_record():
 
     return redirect(url_for('login')) 
 
+
+###########################
+# /load_card_reader_list
+###########################
+@app.route("/load_card_reader_list" , methods=['GET','POST'])
+def load_card_reader_list():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '工廠 - 部門人員位置'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        #check_repeat_login = db.check_login_code(user,login_code)
+
+        #if check_repeat_login == 'ok':
+            
+        ### operation record
+        db.operation_record(r_time,user,login_code,operation_record_title)    
+        
+        #################
+        # main content 
+        #################
+        if request.method == 'POST':
+            
+            dep = request.form['dep']
+
+            card_reader_dep_res = db.load_card_reader_member_list(dep)
+
+            return render_template('ajax/load_card_reader_list.html' , card_reader_dep_res=card_reader_dep_res)
+
+        #else:
+            #return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###############################
+# /card_reader_member_search
+###############################
+@app.route("/card_reader_member_search")
+def card_reader_member_search():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '工廠 - 人員位置查詢'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            '''
+            if request.method == 'POST':
+                
+                b_date = request.form['b_date']
+                e_id   = request.form['e_id']
+                e_name = request.form['e_name']
+
+                factory_work_station = db.factory_work_station()
+                a_work_no = db.search_item('employee_id' , user)
+                a_name    = db.search_item('employee_name' , user)
+
+                res_work_time_list      = db.show_work_time_list(a_name , a_work_no)
+                normal_total_time       = db.show_work_time_total_val(a_name , a_work_no , 'normal_time')
+                over_total_time         = db.show_work_time_total_val(a_name , a_work_no , 'over_time')
+                availability_total_time = db.show_work_time_total_val(a_name , a_work_no , 'availability_time')
+                total_time              = db.show_work_time_total_val(a_name , a_work_no , 'total_time')
+
+                load_work_time_data = db.load_work_time_data_list(e_id , e_name , b_date)
+            '''
+            card_reader_res  = db.load_check_member_data_list2(user)
+            card_reader_res2 = db.load_check_member_data_list3(user)
+            card_reader_res3 = db.load_group_member_list(user)
+
+
+            #return render_template('search_card_reader_member.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , res_work_time_list=res_work_time_list , normal_total_time=normal_total_time , over_total_time=over_total_time , availability_total_time=availability_total_time , total_time=total_time , load_work_time_data=load_work_time_data)
+            return render_template('search_card_reader_member.html' , user=user , lv=lv , title=title , r_date=r_date , card_reader_res=card_reader_res , card_reader_res2=card_reader_res2 , card_reader_res3=card_reader_res3)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+#########################
+# /load_work_time_data
+#########################
+@app.route("/load_work_time_data" , methods=['GET','POST'])
+def load_work_time_data():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '生產二部 - 載入液劑工時時間記錄表資料'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                b_date = request.form['b_date']
+                e_id   = request.form['e_id']
+                e_name = request.form['e_name']
+
+                factory_work_station = db.factory_work_station()
+                a_work_no = db.search_item('employee_id' , user)
+                a_name    = db.search_item('employee_name' , user)
+
+                res_work_time_list      = db.show_work_time_list(a_name , a_work_no)
+                normal_total_time       = db.show_work_time_total_val(a_name , a_work_no , 'normal_time')
+                over_total_time         = db.show_work_time_total_val(a_name , a_work_no , 'over_time')
+                availability_total_time = db.show_work_time_total_val(a_name , a_work_no , 'availability_time')
+                total_time              = db.show_work_time_total_val(a_name , a_work_no , 'total_time')
+
+                load_work_time_data = db.load_work_time_data_list(e_id , e_name , b_date)
+
+                return render_template('ajax/load_work_time_data.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , res_work_time_list=res_work_time_list , normal_total_time=normal_total_time , over_total_time=over_total_time , availability_total_time=availability_total_time , total_time=total_time , load_work_time_data=load_work_time_data)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
 ###################################
 # /production_2_work_time_record
 ###################################
@@ -1002,7 +1249,13 @@ def production_2_work_time_record():
             a_work_no = db.search_item('employee_id' , user)
             a_name    = db.search_item('employee_name' , user)
 
-            return render_template('production_2_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id)
+            res_work_time_list      = db.show_work_time_list(a_name , a_work_no)
+            normal_total_time       = db.show_work_time_total_val(a_name , a_work_no , 'normal_time')
+            over_total_time         = db.show_work_time_total_val(a_name , a_work_no , 'over_time')
+            availability_total_time = db.show_work_time_total_val(a_name , a_work_no , 'availability_time')
+            total_time              = db.show_work_time_total_val(a_name , a_work_no , 'total_time')
+
+            return render_template('production_2_work_time_record.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , res_work_time_list=res_work_time_list , normal_total_time=normal_total_time , over_total_time=over_total_time , availability_total_time=availability_total_time , total_time=total_time)
 
         else:
             return redirect(url_for('logout'))
@@ -1133,7 +1386,6 @@ def logout2():
             session.pop('department_id',None)
 
     return redirect(url_for('index'))
-
 
 ###########
 # /logout 

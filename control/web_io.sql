@@ -15,6 +15,36 @@
 create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 use otsuka_factory;
 
+/************************* 
+ *
+ * card_reader_20230913
+ *
+ *************************/
+create table card_reader_20230913(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_time time null,
+p_id varchar(30) null,
+p_name varchar(30) null,
+e_id varchar(30) null,
+e_name varchar(30) null,
+position varchar(30) null,
+c_action varchar(30) null,
+c_id varchar(30) null,
+c_remark varchar(50) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/************************* 
+ *
+ * card_reader_position
+ *
+ *************************/
+create table card_reader_p(
+no int not null primary key AUTO_INCREMENT,
+p_id int null,
+p_name varchar(50) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 /***************** 
  *
  * work_time
@@ -22,11 +52,17 @@ use otsuka_factory;
  *****************/
 create table work_time(
 no int not null primary key AUTO_INCREMENT,
-employee_id int null,
-employee_name varchar(50) null,
+e_id int null,
+e_name varchar(50) null,
+dep_id varchar(10) null,
 b_date varchar(30) null , 
-total_worktime varchar(50) null,
-department_id varchar(10) null,
+r_year varchar(10) null , 
+r_month varchar(10) null , 
+r_day varchar(10) null , 
+total_time varchar(50) null,
+normal_time varchar(50) null,
+over_time varchar(50) null,
+availability_time varchar(50) null,
 
 w_s_1 varchar(100) null,
 w_s_1_product varchar(100) null,
