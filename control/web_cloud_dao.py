@@ -182,6 +182,32 @@ class web_cloud_dao:
         finally:
             self.__disconnect__()
 
+    ########################################
+    # load_card_reader_member_list_detail
+    ########################################
+    def load_card_reader_member_list_detail(self , e_name):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+
+            e_name = str(e_name).strip()
+
+            s_sql = f"select e_name , p_name , r_time from card_reader_{now_day} where e_name='{e_name}' order by r_time asc"
+            self.curr.execute(s_sql)
+            self.res = self.curr.fetchall()
+
+            if self.res is not None:
+                return self.res
+                
+        except Exception as e:
+            logging.info('< Error > load_card_reader_member_list_detail : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
     #################################
     # load_card_reader_member_list
     #################################
@@ -193,11 +219,14 @@ class web_cloud_dao:
             # record time
             now_day = time.strftime("%Y%m%d" , time.localtime()) 
 
-            s_sql = f"select distinct e_name from card_reader_{now_day} where d_name='{dep}'"
+            dep = str(dep).strip()
+
+            s_sql = f"select distinct e_name , count(*) from card_reader_{now_day} where d_name='{dep}' group by e_name"
             self.curr.execute(s_sql)
             self.res = self.curr.fetchall()
 
-            return self.res
+            if self.res is not None:
+                return self.res
                 
         except Exception as e:
             logging.info('< Error > load_card_reader_member_list : ' + str(e))
@@ -243,12 +272,11 @@ class web_cloud_dao:
             # record time
             now_day = time.strftime("%Y%m%d" , time.localtime()) 
                 
-            s_sql2 = f"SELECT d_name , count(*) FROM `card_reader_20230915` group by d_name  order by d_name asc"
+            s_sql2 = f"SELECT d_name FROM `card_reader_20230915` group by d_name  order by d_name asc"
             self.curr.execute(s_sql2)
             self.res2 = self.curr.fetchall()
 
             if self.res2 is not None:
-                
                 return self.res2
                 
         except Exception as e:

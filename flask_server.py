@@ -1050,6 +1050,55 @@ def production_2_work_check_record():
 
     return redirect(url_for('login')) 
 
+##################################
+# /load_card_reader_list_detail
+##################################
+@app.route("/load_card_reader_list_detail" , methods=['GET','POST'])
+def load_card_reader_list_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        #operation_record_title = '工廠 - 部門人員位置刷卡詳細資料'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        #check_repeat_login = db.check_login_code(user,login_code)
+
+        #if check_repeat_login == 'ok':
+        
+        ### operation record
+        #db.operation_record(r_time,user,login_code,operation_record_title)    
+        
+        #################
+        # main content 
+        #################
+        if request.method == 'POST':
+            
+            e_name = request.form['e_name']
+            
+            ### operation record title
+            operation_record_title = f'工廠 - {e_name}人員刷卡詳細資料'    
+
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+
+            card_reader_dep_res = db.load_card_reader_member_list_detail(e_name)
+
+            return render_template('ajax/load_card_reader_list_detail.html' , e_name=e_name , card_reader_dep_res=card_reader_dep_res)
+
+        #else:
+            #return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
 
 ###########################
 # /load_card_reader_list
@@ -1059,7 +1108,7 @@ def load_card_reader_list():
     if 'user' in session:
         
         ### operation record title
-        operation_record_title = '工廠 - 部門人員位置'    
+        #operation_record_title = '工廠 - 部門人員位置'    
 
         ### session 
         user = session['user']
@@ -1077,7 +1126,7 @@ def load_card_reader_list():
         #if check_repeat_login == 'ok':
             
         ### operation record
-        db.operation_record(r_time,user,login_code,operation_record_title)    
+        #db.operation_record(r_time,user,login_code,operation_record_title)    
         
         #################
         # main content 
@@ -1086,9 +1135,15 @@ def load_card_reader_list():
             
             dep = request.form['dep']
 
+            ### operation record title
+            operation_record_title = f'工廠 - {dep}人員位置'    
+
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+
             card_reader_dep_res = db.load_card_reader_member_list(dep)
 
-            return render_template('ajax/load_card_reader_list.html' , card_reader_dep_res=card_reader_dep_res)
+            return render_template('ajax/load_card_reader_list.html' , dep=dep , card_reader_dep_res=card_reader_dep_res)
 
         #else:
             #return redirect(url_for('logout'))

@@ -1,3 +1,38 @@
+function load_card_reader_list_detail(value){
+        var e_name = value;
+        
+        $.ajax({
+                type:"POST",
+                url:"/load_card_reader_list_detail",
+                data:{
+                        'e_name':e_name
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#card_reader_dep_list_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("loading 部門人員刷卡紀錄資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+
+}
+
 function load_card_reader_list(value){
         var dep = value;
 
@@ -17,6 +52,8 @@ function load_card_reader_list(value){
                 success:function(res){
                         
                         $("#card_reader_dep_list").show(1000).html(res);
+
+                        $("#card_reader_dep_list_detail").show(1000).html(" ");
                         
                         // scroll page bottom to page top
                         goto_top();
