@@ -15,6 +15,44 @@
 create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 use otsuka_factory;
 
+
+/************************* 
+ *
+ * in_out_20230920
+ *
+ *************************/
+create table in_out_20230920(
+no int not null primary key AUTO_INCREMENT,
+r_date varchar(20) null,
+r_time varchar(20) null,
+d_id varchar(50) null,
+d_name varchar(50) null,
+e_id varchar(50) null,
+e_name varchar(50) null,
+p_id varchar(50) null,
+p_name varchar(50) null,
+c_id varchar(50) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/************************* 
+ *
+ * factory_hr_a
+ *
+ *************************/
+create table factory_hr_a(
+no int not null primary key AUTO_INCREMENT,
+d_name varchar(50) null,
+d_id varchar(50) null,
+d_name2 varchar(50) null,
+e_id varchar(50) null,
+e_name varchar(50) null,
+l_account varchar(50) null,
+sex varchar(50) null,
+j_name varchar(50) null,
+j_date varchar(50) null,
+email varchar(200) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
 /************************* 
  *
  * card_reader_20230913

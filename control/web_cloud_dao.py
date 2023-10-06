@@ -209,6 +209,182 @@ class web_cloud_dao:
             self.__disconnect__()
 
     #################################
+    # load_card_reader_member_list2
+    #################################
+    def load_card_reader_member_list2(self , dep):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+
+            dep  = str(dep).strip()
+            dep2 = str(dep).strip()
+
+            if dep == '生產一部':
+                dep = '生一部'
+            elif dep == '生產二部':
+                dep = '生二部'
+            elif dep == '生產三部':
+                dep = '生三部'
+
+            s_sql = f"select distinct e_name from card_reader_{now_day} where d_name='{dep2}'"
+            self.curr.execute(s_sql)
+            res = self.curr.fetchall()
+            
+            for val in res:
+                
+                check_name = str(val[0]).strip()
+                s_sql2 = f"select distinct e_name from factory_hr_a where d_name ='{dep}'"
+                self.curr.execute(s_sql2)
+                res2 = self.curr.fetchone()
+                    
+                if val[0] == res2[0]:
+                    return False
+                else:
+                    return res
+                
+        except Exception as e:
+            logging.info('< Error > load_card_reader_member_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ###############################################
+    # load_card_reader_member_check_status_list2
+    ###############################################
+    def load_card_reader_member_check_status_list2(self , dep):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+
+            dep  = str(dep).strip()
+            dep2 = str(dep).strip()
+
+            if dep == '生產一部':
+                dep = '生一部'
+            elif dep == '生產二部':
+                dep = '生二部'
+            elif dep == '生產三部':
+                dep = '生三部'
+            
+            s_sql = f"select factory_hr_a.e_name from factory_hr_a inner join in_out_{now_day} on factory_hr_a.e_name!=in_out_{now_day}.e_name='{dep}' where factory_hr_a.d_name='{dep}'"
+            self.curr.execute(s_sql)
+            res = self.curr.fetchone()
+            
+            if res is not None:
+                return res[0]  
+                
+        except Exception as e:
+            logging.info('< Error > load_card_reader_member_list_real_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ############################################
+    # load_card_reader_member_list_real_total
+    ############################################
+    def load_card_reader_member_list_real_total(self , dep):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+
+            dep  = str(dep).strip()
+            dep2 = str(dep).strip()
+
+            if dep == '生產一部':
+                dep = '生一部'
+            elif dep == '生產二部':
+                dep = '生二部'
+            elif dep == '生產三部':
+                dep = '生三部'
+            
+            s_sql = f"select count(*) from in_out_{now_day} where d_name='{dep}'"
+            self.curr.execute(s_sql)
+            res = self.curr.fetchone()
+            
+            if res is not None:
+                return res[0]  
+                
+        except Exception as e:
+            logging.info('< Error > load_card_reader_member_list_real_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #######################################
+    # load_card_reader_member_list_total
+    #######################################
+    def load_card_reader_member_list_total(self , dep):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+
+            dep = str(dep).strip()
+
+            if dep == '生產一部':
+                dep = '生一部'
+            elif dep == '生產二部':
+                dep = '生二部'
+            elif dep == '生產三部':
+                dep = '生三部'
+            
+            s_sql = f"select count(*) from factory_hr_a where d_name='{dep}'"
+            self.curr.execute(s_sql)
+            res = self.curr.fetchone()
+            
+            if res is not None:
+                return res[0]  
+                
+        except Exception as e:
+            logging.info('< Error > load_card_reader_member_list_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
+    ##############################################
+    # load_card_reader_member_check_status_list
+    ##############################################
+    def load_card_reader_member_check_status_list(self , dep):
+        
+        self.__connect__()
+
+        try:
+            # record time
+            now_day = time.strftime("%Y%m%d" , time.localtime()) 
+
+            dep = str(dep).strip()
+
+            if dep == '生產一部':
+                dep = '生一部'
+            elif dep == '生產二部':
+                dep = '生二部'
+            elif dep == '生產三部':
+                dep = '生三部'
+            
+            s_sql = f"select distinct e_name from in_out_{now_day} where d_name='{dep}'"
+            self.curr.execute(s_sql)
+            res = self.curr.fetchall()
+            
+            return res
+                
+        except Exception as e:
+            logging.info('< ERROR > load_card_reader_member_check_status_list : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #################################
     # load_card_reader_member_list
     #################################
     def load_card_reader_member_list(self , dep):
@@ -221,15 +397,60 @@ class web_cloud_dao:
 
             dep = str(dep).strip()
 
-            s_sql = f"select distinct e_name , count(*) from card_reader_{now_day} where d_name='{dep}' group by e_name"
+            if dep == '生產一部':
+                dep = '生一部'
+            elif dep == '生產二部':
+                dep = '生二部'
+            elif dep == '生產三部':
+                dep = '生三部'
+            
+            s_sql = f"select distinct e_name from factory_hr_a where d_name='{dep}'"
+            #s_sql = f"select distinct factory_hr_a.e_name from factory_hr_a inner join in_out_{now_day} on factory_hr_a.e_name = in_out_{now_day}.e_name where factory_hr_a.d_name='{dep}'"
             self.curr.execute(s_sql)
-            self.res = self.curr.fetchall()
+            res = self.curr.fetchall()
 
-            if self.res is not None:
-                return self.res
+            for val in res:
+
+                try:
+                    a_sql =  f"create table in_out_{now_day}("
+                    a_sql += f"no int not null primary key AUTO_INCREMENT,"
+                    a_sql += f"r_date varchar(20) null,"
+                    a_sql += f"r_time varchar(20) null,"
+                    a_sql += f"d_id varchar(50) null,"
+                    a_sql += f"d_name varchar(50) null,"
+                    a_sql += f"e_id varchar(50) null,"
+                    a_sql += f"e_name varchar(50) null,"
+                    a_sql += f"p_id varchar(50) null,"
+                    a_sql += f"p_name varchar(50) null,"
+                    a_sql += f"c_id varchar(50) null"
+                    a_sql += f")ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;"
+
+                    self.curr.execute(a_sql)
+
+                except Exception as e:
+                    
+                    s_sql = f"select e_name from card_reader_{now_day} where e_name='{val[0]}' order by r_time desc limit 0,1"
+                    self.curr.execute(s_sql)
+                    res2 = self.curr.fetchone()
+
+                    if res2 is not None:
+
+                        s_sql3 = f"select e_name from in_out_{now_day} where d_name='{dep}' and e_name='{res2[0]}' order by no desc limit 0,1"
+                        self.curr.execute(s_sql3)
+                        res3 = self.curr.fetchone()
+
+                        if res3 is None:
+
+                            a_sql = f"insert into in_out_{now_day}(d_name , e_name) value('{dep}' , '{res2[0]}')"
+                            self.curr.execute(a_sql)
+
+                finally:
+                    pass
+            
+            return res
                 
         except Exception as e:
-            logging.info('< Error > load_card_reader_member_list : ' + str(e))
+            logging.info('< ERROR > load_card_reader_member_list : ' + str(e))
 
         finally:
             self.__disconnect__()

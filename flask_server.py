@@ -1133,17 +1133,29 @@ def load_card_reader_list():
         #################
         if request.method == 'POST':
             
+            
             dep = request.form['dep']
 
             ### operation record title
-            operation_record_title = f'工廠 - {dep}人員位置'    
+            operation_record_title = f'工廠 - {dep} 正職 , 派遣人員'    
 
             ### operation record
             db.operation_record(r_time,user,login_code,operation_record_title)    
 
-            card_reader_dep_res = db.load_card_reader_member_list(dep)
+            ### 正職人員
+            card_reader_dep_res  = db.load_card_reader_member_list(dep)
+            ### 正職人員 上班狀態
+            card_reader_check_status_res = db.load_card_reader_member_check_status_list(dep)
+            ### 正職人員 未上班人員
+            card_reader_check_status_res2 = db.load_card_reader_member_check_status_list2(dep)
+            ### 正職人員 應到
+            card_reader_dep_total_res  = db.load_card_reader_member_list_total(dep)
+            ### 正職人員 實到
+            card_reader_dep_real_total_res  = db.load_card_reader_member_list_real_total(dep)
+            ### 派遣人員
+            card_reader_dep_res2 = db.load_card_reader_member_list2(dep)
 
-            return render_template('ajax/load_card_reader_list.html' , dep=dep , card_reader_dep_res=card_reader_dep_res)
+            return render_template('ajax/load_card_reader_list.html' , dep=dep , card_reader_dep_res=card_reader_dep_res , card_reader_dep_total_res=card_reader_dep_total_res , card_reader_dep_real_total_res=card_reader_dep_real_total_res , card_reader_check_status_res=card_reader_check_status_res)
 
         #else:
             #return redirect(url_for('logout'))
