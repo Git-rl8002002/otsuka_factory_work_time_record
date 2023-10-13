@@ -1355,7 +1355,7 @@ def index():
         user       = session['user']
         lv         = session['lv']
         login_code = session['login_code']
-        dep_id     = session['department_id']
+        #dep_id     = session['department_id']
 
         ### r_time
         r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
