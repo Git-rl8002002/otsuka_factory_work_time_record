@@ -16,6 +16,23 @@ create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 use otsuka_factory;
 
 
+/**************
+ *
+ * day_money
+ *
+ **************/
+create table day_money(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+c_name varchar(30) null,
+b_name varchar(30) null,
+t_money varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+
 /************************* 
  *
  * in_out_20230920

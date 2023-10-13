@@ -25,6 +25,44 @@ class web_cloud_dao:
     #logging.disable(logging.INFO)
 
     ##################
+    # bpm_day_money
+    ##################
+    def bpm_day_money(self):
+        
+        self.__connect_mssql__()
+        
+        try:
+            
+            ########################################
+            #
+            # BPM 日當欄位對應
+            # table : ART00721676130332682_INS
+            # ITEM12:申請日期
+            # ITEM14:填表人(以此為主)
+            # ITEM72:申請人
+            # ITEM26:日當(true/false)
+            # ITEM15:總金額
+            # ITEM27:交際費(true/false)
+            # ITEM44:已結案(true/false)
+            # ITEM34:作廢(true/false)
+            #
+            ########################################
+            
+            self.sql = f"select ITEM14 , ITEM72 , ITEM15 , ITEM12 from ART00721676130332682_INS where ITEM26='true' and ITEM44='true' order by ITEM12 desc" 
+            self.curr_mssql.execute(self.sql)
+            self.res           = self.curr_mssql.fetchall()
+
+            for val in self.res:
+                logging.info(f"{val[0]} , {val[1]} , {val[2]} , {val[3]}")
+
+
+        except Exception as e:
+            logging.info('< Error > bpm_day_money : ' + str(e))
+
+        finally:
+            self.__disconnect_mssql__()
+    
+    ##################
     # bpm_account_list
     ##################
     def bpm_account_list(self):
