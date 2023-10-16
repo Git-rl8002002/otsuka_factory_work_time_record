@@ -15,6 +15,60 @@
 create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 use otsuka_factory;
 
+/************************
+ *
+ * check_device_record
+ *
+ ************************/
+create table check_device_record(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+d_os varchar(30) null,
+d_status varchar(30) null,
+d_name varchar(30) null,
+d_client_security_status varchar(30) null,
+d_patch_status varchar(30) null,
+d_available_patches_count varchar(30) null,
+d_customer varchar(30) null,
+d_group varchar(30) null,
+d_last_logged_in_user varchar(100) null,
+d_owner varchar(30) null,
+d_last_activity varchar(100) null,
+d_os_name varchar(100) null,
+d_os_version varchar(30) null,
+d_ccs_version varchar(30) null,
+d_ccc_version varchar(40) null,
+d_external_ip varchar(50) null,
+d_internal_ip varchar(50) null,
+d_ad_ldap varchar(30) null,
+d_domain_workgroup varchar(50) null,
+d_model varchar(50) null,
+d_process varchar(50) null,
+d_serial_num varchar(50) null,
+d_system_model varchar(50) null,
+d_system_manufacturer varchar(50) null,
+d_ownership_type varchar(50) null,
+d_registered varchar(50) null,
+d_local_time_zone varchar(50) null,
+d_service_pack varchar(50) null,
+d_reboot_time varchar(50) null,
+d_reboot_reason text null,
+d_cpu_usage varchar(10) null,
+d_cpu_frequency varchar(10) null,
+d_ram_usage_1 varchar(10) null,
+d_ram_usage_2 varchar(10) null,
+d_total_ram varchar(10) null,
+d_network_usage text null,
+d_disk_free_GB varchar(30) null,
+d_disk_used_GB varchar(30) null,
+d_security_profiles varchar(30) null,
+d_tags varchar(30) null,
+d_notes varchar(30) null
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /**************
  *
@@ -27,9 +81,19 @@ r_date date null,
 r_year varchar(10) null,
 r_month varchar(10) null,
 r_day varchar(10) null,
-c_name varchar(30) null,
-b_name varchar(30) null,
-t_money varchar(40) null
+f_name varchar(30) null,
+a_name varchar(30) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_r_day varchar(10) null,
+day_t_money varchar(40) null,
+day_money_mark text null,
+day_money_diff varchar(40) null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 

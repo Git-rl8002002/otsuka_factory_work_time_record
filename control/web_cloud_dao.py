@@ -29,26 +29,11 @@ class web_cloud_dao:
     ##################
     def bpm_day_money(self):
         
-        self.__connect_mssql__()
+        self.__connect__()
         
         try:
-            
-            ########################################
-            #
-            # BPM 日當欄位對應
-            # table : ART00721676130332682_INS
-            # ITEM12:申請日期
-            # ITEM14:填表人(以此為主)
-            # ITEM72:申請人
-            # ITEM26:日當(true/false)
-            # ITEM15:總金額
-            # ITEM27:交際費(true/false)
-            # ITEM44:已結案(true/false)
-            # ITEM34:作廢(true/false)
-            #
-            ########################################
-            
-            self.sql = f"select ITEM14 , ITEM72 , ITEM15 , ITEM12 from ART00721676130332682_INS where ITEM26='true' and ITEM44='true' order by ITEM12 desc" 
+
+            self.sql = f"SELECT day_money.r_date , day_money.c_name , hr_a.employee_eng_name , day_money.t_money FROM `day_money` left join hr_a on day_money.c_name = hr_a.employee_name WHERE day_money.r_year='2023' and day_money.r_month='09' order by day_money.r_day desc" 
             self.curr_mssql.execute(self.sql)
             self.res           = self.curr_mssql.fetchall()
 
@@ -60,7 +45,7 @@ class web_cloud_dao:
             logging.info('< Error > bpm_day_money : ' + str(e))
 
         finally:
-            self.__disconnect_mssql__()
+            self.__disconnect__()
     
     ##################
     # bpm_account_list
