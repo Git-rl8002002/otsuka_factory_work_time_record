@@ -40,6 +40,7 @@ class day_money:
 
             while True: 
                 self.bpm_day_money()
+                self.update_day_money()
                 time.sleep(300)
             
         except Exception as e:
@@ -47,6 +48,52 @@ class day_money:
         finally:
             pass
    
+    #####################
+    # update_day_money
+    #####################
+    def update_day_money(self):
+        try:
+                    self.conn = pymysql.connect(host=otsuka_factory['host'],port=otsuka_factory['port'],user=otsuka_factory['user'],password=otsuka_factory['pwd'],database=otsuka_factory['db'],charset=otsuka_factory['charset'])
+                    self.curr = self.conn.cursor()
+                    
+                    print("------------------------------------------------------------------------------------------------------------------\n")
+
+                    #month = '0' + month if int(month) < 10 else month
+
+                    # all day by month 
+                    name_sql = f"select a_name from day_money where day_r_year='2023' and day_r_month='09' group by a_name order by day_r_day asc"
+                    self.curr.execute(name_sql)
+                    name_res = self.curr.fetchall() 
+
+                    for name_val in name_res:
+                        
+                        day_sql = f"select day_r_day from day_money where day_r_year='2023' and day_r_month='09' group by day_r_day order by day_r_day asc"
+                        self.curr.execute(day_sql)
+                        day_res = self.curr.fetchall()
+
+                        for day_val in day_res:
+                             
+                             search_sql = f"select * from day_money where day_r_year='2023' and day_r_month='09' and day_r_day='{day_val[0]}' and a_name='{name_val[0]}'"
+                             self.curr.execute(search_sql)
+                             search_res = self.curr.fetchone()
+
+                             if search_res is None:
+                                add_sql = f"insert into day_money(day_r_year , day_r_month , day_r_day , a_name , day_t_money) value('2023','09','{day_val[0]}','{name_val[0]}','0')"
+                                self.curr.execute(add_sql)  
+                    
+                    #return day_res
+                    self.conn.commit()
+                    print("\n")
+                    logging.info('synchronization day money is done.')
+                    print("------------------------------------------------------------------------------------------------------------------")
+
+        except Exception as e:
+            logging.error("connect mysql fail : " + str(e))
+
+        finally:
+            self.curr.close()
+            self.conn.close()
+
     ##################
     # bpm_day_money
     ##################
@@ -166,6 +213,9 @@ if __name__ == '__main__':
     
     # check day money
     check_day_money = day_money()
+
+    
+
 
 
 

@@ -155,7 +155,7 @@ def submit_add_account_form():
 #######################
 # /load_account_form
 #######################
-@app.route("/load_account_form", methods=['POST','GET'])
+@app.route("/load_account_form" , methods=['POST','GET'])
 def load_account_form():
     if 'user' in session:
         
@@ -225,6 +225,103 @@ def menu_account_management():
             factory_work_account_list = db.factory_work_account_list()
 
             return render_template('menu_account_management.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , factory_work_account_list=factory_work_account_list)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###########################
+# /show_day_month_detail
+###########################
+@app.route("/show_day_month_detail" , methods=['POST','GET'])
+def show_day_month_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = db.show_day_money_detail_day(year , month)
+                name_in_month = db.show_day_money_detail_name(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+######################
+# /day_money_report
+######################
+@app.route("/day_money_report")
+def day_money_report():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當月報表'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            day_money_by_year  = r_year
+            day_money_by_month = db.bpm_day_money_by_month(r_year)
+
+            return render_template('day_money_report.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , day_money_by_year=day_money_by_year , day_money_by_month=day_money_by_month)
 
         else:
             return redirect(url_for('logout'))
@@ -1355,7 +1452,7 @@ def index():
         user       = session['user']
         lv         = session['lv']
         login_code = session['login_code']
-        #dep_id     = session['department_id']
+        dep_id     = session['department_id'] if session['department_id'] is not None else None
 
         ### r_time
         r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
@@ -1386,7 +1483,7 @@ def index():
 def login():
     if request.method == 'POST':
         check_account = db.login(request.form['user'] , request.form['pwd'])
-        dep_id = db.dep_id(request.form['user'] , request.form['pwd'])
+        dep_id        = db.dep_id(request.form['user'] , request.form['pwd'])
 
         if check_account is not None:
             
@@ -1404,9 +1501,9 @@ def login():
             m = hashlib.md5()
             m.update(r_time.encode('utf-8'))
             h = m.hexdigest()
-            session['login_code'] = h
-            session['ip'] = request.remote_addr
-            session['lv'] = 3
+            session['login_code']    = h
+            session['ip']            = request.remote_addr
+            session['lv']            = 3
             session['department_id'] = dep_id
             
             ### login record

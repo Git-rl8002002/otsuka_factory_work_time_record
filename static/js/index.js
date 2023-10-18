@@ -1,3 +1,41 @@
+function show_day_month_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+
+}
+
 function load_card_reader_list_detail(value){
         var e_name = value;
         

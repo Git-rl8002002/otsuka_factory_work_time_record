@@ -6,7 +6,7 @@
 # Update   : 20230720
 # Function : otsuka factory work time record
 
-import pymysql , logging , time , re , requests , json , pymssql , pyodbc
+import pymysql , logging , time , re , requests , json , pymssql , pyodbc , calendar , csv , json
 
 from control.config import *
 
@@ -23,6 +23,166 @@ class web_cloud_dao:
     log_format = "%(asctime)s %(message)s"
     logging.basicConfig(format=log_format , level=logging.INFO , datefmt="%Y-%m-%d %H:%M:%S")
     #logging.disable(logging.INFO)
+
+    ##########################
+    # show_day_money_detail
+    ##########################
+    def show_day_money_detail(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            month = '0' + month if int(month) < 10 else month
+
+            year_month_sql = f"SELECT day_r_date , day_r_month , day_r_day FROM `day_money` WHERE day_r_year='2023' and day_r_month='09' group by day_r_day order by day_r_day desc"
+            name_sql       = f"select a.a_name , b.employee_eng_name , a.day_r_date , a.day_t_money from `day_money` a left join hr_a b on a.a_name = b.employee_name  WHERE  day_r_year='2023' and day_r_month='09' and day_r_month != '9/' order by day_r_day desc"
+
+            self.sql = f"select a_name , day_r_month from `day_money` WHERE  day_r_year='{str(year)}' and day_r_month='{str(month)}' and day_r_month != '9/' order by day_r_day desc" 
+            self.curr.execute(self.sql)
+            self.res = self.curr.fetchall()
+            month    = []
+
+            for val in self.res:
+                month.append(val[0]) 
+
+            return month
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_detail : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ##############################
+    # show_day_money_detail_name
+    ##############################
+    def show_day_money_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            month      = '0' + month if int(month) < 10 else month
+            return_res = []
+            #return_res = ''
+
+            #sql = f"select a.a_name , b.employee_eng_name , a.day_t_money , a.day_r_month , a.day_r_day from day_money a left join hr_a b on a.a_name=b.employee_name where a.day_r_year='{year}' and a.day_r_month='{month}' order by day_r_day asc"
+            
+            sql = f"select a.a_name , b.employee_eng_name from day_money a left join hr_a b on a.a_name=b.employee_name where a.day_r_year='{year}' and a.day_r_month='{month}' group by a_name order by day_r_day asc"
+            self.curr.execute(sql)
+            res = self.curr.fetchall() 
+
+            for val in res:
+                sql2 = f"select day_r_month , day_r_day , day_t_money from day_money where day_r_year='{year}' and day_r_month='{month}' and a_name='{val[0]}' order by day_r_day asc"
+                self.curr.execute(sql2)
+                res2 = self.curr.fetchall()
+
+                return_res.append(val[0] + ',' + val[1])
+                #return_res += str(val[0]) + ','
+                #return_res += str(val[1]) + ','
+
+                for val2 in res2:
+                    return_res.append(val2[0]+'/'+val2[1] +','+ val2[2])
+                    
+                    #return_res += str(val2[0] +'/'+ val2[1]  + ' ' + val2[2]) +  '\n'
+                    #return_res += str(val2[2]) + '\n'
+                
+                #return_res.append('\n')
+
+            csv_file = year + '_' + month + '.csv'
+            with open(csv_file , 'w' , newline='' , encoding='utf-8') as file:
+                csv_build = csv.writer(file , delimiter=' ')
+                csv_build.writerows(return_res)
+
+            return return_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ##############################
+    # show_day_money_detail_day
+    ##############################
+    def show_day_money_detail_day(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            month = '0' + month if int(month) < 10 else month
+
+            # all day by month 
+            day_sql = f"select day_r_month , day_r_day from day_money where day_r_year='{year}' and day_r_month='{month}' group by day_r_day order by day_r_day asc"
+            self.curr.execute(day_sql)
+            day_res = self.curr.fetchall() 
+
+            for day_val in day_res:
+                name_sql = f"select a_name from day_money where day_r_year='{year}' and day_r_month='{month}' group by a_name order by day_r_day asc"
+                self.curr.execute(name_sql)
+                name_res = self.curr.fetchall()
+                logging.info(f"{name_sql}")
+
+                for name_val in name_res:
+                    search_sql = f"select a_name from day_money where day_r_year='{year}' and day_r_month='{day_val[0]}' and day_r_day='{day_val[1]}' and a_name='{name_val[0]}'"
+                    self.curr.execute(search_sql)
+                    search_res = self.curr.fetchone() 
+                    
+                    if search_res is None:
+                        add_sql = f"insert into day_money(day_r_year , day_r_month , day_r_day , a_name , day_t_money) value('{year}','{day_val[0]}','{day_val[1]}','{name_val[1]}','0')"
+                        self.curr.execute(add_sql)
+                        self.conn.commit()
+            
+            #return day_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_detail_day : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ###########################
+    # bpm_day_money_by_month
+    ###########################
+    def bpm_day_money_by_month(self , year):
+        
+        self.__connect__()
+        
+        try:
+            self.sql = f"select day_r_month from `day_money` WHERE  day_r_year='{str(year)}' and day_r_month != '9/' group by day_r_month order by day_r_month desc" 
+            self.curr.execute(self.sql)
+            self.res = self.curr.fetchall()
+            month    = []
+
+            for val in self.res:
+                month.append(val[0]) 
+
+            return month
+
+        except Exception as e:
+            logging.error('< Error > bpm_day_money_by_month : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ##########################
+    # bpm_day_money_by_year
+    ##########################
+    def bpm_day_money_by_year(self):
+        
+        self.__connect__()
+        
+        try:
+            self.sql = f"select day_r_year from `day_money` WHERE day_r_year != '112/' group by day_r_year order by day_r_year desc" 
+            self.curr.execute(self.sql)
+            self.res = self.curr.fetchall()
+
+            return self.res
+
+        except Exception as e:
+            logging.error('< Error > bpm_day_money_by_year : ' + str(e))
+
+        finally:
+            self.__disconnect__()
 
     ##################
     # bpm_day_money
@@ -1183,19 +1343,36 @@ class web_cloud_dao:
 
             self.sql = "select department_code from hr_a where login_id='{0}' and mobile='{1}'".format(self.login_id , self.mobile)
             self.curr.execute(self.sql)
-            self.res = self.curr.fetchone()
-            self.dep_code = self.res[0]
+            self.res        = self.curr.fetchone()
+            self.dep_code   = self.res[0]
             self.r_dep_code = self.dep_code[0:2]
 
-            return self.r_dep_code
+            ###########
+            # 生一部
+            ###########
+            if self.r_dep_code == '1A':
+                return self.r_dep_code
+            ###########
+            # 生二部
+            ###########
+            elif self.r_dep_code == '1B':
+                return self.r_dep_code
+            ###########
+            # 生三部
+            ###########
+            elif self.r_dep_code == '1K':
+                return self.r_dep_code
+            ##############################
+            # 剩下都依照原本部門代號顯示
+            ##############################
+            else:
+                return self.dep_code
 
         except Exception as e:
-            logging.info("< Error > dep_id : " + str(e))
+            logging.error("< Error > dep_id : " + str(e))
 
         finally:
             self.__disconnect__()
-            #self.curr_mssql.close()
-            #self.conn_mssql.close()
 
     ##########
     # login
