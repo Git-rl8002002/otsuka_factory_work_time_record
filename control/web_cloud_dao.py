@@ -53,6 +53,63 @@ class web_cloud_dao:
         finally:
             self.__disconnect__()
 
+    ################################
+    # show_day_money_detail_money
+    ################################
+    def show_day_money_detail_money(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            month = '0' + month if int(month) < 10 else month
+
+            name_sql = f"select a_name , e_name from day_money where day_r_year='{year}' and day_r_month='{month}' group by a_name  order by day_r_day asc"
+            self.curr.execute(name_sql)
+            name_res = self.curr.fetchall()
+
+            for name_val in name_res:
+             
+                money_sql = f"select day_t_money from day_money where day_r_year='{year}' and day_r_month='{month}' and a_name='{name}' order by day_r_day asc"
+                self.curr.execute(money_sql)
+                money_res = self.curr.fetchall()
+
+                return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_detail_money : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ####################################
+    # show_day_money_detail_day_total
+    ####################################
+    def show_day_money_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
     ##############################
     # show_day_money_detail_name
     ##############################
@@ -61,39 +118,32 @@ class web_cloud_dao:
         self.__connect__()
         
         try:
-            month      = '0' + month if int(month) < 10 else month
-            return_res = []
-            #return_res = ''
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
 
-            #sql = f"select a.a_name , b.employee_eng_name , a.day_t_money , a.day_r_month , a.day_r_day from day_money a left join hr_a b on a.a_name=b.employee_name where a.day_r_year='{year}' and a.day_r_month='{month}' order by day_r_day asc"
+            #############
+            # csv file
+            #############
+            csv_file = 'csv/'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
             
-            sql = f"select a.a_name , b.employee_eng_name from day_money a left join hr_a b on a.a_name=b.employee_name where a.day_r_year='{year}' and a.day_r_month='{month}' group by a_name order by day_r_day asc"
-            self.curr.execute(sql)
-            res = self.curr.fetchall() 
-
-            for val in res:
-                sql2 = f"select day_r_month , day_r_day , day_t_money from day_money where day_r_year='{year}' and day_r_month='{month}' and a_name='{val[0]}' order by day_r_day asc"
-                self.curr.execute(sql2)
-                res2 = self.curr.fetchall()
-
-                return_res.append(val[0] + ',' + val[1])
-                #return_res += str(val[0]) + ','
-                #return_res += str(val[1]) + ','
-
-                for val2 in res2:
-                    return_res.append(val2[0]+'/'+val2[1] +','+ val2[2])
-                    
-                    #return_res += str(val2[0] +'/'+ val2[1]  + ' ' + val2[2]) +  '\n'
-                    #return_res += str(val2[2]) + '\n'
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 
-                #return_res.append('\n')
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
 
-            csv_file = year + '_' + month + '.csv'
-            with open(csv_file , 'w' , newline='' , encoding='utf-8') as file:
-                csv_build = csv.writer(file , delimiter=' ')
-                csv_build.writerows(return_res)
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
 
-            return return_res
+            return money_res
 
         except Exception as e:
             logging.error('< Error > show_day_money_detail_name : ' + str(e))
@@ -116,23 +166,7 @@ class web_cloud_dao:
             self.curr.execute(day_sql)
             day_res = self.curr.fetchall() 
 
-            for day_val in day_res:
-                name_sql = f"select a_name from day_money where day_r_year='{year}' and day_r_month='{month}' group by a_name order by day_r_day asc"
-                self.curr.execute(name_sql)
-                name_res = self.curr.fetchall()
-                logging.info(f"{name_sql}")
-
-                for name_val in name_res:
-                    search_sql = f"select a_name from day_money where day_r_year='{year}' and day_r_month='{day_val[0]}' and day_r_day='{day_val[1]}' and a_name='{name_val[0]}'"
-                    self.curr.execute(search_sql)
-                    search_res = self.curr.fetchone() 
-                    
-                    if search_res is None:
-                        add_sql = f"insert into day_money(day_r_year , day_r_month , day_r_day , a_name , day_t_money) value('{year}','{day_val[0]}','{day_val[1]}','{name_val[1]}','0')"
-                        self.curr.execute(add_sql)
-                        self.conn.commit()
-            
-            #return day_res
+            return day_res
 
         except Exception as e:
             logging.error('< Error > show_day_money_detail_day : ' + str(e))
@@ -148,15 +182,11 @@ class web_cloud_dao:
         self.__connect__()
         
         try:
-            self.sql = f"select day_r_month from `day_money` WHERE  day_r_year='{str(year)}' and day_r_month != '9/' group by day_r_month order by day_r_month desc" 
-            self.curr.execute(self.sql)
-            self.res = self.curr.fetchall()
-            month    = []
+            month_sql = f"select day_r_month from `day_money` WHERE  day_r_year='{str(year)}' group by day_r_month order by day_r_month desc" 
+            self.curr.execute(month_sql)
+            month_res = self.curr.fetchall()
 
-            for val in self.res:
-                month.append(val[0]) 
-
-            return month
+            return month_res
 
         except Exception as e:
             logging.error('< Error > bpm_day_money_by_month : ' + str(e))

@@ -128,6 +128,12 @@
                 <!-- logout -->
                 <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> 登出</button></a></li>
                 
+                <!-------------- 
+                -    
+                - 生產一部 
+                -
+                ---------------->    
+                {% if dep_id == "1A" %}
                 <!-- 資料查詢 -->    
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 資料查詢</button></a>
@@ -136,13 +142,6 @@
                         <a class="dropdown-item" href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a>
                     </div>
                 </li>
-                
-                <!-------------- 
-                -    
-                - 生產一部 
-                -
-                ---------------->    
-                {% if dep_id == "1A" %}
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產一部</button></a>
                     <div class="dropdown-menu">
@@ -156,6 +155,14 @@
                 -
                 ---------------->    
                 {% elif dep_id == "1B" %}
+                <!-- 資料查詢 -->    
+                <li class="nav-item dropdown">
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 資料查詢</button></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
+                        <a class="dropdown-item" href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a>
+                    </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產二部</button></a>
                     <div class="dropdown-menu">
@@ -170,6 +177,14 @@
                 -
                 ---------------->    
                 {% elif dep_id == "1K" %}
+                <!-- 資料查詢 -->    
+                <li class="nav-item dropdown">
+                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 資料查詢</button></a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
+                        <a class="dropdown-item" href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a>
+                    </div>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產三部</button></a>
                     <div class="dropdown-menu">
@@ -186,8 +201,19 @@
                 <li class="nav-item dropdown">
                     <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 財務部</button></a>
                     <div class="dropdown-menu">
+                        <!--
                         <a class="dropdown-item" href="/day_money_report"><i class="bi bi-bookmarks"></i> 日當月報表</a>
-                    </div>
+                        -->
+                        <a class="dropdown-item"><i class="bi bi-bookmarks"></i> 日當月報表</a>
+                        <ul class="dropdown-item">
+                            {% for month in day_money_by_month %}
+                            <li class="list-group-item-action" id="{{day_money_by_year}}/{{month[0]}}"  onclick="show_day_month_detail(id)">
+                                <a class="hover">{{ day_money_by_year }}  年 {{ month[0] }} 月</a>&nbsp; 
+                                <a class="hover">下載</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div> 
                 </li>
 
                 {% endif %}
@@ -282,8 +308,9 @@
                 </div>
             </div>
             {% else %}
-            <!-- 功能清單 -->
-            <div id="main_content" class="col-md-4 my-1">
+            <!-- 功能清單 id="main_content" -->
+            
+            <div id="show_day_month_detail" class="col-md-4 my-1">
                 <div class="card">
                     <div class="card-header">
                         <h4 class="text-primary"><i class="bi bi-chat-left-text"></i>功能清單</h4></div>
@@ -292,10 +319,11 @@
                             <li class="list-group-item list-group-item-action">
                                 <a href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
                             </li>
+                            <li class="list-group-item list-group-item-action">
+                                <a href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a>
+                            </li>
                         </ul>
-                        <li class="list-group-item list-group-item-action">
-                            <a href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a>
-                        </li>
+                        
                     </div>
                 </div>
             </div>

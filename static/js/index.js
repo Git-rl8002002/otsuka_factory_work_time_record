@@ -1,3 +1,41 @@
+function download_day_money_excel(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/download_day_money_excel",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        //$("#show_day_month_detail").show(1000).html(res);
+                        alert('下載' + year + ' 年 ' + month + ' 月 日當月報表');
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("下載日當月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
 function show_day_month_detail(val){
         var data  = val.split('/');
         var year  = data[0];
@@ -33,7 +71,6 @@ function show_day_month_detail(val){
                         $('#status').css({'color':'white'});
                 }
         });
-
 }
 
 function load_card_reader_list_detail(value){

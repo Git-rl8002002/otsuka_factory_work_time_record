@@ -11,11 +11,13 @@ from dataclasses import dataclass
 from distutils.log import debug
 from email import charset
 from hashlib import md5
-import hashlib , time , logging , random
+import hashlib , time , logging , random , openpyxl , csv
 #import socketio
 from tabnanny import check
-from flask import Flask,render_template,request,session,url_for,redirect,escape
+from flask import Flask,render_template,request,session,url_for,redirect,escape , Response
 from flask_socketio import SocketIO , emit 
+from openpyxl.utils.dataframe import dataframe_to_rows
+from io import BytesIO
 
 from control.config import *
 from control.web_cloud_dao import web_cloud_dao 
@@ -231,6 +233,69 @@ def menu_account_management():
 
     return redirect(url_for('login')) 
 
+############################
+# /download_day_money_csv
+############################
+@app.route("/download_day_money_csv" , methods=['POST','GET'])
+def download_day_money_csv():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 下載日當月報表'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                csv = year+'_'+month+'.csv'
+                
+                with open(csv , mode='w' , newline='') as file:
+                    writer = csv.writer(file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_detail_name(year , month)
+                day_in_total  = db.show_day_money_detail_day_total(year , month)
+
+                for row in name_in_month:
+                    writer.writerow(row)
+
+                
+
+                #return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
 ###########################
 # /show_day_month_detail
 ###########################
@@ -272,10 +337,11 @@ def show_day_month_detail():
                 year  = request.form['year']
                 month = request.form['month']
 
-                days_in_month = db.show_day_money_detail_day(year , month)
+                days_in_month = 31
                 name_in_month = db.show_day_money_detail_name(year , month)
+                day_in_total  = db.show_day_money_detail_day_total(year , month)
 
-                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month)
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
 
         else:
             return redirect(url_for('logout'))
@@ -1454,7 +1520,10 @@ def index():
         login_code = session['login_code']
         dep_id     = session['department_id'] if session['department_id'] is not None else None
 
+        
         ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
         r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
 
         ### check repeat login
@@ -1469,7 +1538,10 @@ def index():
             # main content 
             #################
 
-            return render_template('index.html' , user=user , lv=lv , title=title , dep_id=dep_id)
+            day_money_by_year  = r_year
+            day_money_by_month = db.bpm_day_money_by_month(r_year)
+
+            return render_template('index.html' ,  user=session['user'] , lv=session['lv'] , title=title , dep_id=session['department_id'] , day_money_by_year=day_money_by_year , day_money_by_month=day_money_by_month)
 
         else:
             return redirect(url_for('logout'))
@@ -1488,6 +1560,8 @@ def login():
         if check_account is not None:
             
             ### r_time
+            r_year = time.strftime("%Y" , time.localtime())
+            r_date = time.strftime("%Y-%m-%d" , time.localtime())
             r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
             
             ### operation record title
@@ -1516,8 +1590,11 @@ def login():
             # main content
             #################
             #res_data           = db.realtime_modbus_sensor()
+            
+            day_money_by_year  = r_year
+            day_money_by_month = db.bpm_day_money_by_month(r_year)
 
-            return render_template('index.html' ,  user=session['user'] , lv=session['lv'] , title=title , dep_id=session['department_id'] )
+            return render_template('index.html' ,  user=session['user'] , lv=session['lv'] , title=title , dep_id=session['department_id'] , day_money_by_year=day_money_by_year , day_money_by_month=day_money_by_month)
 
         else:
             res_data = "登入失敗，帳密有錯，重新輸入 !!!"
