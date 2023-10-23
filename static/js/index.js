@@ -1,4 +1,4 @@
-function download_day_money_excel(val){
+function download_excel(val){
         var data  = val.split('/');
         var year  = data[0];
         var month = data[1];
@@ -20,8 +20,6 @@ function download_day_money_excel(val){
                 success:function(res){
                         
                         //$("#show_day_month_detail").show(1000).html(res);
-                        alert('下載' + year + ' 年 ' + month + ' 月 日當月報表');
-                        
                         // scroll page bottom to page top
                         goto_top();
                         
@@ -34,6 +32,8 @@ function download_day_money_excel(val){
                         $('#status').css({'color':'white'});
                 }
         });
+
+
 }
 
 function show_day_month_detail(val){

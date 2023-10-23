@@ -11,10 +11,10 @@ from dataclasses import dataclass
 from distutils.log import debug
 from email import charset
 from hashlib import md5
-import hashlib , time , logging , random , openpyxl , csv
+import hashlib , time , logging , random , openpyxl , csv , os , mimetypes
 #import socketio
 from tabnanny import check
-from flask import Flask,render_template,request,session,url_for,redirect,escape , Response
+from flask import Flask,render_template,request,session,url_for,redirect,escape , Response , send_file 
 from flask_socketio import SocketIO , emit 
 from openpyxl.utils.dataframe import dataframe_to_rows
 from io import BytesIO
@@ -295,6 +295,96 @@ def download_day_money_csv():
             return redirect(url_for('logout'))
 
     return redirect(url_for('login')) 
+
+####################
+# /download_excel
+####################
+@app.route('/download_excel' , methods=['POST','GET'])
+def download_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 定义要下载的 Excel 文件的绝对路径
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        excel_name     = f"{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,  # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
+
+##############################
+# /download_day_money_excel
+##############################
+@app.route("/download_day_money_excel" , methods=['POST','GET'])
+def download_day_money_excel():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 下載日當月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                try:
+                    #download_excel = f"F:\otsuka\Git\otsuka_factory_work_time_record\excel\{year}{month}.xlsx"
+                    download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+                    excel_name = f"{year}{month}.xlsx"
+                    
+                    if os.path.exists(download_excel):
+                        
+                        mime_type, _ = mimetypes.guess_type(download_excel)
+                            
+                        #logging.info(f"{download_excel} , 文件存在。")
+                        download_name='custom-filename.xlsx',  # 自定义下载的文件名
+                        # 设置 Excel 文件的 MIME 类型
+                        return send_file(download_excel , as_attachment=True , mimetype=mime_type , download_name=excel_name)
+                
+                    else:
+                        logging.info(f"{download_excel} , 文件不存在。")
+                
+                except Exception as e:
+                    logging.error('<Error> download excel :' + str(e))
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+    
 
 ###########################
 # /show_day_month_detail

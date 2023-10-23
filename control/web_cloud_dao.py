@@ -6,8 +6,8 @@
 # Update   : 20230720
 # Function : otsuka factory work time record
 
-import pymysql , logging , time , re , requests , json , pymssql , pyodbc , calendar , csv , json
-
+import pymysql , logging , time , re , requests , json , pymssql , pyodbc , calendar , csv , json , openpyxl
+from fpdf import *
 from control.config import *
 
 ########################################################################################################################################
@@ -126,9 +126,9 @@ class web_cloud_dao:
             self.curr.execute(money_sql)
             money_res = self.curr.fetchall()
 
-            #############
-            # csv file
-            #############
+            ###############
+            # export csv
+            ###############
             csv_file = 'csv/'+ year + '_' + month + '.csv'
             #month    = '0' + month if int(month) < 10 else month
             
@@ -142,6 +142,87 @@ class web_cloud_dao:
                 for row in money_res:
                     rows = f"{row}"
                     writer.writerow(row)
+            
+            ###############
+            # export PDF
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            # export excel
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/'+ year + month + '.xlsx'
+
+            ### title
+            sheet['A1'] = '中文'
+            sheet['B1'] = '英文'
+            sheet['C1'] = f"{month}/1"
+            sheet['D1'] = f"{month}/2"
+            sheet['E1'] = f"{month}/3"
+            sheet['F1'] = f"{month}/4"
+            sheet['G1'] = f"{month}/5"
+            sheet['H1'] = f"{month}/6"
+            sheet['I1'] = f"{month}/7"
+            sheet['J1'] = f"{month}/8"
+            sheet['K1'] = f"{month}/9"
+            sheet['L1'] = f"{month}/10"
+            sheet['M1'] = f"{month}/11"
+            sheet['N1'] = f"{month}/12"
+            sheet['O1'] = f"{month}/13"
+            sheet['P1'] = f"{month}/14"
+            sheet['Q1'] = f"{month}/15"
+            sheet['R1'] = f"{month}/16"
+            sheet['S1'] = f"{month}/17"
+            sheet['T1'] = f"{month}/18"
+            sheet['U1'] = f"{month}/19"
+            sheet['V1'] = f"{month}/20"
+            sheet['W1'] = f"{month}/21"
+            sheet['X1'] = f"{month}/22"
+            sheet['Y1'] = f"{month}/23"
+            sheet['Z1'] = f"{month}/24"
+            sheet['AA1'] = f"{month}/25"
+            sheet['AB1'] = f"{month}/26"
+            sheet['AC1'] = f"{month}/27"
+            sheet['AD1'] = f"{month}/28"
+            sheet['AE1'] = f"{month}/29"
+            sheet['AF1'] = f"{month}/30"
+            sheet['AG1'] = f"{month}/31"
+            sheet['AH1'] = f"總計"
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
 
             return money_res
 
