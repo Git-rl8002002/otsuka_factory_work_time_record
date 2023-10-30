@@ -7,8 +7,12 @@
 # Function : otsuka factory work time record
 
 import pymysql , logging , time , re , requests , json , pymssql , pyodbc , calendar , csv , json , openpyxl
+import matplotlib.pyplot as plt
+from io import BytesIO
+import base64
 from fpdf import *
 from control.config import *
+from openpyxl.styles import Font , PatternFill , Alignment
 
 ########################################################################################################################################
 #
@@ -127,7 +131,9 @@ class web_cloud_dao:
             money_res = self.curr.fetchall()
 
             ###############
+            #
             # export csv
+            #
             ###############
             csv_file = 'csv/'+ year + '_' + month + '.csv'
             #month    = '0' + month if int(month) < 10 else month
@@ -144,7 +150,9 @@ class web_cloud_dao:
                     writer.writerow(row)
             
             ###############
+            #
             # export PDF
+            #
             ###############
             pdf = FPDF()
             pdf.add_page()
@@ -157,47 +165,25 @@ class web_cloud_dao:
             pdf.output(pdf_file)
 
             ################
+            #
             # export excel
+            #
             ################
             workbook   = openpyxl.Workbook()
             sheet      = workbook.active
             excel_file = 'excel/'+ year + month + '.xlsx'
 
             ### title
-            sheet['A1'] = '中文'
-            sheet['B1'] = '英文'
-            sheet['C1'] = f"{month}/1"
-            sheet['D1'] = f"{month}/2"
-            sheet['E1'] = f"{month}/3"
-            sheet['F1'] = f"{month}/4"
-            sheet['G1'] = f"{month}/5"
-            sheet['H1'] = f"{month}/6"
-            sheet['I1'] = f"{month}/7"
-            sheet['J1'] = f"{month}/8"
-            sheet['K1'] = f"{month}/9"
-            sheet['L1'] = f"{month}/10"
-            sheet['M1'] = f"{month}/11"
-            sheet['N1'] = f"{month}/12"
-            sheet['O1'] = f"{month}/13"
-            sheet['P1'] = f"{month}/14"
-            sheet['Q1'] = f"{month}/15"
-            sheet['R1'] = f"{month}/16"
-            sheet['S1'] = f"{month}/17"
-            sheet['T1'] = f"{month}/18"
-            sheet['U1'] = f"{month}/19"
-            sheet['V1'] = f"{month}/20"
-            sheet['W1'] = f"{month}/21"
-            sheet['X1'] = f"{month}/22"
-            sheet['Y1'] = f"{month}/23"
-            sheet['Z1'] = f"{month}/24"
-            sheet['AA1'] = f"{month}/25"
-            sheet['AB1'] = f"{month}/26"
-            sheet['AC1'] = f"{month}/27"
-            sheet['AD1'] = f"{month}/28"
-            sheet['AE1'] = f"{month}/29"
-            sheet['AF1'] = f"{month}/30"
-            sheet['AG1'] = f"{month}/31"
-            sheet['AH1'] = f"總計"
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
 
             ### content
             for row_idx , row_data in enumerate(money_res , start=2):
@@ -251,6 +237,184 @@ class web_cloud_dao:
 
         except Exception as e:
             logging.error('< Error > show_day_money_detail_day : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ###########################
+    # show_computer_chi_name
+    ###########################
+    def show_computer_chi_name(self , d_name):
+        
+        self.__connect__()
+        
+        try:
+            # device chinese name
+            d_sql = f"select employee_name from hr_a where d_name='{d_name}'"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchone() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > show_computer_chi_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ##############################
+    # computer_s_number_detail
+    ##############################
+    def computer_s_number_detail(self):
+        
+        self.__connect__()
+        
+        try:
+            # all device user by s_number
+            d_sql  = f"SELECT s_number , d_name , d_status , r_date FROM (SELECT s_number , d_name , d_status , r_date, ROW_NUMBER() OVER (PARTITION BY s_number ORDER BY r_date DESC) AS rn FROM device_list) AS subquery WHERE rn = 1 ORDER BY r_date DESC"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchall() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > computer_s_number_detail : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #####################################
+    # search_show_computer_user_detail
+    #####################################
+    def search_show_computer_user_detail(self , s_number):
+        
+        self.__connect__()
+        
+        try:
+            # all device user 
+            d_sql = f"select distinct d_name from device_list where s_number='{s_number}' order by l_activity desc"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchall() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > show_computer_user_detail : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ##################################
+    # show_factory_monitor_position
+    ##################################
+    def show_factory_monitor_position(self):
+        
+        self.__connect4__()
+        try:
+            # record time
+            now_month = time.strftime("%Y_%m" , time.localtime()) 
+            
+            # all device position
+            d_sql = f"select distinct b.d_name , b.d_c_name from {now_month} a left join monitor_device b on a.s_kind=b.d_name where a.s_kind != 'I6-1' and a.s_kind !='I6-2' order by b.d_name asc"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchall() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > show_factory_monitor_position : ' + str(e))
+
+        finally:
+            self.__disconnect4__()
+
+    ######################################
+    # show_factory_monitor_detail_chart
+    ######################################
+    def show_factory_monitor_detail_chart(self , s_kind):
+        
+        self.__connect4__()
+        
+        try:
+            ### r_time
+            r_date = time.strftime("%Y_%m" , time.localtime())
+            r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+            # all device user 
+            d_sql = f"select r_time , s_content , s_protocol , val_1 , val_2 , val_3 , val_4 , val_5   from {r_date} where s_kind='{s_kind}' order by r_time desc limit 0,20"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchall() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > show_factory_monitor_detail : ' + str(e))
+
+        finally:
+            self.__disconnect4__()
+
+    ################################
+    # show_factory_monitor_detail
+    ################################
+    def show_factory_monitor_detail(self , s_kind):
+        
+        self.__connect4__()
+        
+        try:
+            ### r_time
+            r_date = time.strftime("%Y_%m" , time.localtime())
+            r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+            # all device user 
+            d_sql = f"select r_time , s_content , s_protocol , val_1 , val_2 , val_3 , val_4 , val_5   from {r_date} where s_kind='{s_kind}' order by r_time desc limit 0,20"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchall() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > show_factory_monitor_detail : ' + str(e))
+
+        finally:
+            self.__disconnect4__()
+
+    ##############################
+    # show_computer_user_detail
+    ##############################
+    def show_computer_user_detail(self , d_name):
+        
+        self.__connect__()
+        
+        try:
+            # all device user 
+            d_sql = f"select r_date , d_status , o_name , l_activity , e_ip , i_ip , s_number , s_model , s_manu , registered , cpu_usage , ram_usage , disk_usage from device_list where d_name='{d_name}' order by l_activity desc"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchall() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > show_computer_user_detail : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+    
+    ##########################
+    # show_device_name_list
+    ##########################
+    def show_device_name_list(self):
+        
+        self.__connect__()
+        
+        try:
+            # all device user 
+            d_sql = f"select r_date , d_name from device_list group by d_name order by r_date desc"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchall() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > show_device_name_list : ' + str(e))
 
         finally:
             self.__disconnect__()
@@ -1652,6 +1816,36 @@ class web_cloud_dao:
 
         except Exception as e:
             logging.info("< ERROR > __disconnect__ : " + str(e))
+
+        finally:
+            pass
+
+    ################
+    # __connect4__ 
+    ################
+    def __connect4__(self):
+        
+        try:
+            self.conn = pymysql.connect(host=otsuka_factory4['host'],port=otsuka_factory4['port'],user=otsuka_factory4['user'],password=otsuka_factory4['pwd'],database=otsuka_factory4['db'],charset=otsuka_factory4['charset'])
+            self.curr = self.conn.cursor()
+
+        except Exception as e:
+            logging.info("< ERROR > __connect4__ " + str(e))
+
+        finally:
+            pass
+
+    ###################
+    # __disconnect4__
+    ###################
+    def __disconnect4__(self):
+        
+        try:
+            self.conn.commit()
+            self.conn.close()
+
+        except Exception as e:
+            logging.info("< ERROR > __disconnect4__ : " + str(e))
 
         finally:
             pass

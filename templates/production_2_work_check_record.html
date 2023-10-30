@@ -106,69 +106,141 @@
     - menu
     -
     ----------------------------------------------------------------------------------------------------->
-    <nav class="navbar navbar-expand-sm bg-primary fixed-top">
-            <!-- Brand -->
-            <a class="navbar-brand mr-2" href="/"><button class="btn btn-primary">{{ title }}</button></a>
+    <nav class="navbar navbar-expand-md bg-primary fixed-top">
+        <!-- Brand -->
+        <a class="navbar-brand mr-2" href="/"><button class="btn btn-primary">{{ title }}</button></a>
+        <button class="navbar-toggler btn btn-primary" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-list"></i>
+          </button>
+
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+             <!-- 偵測沒動作時間 -->
+            <li class="nav-item mr-2"><button class="btn btn-primary" id="timer">剩餘時間 600 秒</button></li>
+
+            <!-- online user -->
+            <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
+
+            <!-- logout -->
+            <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> 登出</button></a></li>
             
-            <!---------------------------------------------------------------------------------------------------- 
-             -
-             - lv 3 - normal user
-             -   
-             ----------------------------------------------------------------------------------------------------->
-            <button class="navbar-toggler btn btn-primary " type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                <i class="bi bi-list"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <ul class="navbar-nav">
-                <!-- 偵測沒動作時間 -->
-                <li class="nav-item mr-2"><button class="btn btn-primary" id="timer">剩餘時間 600 秒</button></li>
+            <!-------------- 
+            -    
+            - 生產一部 
+            -
+            ---------------->    
+            {% if dep_id == "1A" %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="db-system" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="bi bi-server"></i> 生產一部</a>
+                <ul class="dropdown-menu" aria-labelledby="db-system">
+                    <!-- 資料查詢 -->
+                    <li class="dropdown-submenu"><a href="#" class="dropdown-item dropdown-toggle"><i class="bi bi-bookmarks"></i> 資料查詢</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu"><a class="dropdown-item" href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a></li>
+                            <li class="dropdown-submenu"></li><a class="dropdown-item" href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a></li>
+                        </ul>
+                    </li>
 
-                <!-- online user -->
-                <li class="nav-item mr-2"><button class="btn btn-primary"><i class="bi bi-person-circle"></i> {{ user }}</button></li>
+                    <!-- 工作紀錄 -->
+                    <li class="dropdown-submenu"><a href="#" class="dropdown-item dropdown-toggle"><i class="bi bi-bookmarks"></i> 工作紀錄</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/production_3_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a></li>        
+                        </ul>
+                    </li>
+                </ul> 
+            </li>
+            
+            <!-------------- 
+            -    
+            - 生產二部 
+            -
+            ---------------->    
+            {% elif dep_id == "1B" %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="db-system" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="bi bi-server"></i> 生產二部</a>
+                <ul class="dropdown-menu" aria-labelledby="db-system">
+                    <!-- 資料查詢 -->
+                    <li class="dropdown-submenu"><a href="#" class="dropdown-item dropdown-toggle"><i class="bi bi-bookmarks"></i> 資料查詢</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu"><a class="dropdown-item" href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a></li>
+                            <li class="dropdown-submenu"></li><a class="dropdown-item" href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a></li>
+                        </ul>
+                    </li>
 
-                <!-- logout -->
-                <li class="nav-item mr-2"><a href="/logout"><button class="btn btn-primary"><i class="bi bi-door-open"></i> 登出</button></a></li>
+                    <!-- 工作紀錄 -->
+                    <li class="dropdown-submenu"><a href="#" class="dropdown-item dropdown-toggle"><i class="bi bi-bookmarks"></i> 工作紀錄</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/production_3_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a></li>
+                            <li><a class="dropdown-item" href="/production_2_work_check_record"><i class="bi bi-bookmarks"></i> 人員考核表</a></li>        
+                        </ul>
+                    </li>
+                </ul> 
+            </li>
+            
+            <!-------------- 
+            -    
+            - 生產三部 
+            -
+            ---------------->    
+            {% elif dep_id == "1K" %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="db-system" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="bi bi-server"></i> 生產三部</a>
+                <ul class="dropdown-menu" aria-labelledby="db-system">
+                    <!-- 資料查詢 -->
+                    <li class="dropdown-submenu"><a href="#" class="dropdown-item dropdown-toggle"><i class="bi bi-bookmarks"></i> 資料查詢</a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-submenu"><a class="dropdown-item" href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a></li>
+                            <li class="dropdown-submenu"></li><a class="dropdown-item" href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a></li>
+                        </ul>
+                    </li>
+                    <!-- 工作紀錄 -->
+                    <li class="dropdown-submenu"><a href="#" class="dropdown-item dropdown-toggle"><i class="bi bi-bookmarks"></i> 工作紀錄</a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/production_3_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a></li>        
+                        </ul>
+                    </li>
+                </ul> 
+            </li>
 
-                <!-- 資料查詢 -->    
-                <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 資料查詢</button></a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/department_no_search"><i class="bi bi-bookmarks"></i> 部門代號查詢</a>
-                        <a class="dropdown-item" href="/card_reader_member_search"><i class="bi bi-bookmarks"></i> 人員位置查詢</a>
-                    </div>
-                </li>
+            <!-------------- 
+            -    
+            - 財務部 
+            -
+            ---------------->    
+            {% elif dep_id == "0AA7" %}
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle text-white" href="#" id="db-system" data-toggle="dropdown"  aria-haspopup="true" aria-expanded="false"><i class="bi bi-server"></i> 財務部</a>
+                <ul class="dropdown-menu" aria-labelledby="db-system">
+                    <!--
+                    <li><a class="dropdown-item"><i class="bi bi-bookmarks"></i> 日當月報表</a></li>
+                    <li><a class="dropdown-item"><i class="bi bi-bookmarks"></i> 日當月報表</a></li>
+                    -->
+                    <li class="dropdown-submenu"><a href="#" class="dropdown-item dropdown-toggle"><i class="bi bi-bookmarks"></i> 日當月報表</a>
+                        <ul class="dropdown-menu">
+                            {% for month in day_money_by_month %}
+                            <li class="dropdown-submenu"><a href="#" class="dropdown-item dropdown-toggle" id="{{day_money_by_year}}/{{month[0]}}" onclick="show_day_month_detail(id)"><i class="bi bi-file-earmark-text"></i> {{ day_money_by_year }}年{{ month[0] }}月</a>
+                                <ul class="dropdown-menu">
+                                    <li class="dropdown-item"><a href="/download_excel?year={{day_money_by_year}}&month={{month[0]}}"><i class="bi bi-cloud-download"></i> 下載</a></li>
+                                </ul> 
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul> 
+            </li>
 
-                {% if dep_id == "1A" %}
-                <!-- 生產一部 -->    
-                <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產一部</button></a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/production_1_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
-                    </div>
-                </li>
-                {% elif dep_id == "1B" %}
-                <!-- 生產二部 -->    
-                <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產二部</button></a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/production_2_work_check_record"><i class="bi bi-bookmarks"></i> 人員考核表</a>
-                        <a class="dropdown-item" href="/production_2_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
-                    </div>
-                </li>
-                {% elif dep_id == "1K" %}
-                <!-- 生產三部 -->    
-                <li class="nav-item dropdown">
-                    <a class="nav-linkbtn dropdown-toggle" href="#" id="db-system" data-toggle="dropdown"><button class="btn btn-primary"><i class="bi bi-server"></i> 生產三部</button></a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item" href="/production_3_work_time_record"><i class="bi bi-bookmarks"></i> 液劑工時時間記錄表</a>
-                    </div>
-                </li>
-                {% endif %}
-
-            </ul>
-            </div>
-    </nav>
+            {% endif %}
+           
+          </ul>
+        </div>
+      </nav>
     
+
+    <!---------------------------------------------------------------------------------------------------- 
+    -
+    - main content
+    -
+    ----------------------------------------------------------------------------------------------------->
     <div id="load_check_form2">
 
     <div class="container-fluid text-primary m-auto">
@@ -178,12 +250,7 @@
 
             </div>
         </div>
-
-        <!---------------------------------------------------------------------------------------------------- 
-        -
-        - main content
-        -
-        ----------------------------------------------------------------------------------------------------->
+        
         <div class="row my-5">
             <!-- 人員考核表清單 -->
             <div class="col-md-3 my-1">

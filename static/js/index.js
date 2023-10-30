@@ -1,3 +1,140 @@
+function show_factory_monitor_detail(val){
+        var d_position  = val;
+
+        $.ajax({
+                type:"POST",
+                url:"/show_factory_monitor_detail",
+                data:{
+                        's_kind':d_position
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        //$("#computer_user_detail").show(1000).html(res);
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示電腦使用者詳細資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_computer_serial_name_list(){
+
+        $.ajax({
+                type:"POST",
+                url:"/show_computer_serial_name_list",
+                data:{
+                        
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        //$("#computer_user_detail").show(1000).html(res);
+                        $("#show_day_month_detail").show(1000).html(res);
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示電腦序號詳細資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function search_show_computer_user_detail(val){
+        var s_number  = val;
+
+        $.ajax({
+                type:"POST",
+                url:"/search_show_computer_user_detail",
+                data:{
+                        's_number':s_number
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        //$("#computer_user_detail").show(1000).html(res);
+                        $("#show_day_month_detail").show(1000).html(res);
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示電腦使用者詳細資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_computer_user_detail(val){
+        var d_name  = val;
+
+        $.ajax({
+                type:"POST",
+                url:"/show_computer_user_detail",
+                data:{
+                        'd_name':d_name
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        //$("#computer_user_detail").show(1000).html(res);
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示電腦使用者詳細資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
 function download_excel(val){
         var data  = val.split('/');
         var year  = data[0];
@@ -32,8 +169,6 @@ function download_excel(val){
                         $('#status').css({'color':'white'});
                 }
         });
-
-
 }
 
 function show_day_month_detail(val){

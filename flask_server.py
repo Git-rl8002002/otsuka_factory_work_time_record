@@ -18,6 +18,8 @@ from flask import Flask,render_template,request,session,url_for,redirect,escape 
 from flask_socketio import SocketIO , emit 
 from openpyxl.utils.dataframe import dataframe_to_rows
 from io import BytesIO
+import matplotlib.pyplot as plt
+import base64
 
 from control.config import *
 from control.web_cloud_dao import web_cloud_dao 
@@ -97,6 +99,316 @@ def reload_menu_account_list():
             factory_work_account_list = db.factory_work_account_list()
 
             return render_template('ajax/menu_account_management.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , factory_work_account_list=factory_work_account_list)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+####################################
+# /show_computer_serial_name_list
+####################################
+@app.route("/show_computer_serial_name_list", methods=['POST','GET'])
+def show_computer_serial_name_list():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '使用紀錄 > 電腦系號清單'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            u_detail = db.computer_s_number_detail()
+                    
+            return render_template('ajax/detail_computer_serial_record.html' , user=user , title=title , dep_id=dep_id , u_detail=u_detail)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+######################################
+# /search_show_computer_user_detail
+######################################
+@app.route("/search_show_computer_user_detail", methods=['POST','GET'])
+def search_show_computer_user_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '使用紀錄 > 搜尋電腦使用詳細紀錄'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                s_number = request.form['s_number']
+                u_detail = db.search_show_computer_user_detail(s_number)
+                    
+                return render_template('ajax/search_detail_computer_user_record.html' , user=user , title=title , dep_id=dep_id , s_number=s_number , u_detail=u_detail)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###############################
+# /show_factory_monitor_detail
+###############################
+@app.route("/show_factory_monitor_detail", methods=['POST','GET'])
+def show_factory_monitor_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '監控紀錄 > 工廠溫溼度紀錄'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                s_kind = request.form['s_kind']
+                kind_detail = db.show_factory_monitor_detail(s_kind)
+                    
+                return render_template('ajax/detail_factory_monitor_record.html' , user=user , title=title , dep_id=dep_id , s_kind=s_kind , kind_detail=kind_detail)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###############################
+# /show_computer_user_detail
+###############################
+@app.route("/show_computer_user_detail", methods=['POST','GET'])
+def show_computer_user_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '使用紀錄 > 電腦使用詳細紀錄'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            if request.method == 'POST':
+                
+                d_name = request.form['d_name']
+                u_detail = db.show_computer_user_detail(d_name)
+                    
+                return render_template('ajax/detail_computer_user_record.html' , user=user , title=title , dep_id=dep_id , d_name=d_name , u_detail=u_detail)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+##################################
+# /factory_monitor_record_chart
+##################################
+@app.route("/factory_monitor_record_chart")
+def factory_monitor_record_chart():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '監控紀錄 > 工廠溫溼度紀錄圖'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            # 数据
+            labels = ['A', 'B', 'C', 'D']
+            sizes = [15, 30, 45, 10]
+            colors = ['gold', 'yellowgreen', 'lightcoral', 'lightskyblue']
+
+            # 创建圆饼图
+            fig, ax = plt.subplots()
+            ax.pie(sizes, labels=labels, colors=colors, autopct='%1.1f%%', startangle=90)
+            ax.axis('equal')  # 确保圆饼图是正圆
+
+            # 将图像保存到内存中
+            buffer = BytesIO()
+            plt.savefig(buffer, format='png')
+            buffer.seek(0)
+            plt.close(fig)
+
+            # 将图像嵌入到HTML页面中
+            image_data = base64.b64encode(buffer.read()).decode('utf-8')
+            return render_template('pie_chart.html', image_data=image_data)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+############################
+# /factory_monitor_record
+############################
+@app.route("/factory_monitor_record")
+def factory_monitor_record():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '監控紀錄 > 工廠溫溼度紀錄'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            kind_position = db.show_factory_monitor_position()
+                
+            return render_template('factory_monitor_record.html' , user=user , title=title , dep_id=dep_id , kind_position=kind_position)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+##########################
+# /computer_used_record
+##########################
+@app.route("/computer_used_record")
+def computer_used_record():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '使用紀錄 > 電腦使用紀錄'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            day_money_by_year  = r_year
+            day_money_by_month = db.bpm_day_money_by_month(r_year)
+            d_name             = db.show_device_name_list()
+                
+            return render_template('computer_used_record.html' , user=user , title=title , dep_id=dep_id , d_name=d_name , day_money_by_year=day_money_by_year, day_money_by_month=day_money_by_month)
 
         else:
             return redirect(url_for('logout'))
@@ -299,25 +611,27 @@ def download_day_money_csv():
 ####################
 # /download_excel
 ####################
-@app.route('/download_excel' , methods=['POST','GET'])
+@app.route('/download_excel' , methods=['GET'])
 def download_excel():
     
     if request.method == 'GET':
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 定义要下载的 Excel 文件的绝对路径
+        # 開發機
         download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
         excel_name     = f"{year}{month}.xlsx"
 
         # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
         return send_file(
             download_excel,
-            as_attachment=True,  # 将文件作为附件下载
+            as_attachment=True,        # 将文件作为附件下载
             download_name=excel_name,  # 自定义下载的文件名
             mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
         )
-
 
 ##############################
 # /download_day_money_excel
@@ -384,7 +698,6 @@ def download_day_money_excel():
             return redirect(url_for('logout'))
 
     return redirect(url_for('login')) 
-    
 
 ###########################
 # /show_day_month_detail

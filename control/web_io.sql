@@ -15,6 +15,42 @@
 create database otsuka_factory DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 use otsuka_factory;
 
+/*************************** 
+ *
+ * factory_monitor_device
+ *
+ ***************************/
+create table factory_monitor_device(
+no int not null primary key AUTO_INCREMENT,
+d_name varchar(50) null,
+d_c_name varchar(50) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+insert into monitor_device(d_name , d_c_name) value('S-1','製品倉庫(一)25°C');
+insert into monitor_device(d_name , d_c_name) value('S-2','製品倉庫(一)30°C');
+insert into monitor_device(d_name , d_c_name) value('S-3','原料庫(一)');
+insert into monitor_device(d_name , d_c_name) value('S-4','製品倉庫(三)30° C');
+insert into monitor_device(d_name , d_c_name) value('S-5','原料庫(三)30° B');
+insert into monitor_device(d_name , d_c_name) value('S-6','製品倉庫(三)25° C');
+insert into monitor_device(d_name , d_c_name) value('S-7','原料庫(三)30° A');
+insert into monitor_device(d_name , d_c_name) value('S-8','製品倉庫(二)');
+insert into monitor_device(d_name , d_c_name) value('S-9','原料庫(二)');
+insert into monitor_device(d_name , d_c_name) value('S-10','物料倉庫');
+insert into monitor_device(d_name , d_c_name) value('S-11-1','樣品室-1(25°C)');
+insert into monitor_device(d_name , d_c_name) value('S-11-2','樣品室-1(冰箱)');
+insert into monitor_device(d_name , d_c_name) value('S-12','樣品室-2(20°C)');
+insert into monitor_device(d_name , d_c_name) value('S-13','樣品室-3(30°C)');
+insert into monitor_device(d_name , d_c_name) value('S-14','退貨品倉庫');
+insert into monitor_device(d_name , d_c_name) value('S-15-1','安全性實驗箱-1');
+insert into monitor_device(d_name , d_c_name) value('S-15-2','安全性實驗箱-2');
+insert into monitor_device(d_name , d_c_name) value('S-15-3','安全性實驗箱-3');
+insert into monitor_device(d_name , d_c_name) value('S-15-4','安全性實驗箱-4');
+insert into monitor_device(d_name , d_c_name) value('S-15-5','安全性實驗箱-5');
+insert into monitor_device(d_name , d_c_name) value('S-15-6','安全性實驗箱-6');
+insert into monitor_device(d_name , d_c_name) value('S-16','中間品室');
+insert into monitor_device(d_name , d_c_name) value('S-17','製品三倉-溫度');
+insert into monitor_device(d_name , d_c_name) value('S-18','製品二倉-溫度');
+insert into monitor_device(d_name , d_c_name) value('S-19','安定性試驗室');
+
 /************************
  *
  * check_device_record
@@ -68,6 +104,578 @@ d_security_profiles varchar(30) null,
 d_tags varchar(30) null,
 d_notes varchar(30) null
 
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/**************
+ *
+ * device_list
+ *
+ **************/
+create table device_list(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+r_now_time varchar(10) null,
+os varchar(50) null,
+d_status varchar(50) null,
+d_name varchar(50) null,
+c_s_status varchar(50) null,
+p_status varchar(50) null,
+a_p_count varchar(10) null,
+customer varchar(10) null,
+d_group varchar(100) null,
+l_l_i_user varchar(50) null,
+d_owner varchar(50) null,
+l_activity varchar(100) null,
+o_name varchar(100) null,
+o_ver varchar(50) null,
+ccs_ver varchar(50) null,
+ccc_ver varchar(50) null,
+e_ip varchar(200) null,
+i_ip varchar(200) null,
+a_ldap varchar(50) null,
+d_workgroup varchar(50) null,
+model varchar(50) null,
+processor varchar(100) null,
+s_number varchar(100) null,
+s_model varchar(100) null,
+s_manu varchar(100) null,
+o_type varchar(100) null,
+registered varchar(100) null,
+l_t_zone varchar(100) null,
+s_pack varchar(100) null,
+r_time varchar(100) null,
+r_reason text null,
+cpu_usage varchar(300) null,
+ram_usage varchar(300) null,
+net_usage varchar(300) null,
+disk_usage varchar(300) null,
+s_profiles varchar(100) null
+
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/********************
+ *
+ * day_money_oil
+ *
+ ********************/
+create table day_money_oil(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/********************
+ *
+ * day_money_other
+ *
+ ********************/
+create table day_money_other(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/********************
+ *
+ * day_money_stay
+ *
+ ********************/
+create table day_money_stay(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/********************
+ *
+ * day_money_taxi
+ *
+ ********************/
+create table day_money_taxi(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/********************
+ *
+ * day_money_trick
+ *
+ ********************/
+create table day_money_trick(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/********************
+ *
+ * day_money_tolls
+ *
+ ********************/
+create table day_money_tolls(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/**************************
+ *
+ * day_money_parking_fee
+ *
+ **************************/
+create table day_money_parking_fee(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/***************************
+ *
+ * day_money_over_traffic
+ *
+ ***************************/
+create table day_money_over_traffic(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
+)ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+/**********************
+ *
+ * day_money_traffic
+ *
+ **********************/
+create table day_money_traffic(
+no int not null primary key AUTO_INCREMENT,
+r_date date null,
+r_year varchar(10) null,
+r_month varchar(10) null,
+r_day varchar(10) null,
+f_name varchar(30) null,
+a_name varchar(30) null,
+e_name varchar(40) null,
+t_money varchar(40) null,
+c_t_money varchar(40) null,
+erp_num varchar(40) null,
+form_num varchar(40) null,
+day_r_date date null,
+day_r_year varchar(10) null,
+day_r_month varchar(10) null,
+day_t_money varchar(40) null DEFAULT 0,
+day_t_money1 varchar(40) null DEFAULT 0,
+day_t_money2 varchar(40) null DEFAULT 0,
+day_t_money3 varchar(40) null DEFAULT 0,
+day_t_money4 varchar(40) null DEFAULT 0,
+day_t_money5 varchar(40) null DEFAULT 0,
+day_t_money6 varchar(40) null DEFAULT 0,
+day_t_money7 varchar(40) null DEFAULT 0,
+day_t_money8 varchar(40) null DEFAULT 0,
+day_t_money9 varchar(40) null DEFAULT 0,
+day_t_money10 varchar(40) null DEFAULT 0,
+day_t_money11 varchar(40) null DEFAULT 0,
+day_t_money12 varchar(40) null DEFAULT 0,
+day_t_money13 varchar(40) null DEFAULT 0,
+day_t_money14 varchar(40) null DEFAULT 0,
+day_t_money15 varchar(40) null DEFAULT 0,
+day_t_money16 varchar(40) null DEFAULT 0,
+day_t_money17 varchar(40) null DEFAULT 0,
+day_t_money18 varchar(40) null DEFAULT 0,
+day_t_money19 varchar(40) null DEFAULT 0,
+day_t_money20 varchar(40) null DEFAULT 0,
+day_t_money21 varchar(40) null DEFAULT 0,
+day_t_money22 varchar(40) null DEFAULT 0,
+day_t_money23 varchar(40) null DEFAULT 0,
+day_t_money24 varchar(40) null DEFAULT 0,
+day_t_money25 varchar(40) null DEFAULT 0,
+day_t_money26 varchar(40) null DEFAULT 0,
+day_t_money27 varchar(40) null DEFAULT 0,
+day_t_money28 varchar(40) null DEFAULT 0,
+day_t_money29 varchar(40) null DEFAULT 0,
+day_t_money30 varchar(40) null DEFAULT 0,
+day_t_money31 varchar(40) null DEFAULT 0,
+day_t_total varchar(40) null DEFAULT 0,
+day_money_mark text null,
+day_money_diff varchar(40) null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /**************
@@ -685,7 +1293,7 @@ no int not null primary key AUTO_INCREMENT,
 a_user varchar(200) null,
 login_code varchar(200) null,
 r_time datetime null,
-item varchar(50) null
+item varchar(200) null
 )ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 /********************* 
