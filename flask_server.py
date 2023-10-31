@@ -388,7 +388,7 @@ def computer_used_record():
         login_code = session['login_code']
         dep_id     = session['department_id']
 
-        ### r_time
+        ### r_time``
         r_year = time.strftime("%Y" , time.localtime())
         r_date = time.strftime("%Y-%m-%d" , time.localtime())
         r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
@@ -608,6 +608,230 @@ def download_day_money_csv():
 
     return redirect(url_for('login')) 
 
+#################################
+# /download_parking_fee_excel
+#################################
+@app.route('/download_parking_fee_excel' , methods=['GET'])
+def download_parking_fee_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/parking_fee_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"parking_fee_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
+#################################
+# /download_over_traffic_excel
+#################################
+@app.route('/download_over_traffic_excel' , methods=['GET'])
+def download_over_traffic_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/over_traffic_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"over_traffic_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
+############################
+# /download_traffic_excel
+############################
+@app.route('/download_traffic_excel' , methods=['GET'])
+def download_traffic_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/traffic_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"traffic_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
+##########################
+# /download_tolls_excel
+##########################
+@app.route('/download_tolls_excel' , methods=['GET'])
+def download_tolls_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/tolls_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"tolls_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
+##########################
+# /download_trick_excel
+##########################
+@app.route('/download_trick_excel' , methods=['GET'])
+def download_trick_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/trick_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"trick_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
+#########################
+# /download_taxi_excel
+#########################
+@app.route('/download_taxi_excel' , methods=['GET'])
+def download_taxi_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/taxi_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"taxi_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+#########################
+# /download_stay_excel
+#########################
+@app.route('/download_stay_excel' , methods=['GET'])
+def download_stay_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/stay_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"stay_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
+##########################
+# /download_other_excel
+##########################
+@app.route('/download_other_excel' , methods=['GET'])
+def download_other_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/other_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"other_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
+########################
+# /download_oil_excel
+########################
+@app.route('/download_oil_excel' , methods=['GET'])
+def download_oil_excel():
+    
+    if request.method == 'GET':
+        year  = request.args.get('year')
+        month = request.args.get('month')
+
+        # 開發機
+        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/oil_{year}{month}.xlsx"
+        # 正式機
+        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        
+        excel_name     = f"oil_{year}{month}.xlsx"
+
+        # 使用 send_file 函数发送 Excel 文件供下载，并设置 MIME 类型
+        return send_file(
+            download_excel,
+            as_attachment=True,        # 将文件作为附件下载
+            download_name=excel_name,  # 自定义下载的文件名
+            mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
+        )
+
 ####################
 # /download_excel
 ####################
@@ -693,6 +917,474 @@ def download_day_money_excel():
                 
                 except Exception as e:
                     logging.error('<Error> download excel :' + str(e))
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+########################################
+# /show_day_month_parking_fee_detail
+########################################
+@app.route("/show_day_month_parking_fee_detail" , methods=['POST','GET'])
+def show_day_month_parking_fee_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當停車費月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_parking_fee_detail_name(year , month)
+                day_in_total  = db.show_day_money_parking_fee_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+########################################
+# /show_day_month_over_traffic_detail
+########################################
+@app.route("/show_day_month_over_traffic_detail" , methods=['POST','GET'])
+def show_day_month_over_traffic_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當超里程月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_over_traffic_detail_name(year , month)
+                day_in_total  = db.show_day_money_over_traffic_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###################################
+# /show_day_month_traffic_detail
+###################################
+@app.route("/show_day_month_traffic_detail" , methods=['POST','GET'])
+def show_day_month_traffic_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當交通費月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_traffic_detail_name(year , month)
+                day_in_total  = db.show_day_money_traffic_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+#################################
+# /show_day_month_tolls_detail
+#################################
+@app.route("/show_day_month_tolls_detail" , methods=['POST','GET'])
+def show_day_month_tolls_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當過路費月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_tolls_detail_name(year , month)
+                day_in_total  = db.show_day_money_tolls_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+#################################
+# /show_day_month_trick_detail
+#################################
+@app.route("/show_day_month_trick_detail" , methods=['POST','GET'])
+def show_day_month_trick_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當車票月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_trick_detail_name(year , month)
+                day_in_total  = db.show_day_money_trick_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+################################
+# /show_day_month_taxi_detail
+################################
+@app.route("/show_day_month_taxi_detail" , methods=['POST','GET'])
+def show_day_month_taxi_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當計程車月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_taxi_detail_name(year , month)
+                day_in_total  = db.show_day_money_taxi_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login'))
+
+################################
+# /show_day_month_stay_detail
+################################
+@app.route("/show_day_month_stay_detail" , methods=['POST','GET'])
+def show_day_month_stay_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當住宿月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_stay_detail_name(year , month)
+                day_in_total  = db.show_day_money_stay_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+#################################
+# /show_day_month_other_detail
+#################################
+@app.route("/show_day_month_other_detail" , methods=['POST','GET'])
+def show_day_month_other_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當其他月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_other_detail_name(year , month)
+                day_in_total  = db.show_day_money_other_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+###############################
+# /show_day_month_oil_detail
+###############################
+@app.route("/show_day_month_oil_detail" , methods=['POST','GET'])
+def show_day_month_oil_detail():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '財務部 - 日當油單月報表內容'    
+
+        ### session 
+        user       = session['user']
+        lv         = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_year = time.strftime("%Y" , time.localtime())
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            factory_work_station = db.factory_work_station_3()
+            a_work_no = db.search_item('employee_id' , user)
+            a_name    = db.search_item('employee_name' , user)
+
+            if request.method == 'POST':
+                
+                year  = request.form['year']
+                month = request.form['month']
+
+                days_in_month = 31
+                name_in_month = db.show_day_money_oil_detail_name(year , month)
+                day_in_total  = db.show_day_money_oil_detail_day_total(year , month)
+
+                return render_template('ajax/show_day_money_detail.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , a_work_no=a_work_no , a_name=a_name , dep_id=dep_id , year=year , month=month , days_in_month=days_in_month , name_in_month=name_in_month , day_in_total=day_in_total)
 
         else:
             return redirect(url_for('logout'))

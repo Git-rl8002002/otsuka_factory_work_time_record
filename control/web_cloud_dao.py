@@ -85,6 +85,267 @@ class web_cloud_dao:
         finally:
             self.__disconnect__()
 
+    ################################################
+    # show_day_money_parking_fee_detail_day_total
+    ################################################
+    def show_day_money_parking_fee_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_parking_fee where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_parking_fee_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ############################################
+    # show_day_money_over_traffic_detail_day_total
+    ############################################
+    def show_day_money_over_traffic_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_over_traffic where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_over_traffic_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ############################################
+    # show_day_money_traffic_detail_day_total
+    ############################################
+    def show_day_money_traffic_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_traffic where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_traffic_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ##########################################
+    # show_day_money_tolls_detail_day_total
+    ##########################################
+    def show_day_money_tolls_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_tolls where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_tolls_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ##########################################
+    # show_day_money_trick_detail_day_total
+    ##########################################
+    def show_day_money_trick_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_trick where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_trick_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #########################################
+    # show_day_money_taxi_detail_day_total
+    #########################################
+    def show_day_money_taxi_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_taxi where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_taxi_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #########################################
+    # show_day_money_stay_detail_day_total
+    #########################################
+    def show_day_money_stay_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_stay where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_stay_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+     #########################################
+    # show_day_money_other_detail_day_total
+    ##########################################
+    def show_day_money_other_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_other where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_other_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+     #######################################
+    # show_day_money_oil_detail_day_total
+    ########################################
+    def show_day_money_oil_detail_day_total(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            #month = '0' + month if int(month) < 10 else month
+
+            money_sql  = f"select " 
+            money_sql += f"format(sum(day_t_money1),0) , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            money_sql += f"format(sum(day_t_money7),0) , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            money_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            money_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            money_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            money_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            money_sql += f"from day_money_oil where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_oil_detail_day_total : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
     ####################################
     # show_day_money_detail_day_total
     ####################################
@@ -114,6 +375,942 @@ class web_cloud_dao:
         finally:
             self.__disconnect__()
     
+    ###########################################
+    # show_day_money_parking_fee_detail_name
+    ###########################################
+    def show_day_money_parking_fee_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_parking_fee where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/parking_fee_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/parking_fee_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/parking_fee_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_parking_fee where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_parking_fee_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ######################################
+    # show_day_money_over_traffic_detail_name
+    ######################################
+    def show_day_money_over_traffic_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_over_traffic where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/over_traffic_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/over_traffic_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/over_traffic_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_over_traffic where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_over_traffic_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ######################################
+    # show_day_money_traffic_detail_name
+    ######################################
+    def show_day_money_traffic_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_traffic where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/traffic_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/traffic_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/traffic_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_traffic where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_traffic_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #####################################
+    # show_day_money_tolls_detail_name
+    #####################################
+    def show_day_money_tolls_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_tolls where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/tolls_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/tolls_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/tolls_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_tolls where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_tolls_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #####################################
+    # show_day_money_trick_detail_name
+    #####################################
+    def show_day_money_trick_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_trick where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/trick_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/trick_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/trick_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_trick where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_trick_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ####################################
+    # show_day_money_taxi_detail_name
+    ####################################
+    def show_day_money_taxi_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_taxi where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/taxi_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/taxi_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/taxi_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_taxi where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_taxi_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ####################################
+    # show_day_money_stay_detail_name
+    ####################################
+    def show_day_money_stay_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_stay where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/stay_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/stay_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/stay_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_stay where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_stay_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    #####################################
+    # show_day_money_other_detail_name
+    #####################################
+    def show_day_money_other_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_other where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/other_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/other_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/other_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_other where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_other_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
+    ###################################
+    # show_day_money_oil_detail_name
+    ###################################
+    def show_day_money_oil_detail_name(self , year , month):
+        
+        self.__connect__()
+        
+        try:
+            money_sql  = f"select a_name , e_name , " 
+            money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
+            money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
+            money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
+            money_sql += f"from day_money_oil where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(money_sql)
+            money_res = self.curr.fetchall()
+
+            ###############
+            #
+            # export csv
+            #
+            ###############
+            csv_file = 'csv/oil_'+ year + '_' + month + '.csv'
+            #month    = '0' + month if int(month) < 10 else month
+            
+            with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
+                writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                
+                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                
+                writer.writerow(title)
+
+                for row in money_res:
+                    rows = f"{row}"
+                    writer.writerow(row)
+            
+            ###############
+            #
+            # export PDF
+            #
+            ###############
+            pdf = FPDF()
+            pdf.add_page()
+            pdf.set_font('Arial',size=10)
+            pdf_file = 'pdf/oil_'+ year + '_' + month + '.pdf'
+
+            for val in money_res:
+                pdf.cell(200 , 10 , txt=str(val[1]).encode('utf8').decode('latin1')+' , '+str(val[5]).encode('utf8').decode('latin1')+' , '+str(val[13]).encode('utf-8').decode('latin1')+' , '+str(val[6]).encode('utf8').decode('latin1')+' , '+str(val[7]).encode('utf8').decode('latin1')+' , '+str(val[8]).encode('utf8').decode('latin1')+' , '+str(val[9]).encode('utf8').decode('latin1')+' , '+str(val[10]).encode('utf8').decode('latin1')+' , '+str(val[11]).encode('utf8').decode('latin1') , ln=1 , align='left')
+
+            pdf.output(pdf_file)
+
+            ################
+            #
+            # export excel
+            #
+            ################
+            workbook   = openpyxl.Workbook()
+            sheet      = workbook.active
+            excel_file = 'excel/oil_'+ year + month + '.xlsx'
+
+            ### title
+            sheet.freeze_panes = 'A2'
+            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+                     ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
+                     ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
+
+            for col_num , header in enumerate(title , 1):
+                cell            = sheet.cell(row=1 , column=col_num , value=header)
+                cell.font       = Font(bold=True , color="FFFFFF")
+                cell.alignment  = Alignment(horizontal="center")
+                cell.fill       = PatternFill(start_color="A9A9A9", end_color="A9A9A9", fill_type="solid")  # 设置背景颜色为灰色
+
+            ### content
+            for row_idx , row_data in enumerate(money_res , start=2):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=row_idx , column=col_idx , value=cell_val)
+
+            ### total
+            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
+            total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
+            total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
+            total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
+            total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
+            total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
+            total_sql += f"from day_money_oil where day_r_year='{year}' and day_r_month='{month}' "
+            self.curr.execute(total_sql)
+            total_res = self.curr.fetchall()
+            
+            last_row = sheet.max_row + 1
+
+            for row_idx , row_data in enumerate(total_res , start=1):
+                for col_idx , cell_val in enumerate(row_data , start=1):
+                    sheet.cell(row=last_row , column=col_idx , value=cell_val)
+
+            workbook.save(excel_file)
+
+            return money_res
+
+        except Exception as e:
+            logging.error('< Error > show_day_money_oil_detail_name : ' + str(e))
+
+        finally:
+            self.__disconnect__()
+
     ##############################
     # show_day_money_detail_name
     ##############################

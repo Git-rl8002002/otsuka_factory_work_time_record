@@ -53,14 +53,18 @@ class device_list:
             ####################
             
             ### 檢查檔案資料夾最新的檔案
-            folder_path = 'F:/otsuka/Git/otsuka_factory_work_time_record/device_list'  
+            folder_path = 'F:/otsuka/Git/otsuka_factory_work_time_record/device_list' 
+            #folder_path = 'C:/Jason_python/otsuka_factory_work_time_record/device_list'
+
             files = os.listdir(folder_path)
             files = [f for f in files if os.path.isfile(os.path.join(folder_path , f))]
 
             if files:
                 latest_file = max(files, key=lambda f: os.path.getmtime(os.path.join(folder_path, f)))
 
-                csv_file    = "F:/otsuka/Git/otsuka_factory_work_time_record/device_list/" + latest_file
+                csv_file  = "F:/otsuka/Git/otsuka_factory_work_time_record/device_list/" + latest_file
+                #csv_file = 'C:/Jason_python/otsuka_factory_work_time_record/device_list/' + latest_file
+
                 with open(csv_file , 'r' , encoding='utf-8') as device_list_csv:
                     csv_reader = csv.reader(device_list_csv)
 

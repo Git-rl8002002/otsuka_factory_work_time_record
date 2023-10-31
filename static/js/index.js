@@ -171,6 +171,339 @@ function download_excel(val){
         });
 }
 
+function show_day_month_over_traffic_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_over_traffic_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當超里程月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_day_month_traffic_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_traffic_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當交通費月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_day_month_parking_fee_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_parking_fee_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當停車費月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_day_month_tolls_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_tolls_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當過路費月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_day_month_trick_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_trick_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當車票月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_day_month_taxi_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_taxi_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當計程車月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_day_month_stay_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_stay_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當住宿月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_day_month_other_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_other_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當其他月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
+function show_day_month_oil_detail(val){
+        var data  = val.split('/');
+        var year  = data[0];
+        var month = data[1];
+
+        $.ajax({
+                type:"POST",
+                url:"/show_day_month_oil_detail",
+                data:{
+                        'year':year,
+                        'month':month
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        $("#show_day_month_detail").show(1000).html(res);
+                        
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示日當油單月報表資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
 function show_day_month_detail(val){
         var data  = val.split('/');
         var year  = data[0];
