@@ -51,10 +51,16 @@ class device_list:
             ####################    
             # import csv file
             ####################
-            
+            host_name = os.environ['COMPUTERNAME']
             ### 檢查檔案資料夾最新的檔案
-            folder_path = 'F:/otsuka/Git/otsuka_factory_work_time_record/device_list' 
-            #folder_path = 'C:/Jason_python/otsuka_factory_work_time_record/device_list'
+            if host_name == 'OTSUAK-JASON':
+                # 開發機
+                #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+                folder_path = 'F:/otsuka/Git/otsuka_factory_work_time_record/device_list' 
+            else:
+            # 正式機
+                # download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+                folder_path = 'C:/Jason_python/otsuka_factory_work_time_record/device_list'
 
             files = os.listdir(folder_path)
             files = [f for f in files if os.path.isfile(os.path.join(folder_path , f))]
