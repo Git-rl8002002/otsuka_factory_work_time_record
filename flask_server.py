@@ -618,10 +618,14 @@ def download_parking_fee_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/parking_fee_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/parking_fee_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/parking_fee_{year}{month}.xlsx"
         
         excel_name     = f"parking_fee_{year}{month}.xlsx"
 
@@ -643,10 +647,14 @@ def download_over_traffic_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/over_traffic_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/over_traffic_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/over_traffic_{year}{month}.xlsx"
         
         excel_name     = f"over_traffic_{year}{month}.xlsx"
 
@@ -668,10 +676,14 @@ def download_traffic_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/traffic_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/traffic_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/traffic_{year}{month}.xlsx"
         
         excel_name     = f"traffic_{year}{month}.xlsx"
 
@@ -693,10 +705,14 @@ def download_tolls_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/tolls_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/tolls_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/tolls_{year}{month}.xlsx"
         
         excel_name     = f"tolls_{year}{month}.xlsx"
 
@@ -718,10 +734,14 @@ def download_trick_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/trick_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/trick_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/trick_{year}{month}.xlsx"
         
         excel_name     = f"trick_{year}{month}.xlsx"
 
@@ -743,10 +763,14 @@ def download_taxi_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/taxi_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/taxi_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/taxi_{year}{month}.xlsx"
         
         excel_name     = f"taxi_{year}{month}.xlsx"
 
@@ -757,6 +781,7 @@ def download_taxi_excel():
             download_name=excel_name,  # 自定义下载的文件名
             mimetype='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'  # 设置 Excel 文件的 MIME 类型
         )
+    
 #########################
 # /download_stay_excel
 #########################
@@ -767,10 +792,14 @@ def download_stay_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/stay_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/stay_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/stay_{year}{month}.xlsx"
         
         excel_name     = f"stay_{year}{month}.xlsx"
 
@@ -792,10 +821,14 @@ def download_other_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/other_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/other_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/other_{year}{month}.xlsx"
         
         excel_name     = f"other_{year}{month}.xlsx"
 
@@ -817,10 +850,14 @@ def download_oil_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/oil_{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/oil_{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/oil_{year}{month}.xlsx"
         
         excel_name     = f"oil_{year}{month}.xlsx"
 
@@ -842,10 +879,14 @@ def download_excel():
         year  = request.args.get('year')
         month = request.args.get('month')
 
-        # 開發機
-        download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
-        # 正式機
-        #download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        host_name = os.environ['COMPUTERNAME']
+        
+        if host_name == 'OTSUAK-JASON':
+            # 開發機
+            download_excel = f"F:/otsuka/Git/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
+        else:
+            # 正式機
+            download_excel = f"C:/Jason_python/otsuka_factory_work_time_record/excel/{year}{month}.xlsx"
         
         excel_name     = f"{year}{month}.xlsx"
 
