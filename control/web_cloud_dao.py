@@ -288,7 +288,7 @@ class web_cloud_dao:
         finally:
             self.__disconnect__()
 
-     #########################################
+    #########################################
     # show_day_money_other_detail_day_total
     ##########################################
     def show_day_money_other_detail_day_total(self , year , month):
@@ -317,7 +317,7 @@ class web_cloud_dao:
         finally:
             self.__disconnect__()
 
-     #######################################
+    #######################################
     # show_day_money_oil_detail_day_total
     ########################################
     def show_day_money_oil_detail_day_total(self , year , month):
@@ -1319,11 +1319,11 @@ class web_cloud_dao:
         self.__connect__()
         
         try:
-            money_sql  = f"select a_name , e_name , " 
+            money_sql  = f"select a_name , e_name , d_name , " 
             money_sql += f"day_t_money1 , day_t_money2 , day_t_money3 , day_t_money4  , day_t_money5  , day_t_money6  , day_t_money7  , day_t_money8  , day_t_money9  , day_t_money10 , " 
             money_sql += f"day_t_money11 , day_t_money12 , day_t_money13 , day_t_money14  , day_t_money15  , day_t_money16  , day_t_money17  , day_t_money18  , day_t_money19  , day_t_money20 , "
             money_sql += f"day_t_money21 , day_t_money22 , day_t_money23 , day_t_money24  , day_t_money25  , day_t_money26  , day_t_money27  , day_t_money28  , day_t_money29  , day_t_money30 , day_t_money31 , day_t_total "
-            money_sql += f"from day_money where day_r_year='{year}' and day_r_month='{month}' "
+            money_sql += f"from day_money where day_r_year='{year}' and day_r_month='{month}' order by d_name asc"
             self.curr.execute(money_sql)
             money_res = self.curr.fetchall()
 
@@ -1338,7 +1338,7 @@ class web_cloud_dao:
             with open(csv_file, mode='w', newline='' , encoding='utf-8') as file:
                 writer = csv.writer(file, delimiter='\t', quotechar='"', quoting=csv.QUOTE_MINIMAL)
                 
-                title = f"中文,英文,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
+                title = f"中文,英文,部門,{month}/1,{month}/2,{month}/3,{month}/4,{month}/5,{month}/6,{month}/7,{month}/8,{month}/9,{month}/10,{month}/11,{month}/12,{month}/13,{month}/14,{month}/15,{month}/16,{month}/17,{month}/18,{month}/19,{month}/20,{month}/21,{month}/22,{month}/23,{month}/24,{month}/25,{month}/26,{month}/27,{month}/28,{month}/29,{month}/30,{month}/31,總計"
                 
                 writer.writerow(title)
 
@@ -1372,7 +1372,7 @@ class web_cloud_dao:
 
             ### title
             sheet.freeze_panes = 'A2'
-            title = ['中文','英文',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
+            title = ['中文','英文','部門',f'{month}/1',f'{month}/2',f'{month}/3',f'{month}/4',f'{month}/5',f'{month}/6',f'{month}/7',f'{month}/8',f'{month}/9',f'{month}/10'
                      ,f'{month}/11',f'{month}/12',f'{month}/13',f'{month}/14',f'{month}/15',f'{month}/16',f'{month}/17',f'{month}/18',f'{month}/19',f'{month}/20'
                      ,f'{month}/21',f'{month}/22',f'{month}/23',f'{month}/24',f'{month}/25',f'{month}/26',f'{month}/27',f'{month}/28',f'{month}/29',f'{month}/30',f'{month}/31','總計']
 
@@ -1388,14 +1388,14 @@ class web_cloud_dao:
                     sheet.cell(row=row_idx , column=col_idx , value=cell_val)
 
             ### total
-            total_sql  = f"select day_r_year , day_r_month , " 
+            total_sql  = f"select day_r_year , day_r_month , day_r_date , " 
             total_sql += f"format(sum(day_t_money1),0)  , format(sum(day_t_money2),0) , format(sum(day_t_money3),0) , format(sum(day_t_money4),0)  , format(sum(day_t_money5),0)  , format(sum(day_t_money6),0) , " 
             total_sql += f"format(sum(day_t_money7),0)  , format(sum(day_t_money8),0) , format(sum(day_t_money9),0) , format(sum(day_t_money10),0)  , format(sum(day_t_money11),0)  , format(sum(day_t_money12),0) , " 
             total_sql += f"format(sum(day_t_money13),0) , format(sum(day_t_money14),0) , format(sum(day_t_money15),0) , format(sum(day_t_money16),0)  , format(sum(day_t_money17),0)  , format(sum(day_t_money18),0) , " 
             total_sql += f"format(sum(day_t_money19),0) , format(sum(day_t_money20),0) , format(sum(day_t_money21),0) , format(sum(day_t_money22),0)  , format(sum(day_t_money23),0)  , format(sum(day_t_money24),0) , " 
             total_sql += f"format(sum(day_t_money25),0) , format(sum(day_t_money26),0) , format(sum(day_t_money27),0) , format(sum(day_t_money28),0)  , format(sum(day_t_money29),0)  , format(sum(day_t_money30),0) , " 
             total_sql += f"format(sum(day_t_money31),0) , format(sum(day_t_total),0) " 
-            total_sql += f"from day_money where day_r_year='{year}' and day_r_month='{month}' "
+            total_sql += f"from day_money where day_r_year='{year}' and day_r_month='{month}' order by d_name asc"
             self.curr.execute(total_sql)
             total_res = self.curr.fetchall()
             
@@ -1731,12 +1731,16 @@ class web_cloud_dao:
                         # insert into MySQL
                         #
                         ######################
-                        sql =  f"insert into hr_a(employee_id , employee_name , employee_eng_name , login_id , company_id , department_id , identity_id , sex , email , mobile , birthday , job_title_code , job_title_name , job_grade , job_rank , job_code , job_type , end_date , work_place , area_code , home_phone , office_phone , addresses , department_code , department_name) "
+                        sql  =  f"insert into hr_a(employee_id , employee_name , employee_eng_name , login_id , company_id , department_id , identity_id , sex , email , mobile , birthday , job_title_code , job_title_name , job_grade , job_rank , job_code , job_type , end_date , work_place , area_code , home_phone , office_phone , addresses , department_code , department_name) "
                         sql += f"value('{val[0]}','{val[1]}','{val[2]}','{val[3]}','{val[4]}','{val[5]}','{val[6]}','{val[7]}','{val[8]}','{val[9]}','{val[10]}','{val[11]}','{val[12]}','{val[13]}','{val[14]}','{val[15]}','{val[16]}','{val[17]}','{val[18]}','{val[19]}','{val[20]}','{val[21]}','{val[22]}','{dep_val[0]}','{dep_val[1]}')"
                         self.curr.execute(sql)
                         self.conn.commit()
                     else:
-                        logging.info(f"{s_r[0]} 已存在.")
+                        pass
+                        #logging.info(f"{s_r[0]} 已存在.")
+            
+            print('\n')
+            logging.info(f"< Msg > HR account , 更新完成.")
             
             self.__disconnect__()
 

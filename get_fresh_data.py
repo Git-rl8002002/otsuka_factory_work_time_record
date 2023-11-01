@@ -121,7 +121,7 @@ class device_list:
                                 self.curr.execute(device_sql)
                                 self.conn.commit()
 
-                logging.info(f"< Msg > {latest_file} , synchronization device list is done.")
+                logging.info(f"< Msg > {latest_file} , update 電腦使用紀錄 更新完成。.")
                 print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -185,7 +185,7 @@ class day_money_oil:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money tolls is done.')
+                    logging.info('< Msg > synchronization update day money tolls 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -253,7 +253,7 @@ class day_money_oil:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM12 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM12 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -586,7 +586,7 @@ class day_money_oil:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money over traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當油單 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -657,7 +657,7 @@ class day_money_other:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money tolls is done.')
+                    logging.info('< Msg > synchronization update day money tolls 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -725,7 +725,7 @@ class day_money_other:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM11 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM11 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -1058,7 +1058,7 @@ class day_money_other:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money over traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當其他 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -1129,7 +1129,7 @@ class day_money_stay:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money tolls is done.')
+                    logging.info('< Msg > synchronization update day money tolls 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -1197,7 +1197,7 @@ class day_money_stay:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM10 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM10 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -1530,7 +1530,7 @@ class day_money_stay:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money over traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當住宿 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -1601,7 +1601,7 @@ class day_money_taxi:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money tolls is done.')
+                    logging.info('< Msg > synchronization update day money tolls 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -1669,7 +1669,7 @@ class day_money_taxi:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM9 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM9 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -2002,7 +2002,7 @@ class day_money_taxi:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money over traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當計程車 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -2073,7 +2073,7 @@ class day_money_trick:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money tolls is done.')
+                    logging.info('< Msg > synchronization update day money tolls 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -2141,7 +2141,7 @@ class day_money_trick:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM8 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM8 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -2474,7 +2474,7 @@ class day_money_trick:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money over traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當車票 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -2545,7 +2545,7 @@ class day_money_tolls:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money tolls is done.')
+                    logging.info('< Msg > synchronization update day money tolls 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -2613,7 +2613,7 @@ class day_money_tolls:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM7 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM7 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -2946,7 +2946,7 @@ class day_money_tolls:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money over traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當過路費 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -3017,7 +3017,7 @@ class day_money_parking_fee:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money parking fee is done.')
+                    logging.info('< Msg > synchronization update day money parking fee 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -3085,7 +3085,7 @@ class day_money_parking_fee:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM6 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM6 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -3418,7 +3418,7 @@ class day_money_parking_fee:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money over traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當停車費 更新完成。')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -3489,7 +3489,7 @@ class day_money_over_traffic:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money over traffic is done.')
+                    logging.info('< Msg > synchronization update day money over traffic 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -3557,7 +3557,7 @@ class day_money_over_traffic:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM5 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM5 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -3890,7 +3890,7 @@ class day_money_over_traffic:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money over traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當超里程 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -3961,7 +3961,7 @@ class day_money_traffic:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization update day money traffic is done.')
+                    logging.info('< Msg > synchronization update day money traffic 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -4029,7 +4029,7 @@ class day_money_traffic:
                 #############################
                 sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM4 , b.ITEM14 , b.ITEM15 " 
                 sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
-                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+                sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM4 != '0' "
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -4362,7 +4362,7 @@ class day_money_traffic:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money traffic is done.')
+                    logging.info('< Msg > update BPM day money 日當交通費 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -4433,7 +4433,7 @@ class day_money:
                     
                     #return day_res
                     self.conn.commit()
-                    logging.info('< Msg > synchronization day money is done.')
+                    logging.info('< Msg > synchronization day money 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
         except Exception as e:
@@ -4537,16 +4537,20 @@ class day_money:
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
 
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
+
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
-                            mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'       , "
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -4825,7 +4829,7 @@ class day_money:
                         curr.execute(mysql_sql)
                         conn.commit()
                     
-                    logging.info('< Msg > update BPM day money is done.')
+                    logging.info('< Msg > update BPM day money 日當 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
@@ -4851,82 +4855,44 @@ if __name__ == '__main__':
     
     while True:
         
-        ############################
-        #
-        # 更新日當油單月報表資料
-        #
-        ############################
+        ### 更新 hr account list
+        update_hr_account = web_cloud_dao()
+        update_hr_account.erp_hr_account_list()
+        
+        ### 更新日當 油單 月報表資料
         check_day_money_oil = day_money_oil()
         
-        ############################
-        #
-        # 更新日當其他月報表資料
-        #
-        ############################
+        ### 更新日當 其他 月報表資料
         check_day_money_other = day_money_other()
         
-        ############################
-        #
-        # 更新日當住宿月報表資料
-        #
-        ############################
+        ### 更新日當 住宿 月報表資料
         check_day_money_stay = day_money_stay()
         
-        ############################
-        #
-        # 更新日當計程車月報表資料
-        #
-        ############################
+        ### 更新日當 計程車 月報表資料
         check_day_money_taxi = day_money_taxi()
         
-        ############################
-        #
-        # 更新日當車票月報表資料
-        #
-        ############################
+        ### 更新日當 車票 月報表資料
         check_day_money_trick = day_money_trick()
         
-        ############################
-        #
-        # 更新日當過路費月報表資料
-        #
-        ############################
+        ### 更新日當 過路費 月報表資料
         check_day_money_tolls = day_money_tolls()
         
-        ############################
-        #
-        # 更新日當停車費月報表資料
-        #
-        ############################
+        ### 更新日當 停車費 月報表資料
         check_day_money_parking_fee = day_money_parking_fee()
         
-        ############################
-        #
-        # 更新日當超里程月報表資料
-        #
-        ############################
+        ### 更新日當 超里程 月報表資料
         check_day_money_over_traffic = day_money_over_traffic()
         
-        ############################
-        #
-        # 更新日當交通費月報表資料
-        #
-        ############################
+        ### 更新日當 交通費 月報表資料
         check_day_money_traffic = day_money_traffic()
         
-        ######################
-        #
-        # 更新日當月報表資料
-        #
-        ######################
+        ### 更新 日當 月報表資料
         check_day_money = day_money()
-
-        ################################
-        #
-        # 更新 comodo device list 資料
-        #
-        ################################
+        
+        ### 更新 comodo device list 資料
         check_device_list = device_list()
+
+        
 
         time.sleep(600)
 

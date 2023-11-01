@@ -8,6 +8,7 @@
     <tr>
         <td>中文</td>
         <td>英文</td>
+        <td>部門</td>
         <td>{{month}}/1</td>
         <td>{{month}}/2</td>
         <td>{{month}}/3</td>
@@ -82,6 +83,7 @@
         <td>{{ val[31] }}</td>
         <td>{{ val[32] }}</td>
         <td>{{ val[33] }}</td>
+        <td>{{ val[34] }}</td>
     </tr>
     {% endfor %}
 
@@ -92,7 +94,7 @@
     ----------------------->
     {% for val in day_in_total %}
     <tr>
-        <td colspan="2">總計</td>
+        <td colspan="3">總計</td>
         <td>{{ val[0] }}</td>
         <td>{{ val[1] }}</td>
         <td>{{ val[2] }}</td>
