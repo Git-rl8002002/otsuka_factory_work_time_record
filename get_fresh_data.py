@@ -298,16 +298,20 @@ class day_money_oil:
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
 
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
+
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_oil("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name  , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -769,17 +773,21 @@ class day_money_other:
                         g_e_mysql_sql = f"select employee_eng_name from hr_a where employee_name='{val[1]}'"
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
+                        
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
 
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_other("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name  , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}', '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -1241,17 +1249,21 @@ class day_money_stay:
                         g_e_mysql_sql = f"select employee_eng_name from hr_a where employee_name='{val[1]}'"
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
+                        
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
 
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_stay("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name  , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -1714,16 +1726,20 @@ class day_money_taxi:
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
 
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
+
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_taxi("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}', '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -2185,17 +2201,21 @@ class day_money_trick:
                         g_e_mysql_sql = f"select employee_eng_name from hr_a where employee_name='{val[1]}'"
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
+                        
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
 
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_trick("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}', '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -2658,16 +2678,20 @@ class day_money_tolls:
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
 
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
+
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_tolls("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -3130,16 +3154,20 @@ class day_money_parking_fee:
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
 
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
+
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_parking_fee("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -3602,16 +3630,20 @@ class day_money_over_traffic:
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
 
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
+
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_over_traffic("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}'    , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
@@ -4074,16 +4106,20 @@ class day_money_traffic:
                         curr.execute(g_e_mysql_sql)
                         g_e_name = curr.fetchone()
 
+                        g_d_mysql_sql = f"select department_code from hr_a where employee_name='{val[1]}'"
+                        curr.execute(g_d_mysql_sql)
+                        g_d_name = curr.fetchone()
+
                         if mysql_res is None:
                             
                             mysql_sql  = f"insert into day_money_traffic("
                             mysql_sql += f"r_date , r_year , r_month , r_day , " 
-                            mysql_sql += f"f_name , a_name , e_name , t_money , c_t_money , erp_num , " 
+                            mysql_sql += f"f_name , a_name , e_name , d_name , t_money , c_t_money , erp_num , " 
                             mysql_sql += f"form_num , day_r_year , day_r_month , day_t_money , day_money_mark , day_money_diff" 
                             mysql_sql += f") " 
                             mysql_sql += f"value(" 
                             mysql_sql += f"'{val[3]}' , '{r_year}'     , '{r_month}'     , '{r_day}'  , "
-                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
+                            mysql_sql += f"'{val[0]}' , '{val[1]}'     , '{g_e_name[0]}' , '{g_d_name[0]}' , '{val[2]}' , '{val[4]}' , '{val[5]}' ," 
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
