@@ -280,7 +280,9 @@ class day_money_oil:
                         #
                         ###############################################
                         #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_oil where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_oil where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money_oil where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -315,15 +317,15 @@ class day_money_oil:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_oil set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -331,248 +333,218 @@ class day_money_oil:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_oil set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_oil set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_oil set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_oil set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_oil set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_oil set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_oil set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_oil set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_oil set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_oil set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_oil set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_oil set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_oil set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_oil set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_oil set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_oil set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_oil set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_oil set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_oil set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_oil set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_oil set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_oil set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_oil set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_oil set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_oil set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_oil set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_oil set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_oil set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_oil set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_oil set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -756,7 +728,9 @@ class day_money_other:
                         #
                         ###############################################
                         #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_other where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_other where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money_other where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -791,15 +765,15 @@ class day_money_other:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_other set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -807,248 +781,218 @@ class day_money_other:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_other set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_other set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_other set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_other set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_other set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_other set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_other set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_other set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_other set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_other set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_other set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_other set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_other set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_other set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_other set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_other set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_other set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_other set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_other set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_other set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_other set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_other set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_other set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_other set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_other set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_other set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_other set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_other set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_other set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_other set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -1232,7 +1176,9 @@ class day_money_stay:
                         #
                         ###############################################
                         #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_stay where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_stay where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money_stay where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -1267,15 +1213,15 @@ class day_money_stay:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_stay set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -1283,248 +1229,218 @@ class day_money_stay:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_stay set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_stay set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_stay set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_stay set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_stay set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_stay set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_stay set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_stay set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_stay set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_stay set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_stay set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_stay set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_stay set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_stay set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_stay set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_stay set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_stay set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_stay set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_stay set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_stay set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_stay set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_stay set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_stay set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_stay set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_stay set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_stay set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_stay set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_stay set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_stay set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_stay set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -1708,7 +1624,9 @@ class day_money_taxi:
                         #
                         ###############################################
                         #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_taxi where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_taxi where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money_taxi where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -1743,15 +1661,15 @@ class day_money_taxi:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_taxi set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -1759,248 +1677,218 @@ class day_money_taxi:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_taxi set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_taxi set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_taxi set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_taxi set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_taxi set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_taxi set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_taxi set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_taxi set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_taxi set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_taxi set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_taxi set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_taxi set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_taxi set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_taxi set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_taxi set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_taxi set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_taxi set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_taxi set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_taxi set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_taxi set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_taxi set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_taxi set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_taxi set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_taxi set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_taxi set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_taxi set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_taxi set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_taxi set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_taxi set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_taxi set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -2184,7 +2072,9 @@ class day_money_trick:
                         #
                         ###############################################
                         #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_trick where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_trick where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql  = f"select * from day_money_trick where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -2219,15 +2109,15 @@ class day_money_trick:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_trick set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -2235,248 +2125,218 @@ class day_money_trick:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_trick set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_trick set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_trick set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_trick set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_trick set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_trick set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_trick set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_trick set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_trick set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_trick set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_trick set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_trick set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_trick set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_trick set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_trick set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_trick set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_trick set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_trick set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_trick set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_trick set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_trick set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_trick set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_trick set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_trick set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_trick set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_trick set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_trick set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_trick set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_trick set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_trick set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -2660,7 +2520,9 @@ class day_money_tolls:
                         #
                         ###############################################
                         #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_tolls where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_tolls where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money_tolls where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -2695,15 +2557,15 @@ class day_money_tolls:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_tolls set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -2711,248 +2573,220 @@ class day_money_tolls:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_tolls set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_tolls set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_tolls set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_tolls set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_tolls set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_tolls set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_tolls set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_tolls set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_tolls set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_tolls set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_tolls set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_tolls set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_tolls set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_tolls set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_tolls set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_tolls set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_tolls set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_tolls set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_tolls set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_tolls set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_tolls set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_tolls set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_tolls set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_tolls set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_tolls set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_tolls set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_tolls set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_tolls set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_tolls set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_tolls set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
+
+                            
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -3136,7 +2970,8 @@ class day_money_parking_fee:
                         #
                         ###############################################
                         #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_parking_fee where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_parking_fee where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money_parking_fee where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -3171,15 +3006,15 @@ class day_money_parking_fee:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -3187,248 +3022,218 @@ class day_money_parking_fee:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_parking_fee set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -3612,7 +3417,8 @@ class day_money_over_traffic:
                         #
                         ###############################################
                         #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_over_traffic where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_over_traffic where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money_over_traffic where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -3647,15 +3453,15 @@ class day_money_over_traffic:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -3663,248 +3469,218 @@ class day_money_over_traffic:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_over_traffic set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -4087,8 +3863,9 @@ class day_money_traffic:
                         # Check if there are records in the database
                         #
                         ###############################################
-                        #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money_traffic where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        #s_mysql_sql = f"select * from day_money_traffice where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
+                        #s_mysql_sql = f"select * from day_money_traffic where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money_traffic where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
@@ -4123,15 +3900,15 @@ class day_money_traffic:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money_traffic set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -4139,248 +3916,218 @@ class day_money_traffic:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money_traffic set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money_traffic set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money_traffic set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money_traffic set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money_traffic set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money_traffic set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money_traffic set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money_traffic set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money_traffic set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money_traffic set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money_traffic set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money_traffic set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money_traffic set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money_traffic set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money_traffic set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money_traffic set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money_traffic set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money_traffic set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money_traffic set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money_traffic set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money_traffic set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money_traffic set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money_traffic set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money_traffic set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money_traffic set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money_traffic set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money_traffic set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money_traffic set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money_traffic set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money_traffic set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -4402,7 +4149,7 @@ class day_money_traffic:
                     print("------------------------------------------------------------------------------------------------------------------")
 
                 except Exception as e:
-                    logging.error("< Error > bpm_day_money traffic - connect mysql fail : " + str(e))
+                    logging.error("< Error > bpm_day_money traffic (日當 交通費) - connect mysql fail : " + str(e))
 
                 finally:
                     curr.close()
@@ -4526,9 +4273,10 @@ class day_money:
                 # ITEM15:加減金額
                 #
                 #############################
-                sql2  = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM3 , b.ITEM14 , b.ITEM15 " 
-                sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID " 
+                sql2 = f"select a.ITEM14 , a.ITEM51 , a.ITEM15 , a.ITEM12 , a.ITEM58 , a.ITEM57 , a.ITEM107 , b.ITEM1 , b.ITEM3 , b.ITEM14 , b.ITEM15 " 
+                sql2 += f"from ART00851684549915660_INS a left join ART00851684549915660ITEM53 b on a.INSID=b.INSID "
                 sql2 += f"where a.ITEM75='true' and a.ITEM18='true' and b.ITEM3 != '0' "
+
                 curr_mssql.execute(sql2)
                 res  = curr_mssql.fetchall()
 
@@ -4547,18 +4295,19 @@ class day_money:
                         r_day       = val[3][8:10]
                         day_r_year  = val[7][0:4]
                         day_r_month = val[7][5:7]
-                        day_r_day   = val[7][8:10]
+
+                        #logging.info(f"{val[7]} , {val[1]} , {day_r_year} , {day_r_month} , {day_r_day}")
                         
                         ###############################################
                         #
                         # Check if there are records in the database
                         #
                         ###############################################
-                        #s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_date='{val[7]}' and day_t_money='{val[8]}'"
-                        s_mysql_sql = f"select * from day_money where r_date='{val[3]}' and t_money='{val[2]}' and f_name='{val[0]}' and a_name='{val[1]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
+                        s_mysql_sql = f"select * from day_money where f_name='{val[0]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}'"
                         curr.execute(s_mysql_sql)
                         mysql_res = curr.fetchone()
 
+                        day_r_day = val[7][8:10]
                         #logging.info(s_mysql_sql)
                         #exit()
 
@@ -4590,15 +4339,15 @@ class day_money:
                             mysql_sql += f"'{val[6]}' , '{day_r_year}' , '{day_r_month}' , '{0}' , '{val[9]}' , '{val[10]}'" 
                             mysql_sql += f")"
                             curr.execute(mysql_sql)
+                            conn.commit()
 
                             #logging.info(f"{mysql_sql}") 
                             #logging.info(f"新日當資料 > 表單日期 : {val[3]} , 填表人 : {val[0]} , 申請人 : {val[1]} {g_e_name[0]} , 總金額 : {val[2]} , 日當日期 : {val[7]} , 日當金額 : {val[8]} , 註記原因 : {val[9]} , 加減金額 : {val[10]}")
                         
                         elif str(day_r_day) == '01':
                             mysql_sql  = f"update day_money set day_t_money1='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             #logging.info(f"{mysql_sql}") 
                             curr.execute(mysql_sql)
@@ -4606,248 +4355,218 @@ class day_money:
 
                         elif str(day_r_day) == '02':
                             mysql_sql  = f"update day_money set day_t_money2='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
 
                         elif str(day_r_day) == '03':
                             mysql_sql  = f"update day_money set day_t_money3='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '04':
                             mysql_sql  = f"update day_money set day_t_money4='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '05':
                             mysql_sql  = f"update day_money set day_t_money5='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '06':
                             mysql_sql  = f"update day_money set day_t_money6='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '07':
                             mysql_sql  = f"update day_money set day_t_money7='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '08':
                             mysql_sql  = f"update day_money set day_t_money8='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '09':
                             mysql_sql  = f"update day_money set day_t_money9='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         
                         elif str(day_r_day) == '10':
                             mysql_sql  = f"update day_money set day_t_money10='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '11':
                             mysql_sql  = f"update day_money set day_t_money11='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '12':
                             mysql_sql  = f"update day_money set day_t_money12='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '13':
                             mysql_sql  = f"update day_money set day_t_money13='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '14':
                             mysql_sql  = f"update day_money set day_t_money14='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '15':
                             mysql_sql  = f"update day_money set day_t_money15='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '16':
                             mysql_sql  = f"update day_money set day_t_money16='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '17':
                             mysql_sql  = f"update day_money set day_t_money17='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '18':
                             mysql_sql  = f"update day_money set day_t_money18='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '19':
                             mysql_sql  = f"update day_money set day_t_money19='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '20':
                             mysql_sql  = f"update day_money set day_t_money20='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '21':
                             mysql_sql  = f"update day_money set day_t_money21='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '22':
                             mysql_sql  = f"update day_money set day_t_money22='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '23':
                             mysql_sql  = f"update day_money set day_t_money23='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '24':
                             mysql_sql  = f"update day_money set day_t_money24='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '25':
                             mysql_sql  = f"update day_money set day_t_money25='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '26':
                             mysql_sql  = f"update day_money set day_t_money26='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '27':
                             mysql_sql  = f"update day_money set day_t_money27='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '28':
                             mysql_sql  = f"update day_money set day_t_money28='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '29':
                             mysql_sql  = f"update day_money set day_t_money29='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '30':
                             mysql_sql  = f"update day_money set day_t_money30='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
                         elif str(day_r_day) == '31':
                             mysql_sql  = f"update day_money set day_t_money31='{day_money}' where "
-                            mysql_sql += f"r_date='{val[3]}'   and r_year='{r_year}'         and r_month='{r_month}'         and r_day='{r_day}'           and " 
-                            mysql_sql += f"f_name='{val[0]}'   and a_name='{val[1]}'         and e_name='{g_e_name[0]}'      and t_money='{val[2]}'        and c_t_money='{val[4]}'      and erp_num='{val[5]}' and " 
-                            mysql_sql += f"form_num='{val[6]}' and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' and day_money_mark='{val[9]}' and day_money_diff='{val[10]}'" 
+                            mysql_sql += f"f_name='{val[0]}' and a_name='{val[1]}' and e_name='{g_e_name[0]}' " 
+                            mysql_sql += f"and day_r_year='{day_r_year}' and day_r_month='{day_r_month}' " 
                             
                             curr.execute(mysql_sql)
                             conn.commit()
@@ -4867,6 +4586,8 @@ class day_money:
                     
                     logging.info('< Msg > update BPM day money 日當 更新完成。.')
                     print("------------------------------------------------------------------------------------------------------------------")
+
+                    
 
                 except Exception as e:
                     logging.error("< Error > bpm_day_money - connect mysql fail : " + str(e))
