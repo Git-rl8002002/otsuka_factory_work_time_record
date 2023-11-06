@@ -1,3 +1,36 @@
+function show_sensor_position_list(){
+
+        $.ajax({
+                type:"POST",
+                url:"/show_sensor_position_list",
+                data:{
+                        
+                },
+                datatype:"html",
+                        error:function(xhr , ajaxError , throwError){
+                        alert(xhr.status);
+                        alert(xhr.responseText);
+                        alert(throwError);
+                        alert(ajaxError);
+                },
+                success:function(res){
+                        
+                        //$("#computer_user_detail").show(1000).html(res);
+                        $("#show_day_month_detail").show(1000).html(res);
+                        // scroll page bottom to page top
+                        goto_top();
+                        
+                        //location.reload(true);
+                },
+                beforeSend:function(){
+                        $('#status').html("顯示電腦序號詳細資料 ...").css({'color':'blue'});
+                },
+                complete:function(){
+                        $('#status').css({'color':'white'});
+                }
+        });
+}
+
 function show_factory_monitor_detail(val){
         var d_position  = val;
 

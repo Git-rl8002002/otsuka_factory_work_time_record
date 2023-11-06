@@ -1460,6 +1460,31 @@ class web_cloud_dao:
             self.__disconnect__()
 
     ##############################
+    # sensor_position_detail
+    ##############################
+    def sensor_position_detail(self , sensor):
+        
+        self.__connect4__()
+        
+        try:
+            ### r_time
+            r_date = time.strftime("%Y_%m" , time.localtime())
+            r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+            # all device user by s_number
+            d_sql  = f"SELECT r_time , val_1 , val_2 from {r_date} where s_kind='{sensor}' order by no desc limit 0,1"
+            self.curr.execute(d_sql)
+            d_res = self.curr.fetchall() 
+
+            return d_res
+
+        except Exception as e:
+            logging.error('< Error > sensor_position_detail : ' + str(e))
+
+        finally:
+            self.__disconnect4__()
+
+    ##############################
     # computer_s_number_detail
     ##############################
     def computer_s_number_detail(self):

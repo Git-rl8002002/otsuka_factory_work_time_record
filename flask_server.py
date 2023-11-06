@@ -14,7 +14,7 @@ from hashlib import md5
 import hashlib , time , logging , random , openpyxl , csv , os , mimetypes
 #import socketio
 from tabnanny import check
-from flask import Flask,render_template,request,session,url_for,redirect,escape , Response , send_file 
+from flask import Flask,render_template,request,session,url_for,redirect , Response , send_file 
 from flask_socketio import SocketIO , emit 
 from openpyxl.utils.dataframe import dataframe_to_rows
 from io import BytesIO
@@ -99,6 +99,70 @@ def reload_menu_account_list():
             factory_work_account_list = db.factory_work_account_list()
 
             return render_template('ajax/menu_account_management.html' , user=user , lv=lv , title=title , r_date=r_date , factory_work_station=factory_work_station , factory_work_account_list=factory_work_account_list)
+
+        else:
+            return redirect(url_for('logout'))
+
+    return redirect(url_for('login')) 
+
+####################################
+# /show_sensor_position_list
+####################################
+@app.route("/show_sensor_position_list", methods=['POST','GET'])
+def show_sensor_position_list():
+    if 'user' in session:
+        
+        ### operation record title
+        operation_record_title = '工廠溫溼度器紀錄 > 溫溼度感測器清單'    
+
+        ### session 
+        user = session['user']
+        lv   = session['lv']
+        login_code = session['login_code']
+        dep_id     = session['department_id']
+
+        ### r_time
+        r_date = time.strftime("%Y-%m-%d" , time.localtime())
+        r_time = time.strftime("%Y-%m-%d %H:%M:%S" , time.localtime())
+
+        ### check repeat login
+        check_repeat_login = db.check_login_code(user,login_code)
+
+        if check_repeat_login == 'ok':
+            
+            ### operation record
+            db.operation_record(r_time,user,login_code,operation_record_title)    
+            
+            #################
+            # main content 
+            #################
+            S1 = db.sensor_position_detail('S-1')
+            S2 = db.sensor_position_detail('S-2')
+            S3 = db.sensor_position_detail('S-3')
+            S4 = db.sensor_position_detail('S-4')
+            S5 = db.sensor_position_detail('S-5')
+            S6 = db.sensor_position_detail('S-6')
+            S7 = db.sensor_position_detail('S-7')
+            S8 = db.sensor_position_detail('S-8')
+            S9 = db.sensor_position_detail('S-9')
+            S10 = db.sensor_position_detail('S-10')
+            S11_1 = db.sensor_position_detail('S-11-1')
+            S11_2 = db.sensor_position_detail('S-11-2')
+            S12 = db.sensor_position_detail('S-12')
+            S13 = db.sensor_position_detail('S-13')
+            S14 = db.sensor_position_detail('S-14')
+            S15_1 = db.sensor_position_detail('S-15-1')
+            S15_2 = db.sensor_position_detail('S-15-2')
+            S15_3 = db.sensor_position_detail('S-15-3')
+            S15_4 = db.sensor_position_detail('S-15-4')
+            S15_5 = db.sensor_position_detail('S-15-5')
+            S15_6 = db.sensor_position_detail('S-15-6')
+            S16 = db.sensor_position_detail('S-16')
+            S17 = db.sensor_position_detail('S-17')
+            S18 = db.sensor_position_detail('S-18')
+            S19 = db.sensor_position_detail('S-19')
+                    
+            return render_template('ajax/detail_sensor_position_record.html' , user=user , title=title , dep_id=dep_id , S1=S1 , S2=S2 , S3=S3 , S4=S4 , S5=S5 , S6=S6 , S7=S7 , S8=S8 , S9=S9 , S10=S10 , S11_1=S11_1 , S12=S12 , S13=S13 , S14=S14 , S15_1=S15_1 , S15_2=S15_2 , S15_3=S15_3 , S15_4=S15_4 , S15_5=S15_5 , S15_6=S15_6 , S16=S16 , S17=S17 , S18=S18 , S19=S19)
 
         else:
             return redirect(url_for('logout'))
